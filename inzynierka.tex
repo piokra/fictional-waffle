@@ -4,10 +4,14 @@
 % This is a simple template for a LaTeX document using the "article" class.
 % See "book", "report", "letter" for other types of document.
 
-\documentclass[11pt]{article} % use larger type; default would be 10pt
+\documentclass[10pt]{article} % use larger type; default would be 10pt
+\linespread{1.3}
 \usepackage{polski}
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
-
+\usepackage[letterpaper, landscape, margin=2.5cm]{geometry}
+%\usepackage{helvet}
+\usepackage{indentfirst}
+%\renewcommand{\familydefault}{\sfdefault}
 %%% Examples of Article customizations
 % These packages are optional, depending whether you want the features they provide.
 % See the LaTeX Companion or other references for full information.
@@ -30,6 +34,11 @@
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 \usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{amsthm}
+\usepackage{ bbold }
+%\usepackage{braket}
 % These packages are all incorporated in the memoir class to one degree or another...
 
 %%% HEADERS & FOOTERS
@@ -52,6 +61,11 @@
 
 %%% END Article customizations
 
+%%% Math ops %%%
+\DeclareMathOperator{\Trs}{Tr}
+
+%%% END
+
 %%% Extra commands %%%
 \newcommand{\Mats}[1]{\mathcal{L}(#1)}
 \newcommand{\Hx}[1]{\mathcal{H}^{#1}}
@@ -59,7 +73,24 @@
 \newcommand{\HAi}{\Hx{A_1}}
 \newcommand{\LHAi}{\Mats{\HAi}}
 \newcommand{\MXi}[3]{\mathcal{M}^{#1}_{#2}(#3)}
+\newcommand{\MXin}[2]{\mathcal{M}^{#1}_{#2}}
+\newcommand{\MAin}[0]{\MXin{A}{i}}
 \newcommand{\MAi}[1]{\MXi{A}{i}{#1}}
+\newcommand{\MAir}{\MAi{\rho}}
+\newcommand{\Idx}[1]{\mathbb{1}^{#1}}
+\newcommand{\Tr}[1]{\Trs(#1)}
+\newcommand{\Pro}[1]{\Pr(#1)}
+\newcommand{\Prt}[2]{\Pr(#1, #2)}
+\newcommand{\Ket}[1]{|#1\rangle}
+\newcommand{\Bra}[1]{\langle#1|}
+\newcommand{\CP}{\textit{completely positive}}
+\newcommand{\TP}{\textit{trace preserving}}
+\newcommand{\CPTP}{\textit{completely posite trace preserving}}
+\newcommand{\WAll}{W^{A_1A_2B_1B_2}}
+\newcommand{\MA}{M^{A_1A_2}}
+\newcommand{\MB}{M^{B_1B_2}}
+\newcommand{\mai}[1]{\MA_{#1}}
+\newcommand{\mbi}[1]{\MB_{#1}}
 %%% END
 
 %%% The "real" document content comes below...
@@ -68,7 +99,7 @@
 \author{Piotr Krasuń}
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
-
+\setlength{\parindent}{1.25cm}
 \begin{document}
 \maketitle
 \tableofcontents
@@ -76,17 +107,77 @@
 \listoffigures
 \listoftables
 \newpage
-\begin{multicols*}{2}
+%\begin{multicols*}{2}
 \section{Wstęp}
-
+Tekst wstępu
 \section{Macierz Procesu}
 Jednym z podejść do eksploracji korelacji nie zachowujących przyczynowego porządku jest rozwinięty w \cite{process_matrix} formalizm macierzy procesu.
-Ewidentną zaletą tego podejścia jest zgodność z mechanika kwantową na poziomie lokalnych eksperymentów. Jest to nijakie rozszerzenie i enkapsulacja idei POVM i reguły Borna. Podejście te porzuca założenie globalnej struktury czasoprzestrzeni. W celu zachowania zgodności z mechaniką kwantową na poziomie lokalnym opiera się na następujących założeniu, że operacje wykonywane przez poszczególną stronę są opisywane przez mechanikę kwantową w standardowym przyczynowym sformułowaniu, które można opisywać przy pomocy zbioru \textit{kwantowych instrumentów} \cite{quantum_instrument} z wejściową przestrzenią Hilberta $\mathcal{H}^{A_1}$ i przestrzenią wyjściową  $\mathcal{H}^{A_2}$. Najogólniej można je realizować przy pomocy zadziałania unitarną transformacją na system wejściowy i ancillę, następnie wykonanie rzutującego pomiaru na części systemu pozostawiając pozostała część systemu jako wyjście. Alicja wykorzystując dany instrument otrzymuje jeden z możliwych wyników $x_i$, który indukuję transformację $\mathcal{M}^A_j$ z wejścia na wyjście. Transformacja ta odpowiada zupełnie dodatniej (CP) niezwiększającej śladu mapie 
-\[\mathcal{M}^A_j : \mathcal{L}(\mathcal{H}^{A_1}) \mapsto \mathcal{L}(\mathcal{H}^{A_2})\] gdzie $\LHx{X}$ jest przestrzenią macierzy na $\Hx{X}$, której wymiar to $d_X$. Jej działanie na macierz gęstości $\rho$ opisuje następująca formuła
-\[
-\MAi{\rho} = \sum^m_j E_{ij} ^\dag \rho E_{ij}
-\]
-\end{multicols*}
+Ewidentną zaletą tego podejścia jest zgodność z mechanika kwantową na poziomie lokalnych eksperymentów. Jest to nijakie rozszerzenie i enkapsulacja idei POVM i reguły Borna. Podejście te porzuca założenie globalnej struktury czasoprzestrzeni. W celu zachowania zgodności z mechaniką kwantową na poziomie lokalnym opiera się na następujących założeniu, że operacje wykonywane przez poszczególną stronę są opisywane przez mechanikę kwantową w standardowym przyczynowym sformułowaniu, które można opisywać przy pomocy zbioru \textit{quantum instruments} \cite{quantum_instrument} z wejściową przestrzenią Hilberta $\mathcal{H}^{A_1}$ i przestrzenią wyjściową  $\mathcal{H}^{A_2}$. Najogólniej można je realizować przy pomocy zadziałania unitarną transformacją na system wejściowy i \textit{ancilla}, następnie wykonanie rzutującego pomiaru na części systemu pozostawiając pozostała część systemu jako wyjście. Alicja wykorzystując dany instrument otrzymuje jeden z możliwych wyników $x_i$, który indukuję transformację $\mathcal{M}^A_i$ z wejścia na wyjście. Transformacja ta odpowiada \CP~(CP) \TP~mapie\footnote
+{
+Liniową mapę $\phi$ nazywamy CP, gdy $a \geq 0\implies \phi(a) \geq 0$ oraz $\forall_{k \in \mathcal{N}}~\mathcal{I}_k \otimes \phi$ również jest CP
+}
+\begin{equation}
+\mathcal{M}^A_i : \mathcal{L}(\mathcal{H}^{A_1}) \mapsto \mathcal{L}(\mathcal{H}^{A_2})
+\end{equation}
+gdzie $\LHx{X}$ jest przestrzenią macierzy na $\Hx{X}$, której wymiar to $d_X$. Jej działanie na macierz gęstości $\rho$ opisuje następująca formuła
+\begin{equation}
+\label{yolo}
+\MAi{\rho} = \sum^m_{j=1} E_{ij} ^\dag \rho E_{ij}
+\end{equation}
+gdzie macierze $E_{ij}$ spełniają następujące własności 
+\begin{gather}
+\sum^m_{i=0} E_{ij}^\dag E_{ij} \leq \Idx{A_1} \\
+\label{eq:id_proj} 
+\sum^n_{i=0} \sum^m_{j=0} E_{ij}^\dag E_{ij} = \Idx{A_1}
+\end{gather}
+Prawdopodobieństwo zaobserwowania wyniku realizowanego przez mapę $\MAin$ to
+\begin{equation}
+\Pro{\MAin} = \Tr{\MAir}
+\end{equation}
+Widzimy od razu, że równanie \eqref{eq:id_proj} narzuca, by możliwość zaobserwowania dowolnego wyniku była równa 1.
+W przypadku, gdy mamy do czynienia z więcej niż jedną stroną \textit{procesem} będziemy nazywać listę $\Pr(\MXin{A}{i}, \MXin{B}{j}, \dots)$ dla wszystkich możliwych lokalnych wyników. Dalej będę opisywał wyłącznie przypadek dwustronny, jednakże rozszerzenie formalizmu na przypadek wielostronny jest trywialny. Wygodnym sposobem przedstawiania map $\MAin$ jest izomorfizm Choi-Jamiołkowsky (CJ) \cite{cj_iso1, cj_iso2}. Macierz CJ $M^{A_1A_2}_i \in \Mats{\Hx{A_1} \otimes \Hx{A_2}} \geq 0$ jest zdefiniowana jako
+\begin{gather}
+\label{eq:cj_iso}
+M^{A_1A_2}_i := [\mathcal{I} \otimes \MAi{ \Ket{\phi^+} \Bra{\phi^+}}]^T, \\
+\Ket{\phi^+} = \sum^{d_{A_1}}_{i=1} \Ket{ii},
+\end{gather}
+gdzie $\{\Ket{j}\}^{d_{A_1}}$ tworzy ortonormalna bazę w $\HAi$. Korzystając z tego przejścia można zapisać prawdopodobieństwo dwóch rezultatów, jako 
+\begin{equation}
+\label{eq:cj_prob}
+\Prt{\MAin}{\MXin{B}{j}} = \Tr{\WAll(M^{A_1A_2}_i \otimes M^{B_1B_2}_j)}.
+\end{equation}
+Macierz $W$ w $\Mats{\Hx{A_1} \otimes \Hx{A_2} \otimes \Hx{B_1} \otimes \Hx{B_2}}$ nazywa się \textit{process matrix} (macierzą procesu).
+W celu generowania prawidłowego prawdopodobieństwa narzuca się dodatkowe warunki na $W$
+\begin{gather}
+\label{eq:non_neg}
+\WAll \geq 0. \\
+\label{eq:sums_to_id1}
+\Trs
+\left[
+\WAll
+\left(
+M^{A_1A_2} \otimes M^{B_1B_2}
+\right)
+\right]=1.\\
+\label{eq:sums_to_id2}
+\forall M^{A_1A_2}, M^{B_1B_2} \geq 0, \Trs_{A_2} \MA = \mathbb{1}^{A_1}, \Trs_{B_2} \MB = \mathbb{1}^{B_1},
+\end{gather}
+gdzie $\MA = \sum_i \mai{i}$. Warunek \eqref{eq:non_neg} zapewnia, że prawdopodobieństwa nie będą ujemne, a \eqref{eq:sums_to_id1} i  \eqref{eq:sums_to_id2} pewność zaobserwowania dowolnej pary map. 
+%tutej moze macierz gestosci
+\begin{figure}[t]
+\centering
+\label{fig:configs}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Przyczynowy porządek & Stany & Kanały & Kanały z pamięcią \\
+$A \npreceq B $ &
+\hline
+$B \npreceq B $ &
+\includegraphics{
+\hline
+\end{tabular}
+\end{figure}
+%\end{multicols*}
 \newpage
 \bibliographystyle{plain}
 \bibliography{bibliografia}
