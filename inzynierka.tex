@@ -9,6 +9,7 @@
 \usepackage{polski}
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 \usepackage[letterpaper, landscape, margin=2.5cm]{geometry}
+
 %\usepackage{helvet}
 \usepackage{indentfirst}
 %\renewcommand{\familydefault}{\sfdefault}
@@ -35,9 +36,12 @@
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 \usepackage{multicol}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{bm}
+\usepackage{svg}
 \usepackage{amsthm}
 \usepackage{ bbold }
+
 %\usepackage{braket}
 % These packages are all incorporated in the memoir class to one degree or another...
 
@@ -83,6 +87,7 @@
 \newcommand{\Prt}[2]{\Pr(#1, #2)}
 \newcommand{\Ket}[1]{|#1\rangle}
 \newcommand{\Bra}[1]{\langle#1|}
+\newcommand{\Braket}[1]{\langle#1\rangle}
 \newcommand{\CP}{\textit{completely positive}}
 \newcommand{\TP}{\textit{trace preserving}}
 \newcommand{\CPTP}{\textit{completely posite trace preserving}}
@@ -91,6 +96,8 @@
 \newcommand{\MB}{M^{B_1B_2}}
 \newcommand{\mai}[1]{\MA_{#1}}
 \newcommand{\mbi}[1]{\MB_{#1}}
+\newcommand{\KP}{\Ket{\psi}}
+\newcommand{\BP}{\Bra{\psi}}
 %%% END
 
 %%% The "real" document content comes below...
@@ -109,13 +116,93 @@
 \newpage
 %\begin{multicols*}{2}
 \section{Wstęp}
-Tekst wstępu
+%%%%
+\subsection{Historia}
+Mechanika kwantowa od samego początku jej badania budziła wiele kontrowersji. Od samego początku wiele osób miało problem z zaakceptowaniem faktu, iż
+na fundamentalnym poziomie rzeczywistość nie jest deterministyczna, jak nam się wydawało. Losowa natura tej teorii, jak i wiele "dziwnych" cech mechaniki kwantowej była początkowo trudna do zaakceptowania. Rok po opublikowaniu pracy Schrödingera, Einstein w swojej pracy zamieścił zdanie, które kierunkowało badania w tamtym czasie, zaś dziś w raz z innymi popularnymi "powiedzonkami" kwantowymi zakorzeniony w kulturze, a mianowicie, że "Bóg nie gra w kości", która później okazała się być nieprawdziwa - przynajmniej nie w takim stopniu w jakim autor by sobie życzył. Sam formalizm doczekał się wielu interpretacji często bardziej filozoficznych. Dzisiaj najpopularniejszymi jest interpretacja Kopenhaska, teoria wielu światów, czy idei inkorpującej kwantowej grawitacje w mechanizmie pomiaru. Mimo tego jest to bardzo matematycznie elegancka teoria, którą można nazwać jednym z największych osiągnięć współczesnej fizyki. Wielokrotnie jej "dziwne" przewidywania zostały potwierdzane eksperymentalnie z wręcz idealna dokładnością (w przeciwieństwie do np. stałej kosmologicznej, która niedokładność przekracza wiele dziesiątek rzędu wielkości). 
+\subsection{Podstawowe informacje}
+Przechodząc do bardziej konkretnych rzeczy; systemy w mechanice kwantowej opisuję się jako elementy przestrzeni Hilberta $\psi \in \Hx{}$, a tak zwane obserwable samosprzężone operatorów $A \in \LHx{}$, które opisują nam pomiary, jakie możemy wykonać na danym systemie. W przypadku skończenie wymiarowym, bądź policzalnym możemy powiedzieć, że $\Hx{A} = \mathcal{C}^N$ i
+obserwable są po prostu macierzami hermitowskimi odpowiedniego wymiaru. Przez znak równa się rozumiemy przestrzeń Hilberta zbudowana na tym zbiorze z odpowiednimi działaniami. Dosyć standardowym i wygodnym jest wykorzystywanie tak zwanej notacji Diraca a mianowicie przedstawianie $\psi = \Ket{\psi}$ i $\psi^\dag = \Bra{\psi}$
+\begin{align}
+\psi = 
+\begin{pmatrix}
+a_1\\a_2\\a_3
+\end{pmatrix}
+\equiv \Ket{\psi}
+\quad & \quad\psi^\dag = 
+\begin{pmatrix}
+a_1^*~a_2^*~a_3^*
+\end{pmatrix}
+\equiv \Bra{\psi}
+\end{align}
+\begin{figure}[th]
+\centering
+\includegraphics[width=0.20\textwidth]{obrazki/Bloch_sphere}
+\caption{Sfera Blocha. Punkty na tej sferze opisują wszystkie możliwe stany $\KP$.}
+\label{fig:bloch}
+\end{figure}
+Wygodnie narzucić warunek normalizacji stanów, a mianowicie $\Bra{\psi}\Ket{\psi} \equiv \Braket{\psi|\psi} = 1$, wtedy wartość oczekiwaną obserwabli w danym stanie $\Ket{\psi}$ oblicza się tak $\Braket{A} \equiv \Bra{\psi}A\Ket{\psi}$. Zauważmy, że skoro obserwable opisywane są przez macierze hermitowskie, można 
+skorzystać z twierdzenia spektralnego i zapisać $A = \sum_i^N \lambda_i \Ket{i}$, gdzie $\lambda_i$ opisuje i-tą wartość własna zaś $\Ket{i}$ to i-ty wektor własny, który dobrano tak, że $\Braket{i|j} = \delta_{ij}$, $\{\Ket{i}\}$ tworzy ortonormalna bazę w $\Hx{}$. Jednym z postulatów mechaniki kwantowej jest tzw. postulat pomiaru von Neumanna. Mówi on, że wykonując pomiar obserwabla A system w stanie $\Ket{\psi}$ otrzymamy wartość $\lambda_i$ odpowiadająca wektorowi własnemu $\Ket{i}$ zapada się w stan $\Ket{i}$. Można zapisać go w następujący sposób opisujący warunkową ewolucję po pomiarze
+\begin{equation}
+\label{eq:cond_ev}
+\Ket{\psi} \mapsto \frac{\Pi_i\Ket{i}}{\sqrt{\Bra{\psi}\Pi_i \Ket{\psi}}},
+\end{equation}
+gdzie $\Pi_i$ jest projektorem odpowiadającym $\Ket{i}\Bra{i}$. Zapisująć $\KP = \sum^N_i a_i \Ket{i}, \sum^N_i |a_i|^2=1$ prawdopodobieństwo zaobserwowania wyniku $\lambda_i$ jest równe $|a_i|^2$, lub równoważnie
+\begin{equation}
+\Pro{\lambda_i} = \BP \Pi_i \KP,
+\end{equation}
+co znane jest jako reguła Borna. Fakt, że obserwable są opisywane przez macierze Hermitowskie zapewnia, że $\sum^N_i \Ket{i}\Bra{i} = \mathbb{1}$, co dalej implikuje, że $\sum^N_i \Pro{\lambda_i} = \sum^N_i \BP \Pi_i \KP = \BP \sum^N_i \Pi_i \KP = \Braket{\psi | \psi} = 1$
+Stan całego systemu składającego się z pewnej ilości systemów opisuje element z
+\begin{equation}
+\Hx{AB\dots} = \Hx{A} \otimes \Hx{B} \otimes \dots,
+\end{equation}
+gdzie $\otimes$ to iloczyn tensorowy. W raz z wzrostem systemów składających się na system ilość wektorów bazowych rośnie ekspotencjalnie, co jest fundacją tzw. "kwantowego przyśpieszenia", które pozwala heurystycznie/przybliżenie rozwiązać na komputerach kwantowych problemy niektóre klasyczne problemy z ekspotencjalnym przyśpieszeniem
+np. faktoryzacja liczb, rozwiązywanie układów liniowych czy odpowiednio sformułowane problemy uczenia maszynowego.
+Ważną rzeczą do zaobserwowania jest fakt, że istnieją takie systemy, które nie można zapisać, jako iloczyn stanów w poszczególnych podsystemach. Klasycznym przykładem tego jest
+\begin{gather*}
+\Hx{AB} = \mathcal{C}^2 \otimes \mathcal{C}^2 \\
+\KP = \Ket{1}_A \otimes \Ket{1}_B + \Ket{0}_A \otimes \Ket{0}_B \equiv \Ket{1}\Ket{1} + \Ket{0}\Ket{0} \equiv \Ket{11} + \Ket{00} \\
+a_0\Ket{0} + a_1\Ket{1} \otimes b_0\Ket{0} + b_1\Ket{1} = a_0b_0 \Ket{00} + a_0b_1\Ket{01} + a_1b_0\Ket{10} + a_1b_1\Ket{11} \\
+a_0b_1 = 0\implies a_0 = 0\vee b_1 = 0 \\
+a_1b_0 = 0\implies a_1 = 0\vee b_0 = 0 \\
+\text{Powyższe implikują, że } a_0b_0 \neq 1 \vee a_1b_1 \neq 1.
+\end{gather*} Takie systemy, które nie da się zapisać w postaci $\Ket{\Psi} = \Ket{\psi}_A \otimes \Ket{\phi}_B$ nazywa się splątanymi. Splątanie kwantowe jest zasobem, które znalazło zastosowanie w wielu nowatorskich aplikacjach, jak np. kryptografia kwantowa, certyfikowana losowość, teleportacja kwantowa czy wcześniej przytoczone "kwantowe przyśpieszenie".
+Często w rozważaniach ogranicza się do skończonych przestrzeni Hilberta o wybranych rozmiarach. Najmniejszą i niepodzielnym jednostką informacji jest kubit ($\Hx{} = \mathcal{C}^2$), fizycznie reprezentuje on np. cząstkę ze spinem-$\frac{1}{2}$ (elektron), polaryzację fotonu. W wielu dziedzinach informatyki kwantowej ogranicza się praktycznie wyłącznie do analizy systemów złożonych z kubitów ze względu
+na pewną prostotę i wygodę analizy takich systemów. Ciekawą interpretacją kubitów prezentuje Sferta Blocha (\ref{rys. fig:bloch}). Punkty na tej sferze opisują wszystkie prawidłowe znormalizowane $\KP \in \mathcal{C}^2$.
+Okazuje się jednak, że niewystarczający do opisu zespołów statystycznych (system znajduje się w jakimś z $\Ket{\psi_i}$ stanów z prawdopodobieństwem $p_i$) wynikający z braku pełnej wiedzy o systemie, bądź sposobie jego przygotowania. Do opisu takich sytuacji korzysta się z macierzy gęstości, definiowanych następująco
+\begin{gather}
+\rho = \KP \BP \\
+\Braket{A} = \Tr{A\rho} \\
+\Pro{\lambda_i} = \Tr{\Pi_i \rho}\\
+\rho \mapsto \frac{\Pi_i\rho\Pi_i}{\Trs(\Pi_i\rho)}
+\end{gather}
+Prócz warunkowej ewolucji podczas pomiaru, systemu kwantowe podlegają również ewolucji czasowej. W obrazie Schrödingera ewoluują stany. Wygłada to następująco
+\begin{gather}
+U(t)\Ket{\psi(0)} = \Ket{\psi(t)} \\
+U(t)^\dag\Ket{\psi(t)} = \Ket{\psi(0)}
+\end{gather}
+Zaś w obrazie Heisenberga ewoluują obserwable
+\begin{gather}
+A(t) = U^\dag A(0)U
+\end{gather}
+gdzie $U(t)$ jest pewnym unitarnym operator ($U^\dag U = \mathbb{1}$) działającym na $\Hx{}$. Pomiar rzutujący nie jest jedynym pomiarem, który można wykonać. Najogólniejszym pomiarem, który można wykonać w mechanice kwantowej jest \textit{positive valued measurement} (POVM). Opisywany jest on przez
+zbiór takich operatorów $\{E_i\}$, że $E_i > 0,~\sum_i E_i = \mathbb{1}$. Poprzednie reguły przechodzą w
+\begin{gather}
+\Pro{x_i} = \Bra{\psi} E_i \Ket{\psi}\\
+\Pro{x_i} = \Tr{E_i \rho} \\
+E_i = \sum_j = A^\dag_{ij}A_{ij} \\ 
+\rho \mapsto \frac{\sum_j A_{ij} \rho A^\dag_{ij}}{\Tr{\sum_j A_{ij} \rho A^\dag_{ij}}},
+\end{gather} pomiary takie realizuje się korzystając z \textit{ancilli} (pomocniczy system), ewoluując złożony system odpowiednio dobranym operatorem unitarnym, następnie dokonując pomiaru rzutującego na \textit{ancilli} i po odnotowaniu wyniku odrzuceniu jej.
+% tutaj moze przyklad
+W celu przetworzenia informacji W jedną spójną całość tak pozornie różne możliwe operacje na systemach kwantowych, jak przygotowania stanów, ewolucja czasowa mogąca odpowiadać np. przesłaniu systemu do innego laboratorium, czy interakcji systemu z otoczeniem, czy pomiarów odpowiadają \textit{quantum channel} (kanał kwantowy). Kanały kwantowe opisują mapy $\mathcal{M}: \mathcal{L}(\Hx{A}) \to \mathcal{L}{\Hx{B}}$ mapujące liniowe operatory w przestrzeni wejściowej na liniowe operatory w przestrzeni wyjściowej, gdzie $\mathcal{M}$ jest \textit{completely positive} (CP)\footnote
+{
+Mapę $\phi: A \to B$ nazywamy nieujemną gdy $\phi(a) \geq 0 \forall a\geq 0 \in A$. Nazywama się ją CP gdy $\phi \otimes \mathcal{I}_n$ również jest nieujemna $\forall n \in \mathcal{N}$
+}, $\mathcal{M}(\mathbb{1}) = \mathbb{1}$.
+
+%%%%
 \section{Macierz Procesu}
 Jednym z podejść do eksploracji korelacji nie zachowujących przyczynowego porządku jest rozwinięty w \cite{process_matrix} formalizm macierzy procesu.
-Ewidentną zaletą tego podejścia jest zgodność z mechanika kwantową na poziomie lokalnych eksperymentów. Jest to nijakie rozszerzenie i enkapsulacja idei POVM i reguły Borna. Podejście te porzuca założenie globalnej struktury czasoprzestrzeni. W celu zachowania zgodności z mechaniką kwantową na poziomie lokalnym opiera się na następujących założeniu, że operacje wykonywane przez poszczególną stronę są opisywane przez mechanikę kwantową w standardowym przyczynowym sformułowaniu, które można opisywać przy pomocy zbioru \textit{quantum instruments} \cite{quantum_instrument} z wejściową przestrzenią Hilberta $\mathcal{H}^{A_1}$ i przestrzenią wyjściową  $\mathcal{H}^{A_2}$. Najogólniej można je realizować przy pomocy zadziałania unitarną transformacją na system wejściowy i \textit{ancilla}, następnie wykonanie rzutującego pomiaru na części systemu pozostawiając pozostała część systemu jako wyjście. Alicja wykorzystując dany instrument otrzymuje jeden z możliwych wyników $x_i$, który indukuję transformację $\mathcal{M}^A_i$ z wejścia na wyjście. Transformacja ta odpowiada \CP~(CP) \TP~mapie\footnote
-{
-Liniową mapę $\phi$ nazywamy CP, gdy $a \geq 0\implies \phi(a) \geq 0$ oraz $\forall_{k \in \mathcal{N}}~\mathcal{I}_k \otimes \phi$ również jest CP
-}
+Ewidentną zaletą tego podejścia jest zgodność z mechanika kwantową na poziomie lokalnych eksperymentów. Jest to nijakie rozszerzenie i enkapsulacja idei POVM i reguły Borna. Podejście te porzuca założenie globalnej struktury czasoprzestrzeni. W celu zachowania zgodności z mechaniką kwantową na poziomie lokalnym opiera się na następujących założeniu, że operacje wykonywane przez poszczególną stronę są opisywane przez mechanikę kwantową w standardowym przyczynowym sformułowaniu, które można opisywać przy pomocy zbioru \textit{quantum instruments} \cite{quantum_instrument} z wejściową przestrzenią Hilberta $\mathcal{H}^{A_1}$ i przestrzenią wyjściową  $\mathcal{H}^{A_2}$. Najogólniej można je realizować przy pomocy zadziałania unitarną transformacją na system wejściowy i \textit{ancilla}, następnie wykonanie rzutującego pomiaru na części systemu pozostawiając pozostała część systemu jako wyjście. Alicja wykorzystując dany instrument otrzymuje jeden z możliwych wyników $x_i$, który indukuję transformację $\mathcal{M}^A_i$ z wejścia na wyjście. Transformacja ta odpowiada \CP~(CP) \TP~mapie
 \begin{equation}
 \mathcal{M}^A_i : \mathcal{L}(\mathcal{H}^{A_1}) \mapsto \mathcal{L}(\mathcal{H}^{A_2})
 \end{equation}
@@ -170,11 +257,12 @@ gdzie $\MA = \sum_i \mai{i}$. Warunek \eqref{eq:non_neg} zapewnia, że prawdopod
 \begin{tabular}{|c|c|c|c|}
 \hline
 Przyczynowy porządek & Stany & Kanały & Kanały z pamięcią \\
-$A \npreceq B $ &
 \hline
-$B \npreceq B $ &
-\includegraphics{
+$A \npreceq B $ & & & \\
 \hline
+$B \npreceq B $ & & & \\ 
+\hline
+
 \end{tabular}
 \end{figure}
 %\end{multicols*}
