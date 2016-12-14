@@ -8,7 +8,7 @@
 \linespread{1.3}
 \usepackage{polski}
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
-\usepackage[letterpaper, landscape, margin=2.5cm]{geometry}
+\usepackage[letterpaper, portrait, margin=3cm]{geometry}
 
 %\usepackage{helvet}
 \usepackage{indentfirst}
@@ -253,19 +253,70 @@ gdzie $\MA = \sum_i \mai{i}$. Warunek \eqref{eq:non_neg} zapewnia, że prawdopod
 %tutej moze macierz gestosci
 \begin{figure}[t]
 \centering
-\label{fig:configs}
+
 \begin{tabular}{|c|c|c|c|}
 \hline
 Przyczynowy porządek & Stany & Kanały & Kanały z pamięcią \\
 \hline
-$A \npreceq B $ & & & \\
+$A \npreceq B $ & $A_1, B_1, A_1B_1$ & $A_1B_2$ & $A_1B_1B_2$\\
 \hline
-$B \npreceq B $ & & & \\ 
+$B \npreceq A $ & $A_1, B_1, A_1B_1$ & $A_2B_1$ & $A_1A_2B_1$\\ 
 \hline
-
+& \includegraphics[width=0.2\textwidth]{obrazki/states} & \includegraphics[width=0.2\textwidth]{obrazki/channel}& \includegraphics[width=0.2\textwidth]{obrazki/channel_with_memory}\\
+\hline
 \end{tabular}
+\caption{Wyrażenia zgodne z formalizmem i ich proponowana graficzna interpretacja}
+\label{fig:configs}
 \end{figure}
+Baza Hilberta-Schmidta dla $\LHx{X}$ dane jest przez zbiór macierzy $\{\sigma^X_\mu\}^{d^2_X-1}_{\mu=0},$ gdzie $\sigma^X_0 = \mathbb{1}, \Tr{\sigma^X_\mu\sigma^X_\nu}=d_x\delta_{\mu\nu}, \Tr{\sigma^X_{\mu>0}}=0.$ Ogólny element przestrzeni $\Mats{\Hx{A_1}\otimes\Hx{A_2}\otimes\Hx{B_1}\otimes\Hx{B_2}}$ można zapisać, jako
+\begin{equation}
+\WAll = \sum_{\mu\nu\lambda\gamma}= w_{\mu\nu\lambda\gamma} \sigma_\mu^{A_1}\otimes\sigma_\nu^{A_2}\otimes\sigma_\lambda^{B_1}\otimes\sigma_\gamma^{B_2} \\
+w_{\mu\nu\lambda\gamma} \in \mathcal{C}.
+\end{equation}
+Wyrażenia zawierające wyłącznie wyrazy $\sigma^{A_1}_i \otimes \mathbb{1}^{reszta},~(i > 0)$ nazywa się wyrażeniami typu $A_1$, wyrażenia zawierające  $\sigma^{A_1}_i \otimes \sigma^{A_2}_j \otimes \mathbb{1}^{reszta},~(i, j > 0)$ nazywa się wyrażeniami typu $A_1A_2$ etc.
+Na rysunku \ref{fig:configs} przedstawiono wyrażenia spełniające \eqref{eq:non_neg} i \eqref{eq:sums_to_id1}. Najogólniejsza macierz procesu zgodna z założeniami to
+\begin{gather}
+\WAll = \frac{1}{d_{A_1}d_{B_1}}(\mathbb{1} +\sigma^{B \preceq A} + \sigma^{A \preceq B} + \sigma^{A \npreceq \nsucceq B}) \\
+\sigma^{A \preceq B} \equiv \sum_{ij>0} a_{ij} \sigma^{A_1}_i \sigma^{B_2}_j + \sum_{ijk>0} b_{ijk} \sigma^{A_1}_i \sigma^{B_1}_j \sigma^{B_2}_k \\
+\sigma^{B \preceq A} \equiv \sum_{ij>0} c_{ij} \sigma^{A_2}_i \sigma^{B_1}_j + \sum_{ijk>0} d_{ijk} \sigma^{A_1}_i \sigma^{A_2}_j \sigma^{B_1}_k \\
+ \sigma^{A \npreceq \nsucceq B} \equiv \sum_{i>0} e_i  \sigma^{A_1} + \sum_{i>0} f_i  \sigma^{B_1} + \sum_{ij>0} h_{ij} \sigma^{A_1}_i \sigma^{B_1}_j
+\end{gather}
+\section{Przyczynowa separowalność i przyczynowe nierówności}
+Macierzami procesu \textit{casually separable} (przyczynowo separowalnymi) nazywa się takie macierz, które można zapisać jako wypukła kombinacja procesów o konkretnym przyczynowym porządku,a mianowicie
+\begin{equation}
+\label{eq:sep}
+\WAll = qW^{B \nprec A} + (1-q)W^{A \nprec B},~0 \leq q \leq 1
+\end{equation}
+powyższa dekompozycja nie musi być jednoznaczna, jako że wyrazy typu $W^{A \nprec \nsucceq B}$ można włączyć do wybranego wyrazu.
+Przed wprowadzeniem \textit{causal inequallity} (przyczynowej nierówności) warto wspomnieć o tzw. nierówności Bella, jest to nieskończona rodzina nierówności, których żaden niesplątany system nie może złamać. Jest to \textit{device independent} (niezależny od implementacji pomiarów) sposób weryfikacji splątania kwantowego.
+%%Typowym przykładem jest eksperyment, w którym w środkowym punkcie pomiędzy odległymi laboratoriami
+%przygotowuję się dwie cząsteczki i wysyła się po jednej cząstce do każdego z laboratoriów po pierwsza strona, tradycyjnie nazywana Alicją, wykonuje jeden pomiar zwracający jakiś binarny wynik $A_n$ przyjmujący wartości $\pm 1$, następnie wykonuje po raz kolejny pomiar potencjalnie 
+%nierówności wynikająca z analizy następującej funkcji zmiennych losowych
+%\begin{gather}
+%g_n = A_nB_n+ A'_nB_n + A_nB'_n + A'_n+B'_n
+%\end{gather}
 %\end{multicols*}
+
+Przyjmuje się następujące założenia na temat natury rzeczywistości uporządkowanej przyczynowo:
+\begin{description}
+	\item[\textit{Causal structure} (Przyczynowa struktura, CS)]
+	Wydarzenia obdarzone są częściowym porządek w strukturze czasoprzestrzeni, można wyznaczyć kolejność wydarzeń $A \prec B$, które wyznacza kierunek przesyłania informacji, jeżeli $A \prec B$ to możliwe jest sygnalizowanie
+	\footnote
+	{W przypadku, gdy $A \prec B$ przez oznacza to, że brzegowy rozkład prawdopodobieństwa otrzymania danego wyniku nie zależy od wejścia drugiej strony. $\Pr(a|x, y) = \Pr(a|x, y')~\forall a,x,y,y'$, $\Pr(a|x,y) = \sum_b \Pr(a,b|x,y)$, gdzie przez a, b oznaczamy wyniki otrzymane przez odpowiednie strony, zaś x, y ich wejścia. } 
+	z A do B, lecz nie na odwrót.
+	\item[\textit{Free choice} (Wolny wybór, FC)]  
+	W przypadku wyboru liczb losowych, możliwe korelacje występują wyłącznie z liczbami z przyszłości.
+	\item[\textit{Closed laboratories} (Zamknięte laboratoria, CL)] 
+	Liczba odgadnięta przez Alicję może być skorelowana z liczbą losową Boba, wyłącznie jeżeli system wysłany do Alicji jest przed (w sensie przyczynowości) generacji liczby Boba, analogicznie w przypadku odwrotnym.	
+\end{description}
+Rozważa się następująca dwu stronna grę realizowaną wielokrotnie przez dwa odległe laboratoria (Alicję i Boba). W każdej iteracji rozgrywki Alicja i Bob otrzymują na wejściu pewien fizyczny system, wykonuje na nim pewne operacje i wysyła dalej system. Każda ze stron może otrzymać sygnał wyłącznie przez 
+system wchodzący do laboratorium, zaś wysłać wyłącznie przez system wychodzący z laboratorium, widać więc jeżeli Alicja otrzyma system, który przeszedł pewną procedurę u Boba, Bob może wysłać informacje, zaś Alicja może ją wyłącznie odebrać co uniemożliwia dwustronna sygnalizację.
+Każdy z graczy otrzymując system, losuje jeden bit wybraną metoda oznaczany a dla Alicji i b dla Boba. Dodatkowo Bob losuje bit b', który decyduje czy Bob ma zgadywać bit a Alicji, czy Alicja ma zgadywać bit b Boba. Bez utraty ogólności można przyjąć, że obie strony zgadują bit drugiego gracza. W zależności od b' ich 
+predykcja może się nie liczyć. Zakłada się, że bity losowane są z równym prawdopodobieństwem. Prawdopodobieństwo sukcesu w takiej grze zapisuje się następująco
+\begin{equation}
+\Pr{}_{sukcesu} \equiv \frac{1}{2} \left[ \Pr(x=b|b'=0) + \Pr(y=a|b' = 1)\right]
+\end{equation}
+Każda strategia w uporządkowanej strukturze czasu osiąga $\Pr{}_{sukcesu} \leq \frac{3}{4}$. Opisuje się ją nierygorystycznie następująco: w przypadku $A \prec B$ Alicja może zakodować swój bit w pewien sposób w systemie, który wyśle do Boba, dlatego można wybrać taką strategię, że $\Pr(y=a) = 1$, Alicji pozostaje wtedy losowa predykcja co do wartości bitu Boba - $\Pr(x=b) = \frac{1}{2}$. Widać również, że żadna probabilistyczna nie może poprawić wyniku, co daje nam optymalną strategie. Okazuje się, że korzystając z korelacji opisywanych przez formalizm macierzy procesu $\Pr{}_{sukces} \leq \frac{2+\sqrt{2}}{4}$.
 \newpage
 \bibliographystyle{plain}
 \bibliography{bibliografia}
