@@ -346,26 +346,26 @@ Przyjmuje się następujące założenia na temat natury rzeczywistości uporzą
 	\item[\textit{Closed laboratories} (Zamknięte laboratoria, CL)] 
 	Liczba odgadnięta przez Alicję może być skorelowana z liczbą losową Boba wyłącznie, jeżeli system wysłany do Alicji jest przed (w sensie przyczynowości) generacją liczby Boba, analogicznie w przypadku odwrotnym.	
 \end{description}
-Rozważa się następująca dwu stronna grę realizowaną wielokrotnie przez dwa odległe laboratoria (Alicję i Boba). W każdej iteracji rozgrywki Alicja i Bob otrzymują na wejściu pewien fizyczny system, wykonuje na nim pewne operacje i wysyła dalej system. Każda ze stron może otrzymać sygnał wyłącznie przez 
-system wchodzący do laboratorium, zaś wysłać wyłącznie przez system wychodzący z laboratorium, widać więc jeżeli Alicja otrzyma system, który przeszedł pewną procedurę u Boba, Bob może wysłać informacje, zaś Alicja może ją wyłącznie odebrać co uniemożliwia dwustronna sygnalizację.
-Każdy z graczy otrzymując system, losuje jeden bit wybraną metoda oznaczany a dla Alicji i b dla Boba. Dodatkowo Bob losuje bit b', który decyduje czy Bob ma zgadywać bit a Alicji, czy Alicja ma zgadywać bit b Boba. Bez utraty ogólności można przyjąć, że obie strony zgadują bit drugiego gracza. W zależności od b' ich 
+Rozważa się następująca dwustronną grę realizowaną wielokrotnie przez dwa odległe laboratoria (Alicję i Boba). W każdej iteracji rozgrywki Alicja i Bob otrzymują na wejściu pewien fizyczny system, wykonują na nim pewne operacje i wysyłają dalej system. Każda ze stron może otrzymać sygnał wyłącznie przez 
+system wchodzący do laboratorium, zaś wysłać wyłącznie przez system wychodzący z laboratorium. Widać więc, że jeżeli Alicja otrzyma system, który przeszedł pewną procedurę u Boba, to Bob może wysłać informacje, zaś Alicja może ją wyłącznie odebrać, co uniemożliwia dwustronna sygnalizację.
+Każdy z graczy otrzymując system losuje jeden bit wybraną metodą oznaczany a dla Alicji i b dla Boba. Dodatkowo Bob losuje bit b', który decyduje, czy Bob ma zgadywać bit a Alicji, czy Alicja ma zgadywać bit b Boba. Bez utraty ogólności można przyjąć, że obie strony zgadują bit drugiego gracza. W zależności od b' ich 
 predykcja może się nie liczyć. Zakłada się, że bity losowane są z równym prawdopodobieństwem. Prawdopodobieństwo sukcesu w takiej grze zapisuje się następująco
 \begin{equation}
 \Pr{}_{sukcesu} := \frac{1}{2} \left[ \Pr(x=b|b'=0) + \Pr(y=a|b' = 1)\right]
 \end{equation}
-Każda strategia w uporządkowanej strukturze czasu osiąga $\Pr{}_{sukcesu} \leq \frac{3}{4}$. Optymalna strategie opisuje się nierygorystycznie następująco: w przypadku $A \prec B$ Alicja może zakodować swój bit w pewien sposób w systemie, który wyśle do Boba, dlatego można wybrać taką strategię, że $\Pr(y=a) = 1$, Alicji pozostaje wtedy losowa predykcja co do wartości bitu Boba - $\Pr(x=b) = \frac{1}{2}$. Widać również, że żadna probabilistyczna nie może poprawić wyniku, co daje nam optymalną strategie. Okazuje się, że korzystając z korelacji opisywanych przez formalizm macierzy procesu $\Pr{}_{sukces} \leq \frac{2+\sqrt{2}}{4}$.
+Każda strategia w uporządkowanej strukturze czasu osiąga $\Pr{}_{sukcesu} \leq \frac{3}{4}$. Optymalna strategie opisuje się nierygorystycznie następująco: w przypadku $A \prec B$ Alicja może zakodować swój bit w pewien sposób w systemie, który wyśle do Boba, dlatego można wybrać taką strategię, że $\Pr(y=a) = 1$, Alicji pozostaje wtedy losowa predykcja co do wartości bitu Boba - $\Pr(x=b) = \frac{1}{2}$. Widać również, że żadna probabilistyczna strategia nie może poprawić wyniku, co daje optymalną strategię. Okazuje się, że korzystając z korelacji opisywanych przez formalizm macierzy procesu $\Pr{}_{sukces} \leq \frac{2+\sqrt{2}}{4}$.
 Można rozważyc następującą macierz procesu
 \begin{equation}
 \WAll = \frac{1}{4}\left[
 \I\I\I\I + \frac{1}{\sqrt{2}}(\I\Z\Z\I + q\Z\I\X\Z + \frac{(1-q)}{2}\Z\I\X\I)
 \right],~ 0 \leq q \leq 1,
 \end{equation}
-gdzie, $\X, \Y, \Z$ są macierzami Pauliego, które z $\I$ tworzą bazę Hilberta-Schmidta, zaś w celu skrócenia zapisu pominięto indeks górny, który jest indukowany przez pozycje wyrazu. $\I^{A_1} \otimes \X^{A_2} \otimes \Y^{B_1} \otimes \Z^{B_2} := \I\X\Y\Z$.
-Przedstawiona macierz z $q=1$ wraz z dalej przedstawioną procedurą komunikacji wprowadzono w \cite{process_matrix}, jako zasób, który pozwala złamać przyczynową nierówność. W \cite{max_violation} pokazano, że przy odpowiednich założeniach o dozwolonych operacjach jest to maksymalne przekroczenie nierówności
-wynikającej z tego zadania. Z drugiej strony widać od razu, że przy $q=0$ mamy $A \prec B$ oczywistym jest, że taki zasób nie pozwala złamać przyczynowej nierówności. Sterując wartością $q$ można zaobserwować odpowiednio przejścia macierzy z ustalonej przyczynowości poprzez separowalną do nieseparowalnej.
+gdzie, $\X, \Y, \Z$ są macierzami Pauliego, które z $\I$ tworzą bazę Hilberta-Schmidta, zaś w celu skrócenia zapisu pominięto indeks górny, który jest indukowany przez pozycję wyrazu. $\I^{A_1} \otimes \X^{A_2} \otimes \Y^{B_1} \otimes \Z^{B_2} =: \I\X\Y\Z$.
+Przedstawioną macierz z $q=1$ wraz z dalej przedstawioną procedurą komunikacji wprowadzono w \cite{process_matrix} jako zasób, który pozwala złamać przyczynową nierówność. W \cite{max_violation} pokazano, że przy odpowiednich założeniach o dozwolonych operacjach jest to maksymalne przekroczenie nierówności
+wynikającej z tego zadania. Z drugiej strony widać od razu, że przy $q=0$ mamy $A \prec B$, zatem oczywistym jest, że taki zasób nie pozwala złamać przyczynowej nierówności. Sterując wartością $q$ można zaobserwować odpowiednio przejścia macierzy z ustalonej przyczynowości poprzez separowalną do nieseparowalnej.
 Macierze separowalne nie mogą łamać żadnej nierówności przyczynowej, nieseparowalne zostaną dokładniej opisane dalej. Procedura komunikacji wygląda następująco. 
-Za każdym razem Alicja mierzy swój w bazie $z$ i przypisuje $x = 0$ dla $\Ket{z_+}$ zaś $x=1$ dla $\Ket{z_-}$ następnie przygotowuje na nowo kubit i zakodowuje a w tej samej bazie. Mapa CP odpowiadająca wykryciu stanu $\Ket{\psi}$ i przygotowaniu innego stanu $\Ket{\phi}$ to $\Ket{\psi}\Bra{\psi}^{A_1} \otimes
-\Ket{\phi}\Bra{\phi}^A_2$, dlatego mapa CP Alicji wygląda następująco
+Za każdym razem Alicja mierzy swój system w bazie $z$ i przypisuje $x = 0$ dla $\Ket{z_+}$ zaś $x=1$ dla $\Ket{z_-}$, a następnie przygotowuje na nowo kubit i zakodowuje a w tej samej bazie. Mapa CP odpowiadająca wykryciu stanu $\Ket{\psi}$ i przygotowaniu innego stanu $\Ket{\phi}$ to $\Ket{\psi}\Bra{\psi}^{A_1} \otimes
+\Ket{\phi}\Bra{\phi}^A_2$, dlatego mapa CP Alicji wygląda następująco:
 \begin{equation}
 \xi(x, a) = \frac{1}{4}
 \left[
@@ -376,8 +376,8 @@ Za każdym razem Alicja mierzy swój w bazie $z$ i przypisuje $x = 0$ dla $\Ket{
 \I  + (-1)^a \Z
 \right	].
 \end{equation}
-Natomiast Bob jako posiadacz bitu $b'$, gdy chce odczytać bit Alicji mierzy przychodzący kubit w bazie $z$ przypisuje wyniki tego pomiaru do y analogicznie jak Alicja. W tym przypadku nieistotne jest jaki stan przygotuje Bob, przygotowuje dowolny stan $\rho^{B_2}$ znormalizowany do $\Tr \rho^{B_2} = 1$.
-W przypadku $b'=0$, Bob chce wysłać swój bit do Alicji. Dokonuje pomiaru w bazie x, następnie w przypadku wyniku $y = \Ket{x_+}$ zakodowuje swój bit następująco $0 \to \Ket{z_+}, 1 \to \Ket{z_-}$ w drugim kodowanie wygląda odwrotnie $1 \to \Ket{z_+}, 0 \to \Ket{z_-}$. Jego mapa wygląda następująco
+Natomiast Bob jako posiadacz bitu $b'$, gdy chce odczytać bit Alicji, mierzy przychodzący kubit w bazie $z$i przypisuje wyniki tego pomiaru do y analogicznie jak Alicja. W tym przypadku nieistotne jest jaki stan przygotuje Bob, więc przygotowuje dowolny stan $\rho^{B_2}$ znormalizowany do $\Tr \rho^{B_2} = 1$.
+W przypadku $b'=0$, Bob chce wysłać swój bit do Alicji. Dokonuje pomiaru w bazie x, następnie w przypadku wyniku $y = \Ket{x_+}$ zakodowuje swój bit następująco: $0 \to \Ket{z_+}, 1 \to \Ket{z_-}$ w drugim kodowanie wygląda odwrotnie $1 \to \Ket{z_+}, 0 \to \Ket{z_-}$. Jego mapa wygląda następująco
 \begin{equation}
 \eta(y, b, b') =
 \begin{cases}
@@ -387,27 +387,26 @@ W przypadku $b'=0$, Bob chce wysłać swój bit do Alicji. Dokonuje pomiaru w ba
 \frac{1}{4} \left[ \I + (-1)^y \X \right] \otimes \left[ \I + (-1)^{b+y} \Z \right]& \text{w przeciwnym wypadku}.
 \end{cases}
 \end{equation}
-Prawdopodobieństwo zaobserwowania danej pary map dane jest następująco
+Prawdopodobieństwo zaobserwowania danej pary map dane jest następująco:
 \begin{equation}
-\Pr(x,y|a,b,b`) = \Trs\left\{{\WAll\left[\eta(x,a) \otimes \xi(y,b,b') \right]}\right\}
+\Pr(x,y|a,b,b') = \Trs\left\{{\WAll\left[\eta(x,a) \otimes \xi(y,b,b') \right]}\right\}
 \end{equation}
 Przypominając, że prawdopodobieństwo sukcesu w tej grze dane jest jako
 \begin{equation}
-\Pr{}_{sukcesu} := \frac{1}{2} \left[ \Pr(x=b|b'=0) + \Pr(y=a|b' = 1)\right]
+\Pr{}_{sukcesu} := \frac{1}{2} \left[ \Pr(x=b|b'=0) + \Pr(y=a|b' = 1)\right],
 \end{equation}
-Oblicza się, że
+oblicza się, że
 \begin{gather}
 \Pr(x=b|b'=0)_q = \frac{\sqrt{2}q+2}{4} \\
 \Pr(y=a|b'=1)_q = \frac{\sqrt{2}+2}{4} \\ 
 \Pr{}_{sukcesu_q} = \frac{\sqrt{2}q + \sqrt{2} + 4}{8},
 \end{gather}
-gdzie indeks odnotowuje zależność prawdopodobieństwa od $q$. Tak jak się spodziewano prawdopodobieństwo sukcesu Alicji rośnie wraz zwiększaniem współczynnika przy członie $\Z\I\X\Z$ rozumiany jako reprezentacja kanału kwantowego z pamięcią, który odpowiada za sygnalizujące korelacje $A \preceq B$.
-Przy $q = 0$ Alicja ma dostęp wyłącznie niesygnalizujących nietrywialnych (wyraz $\Z\I\X\I$), który nie może zwiększysz prawdopodobieństwa sukcesu w tej grze, która wymaga zasobów sygnalizujących. Argument ten został rygorystycznie pokazany np. w \cite{mp_gyni}. Wraz z zwiększaniem q Alicja ma dostęp do coraz
-większej ilości sygnalizujących zasobów, co częściej wygrywać w owej grze. Ważnym jest zauważyć, że macierz ta jest nieujemna $\WAll \geq 0$ dla $0 \leq q \leq 1$, korzystając z tego protokołu łamie się przyczynową nierówność dla $q \geq \sqrt{2} - 1$, zaś jest nieseparowalny dla $q \geq q_0,~q_0 \approx 0.365$.
-Separowalność przybliżono numerycznie. Widać, że niewystarczający zasobem w tej procedurze jest nieseparowalność do złamania przyczynowej nierówności, w tym przypadku może to być wina nieoptymalnej metody dla danego zasobu, lecz ilustruje fakt, iż niewystarczającym zasobem jest nieseparowalność do
-złamania przyczynowej nierówności, co zostanie dalej rygorystycznie pokazane.
+gdzie indeks odnotowuje zależność prawdopodobieństwa od $q$. Tak jak się spodziewano, prawdopodobieństwo sukcesu Alicji rośnie wraz ze zwiększaniem współczynnika przy członie $\Z\I\X\Z$ rozumianym jako reprezentacja kanału kwantowego z pamięcią, który odpowiada za sygnalizujące korelacje $A \preceq B$.
+Przy $q = 0$ Alicja ma dostęp wyłącznie do niesygnalizujących nietrywialnych zasobów (wyraz $\Z\I\X\I$), które nie mogą zwiększyć prawdopodobieństwa sukcesu w tej grze, gdyż wymaga ona zasobów sygnalizujących. Argument ten został rygorystycznie pokazany np. w \cite{mp_gyni}. Wraz ze zwiększaniem q Alicja ma dostęp do coraz
+większej ilości sygnalizujących zasobów, co pozwala jej częściej wygrywać w owej grze. Ważnym jest zauważyć, że macierz ta jest nieujemna $\WAll \geq 0$ dla $0 \leq q \leq 1$, korzystając z tego protokołu łamie się przyczynową nierówność dla $q \geq \sqrt{2} - 1$, zaś proces jest nieseparowalny dla $q \geq q_0,~q_0 \approx 0.365$.
+Separowalność przybliżono numerycznie. Wskazywać to może, że w tej grze i przy wykorzystaniu tej procedury niewystarczającym zasobem do złamania przyczynowych nierówności jest nieseparowalność (w tym przypadku może to być wina nieoptymalnej metody dla danego zasobu), lecz ilustruje fakt, iż niewystarczającym zasobem jest nieseparowalność, co zostanie dalej rygorystycznie pokazane.
 \subsection{Procesy z przyczynowym modelem}
-Ważną klasa procesów pokazano w \cite{causal_model} jest tak zwana klasa procesów przyczynowo nieseparowalnych podlegająca przyczynowemu modelowi, czyli takie procesy, które są nieseparowalne, lecz produkują wyłącznie korelacje, które są zgodne z przyczynowym porządkiem. Procesy takie oczywiście nie mogą
+Ważną klasę procesów pokazano w \cite{causal_model}. Jest to klasa procesów przyczynowo nieseparowalnych podlegająca przyczynowemu modelowi, czyli takie procesy, które są nieseparowalne, lecz produkują wyłącznie korelacje, które są zgodne z przyczynowym porządkiem. Procesy takie oczywiście nie mogą
 łamać przyczynowych nierówności niezależnie od przyjętej strategii. Przykładem takiego procesu jest 
 % pozniej opisac przyczynowe polytop %
 \begin{gather}
@@ -429,7 +428,9 @@ Pokazuje się najpierw, że proces ten produkuje te same korelacje co $W^{T_B}$,
 	&=  \Trs\left[W \xi(x,a) \otimes \eta(y,b)\right]
 \end{split}
 \end{align}
-Ta równość jest spełniona nawet wtedy, gdy $W^{T_B} \leq 0$, czyli opisuje niefizyczna macierz procesu, taki proces generuje dodatnie prawdopodobieństwo dla lokalnych pomiarów, lecz może generować ujemne prawdopodobieństwa, gdy laboratoria dzielą splątane cząsteczki, takie rozszerzenie jest ma fizyczny sens, taka klasa procesów zostanie dalej opisana. Trzeba zauważyć, że dla każdego kwantowego instrumentu $\{ \eta(y,b) \}$, instrument $\{ \eta(y,b)^T \}$ również jest prawidłowy, jako że transpozycja mapuje mapy CP do map CP i mapy \textit{trace preserving} (TP, zachowujące ślad) do map zachowujących ślad. Następnie pokazuje się w sposób jawny przyczynową
+Ta równość jest spełniona nawet wtedy, gdy $W^{T_B} \leq 0$, czyli opisuje niefizyczna macierz procesu, taki proces generuje dodatnie prawdopodobieństwo dla lokalnych pomiarów, lecz może generować ujemne prawdopodobieństwa, gdy laboratoria dzielą splątane cząsteczki, takie rozszerzenie jest istotne fizycznie.
+%, taka klasa procesów zostanie dalej opisana.
+Trzeba zauważyć, że dla każdego kwantowego instrumentu $\{ \eta(y,b) \}$, instrument $\{ \eta(y,b)^T \}$ również jest prawidłowy, jako że transpozycja mapuje mapy CP do map CP i mapy \textit{trace preserving} (TP, zachowujące ślad) do map zachowujących ślad. Następnie pokazuje się w sposób jawny przyczynową
 separacje $W^{T_B}$. Widać, że 
 \begin{equation}
 \left[\IO + \frac{1}{12}\left(\I\Z\Z\I + \I\X\X\I + \I\Y\Y\I\right)\right]^{T_B} = \IO + \frac{1}{12}\I\Z\Z\I + \I\X\X\I - \I\Y\Y\I, 
@@ -456,16 +457,17 @@ W^{T_B} &= \frac{2q}{3}\IO + \frac{q}{3} I^{A \prec B} + (1-q+\epsilon)W^{B \pre
 Autorzy \cite{causal_mode} sugerują, że biorąc rozkład na kombinacje wypukłe $W$ jako transpozycje względem systemu Boba równania \eqref{eq:wtb_sep}. Można dalej zauważyć, że wyraz $\frac{q}{3} \left( I^{A \prec B} \right)^{T_B}$ stanie się nieujemny, gdy doda się do niego $\frac{2q}{3}$ białego szumu,
 a ilość dostępnego szumu, który można zabrać z wyrazu $\left( \frac{2q}{3} - \epsilon \right) \IO$ jest ostro mniejszy od wymaganego. Narzuca się interpretacja, że proces $W$ jest kombinacją wypukła niefizycznego kanału od Alicji do Boba i fizycznego kanału od Boba do Alicji co może być wskazówka, że proces
 $W$ jest nieimplementowalny fizycznie.
-
-\section{Świadek przyczynowości}
-Poprzedni rozdział sugeruje, że istnieje klasa procesów, która nie może złamać żadnej przyczynowej nierówności, zaś jest niesparowalna przyczynowo. Istnieje więc motywacja do poszukiwania metody, która sklasyfikuje czy dany stan jest separowalny czy nie. Wprowadzono w \cite{causal_witness} \textit{causal witness}
+Powyższy dowód opiera się na fakcie, że mapy poddane częsciowej transpozycji według odpowiedniego systemu są nadal poprawnymi mapami CP.
+Może to być jednak nieprawdziwe, gdy systemy są poszerzone o splątane cząsteczki. Częściowa transpozycja nie jest wtedy pełną transpozycją względem danych systemów, czyli może mapować mapy CP na mapy nie CP. Procesy takie, które nie łamią przyczynowych nierówności, a łamią je gdy zostaną rozszerzone o splątany system w odpowiednich laboratoriach nazywa się \textit{not extensibly causal}
+o których można przeczytać więcej w \cite{causal_model}.
+\section{Świadek przyczynowości} 
+Poprzedni rozdział sugeruje, że istnieje klasa procesów, która nie może złamać żadnej przyczynowej nierówności, zaś jest niesparowalna przyczynowo. Istnieje więc motywacja do poszukiwania metody, która sklasyfikuje, czy dany stan jest separowalny czy nie. Wprowadzono w \cite{causal_witness} \textit{causal witness}
 (świadek przyczynowości) jest to analog do \textit{entaglement witness} (świadka splątania), który pozwala klasyfikować splątanie danego układu niezależnie od jego zdolności do łamania nierówności Bella. Ściśle mówiąc świadek przyczynowości to taki operator $S$, że
 \begin{equation}
 \label{eq:witness_gez}
 \Trs\left[S W^{sep} \right]\geq 0,
 \end{equation}
-dla każdego przyczynowo separowalnego procesu $W^{sep}$. Taka definicja jest zmotywowana twierdzeniem o separującej hiperpłaszczyźnie, które mówi, że każde dwa wypukłe zbiory w $\mathbb{R}^n$, albo ich przecięcie nie jest zbiorem pustym, albo istnieje taka hiperpłaszczyzna, że zbiory leża po dwóch stronach owej
-hiperpłaszczyzny, nierygorystycznie mówiąc. Co można łatwo sobie zobrazować geometrycznie. Jako, że zbiory macierzy separowalnych jest wypukły i zamknięte dla każdego nieseparowalnego procesu $W^{nsep}$ istnieje taki świadek przyczynowości, że 
+dla każdego przyczynowo separowalnego procesu $W^{sep}$. Taka definicja jest zmotywowana twierdzeniem o separującej hiperpłaszczyźnie, które mówi, że dla każdych dwóch wypukłych zbiorów albo ich przecięcie nie jest zbiorem pustym, albo istnieje taka hiperpłaszczyzna, że zbiory leża po obu jej stronach, nierygorystycznie mówiąc. Co można łatwo sobie zobrazować geometrycznie. Jako, że zbiory macierzy separowalnych jest wypukły i zamknięte dla każdego nieseparowalnego procesu $W^{nsep}$ istnieje taki świadek przyczynowości, że 
 \begin{equation}
 \Trs \left[ S_{W^{nsep}} W^{nsep} \right] < 0.
 \end{equation}
