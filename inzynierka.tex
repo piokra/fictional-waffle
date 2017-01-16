@@ -125,12 +125,12 @@
 \newpage
 %\begin{multicols*}{2}
 \begin{abstract}
-W pracy został zaprezentowany formalizm macierzy procesu, który opisuje regułę obliczania prawdopodobieństw otrzymania danych wyników w lokalnych laboratoriach przy wykorzystaniu potencjalnie nieprzyczynowych zasobów. Następnie przedstawiono zadanie komunikacyjne, w którym zasób o nieokreślonej przyczynowości może osiągać lepsze wyniki niż zasób klasyczny. Dalej zaprezentowano tak zwany \textit{causal witness}, który służy do stwierdzenia, czy dany zasób można rozłożyć na probabilistyczną kombinację zasobów o ściśle określonej przyczynowości. Na ich podstawie wykonano eksperymenty, które empirycznie potwierdziły fakt, że nieprzycznowość występuje w naturze. Następnie przedstawiono postulat, który ma wskazywać jakie procesy mogą być implementowalne fizycznie.
+W pracy został zaprezentowany formalizm macierzy procesu, który opisuje regułę obliczania prawdopodobieństw otrzymania danych wyników w lokalnych laboratoriach przy wykorzystaniu potencjalnie nieprzyczynowych zasobów. Następnie przedstawiono zadanie komunikacyjne, w którym zasób o nieokreślonej przyczynowości może osiągać lepsze wyniki niż zasób klasyczny. Pokazano klasę procesów, która ilustruje fakt, że niewystarczająca jest nieseparowalność do złamania nierówności przyczynowych. Dalej zaprezentowano tak zwany \textit{causal witness}, który służy do stwierdzenia, czy dany zasób można rozłożyć na probabilistyczną kombinację zasobów o ściśle określonej przyczynowości. Na ich podstawie wykonano eksperymenty, które empirycznie potwierdziły fakt, że nieprzycznowość występuje w naturze. Pokazano również miarę nieseparowalności. Następnie przedstawiono postulat, który ma wskazywać jakie procesy mogą być implementowalne fizycznie.
 \end{abstract}
 %\addto{\captionsLANGUAGE}{\renewcommand{\abstractname}{Abstract}}
 \renewcommand{\abstractname}{Abstract}
 \begin{abstract}
-In this work process matrix formalism is presented. It can be considered a way to calculate probabilities of obtaining certain results in local laboratories using possibly not casual resources. Next a communication task is shown. In this task a resource that is not casual can do better than a classic one. Following it a tool that can discriminate processes with indefinite casual order is described. The so called causal witness was used to experimentally show that indefinite causal order is, in fact, a naturally occuring phenomena. Following it a purification postulate is characterized. It is a tool that is theorized to imply whether a following resource may be implemented physically.
+In this work process matrix formalism is presented. It can be considered a way to calculate probabilities of obtaining certain results in local laboratories using possibly not casual resources. Next a communication task is shown. In this task a resource that is not casual can do better than a classic one. Following it a tool that can discriminate processes with indefinite casual order is described. A class of inseparable processes unable to violate any causal inequallity was also illustrated. The so called causal witness was used to experimentally show that indefinite causal order is, in fact, a naturally occuring phenomena. A inseparability measure was also shown. Following it a purification postulate is characterized. It is a tool that is theorized to imply whether a following resource may be implemented physically.
 \end{abstract}
 \section{Wstęp}
 %%%%
@@ -159,7 +159,7 @@ a_1^*~a_2^*~a_3^*
 \label{fig:bloch}
 \end{figure}
 Wygodnie narzucić warunek normalizacji stanów, a mianowicie $\Bra{\psi}\Ket{\psi} := \Braket{\psi|\psi} = 1$, wtedy wartość oczekiwaną obserwabli w danym stanie $\Ket{\psi}$ oblicza się tak: $\Braket{A} := \Bra{\psi}A\Ket{\psi}$. Warto zauważyć, że skoro obserwable opisywane są przez macierze hermitowskie, można 
-skorzystać z twierdzenia spektralnego i zapisać $A = \sum_i^N \lambda_i \Ket{\lambda_i}$, gdzie $\lambda_i$ opisuje i-tą wartość własną zaś $\Ket{\lambda_i}$ to i-ty wektor własny, który dobrano tak, że $\Braket{i|j} = \delta_{ij}$, $\{\Ket{i}\}$ tworzy ortonormalna bazę w $\Hx{}$. Jednym z postulatów mechaniki kwantowej jest tzw. postulat pomiaru von Neumanna. Mówi on, że wykonując pomiar obserwablą A na systemie w stanie $\Ket{\psi}$ i otrzymując wartość $\lambda_i$ odpowiadająca wektorowi własnemu $\Ket{\lamdbda_i}$ zapada się on w stan $\Ket{\lambda_i}$. Można zapisać go w następujący sposób opisujący warunkową ewolucję po pomiarze
+skorzystać z twierdzenia spektralnego i zapisać $A = \sum_i^N \lambda_i \Ket{\lambda_i}$, gdzie $\lambda_i$ opisuje i-tą wartość własną zaś $\Ket{\lambda_i}$ to i-ty wektor własny, który dobrano tak, że $\Braket{i|j} = \delta_{ij}$, $\{\Ket{i}\}$ tworzy ortonormalna bazę w $\Hx{}$. Jednym z postulatów mechaniki kwantowej jest tzw. postulat pomiaru von Neumanna. Mówi on, że wykonując pomiar obserwablą A na systemie w stanie $\Ket{\psi}$ i otrzymując wartość $\lambda_i$ odpowiadająca wektorowi własnemu $\Ket{\lambda_i}$ zapada się on w stan $\Ket{\lambda_i}$. Można zapisać go w następujący sposób opisujący warunkową ewolucję po pomiarze
 \begin{equation}
 \label{eq:cond_ev}
 \Ket{\psi} \mapsto \frac{\Pi_i\Ket{\psi}}{\sqrt{\Bra{\psi}\Pi_i \Ket{\psi}}},
@@ -183,7 +183,7 @@ a_0\Ket{0} + a_1\Ket{1} \otimes b_0\Ket{0} + b_1\Ket{1} = a_0b_0 \Ket{00} + a_0b
 a_0b_1 = 0\implies a_0 = 0\vee b_1 = 0 \\
 a_1b_0 = 0\implies a_1 = 0\vee b_0 = 0 \\
 \text{Powyższe implikuje, że } a_0b_0 \neg 1 \vee a_1b_1 \neg 1.
-\end{gather*} Takie systemy, których nie da się zapisać w postaci $\Ket{\Psi} = \Ket{\psi}_A \otimes \Ket{\phi}_B$, nazywa się splątanymi. Splątanie kwantowe jest zasobem, który znalazł zastosowanie w wielu nowatorskich aplikacjach, jak np. kryptografia kwantowa, certyfikowana losowość, teleportacja kwantowa czy wcześniej przytoczone "kwantowe przyśpieszenie".
+\end{gather*} Takie systemy, których nie da się zapisać w postaci $\Ket{\psi} = \Ket{\psi}_A \otimes \Ket{\phi}_B$, nazywa się splątanymi. Splątanie kwantowe jest zasobem, który znalazł zastosowanie w wielu nowatorskich aplikacjach, jak np. kryptografia kwantowa, certyfikowana losowość, teleportacja kwantowa czy wcześniej przytoczone "kwantowe przyśpieszenie".
 Często w rozważaniach ogranicza się do skończonych przestrzeni Hilberta o wybranych rozmiarach. Najmniejszą i niepodzielną jednostką informacji jest kubit ($\Hx{} = \mathcal{C}^2$), fizycznie reprezentujący np. cząstkę ze spinem-$\frac{1}{2}$ (elektron), polaryzację fotonu. W wielu dziedzinach informatyki kwantowej ogranicza się praktycznie wyłącznie do analizy systemów złożonych z kubitów ze względu
 na pewną prostotę i wygodę badania takich systemów. Ciekawą interpretacją kubitów prezentuje Sfera Blocha (\ref{rys. fig:bloch}). Punkty na tej sferze opisują wszystkie prawidłowe znormalizowane $\KP \in \mathcal{C}^2$.
 Okazuje się jednak, że formalizm stanów jest niewystarczający do opisu zespołów statystycznych (system znajduje się w jakimś z $\Ket{\psi_i}$ stanów z prawdopodobieństwem $p_i$) wynikających z braku pełnej wiedzy o systemie bądź sposobie jego przygotowania. Do opisu takich sytuacji używa się macierzy gęstości, definiowanych następująco
@@ -473,7 +473,7 @@ dla każdego przyczynowo separowalnego procesu $W^{sep}$. Taka definicja jest zm
 \end{equation}
 \subsection{Sformułowanie macierzy procesu niezależne od bazy}
 Przed dalszym charakteryzowaniem świadków przyczynowości wygodnie jest wprowadzić niezależne od wyboru bazy sformułowanie macierzy procesu.
-Definiuje się następująca operacje
+Definiuje się następująca operację:
 \begin{equation}
 {}_X W = \frac{\I^X}{d_X} \otimes \Trs_X W,
 \end{equation}
@@ -494,10 +494,10 @@ L_V(W) = {}_{A_2}W + {}_{B_2}W - {}_{A_2B_2}W - {}_{B_1B_2}W + {}_{A_OB_1B_2}W -
 Warto tutaj porównać powyższe równanie do poprzedniego sformułowania macierzy procesu. Zauważa się, że w przypadku wybranej bazy Hilberta-Schmidta
 operacja
 \begin{equation}
-{}_X\left[\sigma_\mu^X \otimes \sigma_\nu^Y\right] = \delta_{\mu0}
+{}_X\left[\sigma_\mu^X \otimes \sigma_\nu^Y\right] = \delta_{\mu0}.
 \end{equation}
 Przypomina się, że $\sigma_0 = \I$.
-Wynika to oczywiście z faktu, że reszta wyrazów jest bezśladowa i $\frac{\Trs \I^X}{d_X} = 1$. Co daje następującą interpretacje dla wyrazów występujących w \eqref{eq:projec2} są ta wyrazy zakazane w tym formalizmie. Wyrazy, które tu występują odpowiadają sytuacją, które generują niejednostkowe prawdopodobieństwa na poziomie lokalnych pomiarów. np. wyraz typu $A_1A_2$ można interpretować jako pętla czasowa. Ważna jest obserwacja, że posiadając jawną reprezentacje projektora trywialnym zadaniem jest stwierdzić jakie wyrazy z bazy Hilberta-Schmidta są dozwolone - generują prawidłowe prawdopodobieństwa. Jawna postać takiego projektora dla przypadku n stron została wyprowadzona w oryginalnym artykule.
+Wynika to oczywiście z faktu, że reszta wyrazów jest bezśladowa i $\frac{\Trs \I^X}{d_X} = 1$. Co daje następującą interpretacje dla wyrazów występujących w \eqref{eq:projec2} są ta wyrazy zakazane w tym formalizmie, lub bardziej precyzyjnie dany projektor implikuje układ równań liniowych narzucających warunki na współczynniki występujące przy danych macierzach bazowych. Zważywszy na fakt, że jawna postać projektora dla n stron została wyprowadzona w oryginalnym artykule, łatwym zadaniem jest wyprowadzenie warunków na współczynniki przy owych bazach. 
 \subsection{Poszukiwanie świadka przyczynowości}
 Zauważa się, że warunek \eqref{eq:witness_gez} jest równoważny z następującymi dwoma
 \begin{gather}
@@ -506,7 +506,7 @@ Zauważa się, że warunek \eqref{eq:witness_gez} jest równoważny z następuj�
 \label{eq:css}
 \Trs \left[ W^{B \prec A} S\right] \geq 0.
 \end{gather}
-Co oczywiście wynika z definicji stanów separowalnych, jako kombinacji wypukłej macierzy o określonej przyczynowości.
+Co oczywiście wynika z definicji stanów separowalnych, jako kombinacji wypukłej macierzy o określonej przyczynowości i liniowości śladu.
 Łatwo można zaobserwować, że pozbywając się wyrazów zawierających wyrazy typu $\dots B_2$ usuwamy korelacje wyjścia Boba z pomiarami Alicji co
 implikuje, że $A \prec B$. Co zapisuje się
 \begin{equation}
@@ -521,9 +521,9 @@ Wykorzystując to, równanie \eqref{eq:css} możemy zapisać następująco
 \Trs \left[ {}_{A_2} W S\right] \geq 0
 \end{equation}
 Traktując ślad jako iloczyn skalarny $\langle M S \rangle = \Trs MS$ oraz zauważając, że ${}_X$ jest operatorem samosprzężonym równoważne z powyższym
-równaniem jest
+równaniem jest:
 \begin{equation}
-\Trs \left[ W {}_{A_2}S \right] \geq 0
+\Trs \left[ W {}_{A_2}S \right] \geq 0.
 \end{equation}
 Dla prawidłowych macierzy procesu wystarczającym dla $S$ do bycia świadkiem przyczynowości jest 
 \begin{gather}
@@ -542,19 +542,19 @@ S = S_P + S^\bot \\
 \text{gdzie $S_P$ i $S^\bot$ są takimi macierzami hermitowskimi, że} \\ 
 {}_{A_2} S_P \geq 0, {}_{B_2} S_P \geq 0, L_V(S^\bot) = 0.
 \end{gather}
-Pokazuje się, że zbiór tak zdefiniowanych świadków przyczynowości jest domkniętym stożkiem wypukłym. Można jednak, że ograniczyć się z $S$ do przestrzeni 
+Pokazuje się, że zbiór tak zdefiniowanych świadków przyczynowości jest domkniętym stożkiem wypukłym. Można jednak ograniczyć się z $S$ do przestrzeni 
 $\mathcal{L_V}$. Wybierając $S^\bot = L_V(S_P) - S_P$, który może być dowolny. Mamy $L_V(S) = S$. Okazuje się, że taki ograniczony zbiór świadków przyczynowości: $\mathcal{S_V} = \mathcal{S} \cap \mathcal{L_V}$, również jest domkniętym wypukłym stożkiem. Jako, że wybrane elementy ortogonalne do
 $\mathcal{L_V}$ nie zmieniają wartości $\Trs WS$ nie zmieniają one też dlatego zdolności S do wykrywania separowalności. 
 Dostając pewną macierz $W$ i chcąc zbadać czy jest ona separowalna. Można spróbować znaleźć minimalna wartość $\Trs WS$. W przypadku możliwości 
 znalezienia minimum globalnego takiego wyrażenia widzimy, że jeżeli nie uda nam się znaleźć takiego S, że $\Trs WS < 0$ oznacza to, że nie istnieje
 taka hiperpłaszczyzna oddzielająca procesy separowalne, więc ten proces też jest separowalny w przeciwnym wypadku proces jest nieseparowalny.
-W ograniczenia od dołu skończoną wartością, by możliwe było rozwiązanie problemu numerycznie, $\Trs SW$ należy narzucić pewien dowolny warunek normujący
+W celu ograniczenia od dołu skończoną wartością, by możliwe było rozwiązanie problemu numerycznie, Na $\Trs SW$ należy narzucić pewien dowolny warunek normujący
 autorzy oryginalnego artykułu proponują następujący:
 \begin{equation}
 \Trs \Omega S \leq 1,
 \end{equation}
 gdzie $\Omega$ jest znormalizowaną macierzą procesu.
-Poszerzając powyższy warunek do nieznormalizowanych macierzy procesu, mamy
+Poszerzając powyższy warunek do nieznormalizowanych macierzy procesu, dostaje się
 \begin{equation}
 \Trs \Omega S \leq \frac{\Trs \Omega}{d_O}
 \end{equation}
@@ -570,7 +570,7 @@ Co można przepisać, jako
 gdzie $\mathcal{W^*_V}:=\mathcal{W^*} \cap \mathcal{L_V}.~ \mathcal{W^*}$ jest wcześniej wspomnianym stożkiem dualnym do macierzy procesu,
 zaś człon $\mathcal{L_V}$ wynika z wcześniej narzuconego warunku na $S \in \mathcal{L_V}$. Problem ten okazuje się być prawidłowym problemem
 SDP (\textit{semidefinite programming}) - programowaniem liniowym po stożku, którego numeryczne rozwiązanie jest zbieżne do optimum globalnego.
-Więc rozwiązanie takiego problemu optymalizacyjnego daje nam kryterium separowalności przyczynowej.
+Wynika z tego, że rozwiązanie takiego problemu optymalizacyjnego daje nam kryterium separowalności przyczynowej.
 Okazuje się dodatkowo, że wartość $-\Trs \left[ W S^* \right]$ odpowiada minimalnej wartości $\lambda$ takiej, że 
 \begin{equation}
 \frac{1}{1 + \lambda}\left( W + \lambda\widetilde{\Omega}\right),
@@ -585,7 +585,7 @@ R_g(W) = -\Trs \left[ S^* W \right]
 \item[Monotoniczność ze względu na lokalne operacje] $R_g\left(\$(W)\right) \leq R_g\left(W\right)$, gdzie $\$(W)$ jest dowolnym procesem, który można 
 otrzymać przez złożenie go z lokalnymi mapami CPTP.
 \end{description}
-Można wprowadzić również problem w którym poszukujemy minimalnej ilości białego szumu potrzebnego do spowodowania, by proces stał się separowalnym, który może się okazać bardziej adekwatnym modelem szumu, niż przypadek pesymistyczny.
+Można wprowadzić również problem w którym poszukuje się minimalnej ilości białego szumu potrzebnego do spowodowania, by proces stał się separowalnym. Biały szum może się okazać bardziej adekwatnym modelem szumu, niż przypadek pesymistyczny.
 Problem optymalizacyjny, który otrzymuje się jest następujący
 \begin{gather}
 \min \Trs \left[ WS \right]\\
@@ -607,26 +607,26 @@ Co więcej można dodać do $S$ macierz $\sigma_0^{A_1A_2} \otimes \sigma_0^{B_1
 \end{equation} gdzie wartość po prawej stronie równania jest oczywiście prawdopodobieństwem zaobserwowania danych map, wielkość tą można oszacować eksperymentalnie.
 Warto również przypomnieć, że do $S$ można dodać dowolny element z przestrzeni ortogonalnej do przestrzeni $\mathcal{L_V}$, co nie zmienia wartości oczekiwanej świadka, a może skutkować w łatwiejszej do implementacji fizycznie mapie. 
 \section{Postulat puryfikacyjny}
-Ważnym aktualnie nierozwiązanym problemem występujący w tym formalizmie jest brak jasnego kryterium, które procesy są możliwe do zrealizowania fizycznie.
+Ważnym aktualnie nierozwiązanym problemem występujący w tym formalizmie jest brak jasnego kryterium, które stwierdza, które procesy są możliwe do zrealizowania fizycznie.
 Nie wiadomo czy łamanie nierówności przyczynowych jest możliwie fizyczne czy wyłącznie jest matematycznym artefaktem. Jasne jednakże jest, że występowanie nieseparowalności jest fizycznie występującym fenomenem, który został potwierdzony doświadczalnie przy realizacji tzw. \textit{quantum switch}
-(kwantowego przełącznika) - zasobu który nie może złamać przyczynowych nierówności - wykorzystując wcześniej opisanego świadka przyczynowości np. w \cite{experiment}. Co może nasuwać postulat, że fizycznie niemożliwe jest naruszenie tych nierówności. Prawdziwość tego postulatu wciąż stoi pod znakiem zapytania. W \cite{purification} autorzy proponują \textit{purification postulate} (postulat puryfikacyjny). Uznają za konieczne, że każda fizycznie poprawna teoria
-musi być odwracalna. Motywują się faktem, że w każda fundamentalna teoria jest odwracalna i odwracalność była kluczowa w budowaniu teorii kwantowej.
+(kwantowego przełącznika) - zasobu który nie może złamać przyczynowych nierówności - wykorzystując wcześniej opisanego świadka przyczynowości np. w \cite{experiment}. Co może nasuwać postulat, że fizycznie niemożliwe jest naruszenie tych nierówności. Prawdziwość tego postulatu wciąż stoi pod znakiem zapytania. W \cite{purification} autorzy proponują \textit{purification postulate} (postulat puryfikacyjny). Uznają za konieczne, że każda fundamentalna fizycznie poprawna teoria
+musi być odwracalna. Motywują się faktem, że w każda znana fundamentalna teoria jest odwracalna, taka intuicja sprawdza się do tej pory.
 Warto jeszcze dodać, że we wstępie zostały opisany pomiar rzutujący jako nieodwracalny rodzaj ewolucji jednakże można modelować pomiar w sposób niewymagający takich pomiarów modelując układ pomiarowy, jako system kwantowy, który ewoluuje unitarnie wraz z mierzonym systemem co pokazano np. w
-\cite{reversible}. W celu dalszego opisu postulatu koniecznym jest opisanie jak rozumiana jest odwracalność w kontekście procesów. W tym celu procesy są poszerzone o globalną przeszłość i globalną przyszłość i rozumie się je jako operacje, która mapuje stany w globalnej przeszłości do stanów w globalnej przyszłości, które przechodzą przez region o nieokreślonej przyczynowości lokalnych laboratoriów opisywanych właśnie przez nie. Co sprowadza do definicji \textit{pure processes} (czystych procesów), jako procesów, które w sposób unitarny transformują przyszłość do przeszłości, gdy w lokalnych laboratoriach zostaną zaaplikowane odpowiednie unitarne transformacje. Ta definicja sprowadza do ich postulatu, który mówi, że procesy są puryfikowalne wtedy i tylko wtedy, gdy da się zaprezentować je jako czyste procesy w większej przestrzeni i tylko takie procesy są implementowalne. Autorzy postulatu dodatkowo zauważają, że
+\cite{reversible}. W celu dalszego opisu postulatu koniecznym jest opisanie jak rozumiana jest odwracalność w kontekście procesów. W tym celu procesy są poszerzone o globalną przeszłość i globalną przyszłość. Rozumie się je jako operacje, która mapują stany w globalnej przeszłości do stanów w globalnej przyszłości, które przechodzą przez region o nieokreślonej przyczynowości lokalnych laboratoriów opisywanych właśnie przez te macierze. Co sprowadza do definicji \textit{pure processes} (czystych procesów), jako procesów, które w sposób unitarny transformują przyszłość do przeszłości, gdy w lokalnych laboratoriach zostaną zaaplikowane odpowiednie unitarne transformacje. Ta definicja sprowadza do ich postulatu, który mówi, że procesy są puryfikowalne wtedy i tylko wtedy, gdy da się zaprezentować je jako czyste procesy w większej przestrzeni i tylko takie procesy są implementowalne. Autorzy postulatu dodatkowo zauważają, że
 o ile żaden znany dwustronny proces łamiący nierówności przyczynowe okazał się być puryfikowalnym to istnieje proces trzystronny, który jest puryfikowalny i może łamać przyczynowe nierówności, więc jeżeli niemożność łamania przyczynowych nierówności uznałoby się za prawo natury, a ten postulat za prawdziwy to
 byłby on konieczny, a nie wystarczający. 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.6\textwidth]{obrazki/done2}
 \caption{
-Rysunek symbolizuje działanie procesu $W$, jako funkcje wyższego rzędu map $\mathcal{A}$ i $\mathcal{B}$, która dla danych map zwraca mapę 
+Rysunek symbolizuje działanie procesu $W$ jako funkcje wyższego rzędu map $\mathcal{A}$ i $\mathcal{B}$, która dla danych map zwraca mapę 
 $\mathcal{G_{A,B}}$ reprezentująca transformacje, która przechodzi z globalnej przeszłości do globalnej przyszłości.
 }
 \label{higherordermap}
 \end{figure}
-W wcześniejszych rozdziałach, proces był definiowany, jako zasób, który definiował wszystkie statystyki pomiarów dla danych instrumentów, lub równoważnie jako funkcja, która mapowała mapy CP do prawdopodobieństw. Wprowadzenie pojęcia puryfikacji wymaga zmienienia definicji na biliniową funkcję działająca trywialnie na \textit{ancille}, która mapuje
+We wcześniejszych rozdziałach, proces był definiowany, jako zasób, który definiował wszystkie statystyki pomiarów dla danych instrumentów, lub równoważnie jako funkcja, która mapowała mapy CP do prawdopodobieństw. Wprowadzenie pojęcia puryfikacji wymaga zmienienia definicji na biliniową funkcję działająca trywialnie na \textit{ancille}, która mapuje
 $\mathcal{A}$ i $\mathcal{B}$ do $\mathcal{G_{A,B}}$, gdzie $\mathcal{A}$ jest mapą CPTP z $A_1, A'_1$ do $A_2, A'_2$, analogicznie $\mathcal{B}$ jest mapą CPTP z
-$B_1, B'_1$ do $B_2, B'_2$, zaś $\mathcal{G_{A,B}}$ mapą CPTP z $P, A'_1, A'_2$ do $F, B'_1, B'_2$. Primem oznaczono \textit{ancille}. Ponownie przez A niepisane kaligraficznie oznaczać będzie się reprezentacje CJ odpowiednich map, podobnie dla innych map. Taka definicja nie jest w żaden sposób sprzeczna z tymi podanymi wcześniej, gdyż ma ona służyć jedynie droga do zbudowania narzędzia stwierdzającego czy dany proces jest fizyczny bądź nie. Trzeba zaznaczyć, iż w tym rozdziale definicja izomorfizmu CJ jest zmieniona o transpozycje, która wcześniej została wprowadzona ze względu na wygodę teraz, jednakże może sprawiać, że pewne mapy CP 
+$B_1, B'_1$ do $B_2, B'_2$, zaś $\mathcal{G_{A,B}}$ mapą CPTP z $P, A'_1, A'_2$ do $F, B'_1, B'_2$. Primem oznaczono \textit{ancille}. Ponownie przez A niepisane kaligraficznie oznaczać będzie się reprezentacje CJ odpowiednich map, podobnie dla innych map. Taka definicja nie jest w żaden sposób sprzeczna z tymi podanymi wcześniej, gdyż ma ona służyć jedynie jako droga do zbudowania narzędzia stwierdzającego czy dany proces jest fizyczny bądź nie. Trzeba zaznaczyć, iż w tym rozdziale definicja izomorfizmu CJ jest zmieniona o transpozycje, która wcześniej została wprowadzona ze względu na wygodę teraz, jednakże może sprawiać, że pewne mapy CP 
 mogą zostać mapowane na macierze niedodatnie. Jako, że żadna przestrzeń nie może sygnalizować P, a przestrzeń F nie może sygnalizować do żadnej innej
 można je interpretować odpowiednio, jako globalną przeszłość i globalną przyszłość. Oczywiście tak zdefiniowany proces ma swoją reprezentację jako macierz piszę się
 \begin{equation}
@@ -635,25 +635,24 @@ G_{A,B} = \Trs_{A_1A_2B_1B_2} \left[ W^{T_{A_1A_2B_1B_2}} (A\otimes B)\right]
 \end{equation}
 gdzie $W \in A_1 \otimes A_2 \otimes A'_1 \otimes A'_2 \otimes B_1 \otimes B_2 \otimes B'_1 \otimes B'_2 \otimes F \otimes P$ jest oczywiście definiowaną macierzą procesu. W powyższym równaniu macierze jednostkowe na \textit{ancillach}, globalnej przyszłości i przeszłości pozostały niejawne.
 Rówanie \eqref{eq:longnp} może być skrócone z wykorzystaniem \textit{link product} (iloczynu łączącego).
-W celu zapisania postaci CJ złożenia pewnych dwóch funkcji można, by w sposób jawny obliczyć postać CJ $\mathcal{M} \cdot \mathcal{N}$. Wygodniejszym
-jednak często okazuje się być wcześniej wspomniany iloczyn łączący definiowany, jako następująca abstrakcyjna operacja na macierzach.
+W celu zapisania postaci CJ złożenia pewnych dwóch funkcji można obliczyć jawną postać CJ $\MCJ(\mathcal{M} \circ \mathcal{N})$. Wygodniejszym
+jednak często okazuje się być wcześniej wspomniany iloczyn łączący definiowany jako następująca abstrakcyjna operacja na macierzach:
 \begin{equation}
 N * M = \Trs_{I\cap J}\left[ (\I^{J\setminus I} \otimes M^{T_{I\cap J}})(N \otimes \I^{I\setminus J})\right],
 \end{equation}
 gdzie $M \in \bigotimes_{i \in I} A^i,~N \in \bigotimes_{j \in J} A^j$. W skrajnych przypadkach gdy $I \cap J = \emptyset$, $N*M$ to po prostu $N \otimes M$, a
-
 gdy $I \cap J = I = J$ to $N * M = \Trs M^T N$.
 Znając iloczyn łączący w sposób bardzo elegancki można zdefiniować dwustronny proces jako
 \begin{equation}
 G_{A,B} = W * (A \otimes B).
 \end{equation}
-W celu uniknięcia sprzeczności trzeba narzucić warunki na $W$ tak, aby $G_{A,B}$ była mapą odpowiednią CPTP dla wszystkich prawidłowych map CPTP $A$ i $B$. Co implikuje analogiczne warunki do tych podanych w wcześniejszych rozdziałach
+W celu uniknięcia sprzeczności trzeba narzucić warunki na $W$ tak, aby $G_{A,B}$ była mapą odpowiednią CPTP dla wszystkich prawidłowych map CPTP $A$ i $B$. Co implikuje analogiczne warunki do tych podanych we wcześniejszych rozdziałach
 \begin{gather}
 W \geq 0 \\
 \Trs W = d_{A_2}d_{B_2}d_P \\
 W = L_V(W).
 \end{gather} 
-Jawna postać powyższego projektora jest następująca
+Jawna postać powyższego projektora jest następująca:
 \begin{align}
 \begin{split}
 L_V(W) =& W -{}_FW + {}_{A_2F}W + {}_{B_2}W - {}_{A_2B_2F}W\\ &- {}_{A_1A_2F}W + {}_{A_1A_2B_2F}W - {}_{B_1B_2F}W \\&+ {}_{A_2B_1B_2F}W - {}_{A_1A_2B_1B_2F}W + {}_{PA_1A_2B_1B_2F}W.
@@ -664,11 +663,11 @@ ${}_{XX}W = {}_{X}W$. Po elementarnych przekształceniach wychodzi, że
 \begin{equation}
 L_V(W') = {}_{A_2}W' + {}_{B_2}W' - {}_{A_2B_2}W' - {}_{B_1B_2}W' + {}_{A_2B_1B_2}W' - {}_{A_1A_2}W' + {}_{A_1A_2B_2}W'.
 \end{equation}
-Powyższy projektor ma takie same wyrazy, jak ten zdefiniowany w \eqref{eq:projec2} 
+Powyższy projektor ma takie same wyrazy, jak ten zdefiniowany w \eqref{eq:projec2} .
 Każdy dwustronny proces zdefiniowany w poprzednim sensie rozszerzony o odpowiednio znormalizowaną jednostkową przyszłość i przeszłość spełnia warunki narzucone powyżej. Co pokazuje, że każdy proces dwustronny, definiowany jak poprzednio, jest zgodny z tą definicją.
 \subsection{Czysty proces}
 Takie sformułowanie daje naturalne sformułowanie co rozumie się przez czysty proces, tak jak transformacje unitarne są najogólniejsza liniowa transformacją, która mapuje pewne czyste stany na inne czyste stany można wprowadzić pojęcie czystych procesów jako takich, które mapują dane mapy unitarne CPTP na inne unitarne mapy CPTP. 
-Okazuje się, że macierz procesu $W$ jest czysta wtedy i tylko wtedy, gdy można zapisać $W = \KKet{U_W} \BBra{U_W}$, gdzie $\\Ket{U_W}$ jest reprezentacją wektorową CJ pewnej transformacji unitarnej $U_W$
+Okazuje się, że macierz procesu $W$ jest czysta wtedy i tylko wtedy, gdy można zapisać $W = \KKet{U_W} \BBra{U_W}$, gdzie $\KKet{U_W}$ jest reprezentacją wektorową CJ pewnej transformacji unitarnej $U_W$
 Dowód powyższego twierdzenia przebiega następująco, jeżeli W jest czystym procesem to z definicji $\mathcal{G_{A,B}}$ jest unitarne. Wybierając $\mathcal{A}$, $\mathcal{B}$, jako operacje SWAP, które odpowiednio zamieniają \textit{ancille} z oryginalnymi systemami to pisze się, że
 \begin{equation}
 G_{A,B} = W * \left( \KKet{\I}\BBra{\I}^{A'_1 A_2} \KKet{\I}\BBra{\I}^{A_1A'_2} \otimes \KKet{\I}\BBra{\I}^{B'_1 B_2} \KKet{\I}\BBra{\I}^{B_1B'_2}\right) = W,
@@ -682,7 +681,7 @@ B = \KKet{U_B}\BBra{U_B}
 \end{gather}
 to
 \begin{equation}
-G_{A,B} = \KKet{U_W}\BBra{U_W} * \left( \KKet{U_A}\BBra{U_A} \otimes \right) = \KKet{U_G}\BBra{U_G},
+G_{A,B} = \KKet{U_W}\BBra{U_W} * \left( \KKet{U_A}\BBra{U_A} \otimes \KKet{U_B}\BBra{U_B} \right) = \KKet{U_G}\BBra{U_G},
 \end{equation} gdzie 
 \begin{equation}
 U_G^{A'_1B'_1P} = \Trs_{A_1B_1} \left[ \left( U_W^{PA_1B_1} \otimes \I^{A'_1B'_1}\right) \left( \I^P \otimes U_A^{A_1A_1'} \otimes U_B^{B_1B'_1}\right)\right]
@@ -696,13 +695,13 @@ co kończy dowód.
 Mając na uwadze wcześniej wprowadzoną definicję czystego procesu można zdefiniować proces puryfikowalny. Jest to taki proces $W$, który można wydobyć
 z pewnego czystego procesu $S$ przez wprowadzenie stanu $\Ket{0}^P$ i dokonania operacji częściowego śladu po przyszłości, czyli
 \begin{equation}
-W = S * \left( \Ket{0}\Bra{0}^P ] \otimes \I^F \right),
+W = S * \left( \Ket{0}\Bra{0}^P \otimes \I^F \right),
 \end{equation}
 postulowane więc jest, że każdy proces implementowalny fizycznie jest puryfikowalny.
 Jest to zmotywowane to faktem, iż gdyby byłoby inaczej 
-mapy unitarne byłyby mapowane na mapy, które w ogólności nie muszą być odwracalne co skutkowało by w nieodwracalności tej teorii, a co jest uznawane za ważny element fizycznej rzeczywistości. Warto również zauważyć, że wszystkie procesy o określonej przyczynowości, te które zostały zaimplementowane fizycznie, jak i te separowalne okazują się być puryfikowalne.
+mapy unitarne byłyby mapowane na mapy, które w ogólności nie muszą być odwracalne co skutkowałoby w nieodwracalności tej teorii, a odwracalność jest uznawana za ważny element fizycznej rzeczywistości. Warto również zauważyć, że wszystkie procesy o określonej przyczynowości, te które zostały zaimplementowane fizycznie, jak i te separowalne okazują się być puryfikowalne.
 \subsection{Warunki konieczne i wystarczające}
-Wyprowadzenie koniecznych i wystarczających warunków, by proces wygląda następująco:
+Wyprowadzenie koniecznych i wystarczających warunków, by proces był puryfikowalny wygląda następująco:
 Definiując
 \begin{equation}
 \label{eq:purif}
@@ -720,7 +719,7 @@ W = \Trs_F \Ket{w_0}\Bra{w_0},
 gdzie $\Ket{w_0}$ oznacza $\Bra{0}^P\KKet{U_S}$.
 Wcześniej narzucano, by S mapowało A i B na inną prawidłową mapę CPTP.
 Ten warunek można zreformułować w jawny sposób przy pomocy stanów $\Ket{\psi}$.
-S jest prawidłowym procesem, kiedy $[ S * (A \otimes B)] * \Ket{\Psi}\Bra{\Psi}^P$ jest prawidłowym stanem kwantowym.
+S jest prawidłowym procesem, kiedy $[ S * (A \otimes B)] * \Ket{\psi}\Bra{\psi}^P$ jest prawidłowym stanem kwantowym.
 Ważnym jednakże jest zauważyć, że
 \begin{equation}
 [S * (A \otimes B)] * \Ket{\psi}\Bra{\psi} = (S * \KP \BP^P) * (A \otimes B).
@@ -799,18 +798,18 @@ Widać oczywiście, że $\frac{C_k-iC_{k+d_m}}{2} = M_k$, a same macierze $C_k$ 
 Dalsze rozwijanie i badanie tego warunku wystarczającego jest otwarty problemem. Udowodniono jednak w opisywanym artykule, że
 rozmiar przestrzeni, której wektory spełniają
 \begin{equation}
-\Bra{v}C_k\Ket{v} = 0
+\Bra{v'}C_k\Ket{v} = 0
 \end{equation} równy jest 
 \begin{equation}
 d_{C_k} = n_{k0} + \min({n_{k+}, n_{k-}}),
-\end{equation} gdzie $n_0, n_k+, n_k-$ są odpowiednio liczbą zerowych, dodatnich i ujemnych wartości własnych k-tej macierzy. Intuicyjne uzasadnienie tego twierdzenia może być następujące: dostępnych jest $n_0$ składowych, które nie wpływają na ten wynik oraz $\min({n_{k+}, n_{k-}}$, które trzeba wyzerować odpowiednio drugim znakiem, wybierając znak, którego jest więcej zabrakłoby po prostu składowych do ich wyzerowania.
+\end{equation} gdzie $n_0, n_k+, n_k-$ są odpowiednio liczbą zerowych, dodatnich i ujemnych wartości własnych k-tej macierzy. Intuicyjne uzasadnienie tego twierdzenia może być następujące: dostępnych jest $n_0$ składowych, które nie wpływają na ten wynik oraz $\min({n_{k+}, n_{k-}})$, które trzeba wyzerować odpowiednio drugim znakiem, wybierając znak, którego jest więcej zabrakłoby po prostu składowych do ich wyzerowania.
 Więc prostym ograniczeniem, które okazuje się być w wielu przypadkach nietrywialne jest wzięcie rozmiaru najmniejszej przestrzeni, jeżeli będzie ona mniejsza niż rząd $W$ to macierz będzie niepuryfikowalna, lub zwięźle
 \begin{gather}
 \text{W jest puryfikowalne} \implies d_{max}(W) \geq \Rank(W) \\
 d_{max}(W) := \min_i d_{C_i} 
 \end{gather}
 \section{Przykłady}
-W rozdziale trzecim podano przykład procesu, które może łamać przyczynowe nierówności. Okazuje się, że ten proces nie jest puryfikowalny dla skrajnego q = 1, puryfikowalny dla q=0 jest puryfikowalny bo przyczynowy, zaś ze względu na złożoność obliczeniową i brak dostępnych wyników w literaturze nie wiadome jest dla jakich q ten proces jest puryfikowalny.
+W rozdziale trzecim podano przykład procesu, które może łamać przyczynowe nierówności. Okazuje się, że ten proces nie jest puryfikowalny dla skrajnego $q = 1$, dla $q=0$ jest puryfikowalny bo przyczynowy, zaś ze względu na złożoność obliczeniową i brak dostępnych wyników w literaturze nie wiadome jest dla jakich q ten proces jest puryfikowalny.
 
 Kolejnymi interesującymi przykładami są kanały kwantowe. Wektor procesu dla kanału kwantowego jest następująco:
 \begin{equation}
@@ -821,7 +820,7 @@ Biorąc proces następujący
 \begin{equation}
 a\Ket{w_{channel}}\Bra{w_{channel}}^{A \prec B} + b\Ket{w_{channel}}\Bra{w_{channel}}^{B \prec A},
 \end{equation} warunek normujący daje, że $a+b=1$, więc ewidentnie proces jest separowalny. Co za tym idzie on również nie może złamać nierówności przyczynowych. Taki zasób można interpretować jako probabilistyczny kanał, który z pewnym prawdopodobieństwem decyduje, kto jest przed kim.
-Eksplorując dalej procesy związane w prosty sposób z kanałami można zadać sobie pytanie co w takim razie dzieje się z dajmy na to "koherentnie" zmieszanym kanałem, niech wektor procesu będzie dany
+Eksplorując dalej procesy związane w prosty sposób z kanałami można zadać sobie pytanie co w takim razie dzieje się z spójnym zmieszanym kanałem, niech wektor procesu będzie dany
 \begin{equation}
 \Ket{w_{procesu}} = a\Ket{w_{channel}}^{A \prec B} + b\Ket{w_{channel}}^{B \prec A}
 \end{equation}
@@ -829,24 +828,24 @@ Okazuje się jednakże, że niestety proces dany tym wektorem nie należy do prz
 \begin{equation}
 W' = CL_V(W).
 \end{equation}
-$C$ jest stałą normalizacyjną równą $\frac{1}{4\Trs W'}$.
-W celu złamania nierówności danej w trzecim rozdziale wykorzystano następujący protokół. Gdyby dany był idealny dwustronny kanał można by otrzymać system w jednym laboratorium zmierzyć $\Ket{i}\Bra{i}$ i powiązać przesyłany bit z odebranym stanem, przypisać odpowiednio swój bit do stanu i wysłać go do drugiego laboratorium. Idąc za pomysłem, że proces powyższy reprezentuje pewnego rodzaju pozostałość z takiego idealnego dwustronnego kanału przyjmuje się właśnie tą procedurę. Odpowiednie mapy są więc dane
+$C$ jest stałą normalizacyjną równą $\frac{d_O}{\Trs W'}$.
+W celu prób złamania nierówności danej w trzecim rozdziale wykorzystano następujący protokół. Gdyby dany był idealny dwustronny kanał można by otrzymać system w jednym laboratorium zmierzyć $\Ket{i}\Bra{i}$ i powiązać przesyłany bit z odebranym stanem, przypisać odpowiednio swój bit do stanu i wysłać go do drugiego laboratorium. Idąc za pomysłem, że proces powyższy reprezentuje pewnego rodzaju pozostałość z takiego idealnego dwustronnego kanału przyjmuje się właśnie tą procedurę. Odpowiednie mapy są więc dane
 \begin{gather}
 \eta(x,a) = \Ket{x}\Bra{x} \otimes \Ket{a}\Bra{a} \\
 \xi(y,b,b') = \eta(y,b)
 \end{gather}
 Przypomina się, że prawdopodobieństwo jest dane jak zwyczaj, czyli
 \begin{equation}
-\Pr(x,y|a,b,b`) = \Trs\left\{{\WAll\left[\eta(x,a) \otimes \xi(y,b,b') \right]}\right\}
+\Pr(x,y|a,b,b`) = \Trs\left\{{W\left[\eta(x,a) \otimes \xi(y,b,b') \right]}\right\}
 \end{equation}
-Okazuje się, że prawdopodobieństwo sukcesu w grze zdefiniowanej w rozdziale trzecim wynosi $0.8$ dla $a=b$, który wydaję się być maksymalnym połączeniem dwóch kanałów.
+Okazuje się, że prawdopodobieństwo sukcesu w grze zdefiniowanej w rozdziale trzecim wynosi $0.8$ dla $a=b$, który jest równym połączeniem dwóch kanałów.
 Niestety radości musi ukrócić fakt, że powyższa macierz okazuje się nie być nieujemna. Dodając najmniejszą ilość białego szumu takiego, że $W'$ będzie nieujemne czyli
 \begin{equation}
 W'' = W' + \lambda_{min} \I,
 \end{equation} gdzie $\lambda_{min}$ to najmniejsza wartość własna.
 Otrzymuje się prawdopodobieństwo równe około $0.68$. Co niestety ujmuje przydatności i wyjątkowości takiego zasobu. Co niestety zmusza do szukania innych ciekawych implementowalnych fizycznie procesów.
 W celu spelnienia warunku normalizacyjnego $a + b \leq C$, gdzie C jest pewną stałą, dlatego bez utraty ogólności można wybierać $a + b = 1$ i następnie dokonywać procesu renormalizacji. Na rysunku \ref{fig:bichannel} pokazano prawdopodobieństwo sukcesu dla rodziny procesów generowanych powyżej opisaną metodą.
-\begin{figure}[th]
+\begin{figure}[t]
 \centering
 
 \includegraphics[width=0.5\textwidth]{obrazki/probchannel.png}
