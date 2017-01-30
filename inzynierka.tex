@@ -42,6 +42,7 @@
 \usepackage{amsthm}
 \usepackage{ bbold }
 \usepackage{eufrak}
+\usepackage[titletoc,title]{appendix}
 
 %\usepackage{braket}
 % These packages are all incorporated in the memoir class to one degree or another...
@@ -136,7 +137,7 @@ In this work process matrix formalism is presented. It can be considered a way t
 %%%%
 \subsection{Historia}
 Mechanika kwantowa od samego początku jej badania budziła wiele kontrowersji. Wiele osób miało problem z zaakceptowaniem faktu, iż
-na fundamentalnym poziomie rzeczywistość nie jest deterministyczna, jak nam się wydawało. Zarówno losowa natura tej teorii, jak i wiele "dziwnych" cech mechaniki kwantowej była początkowo trudna do zaakceptowania. Rok po opublikowaniu pracy Schrödingera, Einstein w swojej pracy zamieścił zdanie, które kierunkowało badania w tamtym czasie, zaś dziś jest wraz z innymi popularnymi "powiedzonkami" kwantowymi zakorzenione w kulturze, a mianowicie, że "Bóg nie gra w kości". Ta teza później okazała się być nieprawdziwa - przynajmniej nie w takim stopniu, w jakim autor by sobie życzył. Sam formalizm doczekał się wielu interpretacji, często bardziej filozoficznych. Dzisiaj najpopularniejszymi są interpretacja kopenhaska, teoria wielu światów, czy idei inkorporująca kwantową grawitację w mechanizmie pomiaru. Mimo tego jest to bardzo matematycznie elegancka teoria, którą można nazwać jednym z największych osiągnięć współczesnej fizyki. Wielokrotnie jej "dziwne" przewidywania zostały potwierdzone eksperymentalnie z wręcz idealną dokładnością (w przeciwieństwie do np. stałej kosmologicznej, której niedokładność przekracza wiele dziesiątek rzędów wielkości). 
+na fundamentalnym poziomie rzeczywistość nie jest deterministyczna, jak nam się wydawało. Zarówno losowa natura tej teorii, jak i wiele "dziwnych" cech mechaniki kwantowej była początkowo trudna do zaakceptowania. Rok po opublikowaniu pracy Schrödingera, Einstein w swojej pracy zamieścił zdanie, które kierunkowało badania w tamtym czasie, zaś dziś jest wraz z innymi popularnymi powiedzeniami kwantowymi zakorzenione w kulturze, a mianowicie, że "Bóg nie gra w kości". Ta teza później okazała się być nieprawdziwa - przynajmniej nie w takim stopniu, w jakim autor by sobie życzył. Sam formalizm doczekał się wielu interpretacji, często bardziej filozoficznych. Dzisiaj najpopularniejszymi są interpretacja kopenhaska, teoria wielu światów, czy idei inkorporująca kwantową grawitację w mechanizmie pomiaru. Mimo tego jest to bardzo matematycznie elegancka teoria, którą można nazwać jednym z największych osiągnięć współczesnej fizyki. Wielokrotnie jej "dziwne" przewidywania zostały potwierdzone eksperymentalnie z wręcz idealną dokładnością (w przeciwieństwie do np. stałej kosmologicznej, której niedokładność przekracza wiele dziesiątek rzędów wielkości). 
 \subsection{Podstawowe informacje}
 Przechodząc do bardziej konkretnych rzeczy, systemy w mechanice kwantowej opisuje się jako elementy przestrzeni Hilberta $\psi \in \Hx{}$, a tak zwane obserwable - samosprzężone operatory $A \in \LHx{}$, które opisują pomiary, jakie można wykonać na danym systemie. W przypadku skończenie wymiarowym bądź policzalnym można powiedzieć, że $\Hx{A} = \mathcal{C}^N$ i
 obserwable są po prostu macierzami hermitowskimi odpowiedniego wymiaru. Przez znak równości rozumie się przestrzeń Hilberta zbudowaną na tym zbiorze z odpowiednimi działaniami. Dosyć standardowym i wygodnym jest wykorzystywanie tak zwanej notacji Diraca, a mianowicie przedstawianie $\psi = \Ket{\psi}$ i $\psi^\dag = \Bra{\psi}$
@@ -185,7 +186,7 @@ a_1b_0 = 0\implies a_1 = 0\vee b_0 = 0 \\
 \text{Powyższe implikuje, że } a_0b_0 \neg 1 \vee a_1b_1 \neg 1.
 \end{gather*} Takie systemy, których nie da się zapisać w postaci $\Ket{\psi} = \Ket{\psi}_A \otimes \Ket{\phi}_B$, nazywa się splątanymi. Splątanie kwantowe jest zasobem, który znalazł zastosowanie w wielu nowatorskich aplikacjach, jak np. kryptografia kwantowa, certyfikowana losowość, teleportacja kwantowa czy wcześniej przytoczone "kwantowe przyśpieszenie".
 Często w rozważaniach ogranicza się do skończonych przestrzeni Hilberta o wybranych rozmiarach. Najmniejszą i niepodzielną jednostką informacji jest kubit ($\Hx{} = \mathcal{C}^2$), fizycznie reprezentujący np. cząstkę ze spinem-$\frac{1}{2}$ (elektron), polaryzację fotonu. W wielu dziedzinach informatyki kwantowej ogranicza się praktycznie wyłącznie do analizy systemów złożonych z kubitów ze względu
-na pewną prostotę i wygodę badania takich systemów. Ciekawą interpretacją kubitów prezentuje Sfera Blocha (\ref{rys. fig:bloch}). Punkty na tej sferze opisują wszystkie prawidłowe znormalizowane $\KP \in \mathcal{C}^2$.
+na pewną prostotę i wygodę badania takich systemów. Ciekawą interpretacją kubitów prezentuje Sfera Blocha (rysunek \ref{fig:bloch}). Punkty na tej sferze opisują wszystkie prawidłowe znormalizowane $\KP \in \mathcal{C}^2$.
 Okazuje się jednak, że formalizm stanów jest niewystarczający do opisu zespołów statystycznych (system znajduje się w jakimś z $\Ket{\psi_i}$ stanów z prawdopodobieństwem $p_i$) wynikających z braku pełnej wiedzy o systemie bądź sposobie jego przygotowania. Do opisu takich sytuacji używa się macierzy gęstości, definiowanych następująco
 \begin{gather}
 \rho = \KP \BP \\
@@ -448,13 +449,13 @@ wynika, że
 W^{T_B} &= \frac{2q}{3}\IO + \frac{q}{3} I^{A \prec B} + (1-q+\epsilon)W^{B \prec A} - \epsilon \IO \\
  &= \frac{q}{3} I^{A \prec B} + (1-q+\epsilon) W^{B \prec A} - (\frac{2q}{3} - \epsilon) \IO,
 \end{split}
-\end{align} co jest kombinacją wypukła procesów uporządkowanych przyczynowo tak długo jak $\epsilon < \frac{2q}{3}$ można jednakże sprawdzić, że $q - 1 + \sqrt{\frac{(1-q)(3+q}{3}} \leq \frac{2q}{3}$ więc poprzedni warunek jest zawsze spełniony, co kończy dowód, pokazano, że każdy prawidłowy proces \eqref{eq:nsep_causal} ma przyczynowy model.
+\end{align} co jest kombinacją wypukła procesów uporządkowanych przyczynowo tak długo jak $\epsilon < \frac{2q}{3}$ można jednakże sprawdzić, że $q - 1 + \sqrt{\frac{(1-q)(3+q)}{3}} \leq \frac{2q}{3}$ więc poprzedni warunek jest zawsze spełniony, co kończy dowód, pokazano, że każdy prawidłowy proces \eqref{eq:nsep_causal} ma przyczynowy model.
 %% do poprawy %%
 %Autorzy \cite{causal_model} sugerują, że biorąc $W = \left(W^{T_B}\right)^{T_B}$ i korzystając z równania \eqref{eq:wtb_sep} i dodatkowo zauważając, że macierz procesu $\frac{q}{3}\left(I^{A \prec B}\right)^{T_B}$ jest nieujemna, gdy zmiesza się ją z co najmniej $\frac{2q}{3}$
 %białego szumu, jednakże ilość białego szumu, który możemy dodać z wyrazu $(\frac{2q}{3} - \epsilon)\IO$ jest ostro mniejsza, niż wymagana, macierz procesu $W$ może być zinterpretowana jako wypukła kombinacja niefizycznego kanału od Alicji do Boba z fizycznym kanałem od Boba do Alicji co jest wskazówką, że
 %$W$ jest nieimplementowalne fizycznie.
 %% %% %%
-Autorzy \cite{causal_mode} sugerują, żeby wziąć rozkład na kombinacje wypukłe $W$ jako transpozycje względem systemu Boba równania \eqref{eq:wtb_sep}. Można dalej zauważyć, że wyraz $\frac{q}{3} \left( I^{A \prec B} \right)^{T_B}$ stanie się nieujemny, gdy doda się do niego $\frac{2q}{3}$ białego szumu,
+Autorzy \cite{causal_model} sugerują, żeby wziąć rozkład na kombinacje wypukłe $W$ jako transpozycje względem systemu Boba równania \eqref{eq:wtb_sep}. Można dalej zauważyć, że wyraz $\frac{q}{3} \left( I^{A \prec B} \right)^{T_B}$ stanie się nieujemny, gdy doda się do niego $\frac{2q}{3}$ białego szumu,
 a ilość dostępnego szumu, który można zabrać z wyrazu $\left( \frac{2q}{3} - \epsilon \right) \IO$ jest ostro mniejszy od wymaganego. Narzuca się interpretacja, że proces $W$ jest kombinacją wypukłą niefizycznego kanału od Alicji do Boba i fizycznego kanału od Boba do Alicji, co może być wskazówka, że proces
 $W$ jest nieimplementowalny fizycznie.
 Powyższy dowód opiera się na fakcie, że mapy poddane częściowej transpozycji według odpowiedniego systemu są nadal poprawnymi mapami CP.
@@ -617,7 +618,7 @@ o ile żaden znany dwustronny proces łamiący nierówności przyczynowe nie oka
 byłby on konieczny, a nie wystarczający. 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.6\textwidth]{obrazki/done2}
+\includegraphics[width=0.6\textwidth]{obrazki/done1}
 \caption{
 Rysunek symbolizuje działanie procesu $W$ jako funkcje wyższego rzędu map $\mathcal{A}$ i $\mathcal{B}$, która dla danych map zwraca mapę 
 $\mathcal{G_{A,B}}$ reprezentującą transformację, która przechodzi z globalnej przeszłości do globalnej przyszłości.
@@ -775,15 +776,15 @@ Jeżeli $\Ket{v}$ ma spełniać powyższy warunek, niezerowe składowe może mie
 \begin{equation}
 \Pi_{\LPV|V_W} = \left(R^* \otimes R \right) \Pi_\LPV \left(R^{*\dag} \otimes R^\dag \right)
 \end{equation}
-Niech teraz $\{ \Ket{m_k} \}^{d_m-1}_k=0$ będzie zbiorem wektorów własnych $\Pi_{\LPV|V_W}$ z niezerową wartością własną. Korzystając z argumentu analogicznego do tego powyżej 
+Niech teraz $\{ \Ket{m_k} \}^{d_m-1}_{k=0}$ będzie zbiorem wektorów własnych $\Pi_{\LPV|V_W}$ z niezerową wartością własną. Korzystając z argumentu analogicznego do tego powyżej 
 \begin{equation}
 \Pi_{\LPV|V_W} \Ket{v^*_j}\Ket{v_i} = 0 \iff \forall k \Bra{v^*_j} \Bra{v_i} \Ket{m_k} = 0
 \end{equation}
-Można teraz spostrzec, że można przepisać powyższy warunek w sposób wygodniejszy na
-\begin{equation}
-\Bra{v^*_j} \Bra{v_i} \Ket{m_k} = \Bra{v_i} M_k \Ket{v_j}
+Można teraz spostrzec, że powyższy warunek wygodnie przepisać na
+\begin{gather}
+\Bra{v^*_j} \Bra{v_i} \Ket{m_k} = \Bra{v_i} M_k \Ket{v_j} \\
 \KKet{M_k} = \Ket{m_k}.
-\end{equation}
+\end{gather}
 W ogólności macierze $M_k$ nie są hermitowskie, a konieczne są rzeczywiste wartości własne w celu skorzystania z twierdzenia, które zaraz zostanie przytoczone.
 Definiuje się
 \begin{gather}
@@ -879,13 +880,114 @@ Badanie nieprzyczynowości wydaje się być popularnym nurtem w informatyce kwan
 Ewidentnym brakiem w prezentowanym na końcu postulacie jest brak jakichkolwiek innych przesłanek na jego słuszność, niż intuicja fizyczna. Wymagane jest w celu utwierdzenia słuszności powyższego postulat wiele eksperymentów fizycznych, jednakże ze względu na pewien metafizyczny charakter tego postulatu będzie to trudne.
 Ważne są również badania nad skutecznymi metodami spełniania wystarczającego warunku, gdyż problematyczne będą procesy niewykluczane przez warunek konieczny.
 
-
+\renewcommand\appendixname{Dodatek}
+\renewcommand\appendixpagename{Dodatek}
 \newpage
 \tableofcontents
 \newpage
 \listoffigures
 \newpage
+
+\begin{appendices}
+\section{Szybkie obliczanie $L_V$}
+W wielu przypadkach, gdy ma się do czynienia z dużymi macierzy konieczne jest skorzystanie z metod numerycznych. Problematyczne ze względu na złożoność obliczeniową okazują się nawet takie pozornie proste operacje jak częściowy ślad. Licząc naiwnie go z następującej formuły, która jest łatwa do zaimplementowania
+\begin{equation}
+\Trs_B A = \sum^{d_b}_i (\I^A \otimes \Bra{i}_B)A(\I^A \otimes \Ket{i}_B).
+\end{equation} Dla wybranego $i$ wykonując pierwsze mnożenie otrzymuje się macierz o $d_A^2d_B$ komórkach, gdzie obliczenie każdej komórki wymaga $d_Ad_B$ operacji, następnie wykonuje się drugie mnożenie, które nie zwiększa złożoności. Wykonując tę procedurę dla wszystkich $\Ket{i}$ otrzymuje się złożoność $O(d_A^3d_B^3)$. Wykorzystując wiedzę o chociażby strukturze (praktycznie wszystkie komórki są zerami) można znacznie przyśpieszyć te obliczenia.
+W \cite{partial_trace} pokazano wydajną metodę obliczania częściowego śladu. Posiadając jawną postać pewnej macierzy $A$, w celu wyliczenia ${}_XA$ konieczne po wykonaniu śladu częściowego jest zastąpienie jedynką odpowiedniego systemu. Standardowo iloczyn tensorowy dla macierzy reprezentuje się przy pomocy tzw. iloczynu Kroneckera. O ile jest pewna dowolność w zapisie matematycznym, gdzie postawi się znak iloczynu tensorowego tak długo jak odnotuje się jakiego systemu dotyczy macierz, w implementacji kolejność systemów jest niejawna, zakodowana pozycyjne. Korzystając z wydajnej metody na obliczanie śladu
+można łatwo w wydajny sposób obliczyć operacje ${}_XA$ skrajnych systemów następująco:
+\begin{gather}
+{}_{A_1}A= \I^{A_1} \otimes \Trs_{A_1} A,\\
+{}_{A_ N}A = \Trs_{A_N} A \otimes \I^{A_N}.
+\end{gather}
+W innych przypadkach macierz jednostkowa będzie znajdowała się na niewłaściwym miejscu, co zmusza do wykorzystania tzw. macierzy komutacji, co pozwala zapisać
+\begin{gather}
+{}_{A_n}A = Q\left( \Trs_{A_n}A \otimes \I^{A_N} \right)Q \\
+Q = \sum_{ijkl} \Ket{i}_{A_1 \dots A_{n-1}} \Ket{j}_{A_n} \Ket{k}_{A_n+1 \dots A_{N-1}} \Ket{l}_{A_N}\Bra{i}_{A_1 \dots A_{n-1}} \Bra{l}_{A_n} \Bra{k}_{A_n+1 \dots A_{N-1}} \Bra{j}_{A_N},
+\end{gather} gdzie $A_N$ oznacza ostatni system, zaś $\I^{A_N}$ rozumie się, jako macierz jednostkowa o odpowiednim rozmiarze na ostatniej pozycji. Zauważa się, że macierz Q ma $d_{A_1 A_2 \dots A_N}$ jedynek, jest unitarna co razem daje, że w każdej kolumnie i każdym rzędzie jest dokładnie jedna jedynka i na innych miejscach zera. Wynika to z faktu, że gdyby było inaczej to obliczając wyznacznik macierzy Q metodą minorów rozwijając względem wiersza, w którym nie stoi jedynka wyszłoby, że wyznacznik tej macierzy byłby równy zero, co jest sprzeczne z faktem, że macierz ta jest odwracalna. Niemożliwa jest większą ilość jedynek, niż jeden w każdej kolumnie i wierszu, ponieważ jest ich dokładnie $d_{A_1A_2\dots A_N}$. Taka postać macierzy pozwala na obliczenie wartości danego pola w macierzy w czasie stałym co pozwala na wykonanie operacji ${}_XA$ w $O({d_{A_1 A_2 \dots A_N}}^2)$. Sama implementacji jest zawiła i mało elegancka co zachęca do eksploracji innych możliwości. Innym podejściem, który oferuje taką samą złożoność obliczeniową zaś jest bardziej przystępny implementacyjnie jest wykonywanie tej operacji na tzw. uogólnionym wektorze Blocha. W wcześniejszym rozdziale została wprowadzona baza Hilberta-Schmidta. Jest to zbiór macierzy, zawierających macierz jednostkową i $d_A^2-1$ bezśladowych macierzy ortoznormalizowanych w sensie iloczynu skalarnego Hilberta-Schmidta, czyli
+\begin{equation}
+\Trs \left( \Gamma_i \Gamma_j \right) = C\delta_{ij},
+\end{equation} gdzie C jest pewną stała normalizacyjną.
+Można rozpisać A jako:
+\begin{gather}
+A = \sum_{i=0}^{d^2_A-1} \sigma_i \Gamma_i = \mathbb{\sigma} \Gamma \\
+\mathbb{\sigma} := \{ \sigma_0, \sigma_1, \dots \} \\
+\Gamma := \{ \Gamma_0, \Gamma_1, \dots \}^T \\
+\sigma_i = \frac{1}{C} \Trs \left[ A \Gamma_i \right].
+\end{gather} Standardowo, gdy mówi się o wektorze Blocha narzucony jest zwykle warunek normalizacji śladu $\Trs A = 1$ co wyznacza $\sigma_0 = \frac{1}{d_{A_1A_2} \dots}$, który nie jest włączany do wektoru Blocha $\mathbb{\sigma}$. Tutaj jednak można mieć do czynienia z nieznormalizowanymi macierzami więc
+wyraz $\sigma_0$ jest nieokreślony i wraz z macierzą jednostkową włączony do odpowiednich wektorów. Jako bazę w celu obliczania ${}_XA$ wybrano uogólnione macierze Gell-Manna (UMG) \cite{gell_mann}; są uogólnieniem macierzy Pauliego na więcej wymiarów. Macierze te dzieli się na trzy grupy definiowane następująco:
+\begin{itemize}
+\item{$\frac{d(d-1)}{2}$ Symetrycznych UMG}
+\begin{equation}
+\Gamma_{ij}^S = \Ket{i}\Bra{j} + \Ket{j}\Bra{i}, \quad 1 \geq j < k \geq d.
+\end{equation}
+\item{$\frac{d(d-1)}{2}$ Antysymetrycznych UMG}
+\begin{equation}
+\Gamma_{ij}^A = -i\Ket{i}\Bra{j} + i\Ket{j}\Bra{i}, \quad 1 \geq j < k \geq d.
+\end{equation}
+\item{$(d-1)$ Diagonalnych UMG}
+\begin{equation}
+\Gamma_{i} = \sqrt{\frac{2}{i(i+1)}} \left( \sum_{j=1}^{l} \Ket{j}\Bra{j} - i\Ket{i+1}\Bra{i+1}\right), \quad 1 \geq l \geq d-1
+\end{equation}
+\end{itemize}
+UMG spełnia następująca relację ortoznormalizowania: $\Trs \Gamma_i \Gamma_j = 2\delta_{ij}$.
 %\listoftables
+W \cite{gell_mann} wyprowadzono następujące rozwinięcie standardowych macierzy w bazie UMG:
+\begin{equation}
+\label{gm_ij}
+\Ket{i}\Bra{j} =
+\begin{cases}
+\frac{1}{2} \left(\Gamma_{ij}^S + i \Gamma_{ij}^A\right), \quad \text{dla } j < k \\
+\frac{1}{2} \left(\Gamma_{ji}^S - i \Gamma_{ji}^A\right), \quad \text{dla } j < k \\
+- \sqrt{\frac{j-1}{2j}} \Gamma_{j-1}  + \sum_{n=0}^{d-j-1} \frac{1}{\sqrt{2(j+n)(j+n+1)}} \Gamma_{j+n} + \frac{1}{d}\I, \quad \text{dla } j=k.
+\end{cases}
+\end{equation}
+Łatwo zauważyć, że posiadając ortogonalną bazę w systemie A $\{\Gamma_i^A\}$ i bazę w B $\{ \Gamma_j^B \}$ macierze $\{\Gamma_i \otimes \Gamma_j\}$ tworzą bazę w $A \otimes B$, ponieważ:
+\begin{align}
+\Trs& \left[ (\Gamma_i^A \otimes \Gamma_j^B) (\Gamma_e^A \otimes \Gamma_f^B)\right] \\
+&= \Trs \left[ \Gamma_i^A \Gamma_e^A \otimes \Gamma_j^B \Gamma_f^B \right] \\
+&= \Trs \left[ \Gamma_i^A \Gamma_e^A\right] ~\Trs \left[\Gamma_j^B \Gamma_f^B\right] \\
+&= CD \delta_{ie} \delta_{jf}.
+\end{align}
+Korzystając z tego wyniku jako bazę w $P \otimes A_1 \otimes A_2 \otimes B_1 \otimes B_2 \otimes F$ można wziąć $\{ \Gamma_i \otimes \Gamma_j \otimes \Gamma_k \otimes \Gamma_l \otimes \Gamma_e \otimes \Gamma_f\}$, gdzie poszczególne macierze są UMG o odpowiednim wymiarze. Macierz ta skrótowo będzie nazywana $\Gamma_{ijklef}$.
+Można teraz zapisać:
+\begin{equation}
+\label{WGM}
+W = \sum_{ijklef} \sigma_{ijklef} \Gamma_{ijklef} = \sigma \Gamma.
+\end{equation}
+Rozpisując W w bazie $\Ket{i}\Bra{j}$ otrzymuje się
+\begin{equation}
+W = \sum_{ij} \alpha_{ij} \Ket{i}\Bra{j}.
+\end{equation}
+Zauważa dalej się, że
+\begin{equation}
+\Ket{m}^A\Ket{n}^B\Bra{i}^A\Bra{j}^B = \Ket{d_A~m+n}^{AB}\Bra{d_A~i+j}^{AB}
+\end{equation}. Wnioskiem z łączności iloczynu tensorowego jest fakt, że baza CB w większy wymiarze jest iloczynem tensorowym pewnej ilości baz CB w poszczególnych systemach.
+Rozważa się dalej, jak wygląda wektor Blocha macierzy typu $\Ket{i}\Bra{j}$.
+Widać, że:
+\begin{equation}
+A \otimes B = (\sigma^A \Gamma^A) \otimes (\sigma^B \Gamma^B) = (\sigma^A \otimes \sigma^B) (\Gamma^A \otimes \Gamma^B).
+\end{equation} Co przekładając na macierz $\Ket{i}\Bra{j}$ daje:
+\begin{equation}
+\Ket{i}\Bra{j}=\Ket{ijklef_1}\Bra{ijklef_2} =  \sigma_{ijklef} \Gamma = (\sigma_i \otimes \sigma_j \otimes \sigma_k \otimes \sigma_l \otimes \sigma_e \otimes \sigma_f) \Gamma.
+\end{equation}
+Z równania \eqref{gm_ij} widać, że wyrazy typu macierze $\Ket{i}\Bra{j}$ dla $i \neq j$ mają stała ($O(1)$) liczbę niezerowych współrzędnych $\sigma_i$ i jest ich $O(d^2)$ dla ogólnej macierzy. Zaś wyrazy, gdzie $i = j$ mają $O(d)$ niezerowych wyrazów, ale jest ich tylko $O(d)$ więc policzenie ich wkładu dla dowolnej macierzy również zajmuje 
+$O(d^2)$ czasu. Co pokazuje, że policzenie wektory Blocha dla bazy UMG zajmuje $O(d^2)$ czasu. Korzystając z analogicznego argumentu można pokazać, że odwrotna transformacja działa również w $O(d^2)$. Dalej zostanie pokazane, że obliczenia wektora Blocha dla baz składających się z O(1) iloczynów tensorowych baz UMG również jest kwadratowy względem wymiaru systemu złożonego. Widać to od razu, gdy rozważy się ile czasu zajmuje obliczenie wektora Blocha następującej macierzy:
+\begin{equation}
+\Ket{i}\Bra{i} \otimes \Ket{j}\Bra{j} \otimes \Ket{k}\Bra{l} \otimes \Ket{e}\Bra{f}, \quad \text{gdzie }k \neq l, e \neq f.
+\end{equation} Wyrazy typu zaprezentowanego powyżej mają $O(d_1d_2)$ i jest ich w rozkładzie pewnej ogólnej macierzy $O(d_1d_2d_3^2d_4^2)$. Widać, że wyrazy typu $\Ket{i}\Bra{i}$ kontrybuują liniową ilość wyrazów do wektora Blocha i jest ich liniowa ilość, zaś wyrazy typu $\Ket{i}\Bra{j}$ dają stała ilość wyrazów, lecz jest ich kwadratowa ilość, a dla systemów złożonych złożoność widocznie się faktoryzuje. Sumując po wszystkich ustawieniach wyrazów diagonalnych i niediagonalnych otrzymuje się $O(1)$ wyrazów $O(d^2)$, czyli ostatecznie złożoność to obliczania rozkładu $O(d^2)$.
+Definiując operację
+\begin{equation}
+({}^X\sigma) \Gamma = {}_X(\sigma\Gamma),
+\end{equation} jej jawne działanie jest bardzo proste a mianowicie, dla pewnego wektora Blocha opisującego system złożony $A \otimes X \otimes B$ mapuje ona ijk-ty element wektora do
+\begin{equation}
+\sigma_{ijk} \mapsto \delta_{j0}\sigma_{ijk}.
+\end{equation}
+Korzystając dalej z faktu, że ${}_{XY}A = {}_X({}_Y A)$. Zaaplikowanie projektora $L_V$ sprowadza się do wykonania $O(1)$ operacji na $O(d^2)$ elementach wektory Blocha, czyli złożoność znów kwadratowa.
+Warto jeszcze podkreślić, że dla zadania liczenia projektora kolejnych macierzy $L_V(\Ket{i}\Bra{j})$ wydajniejsze jest, z powodu małej liczby elementów w wektorze Blocha, porzucenie stałej struktury wektora Blocha na zmienna i trzymanie w wektorze $\Gamma$ tylko tych macierzy, które mają wkład do macierzy $\Ket{i}$
+$\Bra{j}$. Warto również zwrócić szczególną uwagę na fakt w jakich systemach macierz bazowa ma macierz jednostkową. Pozwala to na obliczenie $O(d^2)$ wektorów Blocha w $O(d^2)$ czasu.
+
+\end{appendices}
 
 \bibliographystyle{plain}
 \bibliography{bibliografia}
