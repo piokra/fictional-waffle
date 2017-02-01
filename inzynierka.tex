@@ -888,6 +888,8 @@ Ważne są również badania nad skutecznymi metodami spełniania wystarczające
 \listoffigures
 \newpage
 
+\bibliographystyle{plain}
+\bibliography{bibliografia}
 \begin{appendices}
 \section{Szybkie obliczanie $L_V$}
 W wielu przypadkach, gdy ma się do czynienia z dużymi macierzy konieczne jest skorzystanie z metod numerycznych. Problematyczne ze względu na złożoność obliczeniową okazują się nawet takie pozornie proste operacje jak częściowy ślad. Licząc naiwnie go z następującej formuły, która jest łatwa do zaimplementowania
@@ -919,11 +921,11 @@ wyraz $\sigma_0$ jest nieokreślony i wraz z macierzą jednostkową włączony d
 \begin{itemize}
 \item{$\frac{d(d-1)}{2}$ Symetrycznych UMG}
 \begin{equation}
-\Gamma_{ij}^S = \Ket{i}\Bra{j} + \Ket{j}\Bra{i}, \quad 1 \geq j < k \geq d.
+\Gamma_{ij}^S = \Ket{i}\Bra{j} + \Ket{j}\Bra{i}, \quad 1 \leq i < j \leq d.
 \end{equation}
 \item{$\frac{d(d-1)}{2}$ Antysymetrycznych UMG}
 \begin{equation}
-\Gamma_{ij}^A = -i\Ket{i}\Bra{j} + i\Ket{j}\Bra{i}, \quad 1 \geq j < k \geq d.
+\Gamma_{ij}^A = -i\Ket{i}\Bra{j} + i\Ket{j}\Bra{i}, \quad 1 \leq i < j \leq d.
 \end{equation}
 \item{$(d-1)$ Diagonalnych UMG}
 \begin{equation}
@@ -937,8 +939,8 @@ W \cite{gell_mann} wyprowadzono następujące rozwinięcie standardowych macierz
 \label{gm_ij}
 \Ket{i}\Bra{j} =
 \begin{cases}
-\frac{1}{2} \left(\Gamma_{ij}^S + i \Gamma_{ij}^A\right), \quad \text{dla } j < k \\
-\frac{1}{2} \left(\Gamma_{ji}^S - i \Gamma_{ji}^A\right), \quad \text{dla } j < k \\
+\frac{1}{2} \left(\Gamma_{ij}^S + i \Gamma_{ij}^A\right), \quad \text{dla } i < j \\
+\frac{1}{2} \left(\Gamma_{ji}^S - i \Gamma_{ji}^A\right), \quad \text{dla } i > j \\
 - \sqrt{\frac{j-1}{2j}} \Gamma_{j-1}  + \sum_{n=0}^{d-j-1} \frac{1}{\sqrt{2(j+n)(j+n+1)}} \Gamma_{j+n} + \frac{1}{d}\I, \quad \text{dla } j=k.
 \end{cases}
 \end{equation}
@@ -984,12 +986,24 @@ Definiując operację
 \sigma_{ijk} \mapsto \delta_{j0}\sigma_{ijk}.
 \end{equation}
 Korzystając dalej z faktu, że ${}_{XY}A = {}_X({}_Y A)$. Zaaplikowanie projektora $L_V$ sprowadza się do wykonania $O(1)$ operacji na $O(d^2)$ elementach wektory Blocha, czyli złożoność znów kwadratowa.
-Warto jeszcze podkreślić, że dla zadania liczenia projektora kolejnych macierzy $L_V(\Ket{i}\Bra{j})$ wydajniejsze jest, z powodu małej liczby elementów w wektorze Blocha, porzucenie stałej struktury wektora Blocha na zmienna i trzymanie w wektorze $\Gamma$ tylko tych macierzy, które mają wkład do macierzy $\Ket{i}$
-$\Bra{j}$. Warto również zwrócić szczególną uwagę na fakt w jakich systemach macierz bazowa ma macierz jednostkową. Pozwala to na obliczenie $O(d^2)$ wektorów Blocha w $O(d^2)$ czasu.
-
+Warto jeszcze podkreślić, że ze względu na rzadkość wektorów Blocha wskazanym jest trzymanie go w postaci par $\{ (\sigma_{ijklef}, \Gamma_{ijklef}) \}$ w celu osiągnięcia odpowiedniej złożoności przy wykonywanie wielu obliczeń projektorów macierzy standardowych.
+\section{Jawna postać $\Pi_\LPV$}
+Operator $\Pi_\LPV$ definiuje się następująco:
+\begin{equation}
+\forall i,j~\Pi_\LPV \KKet{\Ket{i}\Bra{j}} = \KKet{\LPV(\Ket{i}\Bra{j})}.
+\end{equation}
+Dalej przytaczając argument z poprzedniego dodatku o CB zapisać można:
+\begin{equation}
+\KKet{\Ket{i}\Bra{j}} = \Ket{i}\Ket{j} = \Ket{i d_a + j} = \Ket{e}.
+\end{equation} Widać z tego, że postać CJ macierzy standardowej to wektor CB w innej przestrzeni.
+Definiuje się wektor $\Ket{\pi_{e}} = \KKet{\LPV(\Ket{i}\Bra{j})}$. Zauważa się teraz, że 
+\begin{equation}
+\Pi_\LPV \Ket{e} = \Ket{\pi_{e}},
+\end{equation} czyli macierz $\Pi_\LPV$ mapuje wektory bazowe CB na pewne inne wektory co z definicji macierzy mówi, że e-ta kolumna macierzy $\Pi_\LPV$ to wektor $\Ket{\pi_{e}}$.
+Trzeba dalej zauważyć jednakże, że niewskazane jest trzymanie macierzy $\Pi_\LPV$ w gęstej reprezentacji, gdzie każde pole macierzy ma swoją jawną reprezentacje w pamięci.
+Niemożliwość tego może uświadomić następująca obserwacja. Łatwo sprawdzić, że macierz ta ma $O(d^4)$ elementów. W przypadku projektora odpowiadającego macierzy przedstawionej w trzecim rozdziale zajmowałaby ona ok. 205TB pamięci w przypadku podwójnej precyzji.
+Przytaczając argument z dodatku A wiadome jest, że macierz ta ma $O(d^2)$ niezerowych elementów. Konieczna więc jest reprezentacja tej macierzy w rzadkim formacie np. skompresowanym formacie kolumnowym.
 \end{appendices}
 
-\bibliographystyle{plain}
-\bibliography{bibliografia}
 
 \end{document}
