@@ -126,21 +126,25 @@
 \newpage
 %\begin{multicols*}{2}
 \begin{abstract}
-W pracy został zaprezentowany formalizm macierzy procesu, który opisuje regułę obliczania prawdopodobieństw otrzymania danych wyników w lokalnych laboratoriach przy wykorzystaniu potencjalnie nieprzyczynowych zasobów. Następnie przedstawiono zadanie komunikacyjne, w którym zasób o nieokreślonej przyczynowości może osiągać lepsze wyniki niż zasób klasyczny. Pokazano klasę procesów, która ilustruje fakt, że niewystarczająca jest nieseparowalność do złamania nierówności przyczynowych. Dalej zaprezentowano tak zwany \textit{causal witness}, który służy do stwierdzenia, czy dany zasób można rozłożyć na probabilistyczną kombinację zasobów o ściśle określonej przyczynowości. Na ich podstawie wykonano eksperymenty, które empirycznie potwierdziły fakt, że nieprzycznowość występuje w naturze. Pokazano również miarę nieseparowalności. Następnie przedstawiono postulat, który ma wskazywać jakie procesy mogą być implementowalne fizycznie.
+W pracy został zaprezentowany formalizm macierzy procesu, który opisuje regułę obliczania prawdopodobieństw otrzymania danych wyników w lokalnych laboratoriach przy wykorzystaniu potencjalnie nieprzyczynowych zasobów. Następnie przedstawiono zadanie komunikacyjne, w którym zasób o nieokreślonej przyczynowości może osiągać lepsze wyniki niż zasób klasyczny. Pokazano klasę procesów, która ilustruje fakt, że niewystarczająca jest nieseparowalność do złamania nierówności przyczynowych. Dalej zaprezentowano tak zwanego świadka przyczynowości (\textit{causal witness}), który służy do stwierdzenia, czy dany zasób można rozłożyć na probabilistyczną kombinację zasobów o ściśle określonej przyczynowości. Za ich pomocą zostało pokazane w literaturze, że występowanie nieokreślonego porządku przyczynowego w naturze ma podstawy empiryczne. Zaprezentowano również miarę nieseparowalności. Następnie przedstawiono postulat, który ma wskazywać jakie procesy mogą być implementowalne fizycznie.
 \end{abstract}
 %\addto{\captionsLANGUAGE}{\renewcommand{\abstractname}{Abstract}}
 \renewcommand{\abstractname}{Abstract}
 \begin{abstract}
-In this work process matrix formalism is presented. It can be considered a way to calculate probabilities of obtaining certain results in local laboratories using possibly not casual resources. Next a communication task is shown. In this task a resource that is not casual can do better than a classic one. Following it a tool that can discriminate processes with indefinite casual order is described. A class of inseparable processes unable to violate any causal inequallity was also illustrated. The so called causal witness was used to experimentally show that indefinite causal order is, in fact, a naturally occuring phenomena. A inseparability measure was also shown. Following it a purification postulate is characterized. It is a tool that is theorized to imply whether a following resource may be implemented physically.
+In this work process matrix formalism is presented. It can be considered a way to calculate probabilities of obtaining certain results in local laboratories using possibly not causal resources. Next a communication task is shown. In this task a resource that is not causal can do better than a classic one. Following it a tool that can discriminate processes with indefinite causal order is described. A class of inseparable processes unable to violate any causal inequallity was also illustrated. The so called causal witness was used to experimentally show that indefinite causal order is, in fact, a naturally occuring phenomena. A inseparability measure was also shown. Following it a purification postulate is characterized. It is a tool that is theorized to imply whether a following resource may be implemented physically.
 \end{abstract}
 \section{Wstęp}
 %%%%
 \subsection{Historia}
-Mechanika kwantowa od samego początku jej badania budziła wiele kontrowersji. Wiele osób miało problem z zaakceptowaniem faktu, iż
-na fundamentalnym poziomie rzeczywistość nie jest deterministyczna, jak nam się wydawało. Zarówno losowa natura tej teorii, jak i wiele "dziwnych" cech mechaniki kwantowej była początkowo trudna do zaakceptowania. Rok po opublikowaniu pracy Schrödingera, Einstein w swojej pracy zamieścił zdanie, które kierunkowało badania w tamtym czasie, zaś dziś jest wraz z innymi popularnymi powiedzeniami kwantowymi zakorzenione w kulturze, a mianowicie, że "Bóg nie gra w kości". Ta teza później okazała się być nieprawdziwa - przynajmniej nie w takim stopniu, w jakim autor by sobie życzył. Sam formalizm doczekał się wielu interpretacji, często bardziej filozoficznych. Dzisiaj najpopularniejszymi są interpretacja kopenhaska, teoria wielu światów, czy idei inkorporująca kwantową grawitację w mechanizmie pomiaru. Mimo tego jest to bardzo matematycznie elegancka teoria, którą można nazwać jednym z największych osiągnięć współczesnej fizyki. Wielokrotnie jej "dziwne" przewidywania zostały potwierdzone eksperymentalnie z wręcz idealną dokładnością (w przeciwieństwie do np. stałej kosmologicznej, której niedokładność przekracza wiele dziesiątek rzędów wielkości). 
+Mechanika kwantowa od samego początku jej badania budziła wiele kontrowersji. Wiele badaczy miało trudności z zaakceptowaniem faktu, iż
+na fundamentalnym poziomie rzeczywistość nie jest deterministyczna, jak nam się wydawało. Zarówno losowa natura tej teorii, jak i wiele zadziwiających cech mechaniki kwantowej była początkowo źródłem wielu zaciekłych dyskusji. Rok po opublikowaniu pracy Schrödingera, Einstein w swojej pracy zamieścił zdanie, które częściowo wyznaczało nurt badań w tamtym czasie, zaś dziś jest wraz z innymi popularnymi powiedzeniami kwantowymi zakorzenione w kulturze, a mianowicie, że "Bóg nie gra w kości". Ta teza później okazała się być nieprawdziwa - przynajmniej nie w takim stopniu, w jakim autor by sobie życzył. Sam formalizm doczekał się wielu interpretacji, często z wieloma elementami filozoficznymi. Dzisiaj najpopularniejszymi są interpretacja kopenhaska, teoria wielu światów, czy idea inkorporująca kwantową grawitację w mechanizmie pomiaru. Ostatnia przytoczona pozycja wciąż oczekuje na sformułowanie, które jest zgodne z eksperymentami, lecz pozostaje ideą ciekawą dla wielu badaczy. Mimo tego jest to matematycznie bardzo elegancka teoria, którą można nazwać jednym z największych osiągnięć współczesnej fizyki. Wielokrotnie jej zaskakujące przewidywania zostały potwierdzone eksperymentalnie z niemal idealną dokładnością (w przeciwieństwie do np. stałej kosmologicznej, której niedokładność przekracza wiele dziesiątek rzędów wielkości). 
 \subsection{Podstawowe informacje}
-Przechodząc do bardziej konkretnych rzeczy, systemy w mechanice kwantowej opisuje się jako elementy przestrzeni Hilberta $\psi \in \Hx{}$, a tak zwane obserwable - samosprzężone operatory $A \in \LHx{}$, które opisują pomiary, jakie można wykonać na danym systemie. W przypadku skończenie wymiarowym bądź policzalnym można powiedzieć, że $\Hx{A} = \mathcal{C}^N$ i
-obserwable są po prostu macierzami hermitowskimi odpowiedniego wymiaru. Przez znak równości rozumie się przestrzeń Hilberta zbudowaną na tym zbiorze z odpowiednimi działaniami. Dosyć standardowym i wygodnym jest wykorzystywanie tak zwanej notacji Diraca, a mianowicie przedstawianie $\psi = \Ket{\psi}$ i $\psi^\dag = \Bra{\psi}$
+Stany systemów w mechanice kwantowej opisuje się jako elementy przestrzeni Hilberta $\psi \in \Hx{}$, a tak zwane obserwable - samosprzężone
+\footnote{
+Operatorem sprzężony do ograniczonego liniowego operatora $T: \Hx{A} \mapsto \Hx{B}$ jest taki operator $T^*: \Hx{B} \mapsto \Hx{A}$, który spełnia następujący warunek $\langle T x,  y \rangle = \langle x,T^*  y \rangle$, gdzie przez $\langle \circ, \circ \rangle$ rozumie się iloczyn skalarny, zaś $x \in \Hx{A}, y \in \Hx{B}$. Operatorem samosprzężonym jest taki operator, gdzie $T^* = T$. W przypadku macierzy kwadratowych i iloczynu skalarnego wynikającego z mnożenia macierzy jest to warunek, że $A^\dag = A$, gdzie $A^\dag = (A^*)^T$. Takie macierze nazywa się hermitowskimi.
+} operatory $A \in \LHx{}$, które opisują fizyczne wielkości obserwowalne, jakie można zmierzyć na danym systemie. W przypadku skończenie wymiarowym bądź policzalnym można powiedzieć, że $\Hx{A} = \mathcal{C}^N$ i
+obserwable są po prostu macierzami hermitowskimi odpowiedniego wymiaru. Przez znaków równości skrótowo określono, że jest to przestrzeń wektorowa nad ciałem tych liczb z iloczynem skalarnym wynikającym z mnożenia macierzy. Dosyć standardowym i wygodnym jest wykorzystywanie tak zwanej notacji Diraca, a mianowicie przedstawianie $\psi = \Ket{\psi}$ i $\psi^\dag = \Bra{\psi}$.
+Przykładowo w elementy $\psi \in \mathcal{C}^3$:
 \begin{align}
 \psi = 
 \begin{pmatrix}
@@ -153,29 +157,34 @@ a_1^*~a_2^*~a_3^*
 \end{pmatrix}
 := \Bra{\psi}
 \end{align}
-\begin{figure}[th]
+Szeroko stosowanym zapisem w celu opisania wektorów bazowych tzw. bazy obliczeniowej (\textit{computational basis}, CB), czyli wektorów posiadającym jedyny niezerowy element o wartości jeden na $i$-tej pozycji, jest $\Ket{i}$.
+Przykładowo w $\mathcal{C}^3$
+\begin{equation}
+\Ket{2} = \begin{pmatrix} 0\\0\\1 \end{pmatrix}.
+\end{equation} Sposób iterowanie często różni się między pozycjami w literaturze. Tutaj przyjęto iterowanie od zera.
+\begin{figure}[t]
 \centering
 \includegraphics[width=0.20\textwidth]{obrazki/Bloch_sphere}
-\caption{Sfera Blocha. Punkty na tej sferze opisują wszystkie możliwe stany $\KP$.}
+\caption{Sfera Blocha. Punkty na tej sferze opisują wszystkie możliwe stany z dokładnością do czynnika fazowego.$\KP$.}
 \label{fig:bloch}
 \end{figure}
 Wygodnie narzucić warunek normalizacji stanów, a mianowicie $\Bra{\psi}\Ket{\psi} := \Braket{\psi|\psi} = 1$, wtedy wartość oczekiwaną obserwabli w danym stanie $\Ket{\psi}$ oblicza się tak: $\Braket{A} := \Bra{\psi}A\Ket{\psi}$. Warto zauważyć, że skoro obserwable opisywane są przez macierze hermitowskie, można 
-skorzystać z twierdzenia spektralnego i zapisać $A = \sum_i^N \lambda_i \Ket{\lambda_i}$, gdzie $\lambda_i$ opisuje i-tą wartość własną zaś $\Ket{\lambda_i}$ to i-ty wektor własny, który dobrano tak, że $\Braket{i|j} = \delta_{ij}$, $\{\Ket{i}\}$ tworzy ortonormalna bazę w $\Hx{}$. Jednym z postulatów mechaniki kwantowej jest tzw. postulat pomiaru von Neumanna. Mówi on, że wykonując pomiar obserwablą A na systemie w stanie $\Ket{\psi}$ i otrzymując wartość $\lambda_i$ odpowiadająca wektorowi własnemu $\Ket{\lambda_i}$ zapada się on w stan $\Ket{\lambda_i}$. Można zapisać go w następujący sposób opisujący warunkową ewolucję po pomiarze
+skorzystać z twierdzenia spektralnego i zapisać $A = \sum_i^N \lambda_i \Ket{\lambda_i}$, gdzie $\lambda_i$ opisuje i-tą wartość własną zaś $\Ket{\lambda_i}$ to i-ty wektor własny, który dobrano tak, że $\Braket{\lambda_i|\lambda_j} = \delta_{ij}$, $\{\Ket{\lambda_i}\}$ tworzy ortonormalna bazę w $\Hx{}$. Jednym z postulatów mechaniki kwantowej jest tzw. postulat pomiaru von Neumanna. Mówi on, że wykonując pomiar obserwablą A na systemie w stanie $\Ket{\psi}$ i otrzymując wartość $\lambda_i$ odpowiadająca wektorowi własnemu $\Ket{\lambda_i}$ powoduje się przejście w stan $\Ket{\lambda_i}$. Można, zakładając brak zdegenerowania niezerowych wartości własnych, zapisać w następujący sposób opisujący warunkową ewolucję po pomiarze 
 \begin{equation}
 \label{eq:cond_ev}
 \Ket{\psi} \mapsto \frac{\Pi_i\Ket{\psi}}{\sqrt{\Bra{\psi}\Pi_i \Ket{\psi}}},
 \end{equation}
-gdzie $\Pi_i$ jest projektorem odpowiadającym $\Ket{\lambda_i}\Bra{\lambda_i}$. Zapisująć $\KP = \sum^N_i a_i \Ket{\lambda_i}, \sum^N_i |a_i|^2=1$, prawdopodobieństwo zaobserwowania wyniku $\lambda_i$ jest równe $|a_i|^2$, lub równoważnie
+gdzie $\Pi_i$ jest projektorem odpowiadającym $\Ket{\lambda_i}\Bra{\lambda_i}$. Zapisując $\KP = \sum^N_i a_i \Ket{\lambda_i}, \sum^N_i |a_i|^2=1$, prawdopodobieństwo zaobserwowania wyniku $\lambda_i$ jest równe $|a_i|^2$, lub równoważnie
 \begin{equation}
 \Pro{\lambda_i} = \BP \Pi_i \KP,
 \end{equation}
-co znane jest jako reguła Borna. Fakt, że obserwable są opisywane przez macierze Hermitowskie zapewnia, że $\sum^N_i \Ket{\lambda_i}\Bra{\lambda_i} = \mathbb{1}$, co dalej implikuje, że $\sum^N_i \Pro{\lambda_i} = \sum^N_i \BP \Pi_i \KP = \BP \sum^N_i \Pi_i \KP = \Braket{\psi | \psi} = 1$
+co znane jest jako reguła Borna. Fakt, że obserwable są opisywane przez macierze hermitowskie zapewnia, że $\sum^N_i \Ket{\lambda_i}\Bra{\lambda_i} = \mathbb{1}$, co dalej implikuje, że $\sum^N_i \Pro{\lambda_i} = \sum^N_i \BP \Pi_i \KP = \BP \sum^N_i \Pi_i \KP = \Braket{\psi | \psi} = 1$
 Stan całego systemu składającego się z pewnej ilości systemów opisuje element z
 \begin{equation}
-\Hx{AB\dots} = \Hx{A} \otimes \Hx{B} \otimes \dots,
+\Hx{AB\dots Z} = \Hx{A} \otimes \Hx{B} \otimes \dots \Hx{Z},
 \end{equation}
-gdzie $\otimes$ to iloczyn tensorowy. Wraz ze wzrostem systemów składających się na system ilość wektorów bazowych rośnie eksponencjalnie, co jest fundamentem tzw. "kwantowego przyśpieszenia", które pozwala heurystycznie/przybliżenie rozwiązać na komputerach kwantowych niektóre klasyczne problemy z eksponencjalnym przyśpieszeniem,
-np. faktoryzacja liczb, rozwiązywanie układów liniowych czy odpowiednio sformułowane problemy uczenia maszynowego.
+gdzie $\otimes$ to iloczyn tensorowy. Wraz ze wzrostem podsystemów składających się na system ilość wektorów bazowych rośnie eksponencjalnie, co jest fundamentem tzw. "kwantowego przyśpieszenia", które pozwala heurystycznie/przybliżenie rozwiązać na komputerach kwantowych niektóre klasyczne problemy z eksponencjalnym przyśpieszeniem,
+np. faktoryzacja liczb \cite{shor}, rozwiązywanie układów liniowych \cite{soeq} czy odpowiednio sformułowane problemy uczenia maszynowego \cite{qsvm, qpca}.
 Ważną rzeczą do zaobserwowania jest fakt, że istnieją takie systemy, których nie można zapisać jako iloczyn stanów w poszczególnych podsystemach. Klasycznym przykładem tego jest
 \begin{gather*}
 \Hx{AB} = \mathcal{C}^2 \otimes \mathcal{C}^2 \\
@@ -183,18 +192,32 @@ Ważną rzeczą do zaobserwowania jest fakt, że istnieją takie systemy, który
 a_0\Ket{0} + a_1\Ket{1} \otimes b_0\Ket{0} + b_1\Ket{1} = a_0b_0 \Ket{00} + a_0b_1\Ket{01} + a_1b_0\Ket{10} + a_1b_1\Ket{11} \\
 a_0b_1 = 0\implies a_0 = 0\vee b_1 = 0 \\
 a_1b_0 = 0\implies a_1 = 0\vee b_0 = 0 \\
-\text{Powyższe implikuje, że } a_0b_0 \neg 1 \vee a_1b_1 \neg 1.
-\end{gather*} Takie systemy, których nie da się zapisać w postaci $\Ket{\psi} = \Ket{\psi}_A \otimes \Ket{\phi}_B$, nazywa się splątanymi. Splątanie kwantowe jest zasobem, który znalazł zastosowanie w wielu nowatorskich aplikacjach, jak np. kryptografia kwantowa, certyfikowana losowość, teleportacja kwantowa czy wcześniej przytoczone "kwantowe przyśpieszenie".
-Często w rozważaniach ogranicza się do skończonych przestrzeni Hilberta o wybranych rozmiarach. Najmniejszą i niepodzielną jednostką informacji jest kubit ($\Hx{} = \mathcal{C}^2$), fizycznie reprezentujący np. cząstkę ze spinem-$\frac{1}{2}$ (elektron), polaryzację fotonu. W wielu dziedzinach informatyki kwantowej ogranicza się praktycznie wyłącznie do analizy systemów złożonych z kubitów ze względu
+\text{Powyższe implikuje, że } a_0b_0 \neq 1 \vee a_1b_1 \neq 1.
+\end{gather*} Takie systemy, których nie da się zapisać w postaci $\Ket{\psi} = \Ket{\psi}_A \otimes \Ket{\phi}_B$, nazywa się splątanymi. Splątanie kwantowe jest zasobem, który znalazł zastosowanie w wielu nowatorskich aplikacjach, jak np. kryptografia kwantowa\cite{crypto}, certyfikowana losowość \cite{rand}, teleportacja kwantowa\cite{qt} czy wcześniej przytoczone "kwantowe przyśpieszenie".
+Często w rozważaniach ogranicza się do skończonych przestrzeni Hilberta o wybranych rozmiarach. Najmniejszą i niepodzielną jednostką informacji jest kubit ($\Hx{} = \mathcal{C}^2$), fizycznie reprezentujący np. cząstkę ze spinem-$\frac{1}{2}$ (elektron), lub polaryzację fotonu. W wielu dziedzinach informatyki kwantowej ogranicza się praktycznie wyłącznie do analizy systemów złożonych z kubitów ze względu
 na pewną prostotę i wygodę badania takich systemów. Ciekawą interpretacją kubitów prezentuje Sfera Blocha (rysunek \ref{fig:bloch}). Punkty na tej sferze opisują wszystkie prawidłowe znormalizowane $\KP \in \mathcal{C}^2$.
-Okazuje się jednak, że formalizm stanów jest niewystarczający do opisu zespołów statystycznych (system znajduje się w jakimś z $\Ket{\psi_i}$ stanów z prawdopodobieństwem $p_i$) wynikających z braku pełnej wiedzy o systemie bądź sposobie jego przygotowania. Do opisu takich sytuacji używa się macierzy gęstości, definiowanych następująco
+Okazuje się jednak, że formalizm stanów jest niewystarczający do opisu zespołów statystycznych (system znajduje się w jakimś z stanów z pewnym prawdopodobieństwem) wynikających z braku pełnej wiedzy o systemie bądź sposobie jego przygotowania. Do opisu takich sytuacji używa się macierzy gęstości. 
+Macierz gęstości odpowiadająca systemie w pewnym stanie $\KP$ to $\rho = \KP \BP$.
+W przypadku, gdy stan znajduje się w jakimś stanie $\Ket{\psi_i}$ z prawdopodobieństwem $p_i$ macierz gęstości to
+\begin{equation}
+\rho = \sum_i p_i \Ket{\psi_i}\Bra{\psi_i}.
+\end{equation}
+Powyższa rozkład nie jest unikatowy, dana macierz gęstości reprezentuje wiele różnych zespołów statystycznych, które generują jednakowe prawdopodobieństwa.
+W celu narzucenia generowania prawidłowego prawdopodobieństwa reguła opisaną dalej narzuca się na macierz $\rho$ następujące warunki
 \begin{gather}
-\rho = \KP \BP \\
+\rho \geq 0\footnote
+{
+Przez relacje większości rozumie się, że $\Bra{\psi}\rho\Ket{\phi}~\forall~\Ket{\psi}, \Ket{\phi}$. Jest to równoważne z narzuceniem warunku, by każda wartość własna $\rho$ była większa równa zero.
+} \\
+\Trs \rho = 1
+\end{gather}
+Wielkości i działania, analogiczne do tych opisanych w stosunku do stanów, w przypadku macierzy gęstości wyglądają następująco:
+\begin{gather}
 \Braket{A} = \Tr{A\rho} \\
 \Pro{\lambda_i} = \Tr{\Pi_i \rho}\\
 \rho \mapsto \frac{\Pi_i\rho\Pi_i}{\Trs(\Pi_i\rho)}
 \end{gather}
-Prócz warunkowej ewolucji podczas pomiaru, systemy kwantowe podlegają również ewolucji czasowej. W obrazie Schrödingera ewoluują stany. Wygląda to następująco
+Prócz warunkowej ewolucji podczas pomiaru, systemy kwantowe podlegają również ewolucji czasowej. W obrazie Schrödingera ewoluują stany. Wygląda to następująco:
 \begin{gather}
 U(t)\Ket{\psi(0)} = \Ket{\psi(t)} \\
 U(t)^\dag\Ket{\psi(t)} = \Ket{\psi(0)}
@@ -203,7 +226,7 @@ W obrazie Heisenberga ewoluują zaś obserwable
 \begin{gather}
 A(t) = U^\dag A(0)U,
 \end{gather}
-gdzie $U(t)$ jest pewnym unitarnym operatorem ($U^\dag U = \mathbb{1}$) działającym na $\Hx{}$. Pomiar rzutujący nie jest jedynym pomiarem, który można wykonać. Najogólniejszym pomiarem, który można wykonać w mechanice kwantowej jest \textit{positive valued measurement} (POVM). Opisywany jest on przez
+gdzie $U(t)$ jest pewnym unitarnym operatorem ($U^\dag U = U U^\dag = \mathbb{1}$) działającym na $\Hx{}$. Pomiar rzutujący nie jest jedynym pomiarem, który można wykonać. Najogólniejszym pomiarem, który można wykonać w mechanice kwantowej jest \textit{positive valued measurement} (POVM). Opisywany jest on przez
 zbiór takich operatorów $\{E_i\}$, że $E_i > 0,~\sum_i E_i = \mathbb{1}$. Poprzednie reguły przechodzą w
 \begin{gather}
 \Pro{x_i} = \Bra{\psi} E_i \Ket{\psi}\\
@@ -212,22 +235,26 @@ E_i = \sum_j = A^\dag_{ij}A_{ij} \\
 \rho \mapsto \frac{\sum_j A_{ij} \rho A^\dag_{ij}}{\Tr{\sum_j A_{ij} \rho A^\dag_{ij}}}.
 \end{gather} Pomiary takie realizuje się korzystając z \textit{ancilli} (pomocniczy system), ewoluując złożony system odpowiednio dobranym operatorem unitarnym, następnie dokonując pomiaru rzutującego na \textit{ancilli} i po odnotowaniu wyniku odrzuceniu jej.
 % tutaj moze przyklad
-Ważnym narzędziem w formalizmie kwantowym są tak zwane kanały kwantowe \textit{quantum channel}, opisujące fizyczne połączenia, ich działania na fizyczny system. Klasycznym analogiem może być np. linia telefoniczna czy światłowód transmitujący internet. 
-Przykładem fizycznej implementacji może znów być światłowód, który transmituje fotony, opisywany jako kubit. 
-Kanały kwantowe opisują mapy $\mathcal{M}: \mathcal{L}(\Hx{A}) \to \mathcal{L}{\Hx{B}}$ mapujące liniowe operatory w przestrzeni wejściowej na liniowe operatory w przestrzeni wyjściowej, gdzie $\mathcal{M}$ jest \textit{completely positive} (CP)\footnote
+Ważnym narzędziem w formalizmie kwantowym są tak zwane kanały kwantowe (\textit{quantum channel}), opisujące fizyczne połączenia, ich działania na fizyczny system. Klasycznym analogiem może być np. linia telefoniczna czy światłowód transmitujący internet. 
+Przykładem fizycznej implementacji może znów być światłowód, który transmituje fotony, opisywane jako kubity. 
+Kanały kwantowe opisują odwzorowania $\mathcal{M}: \mathcal{L}(\Hx{A}) \to \mathcal{L}({\Hx{B}})$ odwzorowujące liniowe operatory w przestrzeni wejściowej na liniowe operatory w przestrzeni wyjściowej, gdzie $\mathcal{M}$ jest całkowicie dodatnią (\textit{completely positive}, CP)\footnote
 {
-Mapę $\phi: A \to B$ nazywa się nieujemną, gdy $\phi(a) \geq 0 \forall a\geq 0 \in A$. Nazywa się ją CP, gdy $\phi \otimes \mathcal{I}_n$ również jest nieujemna $\forall n \in \mathcal{N}$.
-}, $\mathcal{M}(\mathbb{1}) = \mathbb{1}$. Najogólniej kanały idealne, czyli takie, z których możemy otrzymać pełną informację o przychodzącym systemie, opisuje się $\mathcal{M}(\rho) = U^* \rho U$, gdzie U jest pewną macierzą unitarną. W rzeczywistych sytuacjach jednakże nie da się uniknąć
-oddziaływania z otoczeniem, który posiada dodatkowe niemierzalne stopnie swobody. Takie zaszumione kanały opisuje ogólnie $\mathcal{M}(\rho) = \Trs_{otoczenie}(U* \rho \otimes \rho_0 U)$, gdzie $\Trs_{otoczenie}$ opisuje operację śladu częściowego po stopniach swobody otoczenia, zaś operator unitarny U
+Odwzorowanie jest CP, gdy $\phi \otimes \mathcal{I}_n$ również jest dodatnie $\forall n \in \mathcal{N}$. W przypadku odwzorowań o skończonych wymiarach każde dodatnie jest CP.
+}, $\mathcal{M}(\mathbb{1}) = \mathbb{1}$. Najogólniej kanały idealne, czyli takie, z których możemy otrzymać pełną informację o przychodzącym systemie, opisuje się $\mathcal{M}(\rho) = U^\dag \rho U$, gdzie U jest pewną macierzą unitarną. W rzeczywistych sytuacjach jednakże nie da się uniknąć
+oddziaływania z otoczeniem, który posiada dodatkowe niemierzalne stopnie swobody. Takie zaszumione kanały opisuje ogólnie $\mathcal{M}(\rho) = \Trs_{otoczenie}(U^\dag \rho \otimes \rho_0 U)$, gdzie $\Trs_{otoczenie}$ opisuje operację śladu częściowego
+\footnote{
+Operację śladu pewnej macierzy A definiuje się następująco $\Trs A = \sum_i \Bra{e_i} A \Ket{e_i}$, gdzie $\{e_i\}$ to dowolna ortonormalna baza.
+W przypadku systemów złożonych można zdefiniować operację śladu częściowego. Zapisując pewną macierz $C = \sum_i \alpha_i A_i \otimes B_i$ ślad częściowy (po systemie B) oblicza się następująco $\Trs_B C = \sum_i \alpha_i A_i \otimes \Trs(B_i) = \sum_{ij} \alpha_i A_i \otimes \Bra{e_j}B_i\Ket{e_j} = \sum_j (\I \otimes \Bra{e_j}) C (\I \otimes \Ket{e_j})$.
+}, po stopniach swobody otoczenia, zaś operator unitarny U
 opisuje ewolucję czasową systemu i otoczenia, a $\rho_0$ jest stanem początkowym otoczenia \cite{fund}. Jasnym jest, że posiadając wyłącznie wiedzę na temat systemu $\rho$ nie jest możliwe w ogólności odtworzenie informacji wysłanych.
-Typowym przykładem takiego zaszumionego kanału może być kanał depolaryzujący, który z prawdopodobieństwem $\eta$ idealnie transmituje system, zaś z prawdopodobieństwem $1-\eta$ depolaryzuje system, $\mathcal{M}(\rho) = \eta\rho+(1-\rho)\I$. Najogólniejszym modelem kanałów kwantowych jest tzw.
+Typowym przykładem takiego zaszumionego kanału może być kanał depolaryzujący, który z prawdopodobieństwem $\eta$ idealnie transmituje system, zaś z prawdopodobieństwem $1-\eta$ depolaryzuje system, $\mathcal{M}(\rho) = \eta\rho+(1-\eta)\I$. Najogólniejszym modelem kanałów kwantowych jest tzw.
 \textit{quantum channel with memory} (kwantowy kanał z pamięcią) opisany np. w \cite{memory}.
 
 %%%%
 \section{Macierz Procesu}
 \label{macierz_procesu}
 Jednym z podejść do eksploracji korelacji nie zachowujących przyczynowego porządku jest rozwinięty w \cite{process_matrix} formalizm macierzy procesu.
-Ewidentną zaletą tego podejścia jest zgodność z mechanika kwantową na poziomie lokalnych eksperymentów. Jest to niejakie rozszerzenie i enkapsulacja idei POVM i reguły Borna. Podejście to porzuca założenie globalnej struktury czasoprzestrzeni. W celu zachowania zgodności z mechaniką kwantową na poziomie lokalnym opiera się na następującym założeniu: operacje wykonywane przez poszczególną stronę są opisywane przez mechanikę kwantową w standardowym przyczynowym sformułowaniu, które można opisywać przy pomocy zbioru \textit{quantum instruments} \cite{quantum_instrument} z wejściową przestrzenią Hilberta $\mathcal{H}^{A_1}$ i przestrzenią wyjściową  $\mathcal{H}^{A_2}$. Najogólniej można je realizować poprzez zadziałanie unitarną transformacją na system wejściowy i \textit{ancilla}, następnie wykonanie rzutującego pomiaru na części systemu pozostawiając pozostała część systemu jako wyjście. Alicja wykorzystując dany instrument otrzymuje jeden z możliwych wyników $x_i$, który indukuje transformację $\mathcal{M}^A_i$ z wejścia na wyjście. Transformacja ta odpowiada \CP~(CP) mapie
+Ewidentną zaletą tego podejścia jest zgodność z mechanika kwantową na poziomie lokalnych eksperymentów. Jest to niejakie rozszerzenie i enkapsulacja idei POVM i reguły Borna. Podejście to porzuca założenie globalnej struktury czasoprzestrzeni. Opisuje się następująca sytuację: dwa odległe zamknięte laboratoria (tradycyjnie nazywane Alicja i Bob) wykonują pewne pomiary na zasobie kwantowym i otrzymują pewne wyniki. W przypadku tego formalizmu celowało się w stworzenie takiej struktury, która przewiduje prawdopodobieństwa otrzymania danych wyników przy wykorzystaniu zasobu, który może nie mieć ściśle określonego porządku w czasie. W celu zachowania zgodności z mechaniką kwantową na poziomie lokalnym opiera się na następującym założeniu: operacje wykonywane przez poszczególną stronę są opisywane przez mechanikę kwantową w standardowym przyczynowym sformułowaniu, które można opisywać przy pomocy zbioru \textit{quantum instruments} \cite{quantum_instrument} z wejściową przestrzenią Hilberta $\mathcal{H}^{A_1}$ i przestrzenią wyjściową  $\mathcal{H}^{A_2}$. Najogólniej można je realizować poprzez zadziałanie unitarną transformacją na system wejściowy i \textit{ancilla}, następnie wykonanie rzutującego pomiaru na części systemu pozostawiając pozostała część systemu jako wyjście. Alicja wykorzystując dany instrument otrzymuje jeden z możliwych wyników $x_i$, który indukuje transformację $\mathcal{M}^A_i$ z wejścia na wyjście. Transformacja ta odpowiada \CP~(CP) mapie
 \begin{equation}
 \mathcal{M}^A_i : \mathcal{L}(\mathcal{H}^{A_1}) \mapsto \mathcal{L}(\mathcal{H}^{A_2}),
 \end{equation}
@@ -252,7 +279,7 @@ Widać od razu, że równanie \eqref{eq:id_proj} narzuca, by możliwość zaobse
 W przypadku, gdy mamy do czynienia z więcej niż jedną stroną, \textit{procesem} będziemy nazywać listę $\Pr(\MXin{A}{i}, \MXin{B}{j}, \dots)$ dla wszystkich możliwych lokalnych wyników. Dalej w tym rozdziale będzie opisywany wyłącznie przypadek dwustronny, jednakże rozszerzenie formalizmu na przypadek wielostronny jest trywialny. Wygodnym sposobem przedstawiania map $\MAin$ jest izomorfizm Choi-Jamiołkowsky (CJ) \cite{cj_iso1, cj_iso2}, który pozwala przedstawiać transformacje liniowe przy pomocy macierzy. Macierz CJ $M^{A_1A_2}_i \in \Mats{\Hx{A_1} \otimes \Hx{A_2}} \geq 0$ jest zdefiniowana jako
 \begin{gather}
 \label{eq:cj_iso}
-\MCJ (\mathcal{M}) = M^{A_1A_2}_i := [\mathcal{I} \otimes \MAi{ \KKet{\I} \BBra{\I}}]^T= \left[\sum^{d_{A_1}-1}_{i,j=0} \Ket{i}\Bra{j} \otimes \mathcal{M}(\Ket{i}\Bra{j})\right]^T, \\
+\MCJ (\mathcal{\MAi}) = M^{A_1A_2}_i := [\mathcal{I} \otimes \MAi{ \KKet{\I} \BBra{\I}}]^T= \left[\sum^{d_{A_1}-1}_{i,j=0} \Ket{i}\Bra{j} \otimes \MAi(\Ket{i}\Bra{j})\right]^T, \\
 \KKet{\I} = \sum^{d_{A_1}-1}_{i=0} \Ket{ii},
 \end{gather}
 gdzie $\{\Ket{j}\}^{d_{A_1}}$ tworzy ortonormalna bazę w $\HAi$. 
@@ -343,7 +370,7 @@ Przyjmuje się następujące założenia na temat natury rzeczywistości uporzą
 	{W przypadku, gdy $A \prec B$ oznacza to, że brzegowy rozkład prawdopodobieństwa otrzymania danego wyniku nie zależy od wejścia drugiej strony. $\Pr(a|x, y) = \Pr(a|x, y')~\forall a,x,y,y'$, $\Pr(a|x,y) = \sum_b \Pr(a,b|x,y)$, gdzie przez a, b oznaczamy wyniki otrzymane przez odpowiednie strony, zaś x, y ich wejścia.} 
 	z A do B, lecz nie na odwrót.
 	\item[\textit{Free choice} (Wolny wybór, FC)]  
-	W przypadku wyboru liczb losowych, możliwe korelacje występują wyłącznie z liczbami z przyszłości.
+	W przypadku wyboru liczb losowych, możliwe korelacje występują wyłącznie z wynikami z przyszłości.
 	\item[\textit{Closed laboratories} (Zamknięte laboratoria, CL)] 
 	Liczba odgadnięta przez Alicję może być skorelowana z liczbą losową Boba wyłącznie, jeżeli system wysłany do Alicji jest przed (w sensie przyczynowości) generacją liczby Boba, analogicznie w przypadku odwrotnym.	
 \end{description}
@@ -377,7 +404,7 @@ Za każdym razem Alicja mierzy swój system w bazie $z$ i przypisuje $x = 0$ dla
 \I  + (-1)^a \Z
 \right	].
 \end{equation}
-Natomiast Bob jako posiadacz bitu $b'$, gdy chce odczytać bit Alicji, mierzy przychodzący kubit w bazie $z$i przypisuje wyniki tego pomiaru do y analogicznie jak Alicja. W tym przypadku nieistotne jest jaki stan przygotuje Bob, więc przygotowuje dowolny stan $\rho^{B_2}$ znormalizowany do $\Tr \rho^{B_2} = 1$.
+Natomiast, gdy Bob jako posiadacz bitu $b'$ chce odczytać bit Alicji, mierzy przychodzący kubit w bazie $z$i przypisuje wyniki tego pomiaru do y analogicznie jak Alicja. W tym przypadku nieistotne jest jaki stan przygotuje Bob, więc przygotowuje dowolny stan $\rho^{B_2}$ znormalizowany do $\Tr \rho^{B_2} = 1$.
 W przypadku $b'=0$, Bob chce wysłać swój bit do Alicji. Dokonuje pomiaru w bazie x, następnie w przypadku wyniku $y = \Ket{x_+}$ zakodowuje swój bit następująco: $0 \to \Ket{z_+}, 1 \to \Ket{z_-}$ w drugim kodowanie wygląda odwrotnie $1 \to \Ket{z_+}, 0 \to \Ket{z_-}$. Jego mapa wygląda następująco
 \begin{equation}
 \eta(y, b, b') =
@@ -418,7 +445,7 @@ W := qW^{A \prec B} + (1-q+\epsilon)W^{B \prec A} -\epsilon\IO,
 \end{gather} gdzie $\IO = \frac{1}{d_{A_1}d_{B_1}} \I\I\I\I$.
 Zauważa się, że $W \geq 0$ dla $\epsilon \leq q- 1 + \sqrt{\frac{(1-q)(q+3)}{3}}$ i przyczynowo nieseparowalne dla $\epsilon \geq 0$. 
 Dowód faktu, że ten proces niemoże złamać żadnej przyczynowej nierówności nie zależnie od strategii przebiega następująco.
-Pokazuje się najpierw, że proces ten produkuje te same korelacje co $W^{T_B}$, gdzie $T_B$ oznacza częsciową transpozycje systemów $\Hx{B_1} \otimes \Hx{B_2}$ względem \textit{computational basis} (bazy obliczeniowej). Natomiast $W^{T_B}$ jest przyczynowo separowalna i nie może złamać przyczynowych nierówności. Co razem dowodzi tezę. Pierwsza część dowodu przebiega następująco 
+Pokazuje się najpierw, że proces ten produkuje te same korelacje co $W^{T_B}$, gdzie $T_B$ oznacza częsciową transpozycje systemów $\Hx{B_1} \otimes \Hx{B_2}$ względem CB. Natomiast $W^{T_B}$ jest przyczynowo separowalna i nie może złamać przyczynowych nierówności. Co razem dowodzi tezę. Pierwsza część dowodu przebiega następująco 
 \begin{align}
 \begin{split}
 \Pr(x,y|a,b) &= \Trs\left[W^{T_B} \xi(x,a) \otimes \eta(y,b)^{T}\right] \\
@@ -431,7 +458,7 @@ Pokazuje się najpierw, że proces ten produkuje te same korelacje co $W^{T_B}$,
 \end{align}
 Ta równość jest spełniona nawet wtedy, gdy $W^{T_B} \leq 0$, czyli opisuje niefizyczna macierz procesu, taki proces generuje dodatnie prawdopodobieństwo dla lokalnych pomiarów, lecz może generować ujemne prawdopodobieństwa, gdy laboratoria dzielą splątane cząsteczki, takie rozszerzenie jest istotne fizycznie.
 %, taka klasa procesów zostanie dalej opisana.
-Trzeba zauważyć, że dla każdego kwantowego instrumentu $\{ \eta(y,b) \}$, instrument $\{ \eta(y,b)^T \}$ również jest prawidłowy, jako że transpozycja mapuje mapy CP do map CP i mapy \textit{trace preserving} (TP, zachowujące ślad) do map zachowujących ślad. Następnie pokazuje się w sposób jawny przyczynową
+Trzeba zauważyć, że dla każdego kwantowego instrumentu $\{ \eta(y,b) \}$, instrument $\{ \eta(y,b)^T \}$ również jest prawidłowy, jako że transpozycja mapuje odwzorowania CP do odwzorowań CP i mapy zachowujące (\textit{trace preserving}, TP) do map zachowujących ślad. Następnie pokazuje się w sposób jawny przyczynową
 separacje $W^{T_B}$. Widać, że 
 \begin{equation}
 \left[\IO + \frac{1}{12}\left(\I\Z\Z\I + \I\X\X\I + \I\Y\Y\I\right)\right]^{T_B} = \IO + \frac{1}{12}\I\Z\Z\I + \I\X\X\I - \I\Y\Y\I, 
@@ -896,7 +923,7 @@ W wielu przypadkach, gdy ma się do czynienia z dużymi macierzy konieczne jest 
 \begin{equation}
 \Trs_B A = \sum^{d_b}_i (\I^A \otimes \Bra{i}_B)A(\I^A \otimes \Ket{i}_B).
 \end{equation} Dla wybranego $i$ wykonując pierwsze mnożenie otrzymuje się macierz o $d_A^2d_B$ komórkach, gdzie obliczenie każdej komórki wymaga $d_Ad_B$ operacji, następnie wykonuje się drugie mnożenie, które nie zwiększa złożoności. Wykonując tę procedurę dla wszystkich $\Ket{i}$ otrzymuje się złożoność $O(d_A^3d_B^3)$. Wykorzystując wiedzę o chociażby strukturze (praktycznie wszystkie komórki są zerami) można znacznie przyśpieszyć te obliczenia.
-W \cite{partial_trace} pokazano wydajną metodę obliczania częściowego śladu. Posiadając jawną postać pewnej macierzy $A$, w celu wyliczenia ${}_XA$ konieczne po wykonaniu śladu częściowego jest zastąpienie jedynką odpowiedniego systemu. Standardowo iloczyn tensorowy dla macierzy reprezentuje się przy pomocy tzw. iloczynu Kroneckera. O ile jest pewna dowolność w zapisie matematycznym, gdzie postawi się znak iloczynu tensorowego tak długo jak odnotuje się jakiego systemu dotyczy macierz, w implementacji kolejność systemów jest niejawna, zakodowana pozycyjne. Korzystając z wydajnej metody na obliczanie śladu
+W \cite{partial_trace} pokazano wydajną metodę obliczania częściowego śladu. Posiadając jawną postać pewnej macierzy $A$, w celu wyliczenia ${}_XA$ konieczne po wykonaniu śladu częściowego jest zastąpienie jedynką odpowiedniego systemu. Jawnie iloczyn tensorowy dla macierzy reprezentuje się przy pomocy tzw. iloczynu Kroneckera. O ile jest pewna dowolność w zapisie matematycznym, gdzie postawi się znak iloczynu tensorowego tak długo jak odnotuje się jakiego podsystemu dotyczy macierz, w implementacji kolejność systemów jest niejawna, zakodowana pozycyjne. Korzystając z wydajnej metody na obliczanie śladu
 można łatwo w wydajny sposób obliczyć operacje ${}_XA$ skrajnych systemów następująco:
 \begin{gather}
 {}_{A_1}A= \I^{A_1} \otimes \Trs_{A_1} A,\\
@@ -934,7 +961,7 @@ wyraz $\sigma_0$ jest nieokreślony i wraz z macierzą jednostkową włączony d
 \end{itemize}
 UMG spełnia następująca relację ortoznormalizowania: $\Trs \Gamma_i \Gamma_j = 2\delta_{ij}$.
 %\listoftables
-W \cite{gell_mann} wyprowadzono następujące rozwinięcie standardowych macierzy w bazie UMG:
+W \cite{gell_mann} wyprowadzono następujące rozwinięcie standardowych macierzy ($\Ket{i}\Bra{j}$) w bazie UMG:
 \begin{equation}
 \label{gm_ij}
 \Ket{i}\Bra{j} =
@@ -963,8 +990,8 @@ W = \sum_{ij} \alpha_{ij} \Ket{i}\Bra{j}.
 \end{equation}
 Zauważa dalej się, że
 \begin{equation}
-\Ket{m}^A\Ket{n}^B\Bra{i}^A\Bra{j}^B = \Ket{d_A~m+n}^{AB}\Bra{d_A~i+j}^{AB}
-\end{equation}. Wnioskiem z łączności iloczynu tensorowego jest fakt, że baza CB w większy wymiarze jest iloczynem tensorowym pewnej ilości baz CB w poszczególnych systemach.
+\Ket{m}^A\Ket{n}^B\Bra{i}^A\Bra{j}^B = \Ket{d_A~m+n}^{AB}\Bra{d_A~i+j}^{AB}.
+\end{equation} Wnioskiem płynącym z łączności iloczynu tensorowego jest fakt, że baza CB w przestrzeni więcej wymiarowej jest iloczynem tensorowym baz CB w poszczególnych podsystemach.
 Rozważa się dalej, jak wygląda wektor Blocha macierzy typu $\Ket{i}\Bra{j}$.
 Widać, że:
 \begin{equation}
@@ -974,10 +1001,10 @@ A \otimes B = (\sigma^A \Gamma^A) \otimes (\sigma^B \Gamma^B) = (\sigma^A \otime
 \Ket{i}\Bra{j}=\Ket{ijklef_1}\Bra{ijklef_2} =  \sigma_{ijklef} \Gamma = (\sigma_i \otimes \sigma_j \otimes \sigma_k \otimes \sigma_l \otimes \sigma_e \otimes \sigma_f) \Gamma.
 \end{equation}
 Z równania \eqref{gm_ij} widać, że wyrazy typu macierze $\Ket{i}\Bra{j}$ dla $i \neq j$ mają stała ($O(1)$) liczbę niezerowych współrzędnych $\sigma_i$ i jest ich $O(d^2)$ dla ogólnej macierzy. Zaś wyrazy, gdzie $i = j$ mają $O(d)$ niezerowych wyrazów, ale jest ich tylko $O(d)$ więc policzenie ich wkładu dla dowolnej macierzy również zajmuje 
-$O(d^2)$ czasu. Co pokazuje, że policzenie wektory Blocha dla bazy UMG zajmuje $O(d^2)$ czasu. Korzystając z analogicznego argumentu można pokazać, że odwrotna transformacja działa również w $O(d^2)$. Dalej zostanie pokazane, że obliczenia wektora Blocha dla baz składających się z O(1) iloczynów tensorowych baz UMG również jest kwadratowy względem wymiaru systemu złożonego. Widać to od razu, gdy rozważy się ile czasu zajmuje obliczenie wektora Blocha następującej macierzy:
+$O(d^2)$ czasu. Co pokazuje, że policzenie wektora Blocha dla bazy UMG zajmuje $O(d^2)$ czasu. Korzystając z analogicznego argumentu można pokazać, że odwrotna transformacja działa również w $O(d^2)$. Dalej zostanie pokazane, że obliczenia wektora Blocha dla baz składających się z O(1) iloczynów tensorowych baz UMG również jest kwadratowy względem wymiaru systemu złożonego. Widać to od razu, gdy rozważy się ile czasu zajmuje obliczenie wektora Blocha następującej macierzy:
 \begin{equation}
 \Ket{i}\Bra{i} \otimes \Ket{j}\Bra{j} \otimes \Ket{k}\Bra{l} \otimes \Ket{e}\Bra{f}, \quad \text{gdzie }k \neq l, e \neq f.
-\end{equation} Wyrazy typu zaprezentowanego powyżej mają $O(d_1d_2)$ i jest ich w rozkładzie pewnej ogólnej macierzy $O(d_1d_2d_3^2d_4^2)$. Widać, że wyrazy typu $\Ket{i}\Bra{i}$ kontrybuują liniową ilość wyrazów do wektora Blocha i jest ich liniowa ilość, zaś wyrazy typu $\Ket{i}\Bra{j}$ dają stała ilość wyrazów, lecz jest ich kwadratowa ilość, a dla systemów złożonych złożoność widocznie się faktoryzuje. Sumując po wszystkich ustawieniach wyrazów diagonalnych i niediagonalnych otrzymuje się $O(1)$ wyrazów $O(d^2)$, czyli ostatecznie złożoność to obliczania rozkładu $O(d^2)$.
+\end{equation} Wyrazy typu zaprezentowanego powyżej mają $O(d_1d_2)$ i jest ich w rozkładzie pewnej ogólnej macierzy $O(d_1d_2d_3^2d_4^2)$. Widać, że wyrazy typu $\Ket{i}\Bra{i}$ kontrybuują liniową liczbę wyrazów do wektora Blocha i jest ich liniowa ilość, zaś wyrazy typu $\Ket{i}\Bra{j}$ dają stała liczbę wyrazów, lecz jest ich kwadratowa ilość, a dla systemów złożonych złożoność widocznie się faktoryzuje. Sumując po wszystkich ustawieniach wyrazów diagonalnych i niediagonalnych otrzymuje się $O(1)$ wyrazów $O(d^2)$, czyli ostatecznie złożoność to obliczania rozkładu $O(d^2)$.
 Definiując operację
 \begin{equation}
 ({}^X\sigma) \Gamma = {}_X(\sigma\Gamma),
@@ -986,7 +1013,7 @@ Definiując operację
 \sigma_{ijk} \mapsto \delta_{j0}\sigma_{ijk}.
 \end{equation}
 Korzystając dalej z faktu, że ${}_{XY}A = {}_X({}_Y A)$. Zaaplikowanie projektora $L_V$ sprowadza się do wykonania $O(1)$ operacji na $O(d^2)$ elementach wektory Blocha, czyli złożoność znów kwadratowa.
-Warto jeszcze podkreślić, że ze względu na rzadkość wektorów Blocha wskazanym jest trzymanie go w postaci par $\{ (\sigma_{ijklef}, \Gamma_{ijklef}) \}$ w celu osiągnięcia odpowiedniej złożoności przy wykonywanie wielu obliczeń projektorów macierzy standardowych.
+Warto jeszcze podkreślić, że ze względu na rzadkość wektorów Blocha wskazanym jest trzymanie go w postaci par $\{ (\sigma_{ijklef}, \Gamma_{ijklef}) \}$, lub innym rzadkim formacie, w celu osiągnięcia odpowiedniej złożoności przy wykonywanie wielu obliczeń projektorów macierzy standardowych.
 \section{Jawna postać $\Pi_\LPV$}
 Operator $\Pi_\LPV$ definiuje się następująco:
 \begin{equation}
