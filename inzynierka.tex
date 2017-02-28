@@ -137,7 +137,7 @@ In this work process matrix formalism is presented. It can be considered a way t
 %%%%
 \subsection{Historia}
 Mechanika kwantowa od samego początku jej badania budziła wiele kontrowersji. Wielu badaczy miało trudności z zaakceptowaniem faktu, iż
-na fundamentalnym poziomie rzeczywistość nie jest deterministyczna, jak nam się wydawało. Zarówno losowa natura tej teorii, jak i wiele zadziwiających cech mechaniki kwantowej była początkowo źródłem wielu zaciekłych dyskusji. Rok po opublikowaniu pracy Schrödingera, Einstein w swojej pracy zamieścił zdanie, które częściowo wyznaczało nurt badań w tamtym czasie, zaś dziś jest wraz z innymi popularnymi powiedzeniami kwantowymi zakorzenione w kulturze, a mianowicie, że "Bóg nie gra w kości". Ta teza później okazała się być nieprawdziwa - przynajmniej nie w takim stopniu, w jakim autor by sobie życzył. Sam formalizm doczekał się wielu interpretacji, często z wieloma elementami filozoficznymi. Dzisiaj najpopularniejszymi są interpretacja kopenhaska, teoria wielu światów, czy idea inkorporująca kwantową grawitację w mechanizmie pomiaru. Ostatnia przytoczona pozycja wciąż oczekuje na sformułowanie, które jest zgodne z eksperymentami, lecz pozostaje ideą ciekawą dla wielu badaczy. Mimo tego jest to matematycznie bardzo elegancka teoria, którą można nazwać jednym z największych osiągnięć współczesnej fizyki. Wielokrotnie jej zaskakujące przewidywania zostały potwierdzone eksperymentalnie z niemal idealną dokładnością (w przeciwieństwie do np. stałej kosmologicznej, której niedokładność przekracza wiele dziesiątek rzędów wielkości). 
+na fundamentalnym poziomie rzeczywistość nie jest deterministyczna, jak nam się wydawało. Zarówno losowa natura tej teorii, jak i wiele zadziwiających cech mechaniki kwantowej była początkowo źródłem wielu zaciekłych dyskusji. Rok po opublikowaniu pracy Schrödingera, Einstein w swojej pracy zamieścił zdanie, które częściowo wyznaczało nurt badań w tamtym czasie, zaś dziś jest wraz z innymi popularnymi powiedzeniami kwantowymi zakorzenione w kulturze, a mianowicie, że "Bóg nie gra w kości". Ta teza później okazała się być nieprawdziwa - przynajmniej nie w takim stopniu, w jakim autor by sobie życzył. Sam formalizm doczekał się wielu interpretacji, często z wieloma elementami filozoficznymi. Dzisiaj najpopularniejszymi są interpretacja kopenhaska, teoria wielu światów, czy idea inkorporująca kwantową grawitację w mechanizmie pomiaru. Ostatnia przytoczona pozycja wciąż oczekuje na sformułowanie, które jest zgodne z eksperymentami. Mimo tego pozostaje ideą ciekawą dla wielu badaczy. Mechanika kwantowa jest matematycznie bardzo elegancką teorią, którą można nazwać jednym z największych osiągnięć współczesnej fizyki. Wielokrotnie jej zaskakujące przewidywania zostały potwierdzone eksperymentalnie z niemal idealną dokładnością (w przeciwieństwie do np. stałej kosmologicznej, której niedokładność przekracza wiele dziesiątek rzędów wielkości). 
 \subsection{Podstawowe informacje}
 Stany systemów w mechanice kwantowej opisuje się jako elementy przestrzeni Hilberta $\psi \in \Hx{}$, a tak zwane obserwable - samosprzężone
 \footnote{
@@ -169,7 +169,7 @@ Przykładowo w $\mathcal{C}^3$
 \label{fig:bloch}
 \end{figure}
 Wygodnie narzucić warunek normalizacji stanów, a mianowicie $\Bra{\psi}\Ket{\psi} := \Braket{\psi|\psi} = 1$, wtedy wartość oczekiwaną obserwabli w danym stanie $\Ket{\psi}$ oblicza się tak: $\Braket{A} := \Bra{\psi}A\Ket{\psi}$. Warto zauważyć, że skoro obserwable opisywane są przez macierze hermitowskie, można 
-skorzystać z twierdzenia spektralnego i zapisać $A = \sum_i^N \lambda_i \Ket{\lambda_i}$, gdzie $\lambda_i$ opisuje i-tą wartość własną zaś $\Ket{\lambda_i}$ to i-ty wektor własny, który dobrano tak, że $\Braket{\lambda_i|\lambda_j} = \delta_{ij}$, $\{\Ket{\lambda_i}\}$ tworzy ortonormalna bazę w $\Hx{}$. Jednym z postulatów mechaniki kwantowej jest tzw. postulat pomiaru von Neumanna. Mówi on, że wykonując pomiar obserwablą A na systemie w stanie $\Ket{\psi}$ i otrzymując wartość $\lambda_i$ odpowiadająca wektorowi własnemu $\Ket{\lambda_i}$ powoduje się przejście w stan $\Ket{\lambda_i}$. Można, zakładając brak zdegenerowania niezerowych wartości własnych, zapisać w następujący sposób opisujący warunkową ewolucję po pomiarze 
+skorzystać z twierdzenia spektralnego i zapisać $A = \sum_i^N \lambda_i \Ket{\lambda_i}\Bra{\lambda_i}$, gdzie $\lambda_i$ opisuje i-tą wartość własną zaś $\Ket{\lambda_i}$ to i-ty wektor własny, który dobrano tak, że $\Braket{\lambda_i|\lambda_j} = \delta_{ij}$. Wektory $\{\Ket{\lambda_i}\}$ tworzą ortonormalną bazę w $\Hx{}$. Jednym z postulatów mechaniki kwantowej jest tzw. postulat pomiaru von Neumanna. Mówi on, że wykonując pomiar obserwablą A na systemie w stanie $\Ket{\psi}$ i otrzymując wartość $\lambda_i$ odpowiadająca wektorowi własnemu $\Ket{\lambda_i}$ powoduje się przejście w stan $\Ket{\lambda_i}$. Można, zakładając brak zdegenerowania niezerowych wartości własnych, zapisać w następujący sposób opisujący warunkową ewolucję po pomiarze 
 \begin{equation}
 \label{eq:cond_ev}
 \Ket{\psi} \mapsto \frac{\Pi_i\Ket{\psi}}{\sqrt{\Bra{\psi}\Pi_i \Ket{\psi}}},
@@ -193,7 +193,7 @@ a_0\Ket{0} + a_1\Ket{1} \otimes b_0\Ket{0} + b_1\Ket{1} = a_0b_0 \Ket{00} + a_0b
 a_0b_1 = 0\implies a_0 = 0\vee b_1 = 0 \\
 a_1b_0 = 0\implies a_1 = 0\vee b_0 = 0 \\
 \text{Powyższe implikuje, że } a_0b_0 \neq 1 \vee a_1b_1 \neq 1.
-\end{gather*} Takie systemy, których nie da się zapisać w postaci $\Ket{\psi} = \Ket{\psi}_A \otimes \Ket{\phi}_B$, nazywa się splątanymi. Splątanie kwantowe jest zasobem, który znalazł zastosowanie w wielu nowatorskich aplikacjach, jak np. kryptografia kwantowa\cite{crypto}, certyfikowana losowość \cite{rand}, teleportacja kwantowa\cite{qt} czy wcześniej przytoczone "kwantowe przyśpieszenie".
+\end{gather*} Takie systemy, których nie da się zapisać w postaci $\Ket{\psi} = \Ket{\psi}_A \otimes \Ket{\phi}_B$, nazywa się splątanymi. Splątanie kwantowe jest zasobem, który znalazł zastosowanie w wielu nowatorskich aplikacjach, jak np. kryptografia kwantowa \cite{crypto}, certyfikowana losowość \cite{rand}, teleportacja kwantowa \cite{qt} czy wcześniej przytoczone "kwantowe przyśpieszenie".
 Często w rozważaniach ogranicza się do skończonych przestrzeni Hilberta o wybranych rozmiarach. Najmniejszą i niepodzielną jednostką informacji jest kubit ($\Hx{} = \mathcal{C}^2$), fizycznie reprezentujący np. cząstkę ze spinem-$\frac{1}{2}$ (elektron), lub polaryzację fotonu. W wielu dziedzinach informatyki kwantowej ogranicza się praktycznie wyłącznie do analizy systemów złożonych z kubitów ze względu
 na pewną prostotę i wygodę badania takich systemów. Ciekawą interpretacją kubitów prezentuje Sfera Blocha (rysunek \ref{fig:bloch}). Punkty na tej sferze opisują wszystkie prawidłowe znormalizowane $\KP \in \mathcal{C}^2$.
 Okazuje się jednak, że formalizm stanów jest niewystarczający do opisu zespołów statystycznych (system znajduje się w jakimś z stanów z pewnym prawdopodobieństwem) wynikających z braku pełnej wiedzy o systemie bądź sposobie jego przygotowania. Do opisu takich sytuacji używa się macierzy gęstości. 
@@ -231,13 +231,13 @@ zbiór takich operatorów $\{E_i\}$, że $E_i > 0,~\sum_i E_i = \mathbb{1}$. Pop
 \begin{gather}
 \Pro{x_i} = \Bra{\psi} E_i \Ket{\psi}\\
 \Pro{x_i} = \Tr{E_i \rho} \\
-E_i = \sum_j = A^\dag_{ij}A_{ij} \\ 
+E_i = \sum_j  A^\dag_{ij}A_{ij} \\ 
 \rho \mapsto \frac{\sum_j A_{ij} \rho A^\dag_{ij}}{\Tr{\sum_j A_{ij} \rho A^\dag_{ij}}}.
 \end{gather} Pomiary takie realizuje się korzystając z \textit{ancilli} (pomocniczy system), ewoluując złożony system odpowiednio dobranym operatorem unitarnym, następnie dokonując pomiaru rzutującego na \textit{ancilli} i po odnotowaniu wyniku odrzuceniu jej.
 % tutaj moze przyklad
 Ważnym narzędziem w formalizmie kwantowym są tak zwane kanały kwantowe (\textit{quantum channel}), opisujące fizyczne połączenia, ich działania na fizyczny system. Klasycznym analogiem może być np. linia telefoniczna czy światłowód transmitujący internet. 
 Przykładem fizycznej implementacji może znów być światłowód, który transmituje fotony, opisywane jako kubity. 
-Kanały kwantowe opisują odwzorowania $\mathcal{M}: \mathcal{L}(\Hx{A}) \to \mathcal{L}({\Hx{B}})$ odwzorowujące liniowe operatory w przestrzeni wejściowej na liniowe operatory w przestrzeni wyjściowej, gdzie $\mathcal{M}$ jest całkowicie dodatnią (\textit{completely positive}, CP)\footnote
+Kanały kwantowe opisują odwzorowania $\mathcal{M}: \mathcal{L}(\Hx{A}) \to \mathcal{L}({\Hx{B}})$, gdzie $\mathcal{L}({\Hx{A}})$ jest przestrzenią macierzy na $\Hx{A}$ w przypadku skończenie wymiarowym, odwzorowujące liniowe operatory w przestrzeni wejściowej na liniowe operatory w przestrzeni wyjściowej, gdzie $\mathcal{M}$ jest całkowicie dodatnią (\textit{completely positive}, CP)\footnote
 {
 Odwzorowanie jest CP, gdy $\phi \otimes \mathcal{I}_n$ również jest dodatnie $\forall n \in \mathcal{N}$. W przypadku odwzorowań o skończonych wymiarach każde dodatnie jest CP.
 }, $\mathcal{M}(\mathbb{1}) = \mathbb{1}$. Najogólniej kanały idealne, czyli takie, z których możemy otrzymać pełną informację o przychodzącym systemie, opisuje się $\mathcal{M}(\rho) = U^\dag \rho U$, gdzie U jest pewną macierzą unitarną. W rzeczywistych sytuacjach jednakże nie da się uniknąć
@@ -254,7 +254,7 @@ Typowym przykładem takiego zaszumionego kanału może być kanał depolaryzują
 \section{Macierz Procesu}
 \label{macierz_procesu}
 Jednym z podejść do eksploracji korelacji nie zachowujących przyczynowego porządku jest rozwinięty w \cite{process_matrix} formalizm macierzy procesu.
-Ewidentną zaletą tego podejścia jest zgodność z mechanika kwantową na poziomie lokalnych eksperymentów. Jest to niejakie rozszerzenie i enkapsulacja idei POVM i reguły Borna. Podejście to porzuca założenie globalnej struktury czasoprzestrzeni. Opisuje się następująca sytuację: dwa odległe zamknięte laboratoria (tradycyjnie nazywane Alicja i Bob) wykonują pewne pomiary na zasobie kwantowym i otrzymują pewne wyniki. W przypadku tego formalizmu celowało się w stworzenie takiej struktury, która przewiduje prawdopodobieństwa otrzymania danych wyników przy wykorzystaniu zasobu, który może nie mieć ściśle określonego porządku w czasie. W celu zachowania zgodności z mechaniką kwantową na poziomie lokalnym opiera się na następującym założeniu: operacje wykonywane przez poszczególną stronę są opisywane przez mechanikę kwantową w standardowym przyczynowym sformułowaniu, które można opisywać przy pomocy zbioru \textit{quantum instruments} \cite{quantum_instrument} z wejściową przestrzenią Hilberta $\mathcal{H}^{A_1}$ i przestrzenią wyjściową  $\mathcal{H}^{A_2}$. Najogólniej można je realizować poprzez zadziałanie unitarną transformacją na system wejściowy i \textit{ancilla}, następnie wykonanie rzutującego pomiaru na części systemu pozostawiając pozostała część systemu jako wyjście. Alicja wykorzystując dany instrument otrzymuje jeden z możliwych wyników $x_i$, który indukuje transformację $\mathcal{M}^A_i$ z wejścia na wyjście. Transformacja ta odpowiada \CP~(CP) odwzorowaniu
+Ewidentną zaletą tego podejścia jest zgodność z mechanika kwantową na poziomie lokalnych eksperymentów. Jest to niejakie rozszerzenie i enkapsulacja idei POVM i reguły Borna. Podejście to porzuca założenie globalnej struktury czasoprzestrzeni. Opisuje się następująca sytuację: dwa odległe zamknięte laboratoria (tradycyjnie nazywane Alicja i Bob) wykonują pewne pomiary na zasobie kwantowym i otrzymują pewne wyniki. W przypadku tego formalizmu celowało się w stworzenie takiej struktury, która przewiduje prawdopodobieństwa otrzymania danych wyników przy wykorzystaniu zasobu, który może nie mieć ściśle określonego porządku w czasie. W celu zachowania zgodności z mechaniką kwantową na poziomie lokalnym opiera się na następującym założeniu: operacje wykonywane przez poszczególną stronę są opisywane przez mechanikę kwantową w standardowym przyczynowym sformułowaniu, które można opisywać przy pomocy zbioru instrumentów kwantowych (\textit{quantum instruments}) \cite{quantum_instrument} z wejściową przestrzenią Hilberta $\mathcal{H}^{A_1}$ i przestrzenią wyjściową  $\mathcal{H}^{A_2}$. Najogólniej można je realizować poprzez zadziałanie unitarną transformacją na system wejściowy i \textit{ancilla}, następnie wykonanie rzutującego pomiaru na części systemu pozostawiając pozostała część systemu jako wyjście. Alicja wykorzystując dany instrument otrzymuje jeden z możliwych wyników $x_i$, który indukuje transformację $\mathcal{M}^A_i$ z wejścia na wyjście. Transformacja ta odpowiada \CP~(CP) odwzorowaniu
 \begin{equation}
 \mathcal{M}^A_i : \mathcal{L}(\mathcal{H}^{A_1}) \mapsto \mathcal{L}(\mathcal{H}^{A_2}),
 \end{equation}
@@ -276,7 +276,7 @@ Prawdopodobieństwo zaobserwowania wyniku realizowanego przez odwzorowanie $\MAi
 \Pro{\MAin} = \Tr{\MAir}
 \end{equation}
 Widać od razu, że równanie \eqref{eq:id_proj} narzuca, by możliwość zaobserwowania dowolnego wyniku była równa 1.
-W przypadku, gdy mamy do czynienia z więcej niż jedną stroną, \textit{procesem} będziemy nazywać listę $\Pr(\MXin{A}{i}, \MXin{B}{j}, \dots)$ dla wszystkich możliwych lokalnych wyników. Dalej w tym rozdziale będzie opisywany wyłącznie przypadek dwustronny, jednakże rozszerzenie formalizmu na przypadek wielostronny jest trywialny. Wygodnym sposobem przedstawiania odwzorowań $\MAin$ jest izomorfizm Choi-Jamiołkowsky (CJ) \cite{cj_iso1, cj_iso2}, który pozwala przedstawiać transformacje liniowe przy pomocy macierzy. 
+W przypadku, gdy mamy do czynienia z więcej niż jedną stroną, \textit{procesem} będziemy nazywać listę $\Pr(\MXin{A}{i}, \MXin{B}{j}, \dots)$ dla wszystkich możliwych lokalnych wyników. Dalej w tym rozdziale będzie opisywany wyłącznie przypadek dwustronny, jednakże rozszerzenie formalizmu na przypadek wielostronny jest trywialne. Wygodnym sposobem przedstawiania odwzorowań $\MAin$ jest izomorfizm Choi-Jamiołkowsky (CJ) \cite{cj_iso1, cj_iso2}, który pozwala przedstawiać transformacje liniowe przy pomocy macierzy. 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.8\textwidth]{obrazki/cj_new}
@@ -354,7 +354,7 @@ Najogólniejsza macierz procesu generująca prawidłowe prawdopodobieństwa, tak
  \sigma^{A \nprec \nsucc B} := \sum_{i>0} e_i  \sigma^{A_1} + \sum_{i>0} f_i  \sigma^{B_1} + \sum_{ij>0} h_{ij} \sigma^{A_1}_i \sigma^{B_1}_j \\
  \forall_{ij} a_{ij}, b_{ij}, c_{ij}, d_{ij}, e_{ij}, f_{ij}, g_{ij}, h_{ij} \in \mathcal{R} \nonumber,
 \end{gather}
-gdzie $\sigma^{A \preceq B}$ można uznać za zasób, w którym Alicja znaduje się w przeszłości Boba, $\sigma^{B \preceq A}$ za zasób, w którym Bob jest w przeszłości Alicji, zaś $\sigma^{A \nprec \nsucc B}$ za zasób, w którym Alicja i Bob komunikują się ze sobą.
+gdzie $\sigma^{A \preceq B}$ można uznać za zasób, w którym Alicja znaduje się w przeszłości Boba, $\sigma^{B \preceq A}$ za zasób, w którym Bob jest w przeszłości Alicji, zaś $\sigma^{A \nprec \nsucc B}$ za zasób, w którym Alicja i Bob nie komunikują się ze sobą.
 Wyróżnia się trzy rodzaje wyrażeń należących do rodziny macierzy przedstawionych powyżej.
 \subsection{Stany}
 \begin{figure}[h]
@@ -371,7 +371,7 @@ W przypadku, gdy po pomiarze porzuci się system, lub równoważnie przyjmie si�
 \begin{equation}
 \Pr(x,y) = \Trs \left[ W \left(\Ket{\psi_x}\Bra{\psi_x} \otimes \Ket{\phi_y}\Bra{\phi_y}\right)\right].
 \end{equation} 
-Powyższe równanie można rozumieć tak, że dla pewnych projektorów $\KP\BP$ macierz W przypisuje im pewne statystyki pomiarowe. Również warunki  jakie wprowadzono na poprawność macierzy $W$ jest taka sama, jak ta którą wprowadzono na macierze procesu. Co wraz z faktem, że każda obserwable można rozpisać na liniowe kombinacje pewnych projektorów, można interpretować W w takim przypadku jako macierz gęstości, a kombinację liniową projektorów jako obserwable. Przytaczając argument, że POVM można zrealizować unitarną ewolucją i pomiarem w więcej wymiarowej przestrzeni można rozszerzyć powyższy argument również na POVM co uzasadnia interpretacje wyrazów $A_1B_1$, jako macierzy gęstości. Przykładowo macierz procesu, która opisuje sytuację, gdzie laboratoria dzielą maksymalnie splątane
+Powyższe równanie można rozumieć tak, że dla pewnych projektorów $\KP\BP$ macierz W przypisuje im pewne statystyki pomiarowe. Również warunki  jakie wprowadzono na poprawność macierzy $W$ jest taka sama, jak ta którą wprowadzono na macierze procesu. Co wraz z faktem, że każda obserwable można rozpisać na liniowe kombinacje pewnych projektorów pozwala interpretować W w takim przypadku jako macierz gęstości, a kombinację liniową projektorów jako obserwable. Przytaczając argument, że POVM można zrealizować unitarną ewolucją i pomiarem w więcej wymiarowej przestrzeni można rozszerzyć powyższy argument również na POVM co uzasadnia interpretacje wyrazów $A_1B_1$, jako macierzy gęstości. Przykładowo macierz procesu, która opisuje sytuację, gdzie laboratoria dzielą maksymalnie splątane
 \footnote{Do sprecyzowania co rozumiane jest pod pojęciem maksymalnego splątania konieczne jest wprowadzenie miary splątania. Przez miarę splątania rozumie się taką funkcje, która jest monotoniczna, gdy laboratoria mogą wykonywać lokalne operacje i komunikować się klasycznie (np. telefonem). Konieczne również jest, by zbiegała do zera dla stanów niesplątanych. Przykładem takiej miary jest entropia von Neumanna definiowana przez $S(\rho) = -\Trs \left[ \rho \log \rho \right]$. Okazuje się, że jest ona maksymalna dla $\KKet{\I}\BBra{\I}$.
 }
  cząsteczki zapisuje się następująco:
@@ -390,7 +390,7 @@ Wyrazy typu $A_1A_2B_1$, $B_1B_2A_1$ można przyjąć za sposób opisywania kana
 \xi(i) = \Ket{i}\Bra{i} \otimes \Ket{i}\Bra{i} \\
 \eta(j) = \Ket{j}\Bra{j} \otimes \frac{1}{2}\I.
 \end{gather} 
-W celu skrócenia zapisu pominięto indeksy górne, które pozostaną dalej niejawne, gdy nie będą wprowadzały dodatkowych informacji.
+W celu skrócenia zapisu pominięto indeksy górne, które pozostaną dalej niejawne, gdy ich brak nie będzie wprowadzał niejasności.
 Można się spodziewać, że gdy laboratoria będzie łączył kanał z $A_2$ do $B_1$, który zamienia $\Ket{i} \mapsto \Ket{i \oplus 1}$, kanał ten opisuje postać CJ macierzy unitarnej $\sum_i \Ket{i}\Bra{i \oplus 1}$, a Alicja na wejściu dostaje stan maksymalnie zmieszany, to prawdopodobieństwo
 zaobserwowania stanu $\Ket{j}$ u Boba będzie pewne, gdy Alicja wyśle mu stan $\Ket{j \oplus 1}$ i niemożliwe w przeciwnym wypadku. Co można sprawdzić jawnym rachunkiem:
 \begin{gather}
@@ -450,7 +450,7 @@ Postać CJ operacji wykonywanych przez poszczególne strony to:
 &= 4C \sum_{ekmnp} \delta_{(i \oplus 1)(j \oplus 1)} \Trs \left [ \Ket{e}\Bra{n} \otimes \Ket{k}\Bra{n}U_i^\dag\otimes \Ket{e}\Bra{p} \otimes \Ket{k}\Bra{p}U_j^\dag \right] \\
 &= \delta_{ij}
 \end{split} \nonumber\\
-C = \frac{-1^{(i \div 2)(j \div 2)}}{32}
+C = \frac{-1^{(i \div 2 + j \div 2)}}{32}
 \end{gather} gdzie powyżej $x \oplus y$ traktowano jako $x + y \mod 2$, zaś $\div$ to dzielenie bez reszty. Powyższe obliczenia pokazują, że rzeczywiście opisywany jest tutaj protokół supergęstego kodowania.
 %Ponownie w celu skrócenia pozostawiono iloczyn tensorowy niejawnym, który dalej również będzie pomijany, gdy będzie on indukowany przez jego pozycję.
 \section{Przyczynowa separowalność i przyczynowe nierówności}
@@ -556,11 +556,56 @@ Przy $q = 0$ Alicja ma dostęp wyłącznie do niesygnalizujących nietrywialnych
 większej ilości sygnalizujących zasobów, co pozwala jej częściej wygrywać w owej grze. Ważnym jest zauważyć, że macierz ta jest nieujemna $\WAll \geq 0$ dla $0 \leq q \leq 1$, korzystając z tego protokołu łamie się przyczynową nierówność dla $q \geq \sqrt{2} - 1$, zaś proces jest nieseparowalny dla $q \geq q_0,~q_0 \approx 0.365$.
 Separowalność przybliżono numerycznie. Wskazywać to może, że w tej grze i przy wykorzystaniu tej procedury niewystarczającym zasobem do złamania przyczynowych nierówności jest nieseparowalność (w tym przypadku może to być wina nieoptymalnej metody dla danego zasobu), lecz ilustruje fakt, iż niewystarczającym zasobem jest nieseparowalność, co zostanie rygorystycznie pokazane w następnym rozdziale.
 \subsection{Systemy n-wymiarowe}
-W powyższym przykładzie wykorzystano wyłącznie kubity, lecz przedstawiony formalizm nie narzuca warunku na wymiar opisywanych systemów. Podczas omawiania kanałów z pamięcią przedstawiono proces, który na wejściu do jednego laboratorium miał dwa kubity. Jako, że 
-iloczyn tensorowy macierzy Pauliego tworzy bazę dla systemów czteropoziomowych, można przyjąć, że zamiast dwóch kubitów system otrzymuje na wejściu jeden system czteropoziomowy. Można rozważyć rozszerzenie powyższej gry na przypadek, gdy zamiast jednej z dwóch możliwości każde z laboratoriów losuje jedna z n możliwości (przykładowo trzy). Wtedy w systemie dwu poziomowym można zakodować wyłącznie, do której z dwóch zbiorów ($\{0\} \{ 1, 2\}$) należy liczba, którą dane laboratorium chce przekazać. Efektywność takiego kodowania to $\frac{2}{3}$. Zwracając uwagę na fakt, że liczby są losowane z prawdopodobieństwem równomiernym, protokołu łamiącego przedstawioną nierówność przyczynową prawdopodobieństwa sukcesu spada do
+W celu rozważania systemów więcej wymiarowych konieczne jest wykorzystanie bazy dla systemów o odpowiednim wymiarze. Przykładowo bazą dla systemów
+$2^n$ poziomowych jest $\{ \sigma_i \}^{\otimes n}$, gdzie $\sigma_i$ to macierz Pauliego. W przypadku systemów o dowolnym wymiarze wygodnie jest
+skorzystać z bazy Hilberty-Schmidta dla macierzy n-wymiarowych. Przykładem takiej bazy są uogólnione macierze Gell-Manna, które między innymi zostały opisane
+w dodatku A. Przypadek, w którym ma się do czynienia z systemami o $m^n$ poziomach można traktować jako przypadek, w którym działa się na $n$ systemach
+$m$ poziomowych. Nierówność zaprezentowaną w poprzednim podrozdziale można próbować również badać przy pomocy procesów, w którym laboratoria otrzymują więcej, niż jeden kubit. Przykładowo biorąc macierz procesu jako:
 \begin{equation}
-\Pr{}_{{sukcesu}_{max}} = \frac{2\sqrt{2} + 4}{12} \approx 0.569.
-\end{equation} Korzystając z klasycznego zasobu maksymalne prawdopodobieństwo sukcesu jakie można osiągnąć to $\frac{2}{3}$. Zwraca to uwagę na konieczność korzystania z zasobów o adekwatnym wymiarze do danego zadania. Do opisu systemów n-poziomowych wygodnie jest użyć uogólnionych macierzy Gell-Manna, które zostały między innymi opisane w dodatku A.
+W =  \bigotimes_i^{n}\frac{1}{4}\left[ \I\I\I\I + \frac{1}{\sqrt{2}}\left( \I\Z\Z\I + \Z\I\X\Z \right) \right],
+\end{equation} który odpowiada $n$-krotnemu powieleniu skrajnego procesu opisanego w poprzednim podrozdziale. W takim procesie każde z laboratoriów otrzymuje
+$n$ kubitów i wysyła je dalej po czym każdy kubit transportowany jest takim samym kanałem. Sfaktoryzowana postać tego procesu zapewnia, że jest całkowicie dodatni przez co jest prawidłowym procesem.
+W celu zakodowania swojej wiadomości każde z laboratoriów wykonuje na każdym z kubitów operacje z poprzedniego rozdziału. Prawdopodobieństwo jest dane następująco:
+\begin{equation}
+\begin{split}
+\Pr(\mathbf{x}, \mathbf{y} | a, b, b') &= \frac{1}{4}^n\Trs \left[ \bigotimes_i^{n}\left[\Big( \I\I\I\I + \frac{1}{\sqrt{2}} \left( \I\Z\Z\I + \Z\I\X\Z\right)\Big)\Big(\xi(x_i,a) \otimes \eta(y_i, b, b')\Big)\right]\right] \\
+&= \frac{1}{4}^n \prod_i^n \Trs\left[ \Big( \I\I\I\I  + \frac{1}{\sqrt{2}} \left( \I\Z\Z\I + \Z\I\X\Z\right)\Big) \Big( \xi(x_i,a) \otimes \eta(y_i, b, b')\Big) \right] \\
+&= \prod_i^n \Pr(x_i,y_i |a, b, b'),
+\end{split}
+\end{equation} gdzie $\mathbf{x} = (x_1, x_2,\dots,x_n), \mathbf{y} = (y_1, y_2, \dots, y_n)$. Przypisując $x=1$, gdy $\sum x_i \geq c_x$, $x=0$  ,gdy $\sum x_i \leq d_x$ i $x=?$ w przeciwnym wypadku (analogicznie dla $y$). Prawdopodobieństwo sukcesu można zapisać wtedy tak samo jak poprzednio, czyli:
+\begin{equation}
+\begin{split}
+\Pr{}_{sukcesu} = \frac{1}{2} \left[ \Pr(x=b|b'=0) + \Pr(y=a|b' = 1)\right].
+\end{split}
+\end{equation}
+Można również sformułować prawdopodobieństwo sukcesu w przypadku, gdy strony mają możliwość zrezygnowania z zgadywania. Warto dodać, że takie prawdopodobieństwo dla zasobów klasycznych, które korzystają z wyłącznie statystycznych informacji na temat dostępnych kanałów (dana strona nie wie, w która stronę można przesyłać informacje w danej próbie) i zasobie prezentowanym w poprzednim podrozdziale jest równa prawdopodobieństwu sukcesu.
+\begin{equation}
+\Pr{}_{sukces?} = \frac{1}{2} \left[ \Pr(x=b|b'=0, x\neq?) + \Pr(y=a|b' = 1, y\neq?)\right].
+\end{equation}. Przykładowo dla procesu, gdzie każde laboratorium otrzymuje trzy kubity i Alicja przypisuje $x=1$, gdy $\sum_i^3 x_i \geq 2$, a $x=0$ w przeciwnym wypadku (analogicznie dla Boba). Prawdopodobieństwo można wyliczyć jako:
+\begin{equation}
+\Pr{}_{sukces} = \Pr{}_{sukces?} \approx 0.941.
+\end{equation} W przypadku przypisania, $x=?$ dla $1 \leq \sum_i^n x_i \leq 2$. Można otrzymać wynik:
+\begin{equation}
+\Pr{}_{sukces?} \approx 0.994.
+\end{equation}
+W tym przypadku Alicja i Bob postanawiają zrezygnować ze zgadywania $\frac{11}{16}$ czasu. Powyższe wyniki są ewidentnie lepsze, niż przedstawione wcześniej. Sterując liczbą wysłanych systemów i porzucanych wyników można osiągnąć arbitralnie dobry wynik dla $\Pr{}_{sukces?}$.
+
+\subsection{Adnotacja}
+Sposób obliczenia:
+\begin{gather}
+\Pr{}_{sukcesu} = \frac{1}{2}\left(\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}\delta_{xb}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}}+\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}\delta_{ya}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}}\right) \\
+\Pr{}_{sukcesu} = \frac{1}{2}\left(\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}\delta_{xb}\delta_{x_?0}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}\delta_{x_?0}}+\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}\delta_{ya}\delta_{x_?0}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}\delta_{x_?0}}\right) \\
+x_? = \begin{cases}
+0&x\neq ?\\
+1&x = ?
+\end{cases}
+\end{gather}
+%\subsection{Systemy n-wymiarowe}
+%W powyższym przykładzie wykorzystano wyłącznie kubity, lecz przedstawiony formalizm nie narzuca warunku na wymiar opisywanych systemów. Podczas omawiania kanałów z pamięcią przedstawiono proces, który na wejściu do jednego laboratorium miał dwa kubity. Jako, że 
+%iloczyn tensorowy macierzy Pauliego tworzy bazę dla systemów czteropoziomowych, można przyjąć, że zamiast dwóch kubitów system otrzymuje na wejściu jeden system czteropoziomowy. Można rozważyć rozszerzenie powyższej gry na przypadek, gdy zamiast jednej z dwóch możliwości każde z laboratoriów losuje jedna z n możliwości (przykładowo trzy). Wtedy w systemie dwu poziomowym można zakodować wyłącznie, do której z dwóch zbiorów ($\{0\} \{ 1, 2\}$) należy liczba, którą dane laboratorium chce przekazać. Efektywność takiego kodowania to $\frac{2}{3}$. Zwracając uwagę na fakt, że liczby są losowane z prawdopodobieństwem równomiernym, protokołu łamiącego przedstawioną nierówność przyczynową prawdopodobieństwa sukcesu spada do
+%\begin{equation}
+%\Pr{}_{{sukcesu}_{max}} = \frac{2\sqrt{2} + 4}{12} \approx 0.569.
+%\end{equation} Korzystając z klasycznego zasobu maksymalne prawdopodobieństwo sukcesu jakie można osiągnąć to $\frac{2}{3}$. Zwraca to uwagę na konieczność korzystania z zasobów o adekwatnym wymiarze do danego zadania. Do opisu systemów n-poziomowych wygodnie jest użyć uogólnionych macierzy Gell-Manna, które zostały między innymi opisane w dodatku A.
 %Rozszerzając protokół do systemów trójwymiarowych przez wykorzystanie macierzy Gell-Manna, które między innymi zostały opisane w dodatku A, można przepisać procedurę następująco:
 %\begin{gather}
 %\xi(x, a) = \Ket{\psi_x}\Bra{\psi_x} \otimes \Ket{\psi_a}\Bra{\psi_a}\\
@@ -853,7 +898,14 @@ Każdy dwustronny proces zdefiniowany w poprzednim sensie rozszerzony o odpowied
 \subsection{Czysty proces}
 Takie sformułowanie daje naturalne sformułowanie, co rozumie się przez czysty proces, tak jak transformacje unitarne są najogólniejszą liniową transformacją, która mapuje pewne czyste stany na inne czyste stany, można wprowadzić pojęcie czystych procesów jako takich, które mapują dane odwzorowanie unitarne CPTP na inne unitarne mapy CPTP. 
 Okazuje się, że macierz procesu $W$ jest czysta wtedy i tylko wtedy, gdy można zapisać $W = \KKet{U_W} \BBra{U_W}$, gdzie $\KKet{U_W}$ jest reprezentacją wektorową CJ pewnej transformacji unitarnej $U_W$
-Dowód powyższego twierdzenia przebiega następująco: jeżeli W jest czystym procesem to z definicji $\mathcal{G_{A,B}}$ jest unitarne. Wybierając $\mathcal{A}$, $\mathcal{B}$, jako operacje SWAP ($\Ket{i}\Bra{j} \otimes \Ket{e}\Bra{f} \mapsto \Ket{e}\Bra{f} \otimes \Ket{i}\Bra{j}$), które odpowiednio zamieniają \textit{ancille} z oryginalnymi systemami, to pisze się, że
+Dowód powyższego twierdzenia przebiega następująco: jeżeli W jest czystym procesem to z definicji $\mathcal{G_{A,B}}$ jest unitarne. Wybierając $\mathcal{A}$, $\mathcal{B}$, jako operacje $\bf{SWAP}$ (rysunek \ref{swap}), które odpowiednio zamieniają \textit{ancille} z oryginalnymi systemami, to pisze się, że
+\begin{figure}[t]
+
+\centering
+\includegraphics[width=0.95\textwidth]{obrazki/swap}
+\caption{Rysunek schematycznie przedstawia działanie operacji $\bf{SWAP}$. Na wejściu Alicja otrzymuje system złożony np. w stanie $\rho^{A_1} \otimes \rho'^{A'_1}$ następnie aplikuje unitarną macierz $\bf{SWAP}$ definiowaną następująco $\textbf{SWAP} = \sum_{ij} \Ket{ij}\Bra{ji}$, a na wyjściu otrzymuje system w stanie $\rho'^{A_2} \otimes \rho^{A'_2}$. Postać CJ tej macierzy to: $\KKet{\I}\BBra{\I}^{A_1A'_2} \otimes \KKet{\I}\BBra{\I}^{A'_1A_2}$.Warto również zauważyć, że po przemianowaniu systemów wyjściowych $A_2 \to A'_2$, $A'_2 \to A_2$ operacja $\bf{SWAP}$ działa trywialnie.}
+\label{swap}
+\end{figure}
 \begin{equation}
 G_{A,B} = W * \left( \KKet{\I}\BBra{\I}^{A'_1 A_2} \KKet{\I}\BBra{\I}^{A_1A'_2} \otimes \KKet{\I}\BBra{\I}^{B'_1 B_2} \KKet{\I}\BBra{\I}^{B_1B'_2}\right) = W,
 \end{equation}
@@ -1109,14 +1161,14 @@ wyraz $\sigma_0$ jest nieokreślony i wraz z macierzą jednostkową włączony d
 \end{equation}
 \item{$\frac{d(d-1)}{2}$ Antysymetrycznych UMG}
 \begin{equation}
-\Gamma_{ij}^A = -\mathbb{i}\Ket{i}\Bra{j} + \mathbb{i}\Ket{j}\Bra{i}, \quad 1 \leq i < j \leq d.
+\Gamma_{ij}^A = -\mathbf{i}\Ket{i}\Bra{j} + \mathbf{i}\Ket{j}\Bra{i}, \quad 1 \leq i < j \leq d.
 \end{equation} 
 \item{$(d-1)$ Diagonalnych UMG}
 \begin{equation}
 \Gamma_{i} = \sqrt{\frac{2}{i(i+1)}} \left( \sum_{j=1}^{i } \Ket{j}\Bra{j} - i\Ket{i+1}\Bra{i+1}\right), \quad 1 \leq l \leq d-1
 \end{equation}
 \end{itemize}
-Przez pogrubione $\mathbb{i}$ oznaczono jednostkę urojoną.
+Przez pogrubione $\mathbf{i}$ oznaczono jednostkę urojoną.
 UMG spełnia następująca relację ortoznormalizowania: $\Trs \Gamma_i \Gamma_j = 2\delta_{ij}$.
 %\listoftables
 W \cite{gell_mann} wyprowadzono następujące rozwinięcie standardowych macierzy ($\Ket{i}\Bra{j}$) w bazie UMG:
