@@ -174,7 +174,7 @@ skorzystać z twierdzenia spektralnego i zapisać $A = \sum_i^N \lambda_i \Ket{\
 \label{eq:cond_ev}
 \Ket{\psi} \mapsto \frac{\Pi_i\Ket{\psi}}{\sqrt{\Bra{\psi}\Pi_i \Ket{\psi}}},
 \end{equation}
-gdzie $\Pi_i$ jest projektorem odpowiadającym $\Ket{\lambda_i}\Bra{\lambda_i}$. Zapisując $\KP = \sum^N_i a_i \Ket{\lambda_i}, \sum^N_i |a_i|^2=1$, prawdopodobieństwo zaobserwowania wyniku $\lambda_i$ jest równe $|a_i|^2$, lub równoważnie
+gdzie $\Pi_i$ jest projektorem\footnote{Przez projektor rozumie się taką macierz $A$, że $A^2 = A$. W przypadku obserwabli projektory z twierdzenia spektralnego sumują się do identyczności i spełniają własność $\Pi_i \Pi_j =0$. Założenie, że wartości własne są niezdegenerowane, które skutkuje tym, że projektory są niezdegenerowane nie jest konieczne. Projektory nie muszą być jednowymiarowe, sumując $n$ liniowo niezależnych projektorów jednowymiarowych otrzymuje się projektor n-wymiarowy, który spełnia poprzednie relacje względem pozostałych macierzy co łatwo sprawdzić. Wielowymiarowe projektory mogą odpowiadać pomiarowi, który przypisuje taki sam wynik wielu ortogonalnym staną, czy pomiar, który jest wykonywana na pewnej części systemu złożonego.} odpowiadającym $\Ket{\lambda_i}\Bra{\lambda_i}$. Zapisując $\KP = \sum^N_i a_i \Ket{\lambda_i}, \sum^N_i |a_i|^2=1$, prawdopodobieństwo zaobserwowania wyniku $\lambda_i$ jest równe $|a_i|^2$, lub równoważnie
 \begin{equation}
 \Pro{\lambda_i} = \BP \Pi_i \KP,
 \end{equation}
@@ -183,7 +183,7 @@ Stan całego systemu składającego się z pewnej ilości systemów opisuje elem
 \begin{equation}
 \Hx{AB\dots Z} = \Hx{A} \otimes \Hx{B} \otimes \dots \Hx{Z},
 \end{equation}
-gdzie $\otimes$ to iloczyn tensorowy. Wraz ze wzrostem podsystemów składających się na system ilość wektorów bazowych rośnie eksponencjalnie, co jest fundamentem tzw. "kwantowego przyśpieszenia", które pozwala heurystycznie/przybliżenie rozwiązać na komputerach kwantowych niektóre klasyczne problemy z eksponencjalnym przyśpieszeniem,
+gdzie $\otimes$ to iloczyn tensorowy. Wraz ze wzrostem podsystemów składających się na system liczba wektorów bazowych rośnie eksponencjalnie, co jest fundamentem tzw. "kwantowego przyśpieszenia", które pozwala heurystycznie/przybliżenie rozwiązać na komputerach kwantowych niektóre klasyczne problemy z eksponencjalnym przyśpieszeniem,
 np. faktoryzacja liczb \cite{shor}, rozwiązywanie układów liniowych \cite{soeq} czy odpowiednio sformułowane problemy uczenia maszynowego \cite{qsvm, qpca}.
 Ważną rzeczą do zaobserwowania jest fakt, że istnieją takie systemy, których nie można zapisać jako iloczyn stanów w poszczególnych podsystemach. Klasycznym przykładem tego jest
 \begin{gather*}
@@ -233,7 +233,7 @@ zbiór takich operatorów $\{E_i\}$, że $E_i > 0,~\sum_i E_i = \mathbb{1}$. Pop
 \Pro{x_i} = \Tr{E_i \rho} \\
 E_i = \sum_j  A^\dag_{ij}A_{ij} \\ 
 \rho \mapsto \frac{\sum_j A_{ij} \rho A^\dag_{ij}}{\Tr{\sum_j A_{ij} \rho A^\dag_{ij}}}.
-\end{gather} Pomiary takie realizuje się korzystając z \textit{ancilli} (pomocniczy system), ewoluując złożony system odpowiednio dobranym operatorem unitarnym, następnie dokonując pomiaru rzutującego na \textit{ancilli} i po odnotowaniu wyniku odrzuceniu jej.
+\end{gather} Pomiary takie realizuje się korzystając z pomocniczego systemu (\textit{ancilli}), ewoluując złożony system odpowiednio dobranym operatorem unitarnym, następnie dokonując pomiaru rzutującego na \textit{ancilli} i po odnotowaniu wyniku odrzuceniu jej.
 % tutaj moze przyklad
 Ważnym narzędziem w formalizmie kwantowym są tak zwane kanały kwantowe (\textit{quantum channel}), opisujące fizyczne połączenia, ich działania na fizyczny system. Klasycznym analogiem może być np. linia telefoniczna czy światłowód transmitujący internet. 
 Przykładem fizycznej implementacji może znów być światłowód, który transmituje fotony, opisywane jako kubity. 
@@ -253,8 +253,8 @@ Typowym przykładem takiego zaszumionego kanału może być kanał depolaryzują
 %%%%
 \section{Macierz Procesu}
 \label{macierz_procesu}
-Jednym z podejść do eksploracji korelacji nie zachowujących przyczynowego porządku jest rozwinięty w \cite{process_matrix} formalizm macierzy procesu.
-Ewidentną zaletą tego podejścia jest zgodność z mechanika kwantową na poziomie lokalnych eksperymentów. Jest to niejakie rozszerzenie i enkapsulacja idei POVM i reguły Borna. Podejście to porzuca założenie globalnej struktury czasoprzestrzeni. Opisuje się następująca sytuację: dwa odległe zamknięte laboratoria (tradycyjnie nazywane Alicja i Bob) wykonują pewne pomiary na zasobie kwantowym i otrzymują pewne wyniki. W przypadku tego formalizmu celowało się w stworzenie takiej struktury, która przewiduje prawdopodobieństwa otrzymania danych wyników przy wykorzystaniu zasobu, który może nie mieć ściśle określonego porządku w czasie. W celu zachowania zgodności z mechaniką kwantową na poziomie lokalnym opiera się na następującym założeniu: operacje wykonywane przez poszczególną stronę są opisywane przez mechanikę kwantową w standardowym przyczynowym sformułowaniu, które można opisywać przy pomocy zbioru instrumentów kwantowych (\textit{quantum instruments}) \cite{quantum_instrument} z wejściową przestrzenią Hilberta $\mathcal{H}^{A_1}$ i przestrzenią wyjściową  $\mathcal{H}^{A_2}$. Najogólniej można je realizować poprzez zadziałanie unitarną transformacją na system wejściowy i \textit{ancilla}, następnie wykonanie rzutującego pomiaru na części systemu pozostawiając pozostała część systemu jako wyjście. Alicja wykorzystując dany instrument otrzymuje jeden z możliwych wyników $x_i$, który indukuje transformację $\mathcal{M}^A_i$ z wejścia na wyjście. Transformacja ta odpowiada \CP~(CP) odwzorowaniu
+Jednym z podejść do szukania korelacji nie zachowujących przyczynowego porządku jest rozwinięty w \cite{process_matrix} formalizm macierzy procesu.
+Ewidentną zaletą tego podejścia jest zgodność z mechanika kwantową na poziomie lokalnych eksperymentów. Jest to niejakie rozszerzenie łączące ideę POVM i regułę Borna. Podejście to porzuca założenie globalnej struktury czasoprzestrzeni. Opisuje się następująca sytuację: dwa odległe zamknięte laboratoria (tradycyjnie nazywane Alicja i Bob) wykonują pewne pomiary na zasobie kwantowym i otrzymują pewne wyniki. W przypadku tego formalizmu starano się zbudować taką strukturę, która przewiduje prawdopodobieństwa otrzymania danych wyników przy wykorzystaniu zasobu, który może nie mieć ściśle określonego porządku w czasie. W celu zachowania zgodności z mechaniką kwantową na poziomie lokalnym formalizm opiera się na następującym założeniu: operacje wykonywane przez poszczególną stronę są opisywane przez mechanikę kwantową w standardowym przyczynowym sformułowaniu, które można opisywać przy pomocy zbioru instrumentów kwantowych (\textit{quantum instruments}) \cite{quantum_instrument} z wejściową przestrzenią Hilberta $\mathcal{H}^{A_1}$ i przestrzenią wyjściową  $\mathcal{H}^{A_2}$. Najogólniej można je realizować poprzez zadziałanie unitarną transformacją na system wejściowy i system pomocniczy (\textit{ancilla}), następnie wykonanie rzutującego pomiaru na części systemu pozostawiając pozostała część systemu jako wyjście. Alicja wykorzystując dany instrument otrzymuje jeden z możliwych wyników $x_i$, który indukuje transformację $\mathcal{M}^A_i$ z wejścia na wyjście. Odwzorowanie te odpowiada odwzorowaniu w pełni dodatnim (\textit{completetly positive}, CP)
 \begin{equation}
 \mathcal{M}^A_i : \mathcal{L}(\mathcal{H}^{A_1}) \mapsto \mathcal{L}(\mathcal{H}^{A_2}),
 \end{equation}
@@ -270,12 +270,17 @@ gdzie macierze $E_{ij}$ spełniają następujące własności:
 \label{eq:id_proj} 
 \sum^n_{i=0} \sum^m_{j=0} E_{ij}^\dag E_{ij} = \Idx{A_1}
 \end{gather}
-Takie odwzorowania, które spełniają \eqref{eq:id_proj0} z równością, nazywa się \TP (TP).
+Takie odwzorowania, które spełniają \eqref{eq:id_proj0} z równością zachowuje ślad (\textit{trace preserving}, TP).
 Prawdopodobieństwo zaobserwowania wyniku realizowanego przez odwzorowanie $\MAin$ to
 \begin{equation}
 \Pro{\MAin} = \Tr{\MAir}
 \end{equation}
-Widać od razu, że równanie \eqref{eq:id_proj} narzuca, by możliwość zaobserwowania dowolnego wyniku była równa 1.
+Widać od razu, że równanie \eqref{eq:id_proj} narzuca, by możliwość zaobserwowania dowolnego wyniku była równa 1. Co łatwo pokazać w następujący sposób:
+\begin{equation}
+\begin{split}
+\sum_i \Pro{\MAin} &= \sum_i \Tr{\MAir} = \sum_{ij} \Trs \left[E^\dag_{ij}\rho E_{ij}\right]\\ &= \sum_{ij} \Trs\left[ \rho E^\dag_{ij}E_{ij}\right] = \Trs \left[ \rho \sum_{ij}  E^\dag_{ij}E_{ij}\right] = \Trs \left[ \rho \right] = 1
+\end{split}
+\end{equation}
 W przypadku, gdy mamy do czynienia z więcej niż jedną stroną, \textit{procesem} będziemy nazywać listę $\Pr(\MXin{A}{i}, \MXin{B}{j}, \dots)$ dla wszystkich możliwych lokalnych wyników. Dalej w tym rozdziale będzie opisywany wyłącznie przypadek dwustronny, jednakże rozszerzenie formalizmu na przypadek wielostronny jest trywialne. Wygodnym sposobem przedstawiania odwzorowań $\MAin$ jest izomorfizm Choi-Jamiołkowsky (CJ) \cite{cj_iso1, cj_iso2}, który pozwala przedstawiać transformacje liniowe przy pomocy macierzy. 
 \begin{figure}[t]
 \centering
@@ -285,7 +290,7 @@ W przypadku, gdy mamy do czynienia z więcej niż jedną stroną, \textit{proces
 Macierz CJ $M^{A_1A_2}_i \in \Mats{\Hx{A_1} \otimes \Hx{A_2}} \geq 0$ jest zdefiniowana jako
 \begin{gather}
 \label{eq:cj_iso}
-\mathcal{M^A}_i= M^{A_1A_2}_i := [\mathcal{I} \otimes \MAi{ \KKet{\I} \BBra{\I}}]^T= \left[\sum^{d_{A_1}-1}_{i,j=0} \Ket{i}\Bra{j} \otimes \mathcal{M}^A_i(\Ket{i}\Bra{j})\right]^T, \\
+\MCJ(\mathcal{M^A}_i)= M^{A_1A_2}_i := [\mathcal{I} \otimes \MAi{ \KKet{\I} \BBra{\I}}]^T= \left[\sum^{d_{A_1}-1}_{i,j=0} \Ket{i}\Bra{j} \otimes \mathcal{M}^A_i(\Ket{i}\Bra{j})\right]^T, \\
 \KKet{\I} = \sum^{d_{A_1}-1}_{i=0} \Ket{ii},
 \end{gather}
 gdzie $\{\Ket{j}\}^{d_{A_1}}$ tworzy ortonormalna bazę w $\HAi$. 
@@ -303,7 +308,7 @@ Korzystając z tego przejścia można zapisać prawdopodobieństwo dwóch rezult
 \label{eq:cj_prob}
 \Prt{\MAin}{\MXin{B}{j}} = \Tr{\WAll(M^{A_1A_2}_i \otimes M^{B_1B_2}_j)}.
 \end{equation}
-Macierz $W$ w $\Mats{\Hx{A_1} \otimes \Hx{A_2} \otimes \Hx{B_1} \otimes \Hx{B_2}}$ nazywa się \textit{process matrix} (macierzą procesu).
+Macierz $W$ w $\Mats{\Hx{A_1} \otimes \Hx{A_2} \otimes \Hx{B_1} \otimes \Hx{B_2}}$ nazywa się macierzą procesu (\textit{process matrix}).
 W celu generowania prawidłowego prawdopodobieństwa narzuca się dodatkowe warunki na $W$
 \begin{gather}
 \label{eq:non_neg}
@@ -354,7 +359,7 @@ Najogólniejsza macierz procesu generująca prawidłowe prawdopodobieństwa, tak
  \sigma^{A \nprec \nsucc B} := \sum_{i>0} e_i  \sigma^{A_1} + \sum_{i>0} f_i  \sigma^{B_1} + \sum_{ij>0} h_{ij} \sigma^{A_1}_i \sigma^{B_1}_j \\
  \forall_{ij} a_{ij}, b_{ij}, c_{ij}, d_{ij}, e_{ij}, f_{ij}, g_{ij}, h_{ij} \in \mathcal{R} \nonumber,
 \end{gather}
-gdzie $\sigma^{A \preceq B}$ można uznać za zasób, w którym Alicja znaduje się w przeszłości Boba, $\sigma^{B \preceq A}$ za zasób, w którym Bob jest w przeszłości Alicji, zaś $\sigma^{A \nprec \nsucc B}$ za zasób, w którym Alicja i Bob nie komunikują się ze sobą.
+gdzie $\sigma^{A \preceq B}$ można uznać za zasób, w którym Alicja znaduje się w przeszłości Boba, $\sigma^{B \preceq A}$ za zasób, w którym Bob jest w przeszłości Alicji, zaś $\sigma^{A \nprec \nsucc B}$ za zasób, w którym Alicja i Bob nie komunikują się ze sobą. Słuszność takiej interpretacji utwierdzają interpretacje poszczególnych wyrazów, które składają się na poszczególne zasoby. Zostały one opisane dalej.
 Wyróżnia się trzy rodzaje wyrażeń należących do rodziny macierzy przedstawionych powyżej.
 \subsection{Stany}
 \begin{figure}[h]
@@ -362,29 +367,98 @@ Wyróżnia się trzy rodzaje wyrażeń należących do rodziny macierzy przedsta
 \includegraphics{obrazki/states_new}
 \caption{Schematyczne przedstawienie stanów. Laboratoria wykonują pewne wybrane pomiary na systemach po czym wysyłają je ze swoich laboratoriów. Każde z laboratoriów otrzymuje różne, potencjalnie splątane, systemy.}
 \end{figure}
-Wyrazy typu $A_1 B_1$ można zidentyfikować, jako stany zaobserwować to można w następujący sposób.
+Wyrazy typu $A_1 B_1$ można zidentyfikować jako stany. Zaobserwować to można w następujący sposób.
 Okazuje się, że macierz CJ, która opisuje zaobserwowanie pewnego stanu $\KP\BP$ i przygotowanie innego stanu $\Ket{\phi}\Bra{\phi}$ wygląda następująco:
 \begin{equation}
 \MCJ(\mathcal{M}) = \KP\BP \otimes \Ket{\phi}\Bra{\phi}.
+\end{equation}
+W celu wyprowadzenia powyższego równania zacząć można od przeanalizowania w jaki sposób wygląda postać mapy, która opisuje pomiar danego stanu $\Ket{\psi}$. Dobierając wektory $\{ \Ket{\psi_i} \}$ tak, by tworzyły bazę ortonormalną i $\Ket{\psi_0} = \Ket{\psi}$ z wcześniej podanej definicji działania mapy można zapisać:
+\begin{equation}
+\begin{split}
+\mathcal{M}(\rho) &= \mathcal{M}\left(\sum_{ij} \alpha_{ij} \Ket{\psi_i}\Bra{\psi_j}\right) = \sum_{ijm} \left[ \alpha_{ij} E^\dag_m \Ket{\psi_i}\Bra{\psi_j}E_m\right]\\
+&= \sum_{ijklefm} \left( {e_{lk}}_m {e_{ef}}_m^*\alpha_{ij} \Ket{\psi_k}\Bra{\psi_l} \Ket{\psi_i}\Bra{\psi_j} \Ket{\psi_e}\Bra{\psi_f}\right). 
+\end{split}
+\end{equation}
+Biorąc pod uwagę fakt, że stan po otrzymana macierz po zadziałaniu mapą powinna być wielokrotnością $\Ket{\psi}$ (stan obserwowany jest z pewnym prawdopodobieństwem). Narzuca to warunek, że $k = 0$. Następnie zapisując regułę prawdopodobieństwa:
+\begin{equation}
+\Trs\left[ \mathcal{M}(\rho) \right] = \sum_{ijlk} \Trs \left[ {e_{0l}}_m{e_{0k}}_m^*\alpha_{ij} \Ket{\psi}\Bra{\psi_l} \Ket{\psi_i}\Bra{\psi_j} \Ket{\psi_k}\Bra{\psi}\right] =
+\sum_{ijlkm} \Trs \left [ {e_{0l}}_m{e_{0k}}_m^*\alpha_{ij}\delta_{jk}\delta_{jl} \Ket{\psi}\Bra{\psi} \right] = \sum_{im} |{e_{0i}}_m| \alpha_{ii}.
 \end{equation} 
-W przypadku, gdy po pomiarze porzuci się system, lub równoważnie przyjmie się, że przestrzeń wyjściowa jest trywialna to powyższe odwzorowanie to $\KP\BP$. Pisząc dalej regułę prawdopodobieństwa
+Powyższy wynik musi się zgadzać z prawdopodobieństwem wynikającym z standardowej reguły prawdopodobieństwa, czyli:
+\begin{equation}
+\label{eq:a00}
+\sum_{ij} \Trs \left[ \alpha_{ij} \Ket{\psi}\Bra{\psi} \Ket{\psi_i}\Bra{\psi_j}\right] = \sum_{j} \Trs \left[ \alpha_{0j} \Ket{\psi}\Bra{\psi_j} \right] = \alpha_{00}.
+\end{equation}
+Co narzuca warunek, że ${e_{ij}}_m = 0$ dla $i \neq 0 \land j \neq 0$. Jako, że pozostał wyłącznie wyraz typu $\Ket{\psi}\Bra{\psi}$ można dokonać sumowania po $m$ co daje:
+\begin{equation}
+\sum_{im} |{e_{00}}_m| \alpha_{ii} = \sum_{m} |e_{00}|_m \alpha_{ii} = e_{00} \alpha_{ii}.
+\end{equation}
+Korzystając ponownie z \eqref{eq:a00} widać, że $|e_{00}| = 1$.
+Korzystając z definicji, postać CJ tego odwzorowania to:
+\begin{equation}
+\begin{split}
+\MCJ(\mathcal{M}) &= \sum_{ij} \Ket{i}\Bra{j} \otimes (\Ket{\psi}\Bra{\psi}^\dag \Ket{j}\Bra{i} \Ket{\psi}\Bra{\psi})^T = \sum_{ij}\Ket{i}\Bra{j}  \otimes (\Ket{\psi}\left(\sum_l \beta_{l}^* \Bra{l}\Ket{j}\right)\left(\sum_k\beta_k\Bra{i}\Ket{k}\right)\Bra{\psi})^T \\&=  \sum_{ij} \beta_i \beta_j^* \Ket{i}\Bra{i} \otimes \KP\BP^T = \KP\BP \otimes \KP\BP^T.
+\end{split}
+\end{equation} Dalej zauważając, ewolucja unitarna jest już zapisana w odpowiedniej formie oraz wybierając macierz unitarną jako
+$U = \sum_i \Ket{\phi_i}\Bra{\psi_i}$, gdzie wektory $\{ \Ket{\phi_i} \}$ tworzą bazę ortonormalną, a $\Ket{\phi_0}$ jest wybranym stanem, który chce się przygotować, złożenie poprzedniej z poprzednią transformacją ma postać:
+\begin{equation}
+\Ket{\psi}\Bra{\psi}\otimes U \Ket{\psi}\Bra{\psi} U^\dag = \Ket{\psi}\Bra{\psi}\otimes \Ket{\phi}\Bra{\phi}.
+\end{equation}
+Co pokazuje, że rzeczywiście tak wygląda odwzorowanie CJ dla pomiaru i przygotowania stanu. 
+Korzystając z tej wiedzy dla przypadku, w którym po pomiarze porzuci się system, lub równoważnie przyjmie się, że przestrzeń wyjściowa jest trywialna to powyższe odwzorowanie to $\KP\BP$. Pisząc dalej regułę prawdopodobieństwa
 \begin{equation}
 \Pr(x,y) = \Trs \left[ W \left(\Ket{\psi_x}\Bra{\psi_x} \otimes \Ket{\phi_y}\Bra{\phi_y}\right)\right].
 \end{equation} 
 Powyższe równanie można rozumieć tak, że dla pewnych projektorów $\KP\BP$ macierz W przypisuje im pewne statystyki pomiarowe. Również warunki  jakie wprowadzono na poprawność macierzy $W$ jest taka sama, jak ta którą wprowadzono na macierze procesu. Co wraz z faktem, że każda obserwable można rozpisać na liniowe kombinacje pewnych projektorów pozwala interpretować W w takim przypadku jako macierz gęstości, a kombinację liniową projektorów jako obserwable. Przytaczając argument, że POVM można zrealizować unitarną ewolucją i pomiarem w więcej wymiarowej przestrzeni można rozszerzyć powyższy argument również na POVM co uzasadnia interpretacje wyrazów $A_1B_1$, jako macierzy gęstości. Przykładowo macierz procesu, która opisuje sytuację, gdzie laboratoria dzielą maksymalnie splątane
-\footnote{Do sprecyzowania co rozumiane jest pod pojęciem maksymalnego splątania konieczne jest wprowadzenie miary splątania. Przez miarę splątania rozumie się taką funkcje, która jest monotoniczna, gdy laboratoria mogą wykonywać lokalne operacje i komunikować się klasycznie (np. telefonem). Konieczne również jest, by zbiegała do zera dla stanów niesplątanych. Przykładem takiej miary jest entropia von Neumanna definiowana przez $S(\rho) = -\Trs \left[ \rho \log \rho \right]$. Okazuje się, że jest ona maksymalna dla $\KKet{\I}\BBra{\I}$.
+\footnote{Do sprecyzowania co rozumiane jest pod pojęciem maksymalnego splątania konieczne jest wprowadzenie miary splątania. Przez miarę splątania rozumie się taką funkcje, która jest monotoniczna, gdy laboratoria mogą wykonywać lokalne operacje i komunikować się klasycznie (np. telefonem). Konieczne również jest, by zbiegała do zera dla stanów niesplątanych. Przykładem takiej miary jest entropia von Neumanna definiowana przez $S(\rho) = -\Trs \left[ \rho \log \rho \right]$. Okazuje się, że jest ona maksymalna dla $\frac{1}{d}\KKet{\I}\BBra{\I}$ \cite{review}.
 }
  cząsteczki zapisuje się następująco:
 \begin{equation}
-W_s = \KKet{\I}\BBra{\I}^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2}.
+W = \KKet{\I}\BBra{\I}^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2}.
+\end{equation}
+W ogólności stany opisują procesy postaci:
+\begin{equation}
+W = \rho^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2}.
+\end{equation} Powyżej została zmieniona kolejność. W łatwy sposób można pokazać słuszność powyższego równania.
+\begin{equation}
+\begin{split}
+\Pr(x,y) &= \sum_{ijkl}\Trs\left[( \alpha_{ijkl} \Ket{i}\Bra{j} \otimes \I \otimes \Ket{k}\Bra{l} \otimes \I) M_x \otimes M_y\right] \\ 
+&= \sum_{ijklmnef} \Trs \left[ \alpha_{ijkl} \Ket{i}\Bra{j} \otimes \I \otimes \Ket{k}\Bra{l} \otimes \I)(\Ket{m}\Bra{n} \otimes \mathcal{M}_x(\Ket{n}\Bra{m})^T \otimes \Ket{e}\Bra{f} \otimes \mathcal{M}_y(\Ket{f}\Bra{e})^T \right] \\
+&= \sum_{ijklmnef} \Trs \left[ \alpha_{ijkl} \Ket{i}\Bra{j}\Ket{m}\Bra{n}^{A_1} \otimes \Ket{k}\Bra{l}\Ket{e}\Bra{f}^{B_1} \right] \Trs\left[{\mathcal{M}_x(\Ket{n}\Bra{m})^{A_2}}^T \otimes {\mathcal{M}_y(\Ket{f}\Bra{e})^{B_2}}^T\right] \\
+&= \sum_{mnef} \Trs \left[ \alpha_{ijkl} \Bra{n}\Ket{i}\Bra{j}\Ket{m} \otimes \Bra{f}\Ket{k}\Bra{l}\Ket{e}\right]\Trs\left[{\mathcal{M}_x(\Ket{n}\Bra{m})^{A_2}}^T \otimes {\mathcal{M}_y(\Ket{f}\Bra{e})^{B_2}}^T\right] \\
+&= \sum_{mnef} \Trs\left[\alpha_{nmfe} \right] \Trs\left[{\mathcal{M}_x(\Ket{n}\Bra{m})^{A_2}}^T \otimes {\mathcal{M}_y(\Ket{f}\Bra{e})^{B_2}}^T\right] \\
+&= \sum_{mnef} \Trs\left[\alpha_{nmfe}{\mathcal{M}_x(\Ket{n}\Bra{m})^{A_2}}^T \otimes {\mathcal{M}_y(\Ket{f}\Bra{e})^{B_2}}^T\right] \\
+&= \Trs \left[ \mathcal{M}_x \otimes \mathcal{M}_y(\sum_{nmfe}\alpha_{nmfe} \Ket{n}\Bra{m} \otimes \Ket{f}\Bra{e})^T\right] \\
+&= \Trs \left[  \mathcal{M}_x \otimes \mathcal{M}_y(\rho)^T\right] \\
+&= \Trs \left[ \mathcal{M}_x \otimes \mathcal{M}_y(\rho)\right]
+\end{split}
 \end{equation}
 \subsection{Kanały}
 \begin{figure}[h]
 \centering
 \includegraphics{obrazki/channel_new}
-\caption{Schematyczna reprezentacja kanału idealnego. Alicja wykonuje wybrane operacje na systemie po czym wysyła go do Boba. Podczas wysyłania systemu zostaje zaaplikowana unitarna transformacja $U$.}
+\caption{Schematyczna reprezentacja kanału idealnego. Alicja wykonuje wybrane operacje na systemie po czym wysyła go do Boba. W trakcie przesyłania systemu zostaje zaaplikowana unitarna transformacja $U$.}
 \end{figure}
-Wyrazy typu $A_1A_2B_1$, $B_1B_2A_1$ można przyjąć za sposób opisywania kanałów. Macierz opisująca odwracalny kanał, który wysyła cząstkę z $A_2$ do $B_1$ i wykonuje pewna operację unitarną U to $\KKet{U}\BBra{U}^{A_2B_1}$. Korzystając z wcześniej opisanej detekcji stanu i przygotowania innego stanu eksperyment, w którym Alicja wysyła system zakodowany w bazie $z$, a Bob wykonują pomiar w bazie $z$ następnie Alicja przesyła dalej swój system, a Bob przesyła stan maksymalnie zmieszany stan 
+Wyrazy typu $A_1A_2B_1$, $B_1B_2A_1$ można przyjąć za sposób opisywania kanałów. O ile łatwo zauważyć słuszność, że formuła
+\begin{equation}
+\Trs \left[ \mathcal{M}_y^B \circ \mathcal{C} \circ \mathcal{M}_x^A(\rho)\right]
+\end{equation} opisuje statystyki pomiarowe eksperymentu, w którym Alicja wykonuje pewne pomiary przesyła system kanałem CPTP $\mathcal{C}$ po czym Bob wykonuje swoje pomiary na otrzymanym systemie to nie oczywista jest jej równoważność z 
+\begin{equation}
+\Trs \left[\left( \rho^{A_1}\otimes  {C^{A_2B_1}}^T \otimes \I^{B_2}\right)(M_x^{A_1A_2}\otimes M_y^{B_1B_2})\right].
+\end{equation} Można to pokazać następująco: 
+\begin{equation}
+\begin{split}
+\Trs&\left[ \left(\rho^{A_1} \otimes C^{A_2B_1} \otimes \I \right)\left(M_x^{A_1A_2}\otimes M_y^{B_1B_2}\right)\right] \\
+&= \sum_{ijklmn} \Trs \left[ \left(\rho \otimes \Ket{i}\Bra{j} \otimes \mathcal{C}(\Ket{i}\Bra{j}) \otimes \I\right)\left(\Ket{k}\Bra{l} \otimes \mathcal{M}_x(\Ket{l}\Bra{k})^T \otimes \Ket{m}\Bra{n} \otimes \mathcal{M}_y(\Ket{n}\Bra{m})^T\right)\right] \\
+&= \sum_{ijklmn} \Trs \left[ \rho \Ket{k}\Bra{l} \otimes \Ket{i}\Bra{j}\mathcal{M}_x(\Ket{l}\Bra{k})^T \otimes \mathcal{C}(\Ket{i}\Bra{j})\Ket{m}\Bra{n} \otimes \mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
+&= \Trs\left[\rho\Ket{k}\Bra{l}\right] \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\Ket{l}\Bra{k})\right] \Trs\left[\mathcal{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{m}\Bra{n})\right] \\
+&= \sum_{ijmn}  \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\sum_{lk} \rho_{lk} \Ket{l}\Bra{k})^T\right] \Trs\left[\mathcal{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
+&= \sum_{ijmn}  \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\rho)^T\right] \Trs\left[\mathcal{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
+&= \sum_{mn} \Trs \left[ \mathcal{C}(\mathcal{M}_x(\rho)\Ket{m}\Bra{n})\right]\Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})\right]^T \\
+&=\Trs \left[ \mathcal{M}_y^B \circ \mathcal{C} \circ \mathcal{M}_x^A(\rho)\right]
+\end{split}
+\end{equation}
+Przykładowo macierz opisująca odwracalny kanał, który wysyła cząstkę z $A_2$ do $B_1$ i wykonuje pewna operację unitarną U to $\KKet{U}\BBra{U}^{A_2B_1}$. Korzystając z wcześniej opisanej detekcji stanu i przygotowania innego stanu eksperyment, w którym Alicja wysyła system zakodowany w bazie $z$, a Bob wykonują pomiar w bazie $z$ następnie Alicja przesyła dalej swój system, a Bob przesyła stan maksymalnie zmieszany stan 
 ($\frac{1}{2}\I$) można opisać następującymi odwzorowaniami
 \begin{gather}
 \xi(i) = \Ket{i}\Bra{i} \otimes \Ket{i}\Bra{i} \\
@@ -425,8 +499,8 @@ i &0
 \Z = \begin{pmatrix}
 1 &0\\
 0 &-1
-\end{pmatrix}~
-\end{equation}. Okazuje się, że po wykonaniu lokalnej transformacji system złożony znajduje się w jednym z czterech ortogonalnych stanów, co pozwala Bobowi, po otrzymaniu systemu od Alicji, określić jaką transformację wykonała Alicja, czyli otrzymać wiadomość od Alicji zakodowaną w wykonanej przez nią transformacji. Wyjątkowość tego protokołu polega na fakcie, że Bob może otrzymać pierwszą cząstkę arbitralnie wcześniej, niż
+\end{pmatrix}.~
+\end{equation} Okazuje się, że po wykonaniu lokalnej transformacji system złożony znajduje się w jednym z czterech ortogonalnych stanów, co pozwala Bobowi, po otrzymaniu systemu od Alicji, określić jaką transformację wykonała Alicja, czyli otrzymać wiadomość od Alicji zakodowaną w wykonanej przez nią transformacji. Wyjątkowość tego protokołu polega na fakcie, że Bob może otrzymać pierwszą cząstkę arbitralnie wcześniej, niż
 cząstkę, którą otrzyma od Alicji, co więcej może on otrzymać tą cząstkę zanim Alicja zdecyduje jakie 2 bity chce mu przesłać. Co może błędnie sugerować, że Alicja wysłała dwa klasyczne bity przy pomocy jednego kubitu. Sytuacja taka jest zabroniona przez granicę Holevo (\textit{Holevo bound}). Mimo wszystko dwa kubity są wysyłane w celu przesłania dwóch klasycznych bitów co nie wprowadza sprzeczności.
 W celu wykonania tego protokołu potrzebne są dwie maksymalnie splątane cząsteczki i kanał od Alicji do Boba. Korzystając z wiedzy z poprzednich dwóch podrozdziałów zapisuje się ten zasób następująco:
 \begin{equation}
@@ -466,7 +540,7 @@ gdzie pierwszy proces można interpretować jako zasób, w którym Bob nie jest 
 \WAll = qW^{B \nprec A} + (1-q)W^{A \nprec B},~0 \leq q \leq 1.
 \end{equation}
 Powyższa dekompozycja nie musi być jednoznaczna, jako że wyrazy typu $W^{A \nprec \nsucc B}$ można włączyć do wybranego wyrazu.
-Przed wprowadzeniem przyczynowej nierówności (\textit{causal inequallity}) warto wspomnieć o tzw. nierówności Bella. Jest to nieskończona rodzina nierówności, których żaden niesplątany system nie może złamać. Jest to \textit{device independent} (niezależny od implementacji pomiarów) sposób weryfikacji splątania kwantowego. Dla każdego zadanie, które wykonują pewne strony można wprowadzić nierówność, która ogranicza (np. z góry) wyniki jakie mogą zostać osiągniete przy wykorzystaniu zasobów o określonej przyczynowości. Jeżeli taka nierówność zostałaby złamana można wnioskować, że zasób wykorzystany w zadaniu nie ma określonej przyczynowości.
+Przed wprowadzeniem przyczynowej nierówności (\textit{causal inequallity}) warto wspomnieć o tzw. nierówności Bella. Jest to nieskończona rodzina nierówności, których żaden niesplątany system nie może złamać. Jest to niezależny od implementacji pomiarów (\textit{device independent}) sposób weryfikacji splątania kwantowego. Dla każdego zadanie, które wykonują pewne strony można wprowadzić nierówność, która ogranicza (np. z góry) wyniki jakie mogą zostać osiągniete przy wykorzystaniu zasobów o określonej przyczynowości. Jeżeli taka nierówność zostałaby złamana można wnioskować, że zasób wykorzystany w zadaniu nie ma określonej przyczynowości.
 %%Typowym przykładem jest eksperyment, w którym w środkowym punkcie pomiędzy odległymi laboratoriami
 %przygotowuję się dwie cząsteczki i wysyła się po jednej cząstce do każdego z laboratoriów po pierwsza strona, tradycyjnie nazywana Alicją, wykonuje jeden pomiar zwracający jakiś binarny wynik $A_n$ przyjmujący wartości $\pm 1$, następnie wykonuje po raz kolejny pomiar potencjalnie 
 %nierówności wynikająca z analizy następującej funkcji zmiennych losowych
@@ -578,13 +652,13 @@ W celu zakodowania swojej wiadomości każde z laboratoriów wykonuje na każdym
 \Pr{}_{sukcesu} = \frac{1}{2} \left[ \Pr(x=b|b'=0) + \Pr(y=a|b' = 1)\right].
 \end{split}
 \end{equation}
-Można również sformułować prawdopodobieństwo sukcesu w przypadku, gdy strony mają możliwość zrezygnowania z zgadywania. Warto dodać, że takie prawdopodobieństwo dla zasobów klasycznych, które korzystają z wyłącznie statystycznych informacji na temat dostępnych kanałów (dana strona nie wie, w która stronę można przesyłać informacje w danej próbie) i zasobie prezentowanym w poprzednim podrozdziale jest równa prawdopodobieństwu sukcesu.
+Można również sformułować prawdopodobieństwo sukcesu w przypadku, gdy strony mają możliwość zrezygnowania z zgadywania. %Warto dodać, że takie prawdopodobieństwo dla zasobów klasycznych, które korzystają z wyłącznie statystycznych informacji na temat dostępnych kanałów (dana strona nie wie, w która stronę można przesyłać informacje w danej próbie) i zasobie prezentowanym w poprzednim podrozdziale jest równa prawdopodobieństwu sukcesu.
 \begin{equation}
 \Pr{}_{sukces?} = \frac{1}{2} \left[ \Pr(x=b|b'=0, x\neq?) + \Pr(y=a|b' = 1, y\neq?)\right].
-\end{equation}. Przykładowo dla procesu, gdzie każde laboratorium otrzymuje trzy kubity i Alicja przypisuje $x=1$, gdy $\sum_i^3 x_i \geq 2$, a $x=0$ w przeciwnym wypadku (analogicznie dla Boba). Prawdopodobieństwo można wyliczyć jako:
+\end{equation} Przykładowo dla procesu, gdzie każde laboratorium otrzymuje trzy kubity i Alicja przypisuje $x=1$, gdy $\sum_i^3 x_i \geq 2$, a $x=0$ w przeciwnym wypadku (analogicznie dla Boba). Prawdopodobieństwo można wyliczyć jako:
 \begin{equation}
 \Pr{}_{sukces} = \Pr{}_{sukces?} \approx 0.941.
-\end{equation} W przypadku przypisania, $x=?$ dla $1 \leq \sum_i^n x_i \leq 2$. Można otrzymać wynik:
+\end{equation} W przypadku przypisania, $x=?$ dla $1 \leq \sum_{i=0}^2 x_i \leq 2$. Można otrzymać wynik:
 \begin{equation}
 \Pr{}_{sukces?} \approx 0.994.
 \end{equation}
@@ -1142,7 +1216,7 @@ W innych przypadkach macierz jednostkowa będzie znajdowała się na niewłaści
 \begin{gather}
 {}_{A_n}A = Q\left( \Trs_{A_n}A \otimes \I^{A_N} \right)Q \\
 Q = \sum_{ijkl} \Ket{i}_{A_1 \dots A_{n-1}} \Ket{j}_{A_n} \Ket{k}_{A_n+1 \dots A_{N-1}} \Ket{l}_{A_N}\Bra{i}_{A_1 \dots A_{n-1}} \Bra{l}_{A_n} \Bra{k}_{A_n+1 \dots A_{N-1}} \Bra{j}_{A_N},
-\end{gather} gdzie $A_N$ oznacza ostatni system, zaś $\I^{A_N}$ rozumie się,  ako macierz jednostkowa o odpowiednim rozmiarze na ostatniej pozycji. Zauważa się, że macierz Q ma $d_{A_1 A_2 \dots A_N}$ jedynek, jest unitarna co razem daje, że w każdej kolumnie i każdym rzędzie jest dokładnie jedna jedynka i na innych miejscach zera. Wynika to z faktu, że gdyby było inaczej to obliczając wyznacznik macierzy Q metodą minorów rozwijając względem wiersza, w którym nie stoi jedynka wyszłoby, że wyznacznik tej macierzy byłby równy zero, co jest sprzeczne z faktem, że macierz ta jest odwracalna. Niemożliwa jest większą ilość jedynek, niż jeden w każdej kolumnie i wierszu, ponieważ jest ich dokładnie $d_{A_1A_2\dots A_N}$. Taka postać macierzy pozwala na obliczenie wartości danej komórki macierzy w czasie stałym co pozwala na wykonanie operacji ${}_XA$ w $O({d_{A_1 A_2 \dots A_N}}^2)$. Problem można również rozwiązać w innych sposób, który może być uznawany za bardziej elegancki, a oferuje taką samą złożoność obliczeniową i jest bardziej przystępny implementacyjnie jest wykonywanie tej operacji na tzw. uogólnionym wektorze Blocha. W wcześniejszym rozdziale została wprowadzona baza Hilberta-Schmidta. Jest to zbiór macierzy, zawierających macierz jednostkową i $d_A^2-1$ bezśladowych macierzy ortoznormalizowanych w sensie iloczynu skalarnego Hilberta-Schmidta, czyli
+\end{gather} gdzie $A_N$ oznacza ostatni system, zaś $\I^{A_N}$ rozumie się,  ako macierz jednostkowa o odpowiednim rozmiarze na ostatniej pozycji. Zauważa się, że macierz Q ma $d_{A_1 A_2 \dots A_N}$ jedynek, jest unitarna co razem daje, że w każdej kolumnie i każdym rzędzie jest dokładnie jedna jedynka i na innych miejscach zera. Wynika to z faktu, że gdyby było inaczej to obliczając wyznacznik macierzy Q metodą minorów rozwijając względem wiersza, w którym nie stoi jedynka wyszłoby, że wyznacznik tej macierzy byłby równy zero, co jest sprzeczne z faktem, że macierz ta jest odwracalna. Niemożliwa jest większą liczba jedynek, niż jeden w każdej kolumnie i wierszu, ponieważ jest ich dokładnie $d_{A_1A_2\dots A_N}$. Taka postać macierzy pozwala na obliczenie wartości danej komórki macierzy w czasie stałym co pozwala na wykonanie operacji ${}_XA$ w $O({d_{A_1 A_2 \dots A_N}}^2)$. Problem można również rozwiązać w innych sposób, który może być uznawany za bardziej elegancki, a oferuje taką samą złożoność obliczeniową i jest bardziej przystępny implementacyjnie jest wykonywanie tej operacji na tzw. uogólnionym wektorze Blocha. W wcześniejszym rozdziale została wprowadzona baza Hilberta-Schmidta. Jest to zbiór macierzy, zawierających macierz jednostkową i $d_A^2-1$ bezśladowych macierzy ortoznormalizowanych w sensie iloczynu skalarnego Hilberta-Schmidta, czyli
 \begin{equation}
 \Trs \left( \Gamma_i \Gamma_j \right) = C\delta_{ij},
 \end{equation} gdzie C jest pewną stała normalizacyjną.
@@ -1210,11 +1284,11 @@ A \otimes B = (\sigma^A \Gamma^A) \otimes (\sigma^B \Gamma^B) = (\sigma^A \otime
 \begin{equation}
 \Ket{i}\Bra{j}=\Ket{ijklef_1}\Bra{ijklef_2} =  \sigma_{ijklef} \Gamma = (\sigma_i \otimes \sigma_j \otimes \sigma_k \otimes \sigma_l \otimes \sigma_e \otimes \sigma_f) \Gamma.
 \end{equation}
-Z równania \eqref{gm_ij} widać, że wyrazy typu macierze $\Ket{i}\Bra{j}$ dla $i \neq j$ mają stała ($O(1)$) liczbę niezerowych współrzędnych $\sigma_i$ i jest ich $O(d^2)$ dla ogólnej macierzy. Zaś wyrazy, gdzie $i = j$ mają $O(d)$ niezerowych wyrazów, ale jest ich tylko $O(d)$ więc policzenie ich wkładu dla dowolnej macierzy również zajmuje 
+Z równania \eqref{gm_ij} widać, że wyrazy typu $\Ket{i}\Bra{j}$ dla $i \neq j$ mają stała ($O(1)$) liczbę niezerowych współrzędnych $\sigma_i$ i jest ich $O(d^2)$ dla ogólnej macierzy. Zaś wyrazy, gdzie $i = j$ mają $O(d)$ niezerowych wyrazów, ale jest ich tylko $O(d)$ więc policzenie ich wkładu dla dowolnej macierzy również zajmuje 
 $O(d^2)$ czasu. Co pokazuje, że policzenie wektora Blocha dla bazy UMG zajmuje $O(d^2)$ czasu. Korzystając z analogicznego argumentu można pokazać, że odwrotna transformacja działa również w $O(d^2)$. Dalej zostanie pokazane, że obliczenia wektora Blocha dla baz składających się z O(1) iloczynów tensorowych baz UMG również jest kwadratowy względem wymiaru systemu złożonego. Widać to od razu, gdy rozważy się ile czasu zajmuje obliczenie wektora Blocha następującej macierzy:
 \begin{equation}
 \Ket{i}\Bra{i} \otimes \Ket{j}\Bra{j} \otimes \Ket{k}\Bra{l} \otimes \Ket{e}\Bra{f}, \quad \text{gdzie }k \neq l, e \neq f.
-\end{equation} Wyrazy typu zaprezentowanego powyżej mają $O(d_1d_2)$ i jest ich w rozkładzie pewnej ogólnej macierzy $O(d_1d_2d_3^2d_4^2)$. Widać, że wyrazy typu $\Ket{i}\Bra{i}$ kontrybuują liniową liczbę wyrazów do wektora Blocha i jest ich liniowa ilość, zaś wyrazy typu $\Ket{i}\Bra{j}$ dają stała liczbę wyrazów, lecz jest ich kwadratowa ilość, a dla systemów złożonych złożoność widocznie się faktoryzuje. Sumując po wszystkich ustawieniach wyrazów diagonalnych i niediagonalnych otrzymuje się $O(1)$ wyrazów $O(d^2)$, czyli ostatecznie złożoność to obliczania rozkładu $O(d^2)$.
+\end{equation} Wyrazy typu zaprezentowanego powyżej mają $O(d_1d_2)$ i jest ich w rozkładzie pewnej ogólnej macierzy $O(d_1d_2d_3^2d_4^2)$. Widać, że wyrazy typu $\Ket{i}\Bra{i}$ kontrybuują liniową liczbę wyrazów do wektora Blocha i jest ich liniowa liczba, zaś wyrazy typu $\Ket{i}\Bra{j}$ dają stała liczbę wyrazów, lecz jest ich kwadratowa liczba, a dla systemów złożonych złożoność widocznie się faktoryzuje. Sumując po wszystkich ustawieniach wyrazów diagonalnych i niediagonalnych otrzymuje się $O(1)$ wyrazów $O(d^2)$, czyli ostatecznie złożoność to obliczania rozkładu $O(d^2)$.
 Definiując operację
 \begin{equation}
 ({}^X\sigma) \Gamma = {}_X(\sigma\Gamma),
