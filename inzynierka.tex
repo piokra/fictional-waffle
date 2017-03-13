@@ -638,7 +638,7 @@ $m$ poziomowych. Nierówność zaprezentowaną w poprzednim podrozdziale można 
 \begin{equation}
 W =  \bigotimes_i^{n}\frac{1}{4}\left[ \I\I\I\I + \frac{1}{\sqrt{2}}\left( \I\Z\Z\I + \Z\I\X\Z \right) \right],
 \end{equation} który odpowiada $n$-krotnemu powieleniu skrajnego procesu opisanego w poprzednim podrozdziale. W takim procesie każde z laboratoriów otrzymuje
-$n$ kubitów i wysyła je dalej po czym każdy kubit transportowany jest takim samym kanałem. Sfaktoryzowana postać tego procesu zapewnia, że jest całkowicie dodatni przez co jest prawidłowym procesem.
+$n$ kubitów i wysyła je dalej po czym każdy kubit transportowany jest takim samym kanałem. Warto podkreślić, że założone jest, że laboratoria mogą wykonywać pomiary wyłącznie na poszczególnych kubitach i nie mają dostępu do korelacji wielosystemowych. Sfaktoryzowana postać tego procesu zapewnia, że jest całkowicie dodatni przez co jest prawidłowym procesem.
 W celu zakodowania swojej wiadomości każde z laboratoriów wykonuje na każdym z kubitów operacje z poprzedniego rozdziału. Prawdopodobieństwo jest dane następująco:
 \begin{equation}
 \begin{split}
@@ -662,9 +662,8 @@ Można również sformułować prawdopodobieństwo sukcesu w przypadku, gdy stro
 \begin{equation}
 \Pr{}_{sukces?} \approx 0.994.
 \end{equation}
-W tym przypadku Alicja i Bob postanawiają zrezygnować ze zgadywania $\frac{11}{16}$ czasu. Powyższe wyniki są ewidentnie lepsze, niż przedstawione wcześniej. Sterując liczbą wysłanych systemów i porzucanych wyników można osiągnąć arbitralnie dobry wynik dla $\Pr{}_{sukces?}$.
-
-\subsection{Adnotacja}
+W tym przypadku Alicja i Bob postanawiają zrezygnować ze zgadywania $\frac{11}{16}$ czasu. Powyższe wyniki są ewidentnie lepsze, niż przedstawione wcześniej. Sterując liczbą wysłanych systemów i porzucanych wyników można osiągnąć arbitralnie dobry wynik dla $\Pr{}_{sukces?}$, $\Pr{}_{sukces}$. Koniecznym jest podkreślenie faktu, że eksperyment, gdzie laboratoria mogą wybrać swój wynik na podstawie wielu pomiarów jest ograniczony inną wartością.
+W przypadku klasycznym również możliwie jest osiągniecie dowolnych prawdopodobieństw sukcesu przy odpowiedniej dużej liczbie systemów. \subsection{Adnotacja}
 Sposób obliczenia:
 \begin{gather}
 \Pr{}_{sukcesu} = \frac{1}{2}\left(\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}\delta_{xb}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}}+\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}\delta_{ya}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}}\right) \\
