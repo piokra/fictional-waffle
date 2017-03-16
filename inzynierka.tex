@@ -273,6 +273,7 @@ gdzie macierze $E_{ij}$ spełniają następujące własności:
 Takie odwzorowania, które spełniają \eqref{eq:id_proj0} z równością zachowuje ślad (\textit{trace preserving}, TP).
 Prawdopodobieństwo zaobserwowania wyniku realizowanego przez odwzorowanie $\MAin$ to
 \begin{equation}
+\label{eq:probqi}
 \Pro{\MAin} = \Tr{\MAir}
 \end{equation}
 Widać od razu, że równanie \eqref{eq:id_proj} narzuca, by możliwość zaobserwowania dowolnego wyniku była równa 1. Co łatwo pokazać w następujący sposób:
@@ -367,10 +368,10 @@ Wyróżnia się trzy rodzaje wyrażeń należących do rodziny macierzy przedsta
 \includegraphics{obrazki/states_new}
 \caption{Schematyczne przedstawienie stanów. Laboratoria wykonują pewne wybrane pomiary na systemach po czym wysyłają je ze swoich laboratoriów. Każde z laboratoriów otrzymuje różne, potencjalnie splątane, systemy.}
 \end{figure}
-Wyrazy typu $A_1 B_1$ można zidentyfikować jako stany. Zaobserwować to można w następujący sposób.
+Prawidłowe macierze procesu zawierające wyłącznie wyrazy typu $A_1 B_1, A_1, B_1$ produkują takie same statystyki jak macierze gęstości wraz z reguła Borna. Można więc intuicyjnie wiązać wyrazy typu $A_1 B_1, A_1, B_1$ z sposobem na opis stanów. Zaobserwować to można w następujący sposób.
 Okazuje się, że macierz CJ, która opisuje zaobserwowanie pewnego stanu $\KP\BP$ i przygotowanie innego stanu $\Ket{\phi}\Bra{\phi}$ wygląda następująco:
 \begin{equation}
-\MCJ(\mathcal{M}) = \KP\BP \otimes \Ket{\phi}\Bra{\phi}.
+\MCJ(\mathcal{M}) = \KP\BP \otimes \Ket{\phi}\Bra{\phi}^T.
 \end{equation}
 W celu wyprowadzenia powyższego równania zacząć można od przeanalizowania w jaki sposób wygląda postać mapy, która opisuje pomiar danego stanu $\Ket{\psi}$. Dobierając wektory $\{ \Ket{\psi_i} \}$ tak, by tworzyły bazę ortonormalną i $\Ket{\psi_0} = \Ket{\psi}$ z wcześniej podanej definicji działania mapy można zapisać:
 \begin{equation}
@@ -405,24 +406,23 @@ $U = \sum_i \Ket{\phi_i}\Bra{\psi_i}$, gdzie wektory $\{ \Ket{\phi_i} \}$ tworz�
 \Ket{\psi}\Bra{\psi}\otimes U \Ket{\psi}\Bra{\psi} U^\dag = \Ket{\psi}\Bra{\psi}\otimes \Ket{\phi}\Bra{\phi}.
 \end{equation}
 Co pokazuje, że rzeczywiście tak wygląda odwzorowanie CJ dla pomiaru i przygotowania stanu. 
-Korzystając z tej wiedzy dla przypadku, w którym po pomiarze porzuci się system, lub równoważnie przyjmie się, że przestrzeń wyjściowa jest trywialna to powyższe odwzorowanie to $\KP\BP$. Pisząc dalej regułę prawdopodobieństwa
+Przyjmując teraz następująco postać macierzy procesu:
 \begin{equation}
-\Pr(x,y) = \Trs \left[ W \left(\Ket{\psi_x}\Bra{\psi_x} \otimes \Ket{\phi_y}\Bra{\phi_y}\right)\right].
-\end{equation} 
-Powyższe równanie można rozumieć tak, że dla pewnych projektorów $\KP\BP$ macierz W przypisuje im pewne statystyki pomiarowe. Również warunki  jakie wprowadzono na poprawność macierzy $W$ jest taka sama, jak ta którą wprowadzono na macierze procesu. Co wraz z faktem, że każda obserwable można rozpisać na liniowe kombinacje pewnych projektorów pozwala interpretować W w takim przypadku jako macierz gęstości, a kombinację liniową projektorów jako obserwable. Przytaczając argument, że POVM można zrealizować unitarną ewolucją i pomiarem w więcej wymiarowej przestrzeni można rozszerzyć powyższy argument również na POVM co uzasadnia interpretacje wyrazów $A_1B_1$, jako macierzy gęstości. Przykładowo macierz procesu, która opisuje sytuację, gdzie laboratoria dzielą maksymalnie splątane
-\footnote{Do sprecyzowania co rozumiane jest pod pojęciem maksymalnego splątania konieczne jest wprowadzenie miary splątania. Przez miarę splątania rozumie się taką funkcje, która jest monotoniczna, gdy laboratoria mogą wykonywać lokalne operacje i komunikować się klasycznie (np. telefonem). Konieczne również jest, by zbiegała do zera dla stanów niesplątanych. Przykładem takiej miary jest entropia von Neumanna definiowana przez $S(\rho) = -\Trs \left[ \rho \log \rho \right]$. Okazuje się, że jest ona maksymalna dla $\frac{1}{d}\KKet{\I}\BBra{\I}$ \cite{review}.
-}
- cząsteczki zapisuje się następująco:
-\begin{equation}
-W = \KKet{\I}\BBra{\I}^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2}.
-\end{equation}
-W ogólności stany opisują procesy postaci:
-\begin{equation}
-W = \rho^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2}.
-\end{equation} Powyżej została zmieniona kolejność. W łatwy sposób można pokazać słuszność powyższego równania.
+W = \rho^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2},
+\end{equation} która opisuje każdą macierz procesu zawierającą wyłącznie wybrane w tym rozdziale wyrazy. Zapisując regułe prawdopodobieństwa otrzymuje się
 \begin{equation}
 \begin{split}
-\Pr(x,y) &= \sum_{ijkl}\Trs\left[( \alpha_{ijkl} \Ket{i}\Bra{j} \otimes \I \otimes \Ket{k}\Bra{l} \otimes \I) M_x \otimes M_y\right] \\ 
+\Pr(x,y) &= \Trs\left[ (\rho^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2}) (\Ket{\psi_x}\Bra{\psi_x}^{A_1} \otimes \Ket{\psi_y}\Bra{\psi_y}^{B_1} \otimes \Ket{\phi_x}\Bra{\phi_x}^{A_2} \otimes \Ket{\phi_y}\Bra{\phi_y}^{B_2})\right] \\
+&= \Trs\left[ \rho \Ket{\psi_x}\Bra{\psi_x}\otimes\Ket{\psi_y}\Bra{\psi_y} \otimes \Ket{\phi_x}\Bra{\phi_x}\otimes\Ket{\phi_y}\Bra{\phi_y}\right] \\
+&= \Trs\left[ \rho \Ket{\psi_x}\Bra{\psi_x}\otimes\Ket{\psi_y}\Bra{\psi_y}\right] \Trs\left[\Ket{\phi_x}\Bra{\phi_x}\right] \Trs\left[\Ket{\phi_y}\Bra{\phi_y}\right]
+\\
+&= \Trs\left[ \rho \Ket{\psi_x}\Bra{\psi_x}\otimes\Ket{\psi_y}\Bra{\psi_y}\right].
+\end{split}
+\end{equation}
+Powyższe wyprowadzenie pokazuje, że dla pomiarów von Neumanna, tak zdefiniowana macierz procesu generuje takie same statystyki jak formalizm macierzy gęstości. Warto jeszcze zaznaczyć, że iloczynowa postać tej macierzy procesu zapewnia, że $\rho^{A_1B_1}$ również jest dodatnie, czyli spełnia wszystkie warunki narzucone przez formalizm macierzy gęstości. Jednym ze sposobów na pokazanie, że generowane są identyczne statystyki dla dowolnych POVM jest wykonanie jawnego rachunku:
+\begin{equation}
+\begin{split}
+\Pr(x,y) &= \Trs\left[\rho^{A_1B_1} \otimes \I^{A_2B_2}(M_x^{A_1A_2}\otimes M_y^{B_1B_2})\right]\\ &=\sum_{ijkl}\Trs\left[( \alpha_{ijkl} \Ket{i}\Bra{j}^{A_1} \otimes \I^{A_2} \otimes \Ket{k}\Bra{l}^{B_1} \otimes \I^{B_2}) M_x^{A_1A_2} \otimes M_y^{B_1B_2}\right] \\ 
 &= \sum_{ijklmnef} \Trs \left[ \alpha_{ijkl} \Ket{i}\Bra{j} \otimes \I \otimes \Ket{k}\Bra{l} \otimes \I)(\Ket{m}\Bra{n} \otimes \mathcal{M}_x(\Ket{n}\Bra{m})^T \otimes \Ket{e}\Bra{f} \otimes \mathcal{M}_y(\Ket{f}\Bra{e})^T \right] \\
 &= \sum_{ijklmnef} \Trs \left[ \alpha_{ijkl} \Ket{i}\Bra{j}\Ket{m}\Bra{n}^{A_1} \otimes \Ket{k}\Bra{l}\Ket{e}\Bra{f}^{B_1} \right] \Trs\left[{\mathcal{M}_x(\Ket{n}\Bra{m})^{A_2}}^T \otimes {\mathcal{M}_y(\Ket{f}\Bra{e})^{B_2}}^T\right] \\
 &= \sum_{mnef} \Trs \left[ \alpha_{ijkl} \Bra{n}\Ket{i}\Bra{j}\Ket{m} \otimes \Bra{f}\Ket{k}\Bra{l}\Ket{e}\right]\Trs\left[{\mathcal{M}_x(\Ket{n}\Bra{m})^{A_2}}^T \otimes {\mathcal{M}_y(\Ket{f}\Bra{e})^{B_2}}^T\right] \\
@@ -430,14 +430,28 @@ W = \rho^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2}.
 &= \sum_{mnef} \Trs\left[\alpha_{nmfe}{\mathcal{M}_x(\Ket{n}\Bra{m})^{A_2}}^T \otimes {\mathcal{M}_y(\Ket{f}\Bra{e})^{B_2}}^T\right] \\
 &= \Trs \left[ \mathcal{M}_x \otimes \mathcal{M}_y(\sum_{nmfe}\alpha_{nmfe} \Ket{n}\Bra{m} \otimes \Ket{f}\Bra{e})^T\right] \\
 &= \Trs \left[  \mathcal{M}_x \otimes \mathcal{M}_y(\rho)^T\right] \\
-&= \Trs \left[ \mathcal{M}_x \otimes \mathcal{M}_y(\rho)\right]
+&= \Trs \left[ \mathcal{M}_x \otimes \mathcal{M}_y(\rho)\right].
 \end{split}
 \end{equation}
+Ostateczna postać po przekształceniach zgadza się z tą, która opisuje statystyki pomiarów na systemie złożonym opisywanym przez równanie \eqref{eq:probqi}. 
+%Korzystając z tej wiedzy dla przypadku, w którym po pomiarze porzuci się system, lub równoważnie przyjmie się, że przestrzeń wyjściowa jest trywialna to powyższe odwzorowanie to $\KP\BP$. Pisząc dalej regułę prawdopodobieństwa
+%\begin{equation}
+%\Pr(x,y) = \Trs \left[ W \left(\Ket{\psi_x}\Bra{\psi_x} \otimes \Ket{\phi_y}\Bra{\phi_y}\right)\right].
+%\end{equation} 
+%Powyższe równanie można rozumieć tak, że dla pewnych projektorów $\KP\BP$ macierz W przypisuje im pewne statystyki pomiarowe. Również warunki  jakie wprowadzono na poprawność macierzy $W$ jest taka sama, jak ta którą wprowadzono na macierze procesu. Co wraz z faktem, że każda obserwable można rozpisać na liniowe kombinacje pewnych projektorów pozwala interpretować W w takim przypadku jako macierz gęstości, a kombinację liniową projektorów jako obserwable. Przytaczając argument, że POVM można zrealizować unitarną ewolucją i pomiarem w więcej wymiarowej przestrzeni można rozszerzyć powyższy argument również na POVM co uzasadnia interpretacje wyrazów $A_1B_1$, jako macierzy gęstości. 
+Przykładowo macierz procesu, która opisuje sytuację, gdzie laboratoria dzielą maksymalnie splątane
+\footnote{Do sprecyzowania co rozumiane jest pod pojęciem maksymalnego splątania konieczne jest wprowadzenie miary splątania. Przez miarę splątania rozumie się taką funkcje, która jest monotoniczna, gdy laboratoria mogą wykonywać lokalne operacje i komunikować się klasycznie (np. telefonem). Konieczne również jest, by zbiegała do zera dla stanów niesplątanych. Przykładem takiej miary jest entropia von Neumanna definiowana przez $S(\rho) = -\Trs \left[ \rho \log \rho \right]$. Okazuje się, że jest ona maksymalna dla $\frac{1}{d}\KKet{\I}\BBra{\I}$ \cite{review}.
+}
+ cząsteczki zapisuje się następująco:
+\begin{equation}
+W = \KKet{\I}\BBra{\I}^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2}.
+\end{equation}
+
 \subsection{Kanały}
 \begin{figure}[h]
 \centering
 \includegraphics{obrazki/channel_new}
-\caption{Schematyczna reprezentacja kanału idealnego. Alicja wykonuje wybrane operacje na systemie po czym wysyła go do Boba. W trakcie przesyłania systemu zostaje zaaplikowana unitarna transformacja $U$.}
+\caption{Schematyczna reprezentacja kanału CPTP. Alicja wykonuje wybrane operacje na systemie po czym wysyła go do Boba. W trakcie przesyłania systemu zostaje zaaplikowana unitarna transformacja $U$.}
 \end{figure}
 Wyrazy typu $A_1A_2B_1$, $B_1B_2A_1$ można przyjąć za sposób opisywania kanałów. O ile łatwo zauważyć słuszność, że formuła
 \begin{equation}
@@ -454,7 +468,8 @@ Wyrazy typu $A_1A_2B_1$, $B_1B_2A_1$ można przyjąć za sposób opisywania kana
 &= \Trs\left[\rho\Ket{k}\Bra{l}\right] \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\Ket{l}\Bra{k})\right] \Trs\left[\mathcal{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{m}\Bra{n})\right] \\
 &= \sum_{ijmn}  \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\sum_{lk} \rho_{lk} \Ket{l}\Bra{k})^T\right] \Trs\left[\mathcal{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
 &= \sum_{ijmn}  \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\rho)^T\right] \Trs\left[\mathcal{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
-&= \sum_{mn} \Trs \left[ \mathcal{C}(\mathcal{M}_x(\rho)\Ket{m}\Bra{n})\right]\Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})\right]^T \\
+&= \sum_{mn} \Trs \left[ \mathcal{C}(\mathcal{M}_x(\rho))\Ket{m}\Bra{n}\right]\Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
+&=  \Trs\left[ \mathcal{M}_y (\mathcal{C}(\mathcal{M}_x(\rho)))^T\right] = \Trs\left[ \mathcal{M}_y (\mathcal{C}(\mathcal{M}_x(\rho)))\right] \\
 &=\Trs \left[ \mathcal{M}_y^B \circ \mathcal{C} \circ \mathcal{M}_x^A(\rho)\right]
 \end{split}
 \end{equation}
@@ -466,7 +481,7 @@ Przykładowo macierz opisująca odwracalny kanał, który wysyła cząstkę z $A
 \end{gather} 
 W celu skrócenia zapisu pominięto indeksy górne, które pozostaną dalej niejawne, gdy ich brak nie będzie wprowadzał niejasności.
 Można się spodziewać, że gdy laboratoria będzie łączył kanał z $A_2$ do $B_1$, który zamienia $\Ket{i} \mapsto \Ket{i \oplus 1}$, kanał ten opisuje postać CJ macierzy unitarnej $\sum_i \Ket{i}\Bra{i \oplus 1}$, a Alicja na wejściu dostaje stan maksymalnie zmieszany, to prawdopodobieństwo
-zaobserwowania stanu $\Ket{j}$ u Boba będzie pewne, gdy Alicja wyśle mu stan $\Ket{j \oplus 1}$ i niemożliwe w przeciwnym wypadku. Co można sprawdzić jawnym rachunkiem:
+zaobserwowania stanu $\Ket{j}$ u Boba będzie równe $1$, gdy Alicja wyśle mu stan $\Ket{j \oplus 1}$ i zerowe w przeciwnym wypadku. Podejrzenia te potwierdza jawny rachunek:
 \begin{gather}
 W = \sum_{ijkl} \I \otimes \Ket{i}\Bra{j} \otimes \Ket{k\oplus 1}\Bra{k} \Ket{i}\Bra{j} \Ket{l}\Bra{l \oplus 1} \otimes \I \\
 \begin{split}
@@ -809,9 +824,9 @@ Zauważa się, że warunek \eqref{eq:witness_gez} jest równoważny z następuj�
 \label{eq:css}
 \Trs \left[ W^{B \prec A} S\right] \geq 0.
 \end{gather}
-Oczywiście powyższe wynika z definicji stanów separowalnych, jako kombinacji wypukłej macierzy o określonej przyczynowości i liniowości śladu.
+Oczywiście powyższe równania wynikają z definicji stanów separowalnych, jako kombinacji wypukłej macierzy o określonej przyczynowości i liniowości śladu.
 Łatwo można zaobserwować, że pozbywając się wyrazów zawierających wyrazy typu $\dots B_2$ usuwamy korelacje wyjścia Boba z pomiarami Alicji co
-implikuje, że $A \prec B$. Co zapisuje się
+implikuje, że $A \prec B$. Piszę się, że:
 \begin{equation}
 {}_{B_2} W = W^{A \prec B},
 \end{equation}
@@ -819,7 +834,7 @@ lub analogicznie
 \begin{equation}
 {}_{A_2} W = W^{B \prec A}.
 \end{equation}
-Wykorzystując to, równanie \eqref{eq:css} możemy zapisać następująco
+Wykorzystując powyższą zależność, równanie \eqref{eq:css} możemy zapisać następująco:
 \begin{equation}
 \Trs \left[ {}_{A_2} W S\right] \geq 0
 \end{equation}
@@ -833,7 +848,7 @@ Dla prawidłowych macierzy procesu wystarczającym dla $S$ do bycia świadkiem p
 {}_{A_2} S \geq 0 \\
 {}_{B_2} S \geq 0.
 \end{gather}
-Zauważa się dodatkowo dowolność dodania dowolnego elementu $S^\bot$ z przestrzeni ortogonalnej do $\mathcal{L_V}$, który nie zmieni wartości \label{eq:witness_gez}, a mianowicie
+Zauważa się dodatkowo dowolność dodania dowolnego elementu $S^\bot$ z przestrzeni ortogonalnej do $\mathcal{L_V}$, który nie zmieni wartości \ref{eq:witness_gez}, a mianowicie
 \begin{equation}
 \Trs\left[W\left(S + S^\bot\right)\right] = \Trs\left[WS\right]
 \end{equation}
@@ -1314,5 +1329,6 @@ Trzeba dalej zauważyć jednakże, że niewskazane jest trzymanie macierzy $\Pi_
 Niemożliwość tego może uświadomić następująca obserwacja: łatwo sprawdzić, że macierz ta ma $O(d^4)$ elementów. W przypadku projektora odpowiadającego macierzy przedstawionej w trzecim rozdziale zajmowałaby ona ok. 410TB pamięci w przypadku podwójnej precyzji.
 Przytaczając argument z dodatku A wiadome jest, że macierz ta ma $O(d^2)$ niezerowych elementów. Konieczna więc jest reprezentacja tej macierzy w rzadkim formacie np. skompresowanym formacie kolumnowym.
 \end{appendices}
-
+\\
+$x~y~\rho~\mathcal{M}_x(\rho)~\mathcal{C}(\mathcal{M}_x(\rho))~\mathcal{M}_y(\mathcal{C}(\mathcal{M}_x(\rho)))$
 \end{document}
