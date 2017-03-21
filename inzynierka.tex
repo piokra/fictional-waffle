@@ -282,7 +282,7 @@ Widać od razu, że równanie \eqref{eq:id_proj} narzuca, by możliwość zaobse
 \sum_i \Pro{\MAin} &= \sum_i \Tr{\MAir} = \sum_{ij} \Trs \left[E^\dag_{ij}\rho E_{ij}\right]\\ &= \sum_{ij} \Trs\left[ \rho E^\dag_{ij}E_{ij}\right] = \Trs \left[ \rho \sum_{ij}  E^\dag_{ij}E_{ij}\right] = \Trs \left[ \rho \right] = 1
 \end{split}
 \end{equation}
-W przypadku, gdy mamy do czynienia z więcej niż jedną stroną, \textit{procesem} będziemy nazywać listę $\Pr(\MXin{A}{i}, \MXin{B}{j}, \dots)$ dla wszystkich możliwych lokalnych wyników. Dalej w tym rozdziale będzie opisywany wyłącznie przypadek dwustronny, jednakże rozszerzenie formalizmu na przypadek wielostronny jest trywialne. Wygodnym sposobem przedstawiania odwzorowań $\MAin$ jest izomorfizm Choi-Jamiołkowsky (CJ) \cite{cj_iso1, cj_iso2}, który pozwala przedstawiać transformacje liniowe przy pomocy macierzy. 
+W przypadku, gdy mamy do czynienia z więcej niż jedną stroną, \textit{procesem} nazywa się listę $\Pr(\MXin{A}{i}, \MXin{B}{j}, \dots)$ dla wszystkich możliwych lokalnych wyników. Dalej w tym rozdziale będzie opisywany wyłącznie przypadek dwustronny, jednakże rozszerzenie formalizmu na przypadek wielostronny jest trywialne. Wygodnym sposobem przedstawiania odwzorowań $\MAin$ jest izomorfizm Choi-Jamiołkowsky (CJ) \cite{cj_iso1, cj_iso2}, który pozwala przedstawiać transformacje liniowe przy pomocy macierzy. 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.8\textwidth]{obrazki/cj_new}
@@ -807,7 +807,7 @@ $\mathcal{L_V} \subset \Hx{A_1} \otimes \Hx{A_2} \otimes \Hx{B_1} \otimes \Hx{B_
 W sposób jawny projektor dla przypadku dwustronnego $L_V$ wyraża się następująco:
 \begin{equation}
 \label{eq:projec2}
-L_V(W) = {}_{A_2}W + {}_{B_2}W - {}_{A_2B_2}W - {}_{B_1B_2}W + {}_{A_OB_1B_2}W - {}_{A_1A_2}W + {}_{A_1A_2B_2}W.
+L_V(W) = {}_{A_2}W + {}_{B_2}W - {}_{A_2B_2}W - {}_{B_1B_2}W + {}_{A_2B_1B_2}W - {}_{A_1A_2}W + {}_{A_1A_2B_2}W.
 \end{equation}
 Warto tutaj porównać powyższe równanie do poprzedniego sformułowania macierzy procesu. Zauważa się, że w przypadku wybranej bazy Hilberta-Schmidta
 operacja
@@ -816,6 +816,37 @@ operacja
 \end{equation}
 Należy przypomnieć, że $\sigma_0 = \I$.
 Wynika to oczywiście z faktu, że reszta wyrazów jest bezśladowa i $\frac{\Trs \I^X}{d_X} = 1$. Co daje następującą interpretację dla wyrazów występujących w \eqref{eq:projec2}: są to wyrazy zakazane w tym formalizmie, lub bardziej precyzyjnie dany projektor implikuje układ równań liniowych narzucających warunki na współczynniki występujące przy danych macierzach bazowych. Zważywszy na fakt, że jawna postać projektora dla n stron została wyprowadzona w oryginalnym artykule, łatwym zadaniem jest wyprowadzenie warunków na współczynniki przy owych bazach. 
+Dla oswojenia się z powyższym projektorem można sprawdzić spełnianie $W = L_V(W)$ przez macierz procesu wprowadzoną w poprzednim rozdziale:
+\begin{gather}
+W = \frac{1}{4}\left[
+\I\I\I\I + \frac{1}{\sqrt{2}}(\I\Z\Z\I + q\Z\I\X\Z + \frac{(1-q)}{2}\Z\I\X\I)
+\right],~ 0 \leq q \leq 1. \\ 
+\begin{split}
+{}_{A_2} W =  \frac{1}{4}\left[
+\I\I\I\I + \frac{1}{\sqrt{2}}(q\Z\I\X\Z + \frac{(1-q)}{2}\Z\I\X\I)
+\right]
+\end{split} \\
+{}_{B_2}W =  \frac{1}{4}\left[
+\I\I\I\I + \frac{1}{\sqrt{2}}(\I\Z\Z\I + \frac{(1-q)}{2}\Z\I\X\I)
+\right] \\
+{}_{A_2B_2}W = 
+ \frac{1}{4}\left[
+\I\I\I\I + \frac{1}{\sqrt{2}}\frac{(1-q)}{2}\Z\I\X\I
+\right] \\
+{}_{B_1B_2}W =  \frac{1}{4}\left[
+\I\I\I\I
+\right]\\
+{}_{A_2B_1B_2}W =  \frac{1}{4}\left[
+\I\I\I\I
+\right]\\
+{}_{A_1A_2}W =  \frac{1}{4}\left[
+\I\I\I\I
+\right]\\
+{}_{A_1A_2B_2}W =  \frac{1}{4}\left[
+\I\I\I\I
+\right] \\
+W = L_V(W).
+\end{gather} W poprzednich obliczeniach korzystano z faktu, że wyłącznie $\I$ jest jedynym elementem bazy Hilberta-Schmidta o niezerowym śladzie, konsekwencją tego jest to, że operator ${}_X$ działający na macierz jednostkową na danej pozycji dokonuje trywialnej zmiany, zaś w przeciwnym wypadku usuwa dany wyraz.
 \subsection{Poszukiwanie świadka przyczynowości}
 Zauważa się, że warunek \eqref{eq:witness_gez} jest równoważny z następującymi dwoma
 \begin{gather}
@@ -959,7 +990,16 @@ jednak często okazuje się być wcześniej wspomniany iloczyn łączący defini
 N * M = \Trs_{I\cap J}\left[ (\I^{J\setminus I} \otimes M^{T_{I\cap J}})(N \otimes \I^{I\setminus J})\right],
 \end{equation}
 gdzie $M \in \bigotimes_{i \in I} A^i,~N \in \bigotimes_{j \in J} A^j$. W skrajnych przypadkach gdy $I \cap J = \emptyset$, $N*M$ to po prostu $N \otimes M$, a
-gdy $I \cap J = I = J$ to $N * M = \Trs M^T N$.
+gdy $I \cap J = I = J$ to $N * M = \Trs M^T N$. Ułatwić zaobserwowanie działania iloczynu łączącego w przypadkach bardziej skomplikowanych pozwala następujący przykład:
+\begin{equation}
+\begin{split}
+\I\X\Y^{ABC} * \Y\Y\Z^{BCD} &= \Trs_{BC} \left[ \left(\I^{A} \otimes {\Y\Y\Z^{BCD}}^{T_{BC}}\right)\left(\I\X\Y^{ABC} \otimes \I^D\right)\right] \\
+&= \Trs_{BC} \left[ \I^A \otimes (-YX)^{B} \otimes {-YY}^{C} \otimes \Z^{D}\right] \\
+&= \I^{A} \otimes \Z^{D} \Trs_{B} \left[ -YX \right]\Trs_{C}\left[-YY\right] \\
+&= \I^{A} \otimes \Z^{D} 0 \cdot -1 \\
+&= 0
+\end{split}
+\end{equation}
 Znając iloczyn łączący w sposób bardzo elegancki można zdefiniować dwustronny proces jako
 \begin{equation}
 G_{A,B} = W * (A \otimes B).
@@ -976,19 +1016,20 @@ Jawna postać powyższego projektora jest następująca:
 L_V(W) =& W -{}_FW + {}_{A_2F}W + {}_{B_2}W - {}_{A_2B_2F}W\\ &- {}_{A_1A_2F}W + {}_{A_1A_2B_2F}W - {}_{B_1B_2F}W \\&+ {}_{A_2B_1B_2F}W - {}_{A_1A_2B_1B_2F}W + {}_{PA_1A_2B_1B_2F}W.
 \end{split}
 \end{align}
-Ważnym spostrzeżeniem jest fakt, który przekonuje do słuszności poprzedniej definicji macierzy procesu. Definiując $W' = {}_{PF}W$ i korzystając z faktu, że
+Ważnym spostrzeżeniem jest fakt, który przekonuje do słuszności poprzedniej definicji macierzy procesu, definiując $W' = {}_{PF}W$ i korzystając z faktu, że
 ${}_{XX}W = {}_{X}W$, po elementarnych przekształceniach otrzymuje się, że
 \begin{equation}
 L_V(W') = {}_{A_2}W' + {}_{B_2}W' - {}_{A_2B_2}W' - {}_{B_1B_2}W' + {}_{A_2B_1B_2}W' - {}_{A_1A_2}W' + {}_{A_1A_2B_2}W'.
 \end{equation}
-Powyższy projektor ma takie same wyrazy, jak ten zdefiniowany w \eqref{eq:projec2} .
+Powyższy projektor ma takie same wyrazy, jak ten zdefiniowany w \eqref{eq:projec2}.
 Każdy dwustronny proces zdefiniowany w poprzednim sensie rozszerzony o odpowiednio znormalizowaną jednostkową przyszłość i przeszłość spełnia warunki narzucone powyżej, co pokazuje, że każdy proces dwustronny, definiowany jak poprzednio, jest zgodny z tą definicją.
 \subsection{Czysty proces}
-Takie sformułowanie daje naturalne sformułowanie, co rozumie się przez czysty proces, tak jak transformacje unitarne są najogólniejszą liniową transformacją, która mapuje pewne czyste stany na inne czyste stany, można wprowadzić pojęcie czystych procesów jako takich, które mapują dane odwzorowanie unitarne CPTP na inne unitarne mapy CPTP. 
-Okazuje się, że macierz procesu $W$ jest czysta wtedy i tylko wtedy, gdy można zapisać $W = \KKet{U_W} \BBra{U_W}$, gdzie $\KKet{U_W}$ jest reprezentacją wektorową CJ pewnej transformacji unitarnej $U_W$
-Dowód powyższego twierdzenia przebiega następująco: jeżeli W jest czystym procesem to z definicji $\mathcal{G_{A,B}}$ jest unitarne. Wybierając $\mathcal{A}$, $\mathcal{B}$, jako operacje $\bf{SWAP}$ (rysunek \ref{swap}), które odpowiednio zamieniają \textit{ancille} z oryginalnymi systemami, to pisze się, że
+Proces czysty definiuje się jako macierz, którą można zapisać w następującej postaci
+\begin{equation}
+W_{czysty} = \KKet{U_W}\Bra{U_W},
+\end{equation} dla pewnej transformacji unitarnej $U_W$. Faktem jest, że czysty proces odwzorowuje unitarne odwzorowania $A$ i $B$ na macierz unitarną. Szkic dowodu przebiega następująco,
+wybierając $\mathcal{A}$, $\mathcal{B}$, jako operacje $\bf{SWAP}$ (rysunek \ref{swap}), które odpowiednio zamieniają \textit{ancille} z oryginalnymi systemami, to pisze się, że
 \begin{figure}[t]
-
 \centering
 \includegraphics[width=0.95\textwidth]{obrazki/swap}
 \caption{Rysunek schematycznie przedstawia działanie operacji $\bf{SWAP}$. Na wejściu Alicja otrzymuje system złożony np. w stanie $\rho^{A_1} \otimes \rho'^{A'_1}$ następnie aplikuje unitarną macierz $\bf{SWAP}$ definiowaną następująco $\textbf{SWAP} = \sum_{ij} \Ket{ij}\Bra{ji}$, a na wyjściu otrzymuje system w stanie $\rho'^{A_2} \otimes \rho^{A'_2}$. Postać CJ tej macierzy to: $\KKet{\I}\BBra{\I}^{A_1A'_2} \otimes \KKet{\I}\BBra{\I}^{A'_1A_2}$.Warto również zauważyć, że po przemianowaniu systemów wyjściowych $A_2 \to A'_2$, $A'_2 \to A_2$ operacja $\bf{SWAP}$ działa trywialnie.}
@@ -997,14 +1038,13 @@ Dowód powyższego twierdzenia przebiega następująco: jeżeli W jest czystym p
 \begin{equation}
 G_{A,B} = W * \left( \KKet{\I}\BBra{\I}^{A'_1 A_2} \KKet{\I}\BBra{\I}^{A_1A'_2} \otimes \KKet{\I}\BBra{\I}^{B'_1 B_2} \KKet{\I}\BBra{\I}^{B_1B'_2}\right) = W,
 \end{equation}
-gdzie po prawej stronie równania przemianowano nazwy odpowiednich przestrzeni. Otrzymuje się stąd, że $G_{A,B} = W = \MCJ (\mathcal{W})$, $\mathcal{W} = \mathcal{G_{A,B}}$, a skoro $\mathcal{G_{A,B}}$ ma być unitarne, to oczywiście $\mathcal{W}$ również jest unitarne.
-Zapisać można więc, że $\mathcal{W}(\rho) = U_W\rho U_W^\dag$, więc jego reprezentacje CJ rzeczywiście jest opisywana $W = \KKet{U_W}\BBra{U_W}$. W celu pokazania, że powyższa reprezentacja $W$ jest nie tylko konieczna, lecz również wystarczająca, niech
+gdzie po prawej stronie równania przemianowano nazwy odpowiednich przestrzeni. Przekształcenie te ilustrują istnienie odwzorowań, które są przekształcane w macierz unitarną. W ogólności:
 \begin{gather}
 W = \KKet{U_W}\BBra{U_W} \\
 A = \KKet{U_A}\BBra{U_A} \\
-B = \KKet{U_B}\BBra{U_B}
+B = \KKet{U_B}\BBra{U_B}.
 \end{gather}
-to
+Następnie
 \begin{equation}
 G_{A,B} = \KKet{U_W}\BBra{U_W} * \left( \KKet{U_A}\BBra{U_A} \otimes \KKet{U_B}\BBra{U_B} \right) = \KKet{U_G}\BBra{U_G},
 \end{equation} gdzie 
@@ -1016,23 +1056,24 @@ Z założenia mamy, że $\mathcal{G_{A,B}}$ jest CPTP, więc $\Trs_{A'_2B'_2F} G
 \Trs_{A'_2B'_2F} \KKet{U_G}\BBra{U_G} = U^\dag_G U_G = \I^{A'_1B'_1P},
 \end{equation}
 co kończy dowód.
-\subsection{Sformułowanie postulatu}
-Mając na uwadze wcześniej wprowadzoną definicję czystego procesu można zdefiniować proces puryfikowalny. Jest to taki proces $W$, który można wydobyć
-z pewnego czystego procesu $S$ przez wprowadzenie stanu $\Ket{0}^P$ i dokonania operacji częściowego śladu po przyszłości, czyli
+\subsection{Proces puryfikowalny}
+Proces puryfikowalny $W$ definiuje się jako proces dla, którego można znaleźć proces czysty $S$ spełniający następującą równość:
 \begin{equation}
-W = S * \left( \Ket{0}\Bra{0}^P \otimes \I^F \right),
+W^{A_1A_2A'_1A'_2B_1B_2B'_1B'_2} = S^{A_1A_2A'_1A'_2B_1B_2B'_1B'_2PF} * \left( \Ket{0}\Bra{0}^P \otimes \I^F \right),
 \end{equation}
-postulowane więc jest, że każdy proces implementowalny fizycznie jest puryfikowalny.
-Jest to zmotywowane faktem, iż gdyby byłoby inaczej,
-odwzorowania unitarne byłyby mapowane na odwzorowania, które w ogólności nie muszą być odwracalne, co skutkowałoby w nieodwracalności tej teorii, a odwracalność jest uznawana za ważny element fizycznej rzeczywistości. Warto również zauważyć, że wszystkie procesy o określonej przyczynowości, zarówno te, które zostały zaimplementowane fizycznie, jak i te separowalne, okazują się być puryfikowalne.
+Definicja ta jest zgodna tylko z tymi macierzami procesu, które można odzyskać z procesu czystego, gdy w globalnej przeszłości umieści się ustalony stan i wykona się ślad częściowy po globalnej przeszłości. Odpowiada to sytuacji, w której nie obserwuje się globalnej przeszłości i przyszłości.
+Postuluje się, że wyłącznie procesy czyste można skonstruować fizycznie, gdyby było inaczej zachwiana byłaby zasada odwracalności, która jest uznawana za kluczową.
 \subsection{Warunki konieczne i wystarczające}
-Wyprowadzenie koniecznych i wystarczających warunków, by proces był puryfikowalny wygląda następująco.
-Definiuje się
+Warunkami koniecznymi i wystarczającymi, by proces był czysty są:
 \begin{equation}
-\label{eq:purif}
-\Ket{w_\psi}:= \Bra{\psi^*}^P \KKet{U_S}.
-\end{equation}
-Można zauważyć, że
+\begin{gathered}
+\forall i,j ~L^\perp_V\left(\Ket{w_i}\Bra{w_j}\right) = 0 \\
+\Bra{w_i}\Ket{w_j} = d_{A_2}d_{B_2}\delta{ij} \\
+L^\perp_V = \I - L_V  \\
+\Ket{w_\psi} := \Bra{\psi^*}^P \KKet{U_S}.
+\end{gathered}
+\end{equation} 
+W celu wyprowadzenia powyższych zależności na początku zauważa się, że:
 \begin{equation}
 \KKet{U_S} \BBra{U_S} * (\Ket{\psi}\Bra{\psi}^P \otimes \I^F) = \Ket{w_\psi} \Bra{w_\psi} * 1^F = \Trs_F \Ket{w_\psi} \Bra{w_\psi}
 \end{equation}
@@ -1044,7 +1085,7 @@ W = \Trs_F \Ket{w_0}\Bra{w_0},
 gdzie $\Ket{w_0}$ oznacza $\Bra{0}^P\KKet{U_S}$.
 Wcześniej narzucano, by S mapowało A i B na inną prawidłowe odwzorowanie CPTP.
 Ten warunek można zreformułować w jawny sposób przy pomocy stanów $\Ket{\psi}$.
-S jest prawidłowym procesem, kiedy $[ S * (A \otimes B)] * \Ket{\psi}\Bra{\psi}^P$ jest prawidłowym stanem kwantowym.
+S jest prawidłowym procesem, kiedy $[ S * (A \otimes B)] * \Ket{\psi}\Bra{\psi}^P$ jest prawidłowym stanem kwantowym. Wynika to z faktu, że narzucony został warunek na macierz procesu, by przekształcała odwzorowania $A$ i $B$ na prawidłowe odwzorowania CPTP, które przekształcają każdy poprawny stan na inny poprawny stan. Wychodząc z drugiej strony można wywnioskować, że jeżeli wynik zadziałania macierzą procesu na odwzorowaniach przekształca wszystkie poprawne stany na inne poprawne stany to musi być to prawidłowy wynik.
 Ważnym jednakże jest zauważyć, że
 \begin{equation}
 [S * (A \otimes B)] * \Ket{\psi}\Bra{\psi} = (S * \KP \BP^P) * (A \otimes B).
@@ -1180,14 +1221,12 @@ W celu spelnienia warunku normalizacyjnego $a + b \leq C$, gdzie C jest pewną s
 Bardzo ważnym przykładem, który został zaimplementowany fizycznie, który potwierdza występowanie w fizyce nieprzyczynowego porządku jest kwantowy przełącznik (\textit{quantum switch}). Jest to proces, w którym kanały kwantowe są w superpozycji zależnej od stanów w przeszłości. Jego wektor wygląda następująco
 \begin{equation}
 \Ket{w_{switch}} = \Ket{0}^{P_1}\KKet{\I}^{P_2A_1}\KKet{\I}^{A_2B_1}\KKet{\I}^{B_2F_2}\Ket{0}^{F_1}+\Ket{1}^{P_1}\KKet{\I}^{P_2B_1}\KKet{\I}^{B_2A_1}\KKet{\I}^{A_2F_2}\Ket{1}^{F_1},
-\end{equation} gdzie $F = F_1 \otimes F_2$, $P = P_1 \otimes P_2$. Proces ten jest ewidentnie reprezentacją wektorową CJ pewnego unitarnego operatora. Wystarczy zobaczyć, że lewy wyraz można zapisać jako
+\end{equation} gdzie $F = F_1 \otimes F_2$, $P = P_1 \otimes P_2$. Proces ten jest ewidentnie reprezentacją wektorową CJ pewnego unitarnego operatora. Wystarczy zaobserwować, że działając na proces macierzą unitarną postaci
 \begin{equation}
-\sum_{i,j,k} \Ket{0} \Ket{i,j,k}\Ket{i,j,k}\Ket{0},
-\end{equation} powyżej pominięto nazwy odpowiednich systemów i wybrano odpowiednią kolejność.
-Macierz, która ma taką postać CJ to
-\begin{equation}
-\sum_{i,j,k} \Ket{0} \Ket{i,j,k}\Bra{i,j,k}\Bra{0},
-\end{equation} która widocznie przyjmuje postać macierzy diagonalem postaci $diag(1,0,1,0,1,0,...)$, niezależnie od kolejności wybranych systemów tak długo, jak odpowiednie wyrazy są w różnym bra i kecie. Analogicznie można pokazać, że drugi wyraz ma postać $diag(0,1,0,1...)$ - uzupełnia do jedynki. Jako, że izomorfizm CJ jest liniowy, a wyrazy mieszane w iloczynie $U^\dag U$ nie będą występować ze względu na postać wyrazów, to pokazuje, że powyższy zasób jest unitarny. Kubit kontrolny z $P_1$ pozostaje niezmieniony zaś badając zmianę stanu z $P_2$ można dowiedzieć się, jaką "drogę" przebyły. Taki zasób nie jest w stanie złamać żadnych nierówności przyczynowych.
+U = \I^{P_1P_2A_1A_2B_1B_2F_1}\otimes\Ket{0}\Bra{0}^{F_2} + \I^{P_1P_2} \otimes \mathbf{SWAP}^{A_1B_1} \otimes \mathbf{SWAP}^{A_2B_2} \otimes \Ket{1}\Bra{1}^{F_2},
+\end{equation}
+otrzymuje się wektor CJ macierzy jednostkowej. Wynika więc z tego, że sam proces jest wektorem CJ macierzy unitarnej.
+Kubit kontrolny z $P_1$ pozostaje niezmieniony zaś badając zmianę stanu z $P_2$ można dowiedzieć się, jaką "drogę" przebyły. Taki zasób nie jest w stanie złamać żadnych nierówności przyczynowych.
 Nie jest żaden znany puryfikowalny przykład w literaturze, który byłby w stanie złamać przyczynowe nierówności, jednakże znany jest proces trzystronny, wprowadzony w \cite{logic}, który jest w stanie złamać przyczynowe nierówności. 
 \begin{equation}
 W_{det} = \sum_{a,b,c} \Ket{a,b,c}\Bra{a,b,c} \otimes \Ket{\neg b \land c, \neg c\land a \neg a\land b} \Bra{\neg b \land c, \neg c\land a ,\neg a\land b},
@@ -1196,13 +1235,44 @@ $\Ket{x} \mapsto \Ket{f(x)}$ na $\Ket{x}\Ket{y} \mapsto \Ket{x}\Ket{y \oplus f(x
 \begin{equation}
 \Ket{w} = \sum_{a,b,c,e,f,g} \Ket{a,b,c}\Ket{e,f,g} \otimes \Ket{a,b,c}\Ket{i \oplus \neg b \land c,f \oplus \neg c\land, a , g\oplus \neg a\land b},
 \end{equation} gdzie systemy zostały wypisane w kolejności $A_2B_2C_2PFA_1B_1C_1$. Tutaj zarówno przeszłość jak i przyszłość mają po trzy kubity, co stanowi puryfikację powyższego procesu.
+\subsection{Wielostronne przykłady}
+Okazuje się, że generalizacja formalizmu macierzy procesu do większej liczby stron powoduje komplikowanie się części wprowadzonych pojęć. W celu zilustrowania powstających problemów można zacząć od pokazania przykładu trzystronnego kwantowego przełącznika. Tym razem rozszerzono postać przełącznika z artykułu \cite{causal_witness}. W przypadku trzystronnym przełącznik kwantowy składa się z czterech laboratoriów: Alicji, Boba, Charliego i Dawida. Pierwszych troje otrzymuje kubit wykonuje na nim pewne operacji i pomiary i wysyła system dalej. Laboratorium Dawida ma dostęp do dwóch podsystemów $D_1^t$ kubit, który jest kubitem poddanym operacją Alicji, Boba i Charliego w pewnej kolejności oraz podsystemu kontrolnego $D_1^c$, który określa przyczynowy porządek wykonanych operacji. Zakłada się, że Dawid porzuca swój system po wykonaniu pomiarów na nim. Rozmiary poszczególnych podsystemów to:
+\begin{equation}
+d_{A_1} = d_{A_2} = d_{B_1} = d_{B_2} = d_{C_1} = d_{C_2} = 2,~ d_{D_1} = 12 = 2 \cdot 6,~d_{D_2}=1
+\end{equation}
+Wygodnie zdefiniować jest następujące wielkości:
+\begin{gather}
+\Ket{C(X,Y,Z, i)} := \Ket{\psi}^{X_1}\KKet{\I}^{X_2Y_1}\KKet{\I}^{Y_2Z_1}\KKet{\I}^{Z_2D_1^t}\Ket{i}^{D_1^c} \\
+\Ket{C(X,Y,Z)} := \Ket{\psi}^{X_1}\KKet{\I}^{X_2Y_1}\KKet{\I}^{Y_2Z_1}\KKet{\I}^{Z_2D_1^t}
+\end{gather}
+Wektor trzystronnego przełącznika można zapisać jako:
+\begin{equation}
+\begin{split}
+\Ket{w} = \frac{1}{\sqrt{6}} \sum_i \Ket{C(X_i, Y_i, Z_i, i)} =& \frac{1}{\sqrt{6}} \Ket{C(A,B,C,0)} + \Ket{C(A,C,B,1)} + \Ket{C(B,A,C,2)} \\ +& \Ket{C(B,C,A,3)} + \Ket{C(C,A,B,4)} + \Ket{C(C,B,A,5)}.
+\end{split}
+\end{equation}
+Okazuje się, że tak zdefiniowany wektora procesu generują poprawną macierz procesu. Analizę tego procesu można rozpocząć od zbadanie jak wygląda obserwowany proces, gdy podsystem kontrolny zostanie zignorowany. Standardowo jest to równoważne z wykonaniem śladu częściowego po ignorowanym podsystemie:
+\begin{equation}
+\begin{split}
+\Trs_{D_1^c} \Ket{w}\Bra{w} &= \frac{1}{6}\Trs_{D_1^c} \left[ \sum_{ij} \Ket{C(X_i, Y_i, Z_i, i)}\Bra{C(X_j, Y_j, Z_j, j)}\right] \\
+&=  \frac{1}{6}\Trs_{D_1^c} \left[ \sum_{ij} \Ket{C(X_i, Y_i, Z_i)}\Ket{i}\Bra{C(X_j, Y_j, Z_j)}\Bra{j}\right] \\ 
+&= \frac{1}{6}\Ket{C(X_i, Y_i, Z_i)}\Bra{C(X_i, Y_i, Z_i)}.
+\end{split}
+\end{equation}
+Łatwo zidentyfikować wyraz typu $\Ket{C(A,B,C)}\Bra{C(A,B,C)}$ ( $\Ket{C(A,B,C,0)}\Bra{C(A,B,C,0)}$ ) jako proces, w którym Alicja jest połączona idealnym kanałem z Bobem, Bob z Charliem, Charlie z Dawidem. Widać więc, że gdy nie jest posiadana wiedza na temat podsystemu kontrolnego obserwowany proces jest probabilistyczna kombinacją wszystkich możliwych porządków idealnych kanałów między A, B i C - analogicznie do przypadku przełącznika dwustronnego. Intuicyjnie można teraz wnioskować, że proces trzystronnego przełącznika jest nieseparowalny przyczynowo. Oczywistym jest, że zredukowany proces jest prawidłowym procesem, opisuje on zasób, który można zrealizować fizycznie. Jednakże proces kwantowego przełącznika posiada jeszcze wyrazy mieszane, które nie posiadają fizycznej interpretacji. Zarówno postać wektora procesu jako superpozycji wyrazów zgodnych z konkretnymi porządkami przyczynowymi jak i istnienie wyrazów mieszanych pozwala wnioskować, że proces ten jest nieseparowalny. Specjalna postać tego procesu pozwala na postulowanie, że zasób ten jest w pewien intuicyjny sposób nieseparowalny, lecz w ogólności posiadając proces lub dostęp do generowanych przez niego korelacji stwierdzenia czy jest on nieseparowalny jest nietrywialnym problem. Można zapisać przyczynowe nierówności dla przypadku wielostronnego \cite{mp_ci}, jednakże już w przypadku trzystronnym okazuje się to być kłopotliwe.
+Biorąc pod uwagę fakt, że dwustronny przełącznik nie może generować korelacji łamiących przyczynowe nierówności zapewne jego trzystronny odpowiednik również ich nie łamie. Słuszność tego zdania jest problemem otwartym, lecz gdy w przypadku założenia jego prawdziwości nie można scharakteryzować separowalności przyczynowej przełącznika przy pomocy nierówności przyczynowych. Nietrywialne jest również rozszerzenia świadka przyczynowości dla większej liczby stron. Fakt, że przy pomocy operatorów ${}_X$ można określić, w przypadku dwustronnym, przyczynowy porządek danego wyrazu zapewnia ładną postać świadka przyczynowości. Nie jest to prawdziwe w przypadku wielostronnym. Przykładowo można rozważyć te dwa procesy:
+\begin{gather}
+W_{ABC} = \rho^{A_1} \otimes \KKet{\I}\BBra{\I}^{A_2B_1}\otimes \KKet{\I}\BBra{\I}^{B_2C_1} \otimes \I^{C_2} \\
+W_{BAC} = \rho^{B_1} \otimes \KKet{\I}\BBra{\I}^{B_2A_1} \otimes \KKet{\I}\BBra{\I}^{A_2C_1} \otimes \I^{C_2}.
+\end{gather} Oba procesy zawierają wyrazy typu ${}_{A_1A_2B_1B_2C_1}$, które ewidentnie mogą posiadać korelacje zgodne z pewnym porządkiem przyczynowym. Powyższy przykład ilustruje fakt, że istnieją takie wyrazy, których porządku przyczynowego nie można scharakteryzować przy pomocy projektorów ${}_X$. Sformułowanie świadków przyczynowości dla przypadku wielostronnego jest wciąż problemem otwartym. Wiele wskazuje na to, że nawet jeżeli można sformułować świadków przyczynowości dla wielu stron to poszukiwanie świadków będzie problemem trudnym numerycznie. Mnogość problemów dalej pokazuje rozumowanie przeprowadzone w \cite{mp_cs}. W tym artykule, zostało pokazane, że w przypadku wielostronnym laboratoria mogą wpływać swoimi operacjami na kolejność stron występujących po sobie. Fakt ten dodatkowo utrudnia sformułowanie przyczynowej separowalności i wprowadza pojęcie pojęcie procesów o określonej przyczynowości i separowalnych do określonej przyczynowości. Pokazują, że pojęcia te są nierówne w przypadku wielostronnym. W celu poznania rygorystycznej definicji czytelnik jest zachęcany do zapoznania się z oryginalnym artykułem. Intuicyjnie można zilustrować następującym eksperymentem: Alicja otrzymuje kubit, dokonuje pomiar w pewnej bazie, w przypadku otrzymania jednego wyniku w klasyczny sposób powoduje, że Bob jest przed Charliem, gdy otrzyma drugi wynik Charlie jest przed Bobem. Za każdym razem eksperyment taki ma ściśle określony porządek przyczynowy, lecz próbując zapisać zasób ten przy pomocy macierzy procesu okazuje się, że niemożliwe jest zapisanie go w postaci  separowalnej przyczynowo. 
+ 
 \section{Wnioski}
 W pracy przedstawiono podstawy formalizmu macierzy procesu. Zaprezentowano przykładowe zadanie, w którym nieprzyczynowe zasoby mogą osiągać lepsze wyniki, niż zasoby o określonym porządku przyczynowym. Następnie pokazano narzędzie, które zostało wykorzystane do eksperymentalnego potwierdzenia
 braku ścisłego określenia przyczynowości w przyrodzie. Opisano następnie proponowany postulat, który miałby określać, czy dany proces jest implementowalny fizycznie. Podano parę oryginalnych przykładów. Poszukiwanie wektorów, które spełniałyby warunek wystarczający i konieczny okazuje się być trudnym problemem, więc zademonstrowano wyprowadzenie 
 warunku koniecznego, który sprowadza się do działań algebry liniowej.\\
 Badanie nieprzyczynowości wydaje się być popularnym nurtem w informatyce kwantowej, który niesie wiele nadziei na nowe ważne odkrycia, chociażby na połączenie mechaniki kwantowej z grawitacją. Istnieje wiele elementów, które wymagają rozwinięcia.
 Ewidentnym brakiem w prezentowanym na końcu postulacie jest brak jakichkolwiek innych przesłanek na jego słuszność, niż intuicja fizyczna. Wymagane jest w celu utwierdzenia słuszności powyższego postulat wiele eksperymentów fizycznych, jednakże ze względu na pewien metafizyczny charakter tego postulatu będzie to trudne.
-Ważne są również badania nad skutecznymi metodami spełniania wystarczającego warunku, gdyż problematyczne będą procesy niewykluczane przez warunek konieczny.
+Ważne są również badania nad skutecznymi metodami spełniania wystarczającego warunku, gdyż problematyczne będą procesy niewykluczane przez warunek konieczny. 
 
 \renewcommand\appendixname{Dodatek}
 \renewcommand\appendixpagename{Dodatek}
@@ -1330,5 +1400,5 @@ Niemożliwość tego może uświadomić następująca obserwacja: łatwo sprawdz
 Przytaczając argument z dodatku A wiadome jest, że macierz ta ma $O(d^2)$ niezerowych elementów. Konieczna więc jest reprezentacja tej macierzy w rzadkim formacie np. skompresowanym formacie kolumnowym.
 \end{appendices}
 \\
-$x~y~\rho~\mathcal{M}_x(\rho)~\mathcal{C}(\mathcal{M}_x(\rho))~\mathcal{M}_y(\mathcal{C}(\mathcal{M}_x(\rho)))$
+%$x~y~\rho~\mathcal{M}_x(\rho)~\mathcal{C}(\mathcal{M}_x(\rho))~\mathcal{M}_y(\mathcal{C}(\mathcal{M}_x(\rho)))$
 \end{document}
