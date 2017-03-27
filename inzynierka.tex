@@ -289,29 +289,29 @@ W przypadku, gdy mamy do czynienia z więcej niż jedną stroną, \textit{proces
 \includegraphics[width=0.8\textwidth]{obrazki/cj_new}
 \caption{Rysunek ilustruje działanie izomorfizmu CJ. Zamiast działać odwzorowaniem na pewien stan izomorfizm CJ pokazuje działanie na maksymalnie splątane cząstki. Z powodu izomorfizmu w drugą stronę, konwencjonalnie interpretuje się izomorfizm CJ jako teleportacje bramek kwantowych.}
 \end{figure}
-Macierz CJ $M^{A_1A_2}_i \in \Mats{\Hx{A_1} \otimes \Hx{A_2}} \geq 0$ jest zdefiniowana jako
+\begin{definicja}
+Macierz CJ $M^{A_1A_2}_i \in \Mats{\Hx{A_1} \otimes \Hx{A_2}} \geq 0$ odwzorowania CP $\mathcal{M}: \mathcal{L}(\Hx{A_1}) \mapsto \mathcal{L}(\Hx{A_2})$ definiuje się następująco:
 \begin{gather}
 \label{eq:cj_iso}
 \MCJ(\mathcal{M^A}_i)= M^{A_1A_2}_i := [\mathcal{I} \otimes \MAi{ \KKet{\I} \BBra{\I}}]^T= \left[\sum^{d_{A_1}-1}_{i,j=0} \Ket{i}\Bra{j} \otimes \mathcal{M}^A_i(\Ket{i}\Bra{j})\right]^T, \\
 \KKet{\I} = \sum^{d_{A_1}-1}_{i=0} \Ket{ii},
 \end{gather}
 gdzie $\{\Ket{j}\}^{d_{A_1}}$ tworzy ortonormalna bazę w $\HAi$. 
+\end{definicja}
 Często wygodnie korzystać z odpowiednika \eqref{eq:id_proj0} i \eqref{eq:id_proj} dla postaci CJ odwzorowań, który wygląda następująco:
 \begin{gather}
 \Trs_{A_2} \left[ M^{A_1A_2}_i \right] \leq \I^{A_1},~\forall i\\ 
 \sum_i \Trs_{A_2} \left[ M^{A_1A_2}_i \right] = \I^{A_1}
 \end{gather}
-Drugi izomorfizm CJ pozwala przedstawiać macierze przy pomocy wektorów, tzw. "podwójnych ketów",
+\begin{definicja}
+Drugi izomorfizm CJ pozwala przedstawiać macierze przy pomocy wektorów, tzw. "podwójnych ketów". Wektor CJ macierzy A zdefiniowany jest jako
 \begin{equation}
 \KKet{A} := \I \otimes A\KKet{\I} = \sum^{d_{A_1}-1}_{i=0} \Ket{i} A \Ket{i}
 \end{equation}
-Korzystając z tego przejścia można zapisać prawdopodobieństwo dwóch rezultatów jako 
-\begin{equation}
-\label{eq:cj_prob}
-\Prt{\MAin}{\MXin{B}{j}} = \Tr{\WAll(M^{A_1A_2}_i \otimes M^{B_1B_2}_j)}.
-\end{equation}
-Macierz $W$ w $\Mats{\Hx{A_1} \otimes \Hx{A_2} \otimes \Hx{B_1} \otimes \Hx{B_2}}$ nazywa się macierzą procesu (\textit{process matrix}).
-W celu generowania prawidłowego prawdopodobieństwa narzuca się dodatkowe warunki na $W$
+\end{definicja}
+Znajomość izomorfizmów CJ pozwala na wprowadzenie macierzy procesu.
+\begin{definicja}
+Dwustronną macierzą procesu nazywa się taką macierz $W  \in \Mats{\Hx{A_1} \otimes \Hx{A_2} \otimes \Hx{B_1} \otimes \Hx{B_2}}$, która spełnia warunki
 \begin{gather}
 \label{eq:non_neg}
 \WAll \geq 0. \\
@@ -328,7 +328,13 @@ M^{A_1A_2} \otimes M^{B_1B_2}
 \label{eq:sums_to_id2}
 \forall M^{A_1A_2}, M^{B_1B_2} \geq 0, \Trs_{A_2} \MA = \mathbb{1}^{A_1}, \Trs_{B_2} \MB = \mathbb{1}^{B_1},
 \end{gather}
-gdzie $\MA = \sum_i \mai{i}$. Warunek \eqref{eq:non_neg} zapewnia, że prawdopodobieństwa nie będą ujemne, a \eqref{eq:sums_to_id1} i  \eqref{eq:sums_to_id2} - pewność zaobserwowania dowolnej pary odwzorowań. 
+gdzie $\MA = \sum_i \mai{i}$. W celu wyliczenia prawdopodobieństw zawartych w macierzy procesu korzysta się z następującej formuły:
+\begin{equation}
+\label{eq:cj_prob}
+\Prt{\MAin}{\MXin{B}{j}} = \Tr{\WAll(M^{A_1A_2}_i \otimes M^{B_1B_2}_j)}.
+\end{equation}
+\end{definicja}
+Warunek \eqref{eq:non_neg} zapewnia, że prawdopodobieństwa nie będą ujemne, a \eqref{eq:sums_to_id1} i  \eqref{eq:sums_to_id2} - pewność zaobserwowania dowolnej pary odwzorowań. 
 %tutej moze macierz gestosci
 %\begin{figure}[t]
 %\centering
@@ -347,11 +353,14 @@ gdzie $\MA = \sum_i \mai{i}$. Warunek \eqref{eq:non_neg} zapewnia, że prawdopod
 %\caption{Wyrażenia zgodne z formalizmem i ich proponowana graficzna interpretacja}
 %\label{fig:configs}
 %\end{figure}
-Baza Hilberta-Schmidta dla $\LHx{X}$ dane jest przez zbiór macierzy $\{\sigma^X_\mu\}^{d^2_X-1}_{\mu=0},$ gdzie $\sigma^X_0 = \mathbb{1}, \Tr{\sigma^X_\mu\sigma^X_\nu}=d_x\delta_{\mu\nu}, \Tr{\sigma^X_{\mu>0}}=0.$ Ogólny element przestrzeni $\Mats{\Hx{A_1}\otimes\Hx{A_2}\otimes\Hx{B_1}\otimes\Hx{B_2}}$ można zapisać, jako
+W celu dalszej analizy macierzy procesu wygodne jest wprowadzenie bazy Hilberta-Schmidta.
+\begin{definicja}
+Baza Hilberta-Schmidta dla $\LHx{X}$ dana jest przez zbiór macierzy $\{\sigma^X_\mu\}^{d^2_X-1}_{\mu=0},$ gdzie $\sigma^X_0 = \mathbb{1}, \Tr{\sigma^X_\mu\sigma^X_\nu}=d_x\delta_{\mu\nu}, \Tr{\sigma^X_{\mu>0}}=0.$ Ogólny element przestrzeni $\Mats{\Hx{A_1}\otimes\Hx{A_2}\otimes\Hx{B_1}\otimes\Hx{B_2}}$ można zapisać, jako
 \begin{gather}
 \WAll = \sum_{\mu\nu\lambda\gamma} w_{\mu\nu\lambda\gamma} \sigma_\mu^{A_1}\otimes\sigma_\nu^{A_2}\otimes\sigma_\lambda^{B_1}\otimes\sigma_\gamma^{B_2} \\
 w_{\mu\nu\lambda\gamma} \in \mathcal{C} \nonumber.
 \end{gather}
+\end{definicja}
 Wyrażenia zawierające wyłącznie wyrazy $\sigma^{A_1}_i \otimes \mathbb{1}^{reszta},~(i > 0)$ nazywa się wyrażeniami typu $A_1$, wyrażenia zawierające  $\sigma^{A_1}_i \otimes \sigma^{A_2}_j \otimes \mathbb{1}^{reszta},~(i, j > 0)$ nazywa się wyrażeniami typu $A_1A_2$ etc.
 Najogólniejsza macierz procesu generująca prawidłowe prawdopodobieństwa, tak długo jak jest dodatnia, dla odwzorowań zgodnych z \eqref{eq:non_neg} i \eqref{eq:sums_to_id1} to:
 \begin{gather}
@@ -544,19 +553,26 @@ C = \frac{-1^{(i \div 2 + j \div 2)}}{32}
 \end{gather} gdzie powyżej $x \oplus y$ traktowano jako $x + y \mod 2$, zaś $\div$ to dzielenie bez reszty. Powyższe obliczenia pokazują, że rzeczywiście opisywany jest tutaj protokół supergęstego kodowania.
 %Ponownie w celu skrócenia pozostawiono iloczyn tensorowy niejawnym, który dalej również będzie pomijany, gdy będzie on indukowany przez jego pozycję.
 \section{Przyczynowa separowalność i przyczynowe nierówności}
-Macierzami procesu \textit{causally separable} (przyczynowo separowalnymi) nazywa się takie macierze, które można zapisać jako wypukłą kombinację procesów o implementowalnych przy założeniu określonej struktury przyczynowej. Definiując:
+\begin{definicja}
+Macierzami procesu \textit{causally separable} (przyczynowo separowalnymi) nazywa się takie macierze, które można zapisać jako wypukłą kombinację procesów o implementowalnych przy założeniu określonej struktury przyczynowej:
+\begin{equation}
+\label{eq:sep}
+\WAll = qW^{B \nprec A} + (1-q)W^{A \nprec B},~0 \leq q \leq 1,
+\end{equation}
+gdzie
 \begin{gather}
 W^{B \nprec A} := \frac{1}{d_{A_1}d_{B_1}}\I + \sigma^{A \preceq B} + \sigma^{A \npreceq \nsucceq B} \\
 W^{A \nprec B} := \frac{1}{d_{A_1}d_{B_1}}\I + \sigma^{B \preceq A} + \sigma^{A \npreceq \nsucceq B} \\
 W^{A \nprec \nsucc B} := \frac{1}{d_{A_1}d_{B_1}}\I + \sigma^{A \nprec \nsucc B},
 \end{gather}
-gdzie pierwszy proces można interpretować jako zasób, w którym Bob nie jest przed Alicja, a drugi jako ten, w którym Alicja nie jest przed Bobem.
-\begin{equation}
-\label{eq:sep}
-\WAll = qW^{B \nprec A} + (1-q)W^{A \nprec B},~0 \leq q \leq 1.
-\end{equation}
+\end{definicja}
+Pierwszą rodzinę procesów można interpretować jako zasób, w którym Bob nie jest przed Alicja, a drugi jako ten, w którym Alicja nie jest przed Bobem.
 Powyższa dekompozycja nie musi być jednoznaczna, jako że wyrazy typu $W^{A \nprec \nsucc B}$ można włączyć do wybranego wyrazu.
-Przed wprowadzeniem przyczynowej nierówności (\textit{causal inequallity}) warto wspomnieć o tzw. nierówności Bella. Jest to nieskończona rodzina nierówności, których żaden niesplątany system nie może złamać. Jest to niezależny od implementacji pomiarów (\textit{device independent}) sposób weryfikacji splątania kwantowego. Dla każdego zadanie, które wykonują pewne strony można wprowadzić nierówność, która ogranicza (np. z góry) wyniki jakie mogą zostać osiągniete przy wykorzystaniu zasobów o określonej przyczynowości. Jeżeli taka nierówność zostałaby złamana można wnioskować, że zasób wykorzystany w zadaniu nie ma określonej przyczynowości.
+Przed wprowadzeniem przyczynowej nierówności (\textit{causal inequallity}) warto wspomnieć o tzw. nierówności Bella. Jest to nieskończona rodzina nierówności, których żaden niesplątany system nie może złamać. Jest to niezależny od implementacji pomiarów (\textit{device independent}) sposób weryfikacji splątania kwantowego. 
+\begin{definicja}
+Nierówność przyczynowa to taka nierówność wynikająca z pewnego zadania komunikacyjnego, która ogranicza wyniki jakie można osiągnąć w danym zadaniu korzystając z zasobów przyczynowych. Niespełnianie takiej nierówności implikuje fakt, że dany zasób jest nieprzyczynowy.
+\end{definicja}
+Przykład takiej nierówności przedstawiony jest poniżej.
 %%Typowym przykładem jest eksperyment, w którym w środkowym punkcie pomiędzy odległymi laboratoriami
 %przygotowuję się dwie cząsteczki i wysyła się po jednej cząstce do każdego z laboratoriów po pierwsza strona, tradycyjnie nazywana Alicją, wykonuje jeden pomiar zwracający jakiś binarny wynik $A_n$ przyjmujący wartości $\pm 1$, następnie wykonuje po raz kolejny pomiar potencjalnie 
 %nierówności wynikająca z analizy następującej funkcji zmiennych losowych
@@ -564,7 +580,6 @@ Przed wprowadzeniem przyczynowej nierówności (\textit{causal inequallity}) war
 %g_n = A_nB_n+ A'_nB_n + A_nB'_n + A'_n+B'_n
 %\end{gather}
 %\end{multicols*}
-
 Przyjmuje się następujące założenia na temat natury rzeczywistości uporządkowanej przyczynowo:
 \begin{description}
 	\item[Przyczynowa struktura (\textit{causal structure}, CS)]
@@ -725,8 +740,10 @@ x_? = \begin{cases}
 %W = \frac{1}{9}\left[ \I\I\I\I + \frac{1}{\sqrt{2}}\left(\I\lambda_Z\lambda_Z\I + \lambda_Z\I\lambda_X\lambda_Z\right)\right]
 %\end{equation}
 \subsection{Procesy z przyczynowym modelem}
-Ważną klasę procesów pokazano w \cite{causal_model}. Jest to klasa procesów przyczynowo nieseparowalnych podlegająca przyczynowemu modelowi, czyli takie procesy, które są nieseparowalne, lecz produkują wyłącznie korelacje, które są zgodne z przyczynowym porządkiem. Procesy takie oczywiście nie mogą
-łamać przyczynowych nierówności niezależnie od przyjętej strategii. Przykładem takiego procesu jest 
+\begin{definicja}
+Proces z przyczynowym model to taka macierz nieseparowalna, że statystyki pomiarowe generowane przez nią są identyczne z tymi generowane przez macierze separowalne przyczynowo.
+\end{definicja}
+Istnienie takiej klasy procesów pokazano w \cite{causal_model}. Przykładem takiego procesu jest 
 % pozniej opisac przyczynowe polytop %
 \begin{gather}
 W^{A \prec B} := \IO + \frac{1}{12}(\I\Z\Z\I + \I\X\X\I + \I\Y\Y\I) \\
@@ -781,11 +798,14 @@ Może to być jednak nieprawdziwe, gdy systemy są poszerzone o splątane cząst
 o których można przeczytać więcej w \cite{causal_model}.
 \section{Świadek przyczynowości} 
 Poprzedni rozdział sugeruje, że istnieje klasa procesów, która nie może złamać żadnej przyczynowej nierówności, zaś jest niesparowalna przyczynowo. Istnieje więc motywacja do poszukiwania metody, która sklasyfikuje, czy dany stan jest separowalny czy nie. Wprowadzony w \cite{causal_witness}
-świadek przyczynowości (\textit{causal witness}) jest analogiem do świadka splątania (\textit{entanglement witness}), który pozwala klasyfikować splątanie danego układu niezależnie od jego zdolności do łamania nierówności Bella. Ściśle mówiąc świadek przyczynowości to taki operator $S$, że
+świadek przyczynowości (\textit{causal witness}) jest analogiem do świadka splątania (\textit{entanglement witness}), który pozwala klasyfikować splątanie danego układu niezależnie od jego zdolności do łamania nierówności Bella. 
+\begin{definicja}
+Świadkiem przyczynowości nazywa się taki operator S, dla którego dla każdej macierzy separowalnej $W^{sep}$ spełniona jest nierówność:
 \begin{equation}
 \label{eq:witness_gez}
 \Trs\left[S W^{sep} \right]\geq 0
 \end{equation}
+\end{definicja}
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.8\textwidth]{obrazki/hip}
@@ -793,18 +813,20 @@ Poprzedni rozdział sugeruje, że istnieje klasa procesów, która nie może zł
 }
 \label{fig:hip}
 \end{figure}
-dla każdego przyczynowo separowalnego procesu $W^{sep}$. Taka definicja jest zmotywowana twierdzeniem o separującej hiperpłaszczyźnie, które mówi, że dla każdych dwóch wypukłych zbiorów albo ich przecięcie nie jest zbiorem pustym, albo istnieje taka hiperpłaszczyzna, że zbiory leżą po obu jej stronach, nierygorystycznie mówiąc. Można to łatwo sobie zobrazować geometrycznie rysunek \ref{fig:hip}. Jako że zbiór macierzy separowalnych jest wypukły i zamknięty dla każdego nieseparowalnego procesu $W^{nsep}$, to istnieje taki świadek przyczynowości, że 
+Twierdzenia o separującej hiperpłaszczyźnie mówi, że dla każdych dwóch wypukłych zbiorów albo ich przecięcie nie jest zbiorem pustym, albo istnieje taka hiperpłaszczyzna, że zbiory leżą po obu jej stronach, nierygorystycznie mówiąc. Można to łatwo sobie zobrazować geometrycznie patrząc na rysunek \ref{fig:hip}. Korzystając z tego twierdzenia i faktu, że macierzy separowalnych jest wypukły i zamknięty dla każdego nieseparowalnego procesu $W^{nsep}$, to można stwierdzić, że istnieje taki świadek przyczynowości, że 
 \begin{equation}
 \Trs \left[ S_{W^{nsep}} W^{nsep} \right] < 0.
 \end{equation}
 \subsection{Sformułowanie macierzy procesu niezależne od bazy}
 Przed dalszym charakteryzowaniem świadków przyczynowości wygodnie jest wprowadzić niezależne od wyboru bazy sformułowanie macierzy procesu.
-Definiuje się następująca operację:
+\begin{definicja}
+Operator ${}_XW$ zdefiniowany jest następująco:
 \begin{equation}
-{}_X W = \frac{\I^X}{d_X} \otimes \Trs_X W,
+{}_X W = \frac{\I^X}{d_X} \otimes \Trs_X W.
 \end{equation}
-która opisuje operacje wzięcia śladu i zastąpienia tego systemu znormalizowaną macierzą jednostkową.
-Warunki wprowadzone w rozdziale \ref{macierz_procesu} są równoważne z następującymi
+\end{definicja}
+Operacja ${}_XW$ opisuje operacje wzięcia śladu i zastąpienia tego systemu znormalizowaną macierzą jednostkową.
+Warunki na macierz procesu wprowadzone w rozdziale \ref{macierz_procesu} są równoważne z następującymi
 \begin{gather}
 W \geq 0 \\
 \Trs W = d_O \\
@@ -854,7 +876,7 @@ W = \frac{1}{4}\left[
 \I\I\I\I
 \right] \\
 W = L_V(W).
-\end{gather} W poprzednich obliczeniach korzystano z faktu, że wyłącznie $\I$ jest jedynym elementem bazy Hilberta-Schmidta o niezerowym śladzie, konsekwencją tego jest to, że operator ${}_X$ działający na macierz jednostkową na danej pozycji dokonuje trywialnej zmiany, zaś w przeciwnym wypadku usuwa dany wyraz. 
+\end{gather} W poprzednich obliczeniach korzystano z faktu, że wyłącznie $\I$ jest elementem bazy Hilberta-Schmidta o niezerowym śladzie, konsekwencją tego jest to, że operator ${}_X$ działający na macierz jednostkową na danej pozycji dokonuje trywialnej zmiany, zaś w przeciwnym wypadku usuwa dany wyraz. 
 Dowód faktu, że operator $L_V$ rzeczywiście jest projektorem przebiega następująco: operator $L_V$ jest samosprzeżony w sensie iloczynu skalarnego Hilberta-Schmidta
 \begin{gather}
 A =\sum_{ij} \alpha_{ij} \sigma_i \otimes \sigma_j ,~A \in X \otimes Y \\
@@ -934,12 +956,16 @@ Zauważa się dodatkowo dowolność dodania dowolnego elementu $S^\bot$ z przest
 \end{equation}
 Okazuje się, że powyższe warunki charakteryzują wszystkich świadków przyczynowości.
 Co zbierając razem daje:
+\begin{definicja}
+Macierz herimitowska S jest świadkiem przyczynowości wtedy i tylko wtedy, gdy podlega poniższej dekompozycji
 \begin{gather}
-\text{Macierz hermitowska S jest świadkiem przyczynowości wtedy i tylko wtedy, gdy da się ją zapisać jako} \\
-S = S_P + S^\bot \\
-\text{gdzie $S_P$ i $S^\bot$ są takimi macierzami hermitowskimi, że} \\ 
+S = S_P + S^\bot,
+\end{gather}
+gdzie $S_P$ i $S^\bot$ są takimi macierzami hermitowskimi, że
+\begin{gather}
 {}_{A_2} S_P \geq 0, {}_{B_2} S_P \geq 0, L_V(S^\bot) = 0.
 \end{gather}
+\end{definicja}
 Pokazuje się, że zbiór tak zdefiniowanych świadków przyczynowości jest domkniętym stożkiem wypukłym. Można jednak ograniczyć się z $S$ do przestrzeni 
 $\mathcal{L_V}$. Wybierając $S^\bot = L_V(S_P) - S_P$, który może być dowolny. Mamy $L_V(S) = S$. Okazuje się, że taki ograniczony zbiór świadków przyczynowości: $\mathcal{S_V} = \mathcal{S} \cap \mathcal{L_V}$, również jest domkniętym wypukłym stożkiem. Jako, że wybrane elementy ortogonalne do
 $\mathcal{L_V}$ nie zmieniają wartości $\Trs WS$, nie zmieniają one też dlatego zdolności S do wykrywania separowalności. 
@@ -956,28 +982,36 @@ Rozpisując powyższą formułę otrzymuje się
 \begin{equation}
 \Trs\left[ \frac{\Omega \Trs \left[ \Omega \right]}{d_O}S\right]\leq1 \iff \Trs \Omega S \leq \frac{\Trs \Omega}{d_O}
 \end{equation}
-Ostateczna postać powyżej nierówności pozwala porzucić warunek, by $\Omega$ była znormalizowana co pozwala przenieść problem optymalizacyjny na stożek wypukły nieznormalizowanych macierzy procesu.
+Ostateczna postać powyżej nierówności pozwala porzucić warunek, by $\Omega$ była znormalizowana co umożliwia przenieść problem optymalizacyjny na stożek wypukły nieznormalizowanych macierzy procesu.
 Co można przepisać, jako 
 \begin{equation}
 \Trs \left[ \Omega(\frac{\I}{d_O} -S) \right] \geq 0
 \end{equation}
-Łatwo zauważyć, że powyższy warunek jest warunkiem, który muszą spełniać operatory $\frac{\I}{d_O} - S,$ by należały do stożka dualnego macierzy procesu, czyli takiego, że ich iloczyn skalarny jest nieujemny z macierzami procesu. Co sprowadza problem optymalizacyjny do:
+Łatwo zauważyć, że powyższy warunek jest warunkiem, który muszą spełniać operatory $\frac{\I}{d_O} - S,$ by należały do stożka dualnego macierzy procesu, czyli takiego, że ich iloczyn skalarny jest nieujemny z macierzami procesu.
+\begin{definicja}
+Optymalnym świadkiem przyczynowości nazywa się optimum globalne poniższego zadania optymalizacyjnego:
 \begin{gather}
 \min \Trs \left[ WS \right]\\
 \text{tak, aby } S \in \mathcal{S_V},~ \frac{\I}{d_O} - S \in \mathcal{W^*_V},
 \end{gather}
 gdzie $\mathcal{W^*_V}:=\mathcal{W^*} \cap \mathcal{L_V}.~ \mathcal{W^*}$ jest wcześniej wspomnianym stożkiem dualnym do macierzy procesu,
-zaś człon $\mathcal{L_V}$ wynika z wcześniej narzuconego warunku na $S \in \mathcal{L_V}$. Problem ten okazuje się być prawidłowym problemem
+zaś człon $\mathcal{L_V}$ wynika z wcześniej narzuconego warunku na $S \in \mathcal{L_V}$. 
+\end{definicja}
+Optymalny świadek przyczynowości pozwala stwierdzić, czy dany proces jest separowalny przyczynowo.
+Problem ten okazuje się być prawidłowym problemem
 programowania liniowego po stożku (\textit{semidefinite programming}, SDP), którego numeryczne rozwiązanie jest zbieżne do optimum globalnego.
-Wynika z tego, że rozwiązanie takiego problemu optymalizacyjnego daje kryterium separowalności przyczynowej.
-Okazuje się dodatkowo, że wartość $-\Trs \left[ W S^* \right]$ odpowiada minimalnej wartości $\lambda$ takiej, że 
+Wynika z tego, że rozwiązanie takiego problemu optymalizacyjnego daje kryterium separowalności przyczynowej, z którego można efektywnie korzystać.
+\begin{definicja}
+Uogólnioną wytrzymałością(\textit{generalized robustness}) nazywa się wartość:
+\begin{equation}
+R_g(W) = -\Trs\left[ S^*W\right],
+\end{equation} gdzie $S^*$ jest optymalnym świadkiem przyczynowości dla macierzy W. Wartość ta odpowiada rozwiązaniu dualnego problemu do problemu optymalnego świadka:
 \begin{equation}
 \frac{1}{1 + \lambda}\left( W + \lambda\widetilde{\Omega}\right),
-\end{equation}
-zoptymalizowanej po wszystkich znormalizowanych macierzach procesu $\widetilde{\Omega}$. Wartość ta określa odporność danego procesu do pozostania nieseparowalnym podczas mieszania z "najgorszym" możliwym szumem. $-\Trs \left [ W S^* \right]$ nazywa się, analogicznie do podobnej wartości związanej ze splątaniem, uogólnioną wytrzymałością (\textit{generalized robustness}), i oznacza się ją
-\begin{equation}
-R_g(W) = -\Trs \left[ S^* W \right]
-\end{equation} Jest to miara nieseparowalności spełniająca standardowe wymagania, a mianowicie
+\end{equation} ze względu na zmienną $\lambda$
+zoptymalizowanej po wszystkich znormalizowanych macierzach procesu $\widetilde{\Omega}$. 
+\end{definicja}
+Wartość ta określa odporność danego procesu do pozostania nieseparowalnym podczas mieszania z "najgorszym" możliwym szumem. Jest to miara nieseparowalności spełniająca standardowe wymagania, a mianowicie
 \begin{description}
 \item[Dyskryminacja] $R_g(W) \geq 0$ dla każdej macierzy procesu, przyjmuje wartość 0 wyłącznie dla procesów należących do $\mathcal{W}^{sep}$. 
 \item[Wypukłość] $R_g(\sum_i p_i W_i) \leq \sum_i p_i R_g(W_i)$ dla dowolnych macierzy procesu i $p_i \geq 0$ takich, że $\sum_i p_i = 1$. 
@@ -985,15 +1019,17 @@ R_g(W) = -\Trs \left[ S^* W \right]
 otrzymać przez złożenie go z lokalnymi odwzorowaniami CPTP.
 \end{description}
 Można wprowadzić również problem, w którym poszukuje się minimalnej ilości białego szumu potrzebnego do spowodowania, by proces stał się separowalnym. Biały szum może się okazać bardziej adekwatnym modelem szumu niż przypadek pesymistyczny.
-Problem optymalizacyjny, który otrzymuje się jest następujący
+\begin{definicja}
+Losową wytrzymałością (\textit{random robustness}) nazywa się wielkość:
+\begin{equation}
+R_r(W) = -\Trs\left[S^* W\right],
+\end{equation}
+gdzie $S^*$ jest optymalnym rozwiązaniem następującego problemu optymalizacyjnego
 \begin{gather}
 \min \Trs \left[ WS \right]\\
 \text{tak, by } S \in \mathcal{S_V}, \Trs\left[\IO S\right] \leq 1.
 \end{gather}
-Wprowadza się wtedy wielkość nazywaną losowa wytrzymałość (\textit{random robustness}), która jest powiązana z $S^*$ - optimum powyższego problemu - w następujący sposób.
-\begin{equation}
-R_r(W) = -\Trs\left[S^* W\right]
-\end{equation}
+\end{definicja}
 W przeciwieństwie do uogólnionej wytrzymałości nie jest to miara nieseparowalności, w sensie poprzednio przytoczonych postulatów, jako że nie jest monotoniczna pod działaniem lokalnych odwzorowań CPTP.
 \subsection{Implementacja świadka przyczynowości}
 Korzystając chociażby z twierdzenia spektralnego wiadomym jest, że macierz hermitowską S można zapisać jako kombinację liniową następującej postaci
@@ -1029,18 +1065,26 @@ $\mathcal{G_{A,B}}$ reprezentującą transformację, która przechodzi z globaln
 %$B_1, B'_1$ do $B_2, B'_2$, zaś $\mathcal{G_{A,B}}$ mapą CPTP z $P, A'_1, A'_2$ do $F, B'_1, B'_2$. Primem oznaczono \textit{ancille}. Ponownie przez A niepisane kaligraficznie oznaczać będzie się reprezentacje CJ odpowiednich map, podobnie dla innych map. Taka definicja nie jest w żaden sposób sprzeczna z tymi podanymi wcześniej, gdyż ma ona służyć jedynie jako droga do zbudowania narzędzia stwierdzającego, czy dany proces jest fizyczny bądź nie. Trzeba zaznaczyć, iż w tym rozdziale definicja izomorfizmu CJ jest zmieniona o transpozycję, która wcześniej została wprowadzona ze względu na wygodę, teraz jednakże może sprawiać, że pewne odwzorowania CP 
 %mogą zostać mapowane na macierze niedodatnie. Jako że żadna przestrzeń nie może sygnalizować P, a przestrzeń F nie może sygnalizować do żadnej innej,
 %można je interpretować odpowiednio jako globalną przeszłość i globalną przyszłość. Oczywiście tak zdefiniowany proces ma swoją reprezentację jako macierz - pisze się
-Macierz procesu (puryfikacyjną) definiuje się jako liniową funkcje wyższego rzędu odwzorowań, która na wejściu przyjmuje odwzorowania opisujące wykonywane przez laboratoria czynności $A$ i $B$, a na wyjściu zwraca odwzorowanie CPTP opisujące przejście systemu z globalnej przeszłości oraz systemów pomocniczych $P, A'_1 B'_1$ do globalnej przyszłości $F, A'_2, B'_2$. Odwzorowanie to otrzymuje się z następującej formuły:
+%Macierz procesu (puryfikacyjną) definiuje się jako liniową funkcje wyższego rzędu odwzorowań, która na wejściu przyjmuje odwzorowania opisujące wykonywane przez laboratoria czynności $A$ i $B$, a na wyjściu zwraca odwzorowanie CPTP opisujące przejście systemu z globalnej przeszłości oraz systemów pomocniczych $P, A'_1 B'_1$ do globalnej przyszłości $F, A'_2, B'_2$. Odwzorowanie to otrzymuje się z następującej formuły:
+%\begin{equation}
+%\label{eq:longnp}
+%G_{A,B} = \Trs_{A_1A_2B_1B_2} \left[ W^{T_{A_1A_2B_1B_2}} (A\otimes B)\right],
+%\end{equation}
+%gdzie $W \in A_1 \otimes A_2 \otimes A'_1 \otimes A'_2 \otimes B_1 \otimes B_2 \otimes B'_1 \otimes B'_2 \otimes F \otimes P$. W powyższym równaniu macierze jednostkowe na \textit{ancillach}, globalnej przyszłości i przeszłości pozostały niejawne.
+%Korzystając z definicji macierzy wiadomo, że powyższe równanie opisuję najogólniejsza metodę transformacji liniowych map A i B. Dodatkowo wyjściowe odwzorowanie musi działać trywialnie na systemy pomocnicze. Co więcej puryfikacyjna macierz procesu musi dodatkowo spełniać następujące warunki:
+\begin{definicja}
+Najogólniejsze liniowe odwzorowanie odwzorowań CPTP $\mathcal{A}: \mathcal{L}(\Hx{A_1} \otimes \Hx{A'_1}) \mapsto  \mathcal{L}(\Hx{A_2} \otimes \Hx{A'_2})$ i $\mathcal{B}: \mathcal{L}(\Hx{B_1} \otimes \Hx{B'_1}) \mapsto  \mathcal{L}(\Hx{B_2} \otimes \Hx{B'_2})$ na odwzorowanie CPTP $\mathcal{G_{A,B}}: \mathcal{L}(\Hx{A'_1} \otimes \Hx{P} \otimes \Hx{B'_1} \mapsto \mathcal{L}(\Hx{A'_2} \otimes \Hx{F} \otimes \Hx{B'_2}$ nazywa się procesem (puryfikacyjnym) $\mathcal{W}: \mathcal{A} \otimes \mathcal{B} \mapsto \mathcal{G_{A,B}}$. Macierzą procesu nazywa się macierz CJ procesu, która otrzymuje się z formuły\cite{purification}
 \begin{equation}
-\label{eq:longnp}
-G_{A,B} = \Trs_{A_1A_2B_1B_2} \left[ W^{T_{A_1A_2B_1B_2}} (A\otimes B)\right],
+G_{A,B} = \Trs_{A_1A_2B_1B_2}\left[ \I^{A'_1B'_1A'_2B'_2} \otimes {W^{PA_1A_2B_1B_2F}}^{T_{A_1A_2B_1B_2}} \left( \I^{PF} \otimes A^T \otimes B^T\right)\right],
 \end{equation}
-gdzie $W \in A_1 \otimes A_2 \otimes A'_1 \otimes A'_2 \otimes B_1 \otimes B_2 \otimes B'_1 \otimes B'_2 \otimes F \otimes P$. W powyższym równaniu macierze jednostkowe na \textit{ancillach}, globalnej przyszłości i przeszłości pozostały niejawne.
-Korzystając z definicji macierzy wiadomo, że powyższe równanie opisuję najogólniejsza metodę transformacji liniowych map A i B. Dodatkowo wyjściowe odwzorowanie musi działać trywialnie na systemy pomocnicze. Co więcej puryfikacyjna macierz procesu musi dodatkowo spełniać następujące warunki:
+gdzie $A = \MCJ({\mathcal{A}})$, $B = \MCJ(\mathcal{B})$, $G_{A,B} = \MCJ(\mathcal{G_{A,B}})$.
+Macierz procesu musi spełniać następujące warunki:
 \begin{gather}
 W \geq 0 \\
 \Trs W = d_{A_2}d_{B_2}d_P \\
 W = L_V(W).
 \end{gather} 
+\end{definicja}
 Jawna postać powyższego projektora jest następująca:
 \begin{align}
 \begin{split}
@@ -1056,37 +1100,50 @@ Powyższy projektor ma takie same wyrazy, jak ten zdefiniowany w \eqref{eq:proje
 Każdy dwustronny proces zdefiniowany w poprzednim sensie rozszerzony o odpowiednio znormalizowaną jednostkową przyszłość i przeszłość spełnia warunki narzucone powyżej, co pokazuje, że każdy proces dwustronny, definiowany jak poprzednio, jest zgodny z tą definicją.
 Rówanie \eqref{eq:longnp} może być skrócone z wykorzystaniem iloczynu łączącego(\textit{link product}).
 W celu zapisania postaci CJ złożenia pewnych dwóch funkcji można obliczyć jawną postać CJ $\MCJ(\mathcal{M} \circ \mathcal{N})$. Wygodniejszym
-jednak często okazuje się być wcześniej wspomniany iloczyn łączący definiowany jako następująca abstrakcyjna operacja na macierzach:
+jednak często okazuje się być wcześniej wspomniany iloczyn łączący. 
+\begin{definicja}
+Iloczyn łączący dwóch macierzy definiowany jest jako
 \begin{equation}
 N * M = \Trs_{I\cap J}\left[ (\I^{J\setminus I} \otimes M^{T_{I\cap J}})(N \otimes \I^{I\setminus J})\right],
 \end{equation}
-gdzie $M \in \bigotimes_{i \in I} A^i,~N \in \bigotimes_{j \in J} A^j$. W skrajnych przypadkach gdy $I \cap J = \emptyset$, $N*M$ to po prostu $N \otimes M$, a
+gdzie $M \in \bigotimes_{i \in I} A^i,~N \in \bigotimes_{j \in J} A^j$.
+\end{definicja} W skrajnych przypadkach gdy $I \cap J = \emptyset$, $N*M$ to po prostu $N \otimes M$, a
 gdy $I \cap J = I = J$ to $N * M = \Trs M^T N$. Ułatwić zrozumienie iloczynu łączącego w przypadkach bardziej skomplikowanych pozwala następujący przykład:
 \begin{equation}
 \begin{split}
 \I\X\Y^{ABC} * \Y\Y\Z^{BCD} &= \Trs_{BC} \left[ \left(\I^{A} \otimes {\Y\Y\Z^{BCD}}^{T_{BC}}\right)\left(\I\X\Y^{ABC} \otimes \I^D\right)\right] \\
-&= \Trs_{BC} \left[ \I^A \otimes (-YX)^{B} \otimes {-YY}^{C} \otimes \Z^{D}\right] \\
-&= \I^{A} \otimes \Z^{D} \Trs_{B} \left[ -YX \right]\Trs_{C}\left[-YY\right] \\
-&= \I^{A} \otimes \Z^{D} 0 \cdot -1 \\
+&= \Trs_{BC} \left[ \I^A \otimes (-\Y\X)^{B} \otimes {-\Y\Y}^{C} \otimes \Z^{D}\right] \\
+&= \I^{A} \otimes \Z^{D} \Trs_{B} \left[ -\Y\X \right]\Trs_{C}\left[-\Y\Y\right] \\
+&= \I^{A} \otimes \Z^{D} 0 \cdot (-1) \\
 &= 0
 \end{split}
 \end{equation}
-Znając iloczyn łączący w sposób bardzo elegancki można zdefiniować dwustronny proces jako
+Znając iloczyn łączący w sposób bardzo elegancki można zapisać dwustronny proces jako
 \begin{equation}
 G_{A,B} = W * (A \otimes B).
 \end{equation}
 \subsection{Czysty proces}
-Proces czysty definiuje się jako macierz, którą można zapisać w następującej postaci
+\begin{definicja}
+Czysty proces definiuje się taki proces, dla którego istnieje taka transformacja unitarna $U_W$, że można zapisać proces ten jako
 \begin{equation}
-W_{czysty} = \KKet{U_W}\Bra{U_W},
-\end{equation} dla pewnej transformacji unitarnej $U_W$. Faktem jest, że czysty proces odwzorowuje unitarne odwzorowania $A$ i $B$ na macierz unitarną. Szkic dowodu przebiega następująco,
-wybierając $\mathcal{A}$, $\mathcal{B}$, jako operacje $\bf{SWAP}$ (rysunek \ref{swap}), które odpowiednio zamieniają \textit{ancille} z oryginalnymi systemami, to pisze się, że
+W_{czysty} = \KKet{U_W}\BBra{U_W}.
+\end{equation}
+\end{definicja}
+Faktem jest, że czysty proces odwzorowuje unitarne odwzorowania $A$ i $B$ na macierz unitarną. Szkic dowodu przebiega następująco,
+wybierając $\mathcal{A}$, $\mathcal{B}$, jako operacje $\bf{SWAP}$ (rysunek \ref{swap}), które odpowiednio zamieniają \textit{ancille} z oryginalnymi systemami. Metodę obliczenia wektora CJ operacji $\bf{SWAP}$ przytoczono poniżej:
+\begin{equation}
+\begin{split}
+\KKet{\bf{SWAP}} &= \sum_i \Ket{i}^{A_1A'_1} \otimes \textbf{SWAP} \Ket{i}^{A_1A'_1} = \sum_{ij} \Ket{i}^{A_1}\Ket{j}^{A'_1} \otimes \textbf{SWAP} \Ket{i}^{A_2}\Ket{j}^{A'_2} \\&= \sum_{ij} \Ket{i}\Ket{i}^{A_1A'_2} \otimes \Ket{j}\Ket{j}^{A'_1A_2} 
+= \KKet{\I}^{A_1A'_2}\KKet{\I}^{A'_1A_2}.
+\end{split}
+\end{equation}
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.95\textwidth]{obrazki/swap}
 \caption{Rysunek schematycznie przedstawia działanie operacji $\bf{SWAP}$. Na wejściu Alicja otrzymuje system złożony np. w stanie $\rho^{A_1} \otimes \rho'^{A'_1}$ następnie aplikuje unitarną macierz $\bf{SWAP}$ definiowaną następująco $\textbf{SWAP} = \sum_{ij} \Ket{ij}\Bra{ji}$, a na wyjściu otrzymuje system w stanie $\rho'^{A_2} \otimes \rho^{A'_2}$. Postać CJ tej macierzy to: $\KKet{\I}\BBra{\I}^{A_1A'_2} \otimes \KKet{\I}\BBra{\I}^{A'_1A_2}$.Warto również zauważyć, że po przemianowaniu systemów wyjściowych $A_2 \to A'_2$, $A'_2 \to A_2$ operacja $\bf{SWAP}$ działa trywialnie.}
 \label{swap}
 \end{figure}
+Korzystając z powyższego wyniku można zapisać:
 \begin{equation}
 G_{A,B} = W * \left( \KKet{\I}\BBra{\I}^{A'_1 A_2} \KKet{\I}\BBra{\I}^{A_1A'_2} \otimes \KKet{\I}\BBra{\I}^{B'_1 B_2} \KKet{\I}\BBra{\I}^{B_1B'_2}\right) = W,
 \end{equation}
@@ -1109,11 +1166,13 @@ Z założenia mamy, że $\mathcal{G_{A,B}}$ jest CPTP, więc $\Trs_{A'_2B'_2F} G
 \end{equation}
 co kończy dowód.
 \subsection{Proces puryfikowalny}
+\begin{definicja}
 Proces puryfikowalny $W$ definiuje się jako proces dla, którego można znaleźć proces czysty $S$ spełniający następującą równość:
 \begin{equation}
 \label{eq:purif}
 W^{A_1A_2A'_1A'_2B_1B_2B'_1B'_2} = S^{A_1A_2A'_1A'_2B_1B_2B'_1B'_2PF} * \left( \Ket{0}\Bra{0}^P \otimes \I^F \right),
 \end{equation}
+\end{definicja}
 Definicja ta jest zgodna tylko z tymi macierzami procesu, które można odzyskać z procesu czystego, gdy w globalnej przeszłości umieści się ustalony stan i wykona się ślad częściowy po globalnej przeszłości. Odpowiada to sytuacji, w której nie obserwuje się globalnej przeszłości i przyszłości.
 Postuluje się, że wyłącznie procesy czyste można skonstruować fizycznie, gdyby było inaczej zachwiana byłaby zasada odwracalności, która jest uznawana za kluczową.
 \subsection{Warunki konieczne i wystarczające}
