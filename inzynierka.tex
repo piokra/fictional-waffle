@@ -53,7 +53,8 @@
 \renewcommand{\headrulewidth}{0pt} % customise the layout...
 \lhead{}\chead{}\rhead{}
 \lfoot{}\cfoot{\thepage}\rfoot{}
-	
+\newtheorem{definicja}{Definicja}
+\newtheorem{wlasnosc}{Własność}
 %%% SECTION TITLE APPEARANCE
 \usepackage{sectsty}
 \allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
@@ -174,7 +175,7 @@ skorzystać z twierdzenia spektralnego i zapisać $A = \sum_i^N \lambda_i \Ket{\
 \label{eq:cond_ev}
 \Ket{\psi} \mapsto \frac{\Pi_i\Ket{\psi}}{\sqrt{\Bra{\psi}\Pi_i \Ket{\psi}}},
 \end{equation}
-gdzie $\Pi_i$ jest projektorem\footnote{Przez projektor rozumie się taką macierz $A$, że $A^2 = A$. W przypadku obserwabli projektory z twierdzenia spektralnego sumują się do identyczności i spełniają własność $\Pi_i \Pi_j =0$. Założenie, że wartości własne są niezdegenerowane, które skutkuje tym, że projektory są niezdegenerowane nie jest konieczne. Projektory nie muszą być jednowymiarowe, sumując $n$ liniowo niezależnych projektorów jednowymiarowych otrzymuje się projektor n-wymiarowy, który spełnia poprzednie relacje względem pozostałych macierzy co łatwo sprawdzić. Wielowymiarowe projektory mogą odpowiadać pomiarowi, który przypisuje taki sam wynik wielu ortogonalnym staną, czy pomiar, który jest wykonywana na pewnej części systemu złożonego.} odpowiadającym $\Ket{\lambda_i}\Bra{\lambda_i}$. Zapisując $\KP = \sum^N_i a_i \Ket{\lambda_i}, \sum^N_i |a_i|^2=1$, prawdopodobieństwo zaobserwowania wyniku $\lambda_i$ jest równe $|a_i|^2$, lub równoważnie
+gdzie $\Pi_i$ jest projektorem\footnote{Przez projektor rozumie się taką macierz $A$, że $A^2 = A$ i $A^\dag = A$. W przypadku obserwabli projektory z twierdzenia spektralnego sumują się do identyczności i spełniają własność $\Pi_i \Pi_j =0$. Założenie, że wartości własne są niezdegenerowane, które skutkuje tym, że projektory są niezdegenerowane nie jest konieczne. Projektory nie muszą być jednowymiarowe, sumując $n$ liniowo niezależnych projektorów jednowymiarowych otrzymuje się projektor n-wymiarowy, który spełnia poprzednie relacje względem pozostałych macierzy co łatwo sprawdzić. Wielowymiarowe projektory mogą odpowiadać pomiarowi, który przypisuje taki sam wynik wielu ortogonalnym staną, czy pomiar, który jest wykonywana na pewnej części systemu złożonego.} odpowiadającym $\Ket{\lambda_i}\Bra{\lambda_i}$. Zapisując $\KP = \sum^N_i a_i \Ket{\lambda_i}, \sum^N_i |a_i|^2=1$, prawdopodobieństwo zaobserwowania wyniku $\lambda_i$ jest równe $|a_i|^2$, lub równoważnie
 \begin{equation}
 \Pro{\lambda_i} = \BP \Pi_i \KP,
 \end{equation}
@@ -368,7 +369,7 @@ Wyróżnia się trzy rodzaje wyrażeń należących do rodziny macierzy przedsta
 \includegraphics{obrazki/states_new}
 \caption{Schematyczne przedstawienie stanów. Laboratoria wykonują pewne wybrane pomiary na systemach po czym wysyłają je ze swoich laboratoriów. Każde z laboratoriów otrzymuje różne, potencjalnie splątane, systemy.}
 \end{figure}
-Prawidłowe macierze procesu zawierające wyłącznie wyrazy typu $A_1 B_1, A_1, B_1$ produkują takie same statystyki jak macierze gęstości wraz z reguła Borna. Można więc intuicyjnie wiązać wyrazy typu $A_1 B_1, A_1, B_1$ z sposobem na opis stanów. Zaobserwować to można w następujący sposób.
+Prawidłowe macierze procesu zawierające wyłącznie wyrazy typu $A_1 B_1, A_1, B_1$ produkują takie same statystyki jak macierze gęstości wraz z reguła Borna. Można więc intuicyjnie związać wyrazy typu $A_1 B_1, A_1, B_1$ z sposobem na opis stanów. Zaobserwować to można w następujący sposób.
 Okazuje się, że macierz CJ, która opisuje zaobserwowanie pewnego stanu $\KP\BP$ i przygotowanie innego stanu $\Ket{\phi}\Bra{\phi}$ wygląda następująco:
 \begin{equation}
 \MCJ(\mathcal{M}) = \KP\BP \otimes \Ket{\phi}\Bra{\phi}^T.
@@ -785,7 +786,14 @@ Poprzedni rozdział sugeruje, że istnieje klasa procesów, która nie może zł
 \label{eq:witness_gez}
 \Trs\left[S W^{sep} \right]\geq 0
 \end{equation}
-dla każdego przyczynowo separowalnego procesu $W^{sep}$. Taka definicja jest zmotywowana twierdzeniem o separującej hiperpłaszczyźnie, które mówi, że dla każdych dwóch wypukłych zbiorów albo ich przecięcie nie jest zbiorem pustym, albo istnieje taka hiperpłaszczyzna, że zbiory leżą po obu jej stronach, nierygorystycznie mówiąc. Można to łatwo sobie zobrazować geometrycznie. Jako że zbiór macierzy separowalnych jest wypukły i zamknięty dla każdego nieseparowalnego procesu $W^{nsep}$, to istnieje taki świadek przyczynowości, że 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{obrazki/hip}
+\caption{Każde dwa rozłączne zbiory wypukłe (geometrycznie figury) można rozdzielic hiperpłaszcz ze względu na pewien iloczyn skalarny, tak że elementy jednego zbioru będą przyjmowały dodatnie wartości iloczynu skalarnego z elementem przestrzeni wektorowej charakteryzującym hiperpłaszczyznę, zaś elementy drugiego ujemne. Jako, że zbiór separowalnych macierzy procesu jest wypukły z definicji i każdy zbiór jednoelementowy jest zbiorem wypukłym, pozwala to dla każdego procesu poszukiwać hiperpłaszczyzn oddzielających ten konkretny proces od zbioru procesów separowalnych. Taką hiperpłaszczyznę nazywa się świadkiem przyczynowości.
+}
+\label{fig:hip}
+\end{figure}
+dla każdego przyczynowo separowalnego procesu $W^{sep}$. Taka definicja jest zmotywowana twierdzeniem o separującej hiperpłaszczyźnie, które mówi, że dla każdych dwóch wypukłych zbiorów albo ich przecięcie nie jest zbiorem pustym, albo istnieje taka hiperpłaszczyzna, że zbiory leżą po obu jej stronach, nierygorystycznie mówiąc. Można to łatwo sobie zobrazować geometrycznie rysunek \ref{fig:hip}. Jako że zbiór macierzy separowalnych jest wypukły i zamknięty dla każdego nieseparowalnego procesu $W^{nsep}$, to istnieje taki świadek przyczynowości, że 
 \begin{equation}
 \Trs \left[ S_{W^{nsep}} W^{nsep} \right] < 0.
 \end{equation}
@@ -846,7 +854,48 @@ W = \frac{1}{4}\left[
 \I\I\I\I
 \right] \\
 W = L_V(W).
-\end{gather} W poprzednich obliczeniach korzystano z faktu, że wyłącznie $\I$ jest jedynym elementem bazy Hilberta-Schmidta o niezerowym śladzie, konsekwencją tego jest to, że operator ${}_X$ działający na macierz jednostkową na danej pozycji dokonuje trywialnej zmiany, zaś w przeciwnym wypadku usuwa dany wyraz.
+\end{gather} W poprzednich obliczeniach korzystano z faktu, że wyłącznie $\I$ jest jedynym elementem bazy Hilberta-Schmidta o niezerowym śladzie, konsekwencją tego jest to, że operator ${}_X$ działający na macierz jednostkową na danej pozycji dokonuje trywialnej zmiany, zaś w przeciwnym wypadku usuwa dany wyraz. 
+Dowód faktu, że operator $L_V$ rzeczywiście jest projektorem przebiega następująco: operator $L_V$ jest samosprzeżony w sensie iloczynu skalarnego Hilberta-Schmidta
+\begin{gather}
+A =\sum_{ij} \alpha_{ij} \sigma_i \otimes \sigma_j ,~A \in X \otimes Y \\
+B =\sum_{kl} \beta_{kl} \sigma_k \otimes \sigma_l,~B\in X\otimes Y\\
+\begin{split}
+\langle {}_X A, B \rangle &= \Trs \left[ {}_X A, B\right] = \sum_{ijkl} \Trs\left[ {}_X (\alpha_{ij} \sigma_i \otimes \sigma_j) (\beta_{kl} \sigma_k \otimes \sigma_l)\right] \\
+&= \sum_{jkl} \Trs \left[ (\alpha_{0j} \I \otimes \sigma_j) (\beta_{kl} \sigma_k \otimes \sigma_l) \right] = \sum_{jkl} \alpha_{0j} \beta{kl} \Trs \left[ \I \sigma_k\right] \Trs \left[ \sigma_j \sigma_l\right] \\
+&= \sum_{jl} \alpha_{0j} \beta_{0l}C \Trs \left[ \sigma_j \sigma_l \right] \\
+\langle A, {}_X B \rangle &=  \Trs\left[ (\alpha_{ij} \sigma_i \otimes \sigma_j) ( {}_X \beta_{kl} \sigma_k \otimes \sigma_l)\right] = \sum_{ijl} \Trs \left[ (\alpha_{ij} \I \otimes \sigma_j) (\beta_{0l} \sigma_k \otimes \sigma_l) \right] \\
+&= \sum_{jl} \alpha_{0j} \beta_{0l}C \Trs \left[ \sigma_j \sigma_l \right] = \langle {}_X A, B \rangle,
+\end{split}
+\end{gather} macierze $\{ \sigma_i \}$ tworzą bazę Hilberta-Schmidta, zaś stała C jest związana z stała, do której znormalizowana jest baza. Korzystając z liniowości pokazuje się hermitowskość dla projektora $L_V$. $L_V^2 = L_V$ wykazuje się następująco:
+\begin{gather}
+\begin{split}
+L_V^2(W) &= \left({}_{A_2} + {}_{B_2} - {}_{A_2B_2} - {}_{B_1B_2} + {}_{A_2B_1B_2}- {}_{A_1A_2} + {}_{A_1A_2B_2} \right)\\&\quad\left( {}_{A_2} + {}_{B_2} - {}_{A_2B_2} - {}_{B_1B_2} + {}_{A_2B_1B_2} - {}_{A_1A_2} + {}_{A_1A_2B_2}\right)W
+\end{split} \\
+\begin{split}
+{}_{A_2} L_V(W) &= ({}_{A_2} + {}_{A_2B_2} - {}_{A_2B_2} - {}_{A_2B_1B_2} + {}_{A_2B_1B_2} - {}_{A_1A_2} + {}_{A_1A_2B_2})W \\
+&= ({}_{A_2} - {}_{A_1A_2} + {}_{A_1A_2B_2})W
+\end{split} \\
+{}_{B_2} L_V(W) = ({}_{B_2} - {}_{B_1B_2} + {}_{B_1B_2A_2})W \hspace{5cm}\\
+\begin{split}
+-{}_{A_2B_2}L_V(W) &= (-{}_{A_2B_2} - {}_{A_2B_2} + {}_{A_2B_2} + {}_{A_2B_1B_2} - {}_{A_2B_1B_2} + {}_{A_1A_2B_2} - {}_{A_1B_1B_2})W \\
+&= -{}_{A_2B_2}W
+\end{split} \\
+\begin{split}
+-{}_{B_1B_2}L_V(W) &= (-{}_{A_2B_1B_2} - {}_{B_1B_2} +{}_{A_2B_1B_2} + {}_{B_1B_2} - {}_{A_2B_1B_2} + {}_{A_1A_2B_1B_2} - {}_{A_1A_2B_1B_2})W \\
+&= -{}_{A_2B_1B_2}W
+\end{split} \\
+-{}_{A_1A_2} L_V(W) =-{}_{B_2A_1A_2}W \hspace{5cm}\\
+\begin{split}
+{}_{A_2B_1B_2}L_V(W) &= ({}_{A_2B_1B_2} + {}_{A_2B_1B_2} -{}_{A_2B_1B_2} - {}_{A_2B_1B_2} + {}_{A_2B_1B_2} - {}_{A_1A_2B_1B_2} + {}_{A_1A_2B_1B_2})W \\
+&= {}_{A_2B_1B_2}W
+\end{split} \\
+{}_{A_1A_2B_2}L_V(W) = {}_{A_1A_2B_2}W \hspace{5cm}\\
+\begin{split}
+L_V^2(W) =&  ({}_{A_2} - {}_{A_1A_2} + {}_{A_1A_2B_2})W +  ({}_{B_2} - {}_{B_1B_2} + {}_{B_1B_2A_2})W  -{}_{A_2B_2}W - \\
+&-{}_{A_2B_1B_2}W  -{}_{B_2A_1A_2}W + {}_{A_2B_1B_2}W + {}_{A_1A_2B_2}W = L_V(W).
+\end{split}
+\end{gather}
+Powyżej korzystano z własności ${}_{XY} = {}_{YX}$, ${}_{XX} = {}_X$ i z faktu, że operator $L_V$ jest symetryczny ze względu na zamianę systemu $A$ i $B$.
 \subsection{Poszukiwanie świadka przyczynowości}
 Zauważa się, że warunek \eqref{eq:witness_gez} jest równoważny z następującymi dwoma
 \begin{gather}
@@ -903,10 +952,11 @@ Autorzy oryginalnego artykułu proponują następujący:
 \Trs \Omega S \leq 1,
 \end{equation}
 gdzie $\Omega$ jest znormalizowaną macierzą procesu.
-Poszerzając powyższy warunek do nieznormalizowanych macierzy procesu, dostaje się
+Rozpisując powyższą formułę otrzymuje się
 \begin{equation}
-\Trs \Omega S \leq \frac{\Trs \Omega}{d_O}
+\Trs\left[ \frac{\Omega \Trs \left[ \Omega \right]}{d_O}S\right]\leq1 \iff \Trs \Omega S \leq \frac{\Trs \Omega}{d_O}
 \end{equation}
+Ostateczna postać powyżej nierówności pozwala porzucić warunek, by $\Omega$ była znormalizowana co pozwala przenieść problem optymalizacyjny na stożek wypukły nieznormalizowanych macierzy procesu.
 Co można przepisać, jako 
 \begin{equation}
 \Trs \left[ \Omega(\frac{\I}{d_O} -S) \right] \geq 0
@@ -961,9 +1011,10 @@ Nie wiadomo, czy łamanie nierówności przyczynowych jest możliwie fizyczne, c
 kwantowego przełącznika (\textit{quantum switch})- zasobu, który nie może złamać przyczynowych nierówności - wykorzystując wcześniej opisanego świadka przyczynowości np. w \cite{experiment}. Może to nasuwać postulat, że fizycznie niemożliwe jest naruszenie tych nierówności. Prawdziwość tego postulatu wciąż stoi pod znakiem zapytania. W \cite{purification} autorzy proponują postulat puryfikacyjny (\textit{purification postulate}). Uznają za konieczne, że każda fundamentalna fizycznie poprawna teoria
 musi być odwracalna. Motywują się faktem, że każda znana fundamentalna teoria jest odwracalna - taka intuicja sprawdza się do tej pory.
 Warto jeszcze dodać, że we wstępie zostały opisany pomiar rzutujący jako nieodwracalny rodzaj ewolucji, jednakże można modelować pomiar w sposób niewymagający takich pomiarów modelując układ pomiarowy, jako system kwantowy, który ewoluuje unitarnie wraz z mierzonym systemem, co pokazano np. w
-\cite{reversible}. W celu dalszego opisu postulatu koniecznym jest opisanie, jak rozumiana jest odwracalność w kontekście procesów. W tym celu procesy są poszerzone o globalną przeszłość i globalną przyszłość. Rozumie się je jako operacje, które odwzorowują stany w globalnej przeszłości do stanów w globalnej przyszłości, które przechodzą przez region o nieokreślonej przyczynowości lokalnych laboratoriów opisywanych właśnie przez te macierze. Co sprowadza do definicji czystych procesów (\textit{pure processes}), jako procesów, które w sposób unitarny transformują przyszłość do przeszłości, gdy w lokalnych laboratoriach zostaną zaaplikowane odpowiednie unitarne transformacje. Ta definicja sprowadza do ich postulatu, który mówi, że procesy są puryfikowalne wtedy i tylko wtedy, gdy da się zaprezentować je jako czyste procesy w większej przestrzeni i tylko takie procesy są implementowalne. Autorzy postulatu dodatkowo zauważają, że
-o ile żaden znany dwustronny proces łamiący nierówności przyczynowe nie okazał się być puryfikowalnym, to istnieje proces trzystronny, który jest puryfikowalny i może łamać przyczynowe nierówności, więc jeżeli niemożność łamania przyczynowych nierówności uznałoby się za prawo natury, a ten postulat za prawdziwy, to
-byłby on konieczny, a nie wystarczający. 
+\cite{reversible}. 
+%W celu dalszego opisu postulatu koniecznym jest opisanie, jak rozumiana jest odwracalność w kontekście procesów. W tym celu procesy są poszerzone o globalną przeszłość i globalną przyszłość. Rozumie się je jako operacje, które odwzorowują stany w globalnej przeszłości do stanów w globalnej przyszłości, które przechodzą przez region o nieokreślonej przyczynowości lokalnych laboratoriów opisywanych właśnie przez te macierze. Co sprowadza do definicji czystych procesów (\textit{pure processes}), jako procesów, które w sposób unitarny transformują przyszłość do przeszłości, gdy w lokalnych laboratoriach zostaną zaaplikowane odpowiednie unitarne transformacje. Ta definicja sprowadza do ich postulatu, który mówi, że procesy są puryfikowalne wtedy i tylko wtedy, gdy da się zaprezentować je jako czyste procesy w większej przestrzeni i tylko takie procesy są implementowalne. Autorzy postulatu dodatkowo zauważają, że
+%o ile żaden znany dwustronny proces łamiący nierówności przyczynowe nie okazał się być puryfikowalnym, to istnieje proces trzystronny, który jest puryfikowalny i może łamać przyczynowe nierówności, więc jeżeli niemożność łamania przyczynowych nierówności uznałoby się za prawo natury, a ten postulat za prawdziwy, to
+%byłby on konieczny, a nie wystarczający. 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.6\textwidth]{obrazki/done1}
@@ -973,38 +1024,18 @@ $\mathcal{G_{A,B}}$ reprezentującą transformację, która przechodzi z globaln
 }
 \label{higherordermap}
 \end{figure}
-We wcześniejszych rozdziałach proces był definiowany jako zasób, który definiował wszystkie statystyki pomiarów dla danych instrumentów, lub równoważnie jako funkcja, która transformuje odwzorowania CP do prawdopodobieństw. Wprowadzenie pojęcia puryfikacji wymaga zmiany definicji na biliniową funkcję działająca trywialnie na \textit{ancille}, która odwzoruje
-$\mathcal{A}$ i $\mathcal{B}$ do $\mathcal{G_{A,B}}$, gdzie $\mathcal{A}$ jest odwzorowanie CPTP z $A_1, A'_1$ do $A_2, A'_2$, analogicznie $\mathcal{B}$ jest mapą CPTP z
-$B_1, B'_1$ do $B_2, B'_2$, zaś $\mathcal{G_{A,B}}$ mapą CPTP z $P, A'_1, A'_2$ do $F, B'_1, B'_2$. Primem oznaczono \textit{ancille}. Ponownie przez A niepisane kaligraficznie oznaczać będzie się reprezentacje CJ odpowiednich map, podobnie dla innych map. Taka definicja nie jest w żaden sposób sprzeczna z tymi podanymi wcześniej, gdyż ma ona służyć jedynie jako droga do zbudowania narzędzia stwierdzającego, czy dany proces jest fizyczny bądź nie. Trzeba zaznaczyć, iż w tym rozdziale definicja izomorfizmu CJ jest zmieniona o transpozycję, która wcześniej została wprowadzona ze względu na wygodę, teraz jednakże może sprawiać, że pewne odwzorowania CP 
-mogą zostać mapowane na macierze niedodatnie. Jako że żadna przestrzeń nie może sygnalizować P, a przestrzeń F nie może sygnalizować do żadnej innej,
-można je interpretować odpowiednio jako globalną przeszłość i globalną przyszłość. Oczywiście tak zdefiniowany proces ma swoją reprezentację jako macierz - pisze się
+%We wcześniejszych rozdziałach proces był definiowany jako zasób, który definiował wszystkie statystyki pomiarów dla danych instrumentów, lub równoważnie jako funkcja, która transformuje odwzorowania CP do prawdopodobieństw. Wprowadzenie pojęcia puryfikacji wymaga zmiany definicji na biliniową funkcję działająca trywialnie na \textit{ancille}, która odwzoruje
+%$\mathcal{A}$ i $\mathcal{B}$ do $\mathcal{G_{A,B}}$, gdzie $\mathcal{A}$ jest odwzorowanie CPTP z $A_1, A'_1$ do $A_2, A'_2$, analogicznie $\mathcal{B}$ jest mapą CPTP z
+%$B_1, B'_1$ do $B_2, B'_2$, zaś $\mathcal{G_{A,B}}$ mapą CPTP z $P, A'_1, A'_2$ do $F, B'_1, B'_2$. Primem oznaczono \textit{ancille}. Ponownie przez A niepisane kaligraficznie oznaczać będzie się reprezentacje CJ odpowiednich map, podobnie dla innych map. Taka definicja nie jest w żaden sposób sprzeczna z tymi podanymi wcześniej, gdyż ma ona służyć jedynie jako droga do zbudowania narzędzia stwierdzającego, czy dany proces jest fizyczny bądź nie. Trzeba zaznaczyć, iż w tym rozdziale definicja izomorfizmu CJ jest zmieniona o transpozycję, która wcześniej została wprowadzona ze względu na wygodę, teraz jednakże może sprawiać, że pewne odwzorowania CP 
+%mogą zostać mapowane na macierze niedodatnie. Jako że żadna przestrzeń nie może sygnalizować P, a przestrzeń F nie może sygnalizować do żadnej innej,
+%można je interpretować odpowiednio jako globalną przeszłość i globalną przyszłość. Oczywiście tak zdefiniowany proces ma swoją reprezentację jako macierz - pisze się
+Macierz procesu (puryfikacyjną) definiuje się jako liniową funkcje wyższego rzędu odwzorowań, która na wejściu przyjmuje odwzorowania opisujące wykonywane przez laboratoria czynności $A$ i $B$, a na wyjściu zwraca odwzorowanie CPTP opisujące przejście systemu z globalnej przeszłości oraz systemów pomocniczych $P, A'_1 B'_1$ do globalnej przyszłości $F, A'_2, B'_2$. Odwzorowanie to otrzymuje się z następującej formuły:
 \begin{equation}
 \label{eq:longnp}
-G_{A,B} = \Trs_{A_1A_2B_1B_2} \left[ W^{T_{A_1A_2B_1B_2}} (A\otimes B)\right]
+G_{A,B} = \Trs_{A_1A_2B_1B_2} \left[ W^{T_{A_1A_2B_1B_2}} (A\otimes B)\right],
 \end{equation}
-gdzie $W \in A_1 \otimes A_2 \otimes A'_1 \otimes A'_2 \otimes B_1 \otimes B_2 \otimes B'_1 \otimes B'_2 \otimes F \otimes P$ jest oczywiście definiowaną macierzą procesu. W powyższym równaniu macierze jednostkowe na \textit{ancillach}, globalnej przyszłości i przeszłości pozostały niejawne.
-Rówanie \eqref{eq:longnp} może być skrócone z wykorzystaniem iloczynu łączącego(\textit{link product}).
-W celu zapisania postaci CJ złożenia pewnych dwóch funkcji można obliczyć jawną postać CJ $\MCJ(\mathcal{M} \circ \mathcal{N})$. Wygodniejszym
-jednak często okazuje się być wcześniej wspomniany iloczyn łączący definiowany jako następująca abstrakcyjna operacja na macierzach:
-\begin{equation}
-N * M = \Trs_{I\cap J}\left[ (\I^{J\setminus I} \otimes M^{T_{I\cap J}})(N \otimes \I^{I\setminus J})\right],
-\end{equation}
-gdzie $M \in \bigotimes_{i \in I} A^i,~N \in \bigotimes_{j \in J} A^j$. W skrajnych przypadkach gdy $I \cap J = \emptyset$, $N*M$ to po prostu $N \otimes M$, a
-gdy $I \cap J = I = J$ to $N * M = \Trs M^T N$. Ułatwić zaobserwowanie działania iloczynu łączącego w przypadkach bardziej skomplikowanych pozwala następujący przykład:
-\begin{equation}
-\begin{split}
-\I\X\Y^{ABC} * \Y\Y\Z^{BCD} &= \Trs_{BC} \left[ \left(\I^{A} \otimes {\Y\Y\Z^{BCD}}^{T_{BC}}\right)\left(\I\X\Y^{ABC} \otimes \I^D\right)\right] \\
-&= \Trs_{BC} \left[ \I^A \otimes (-YX)^{B} \otimes {-YY}^{C} \otimes \Z^{D}\right] \\
-&= \I^{A} \otimes \Z^{D} \Trs_{B} \left[ -YX \right]\Trs_{C}\left[-YY\right] \\
-&= \I^{A} \otimes \Z^{D} 0 \cdot -1 \\
-&= 0
-\end{split}
-\end{equation}
-Znając iloczyn łączący w sposób bardzo elegancki można zdefiniować dwustronny proces jako
-\begin{equation}
-G_{A,B} = W * (A \otimes B).
-\end{equation}
-W celu uniknięcia sprzeczności trzeba narzucić warunki na $W$ tak, aby $G_{A,B}$ była odwzorowaniem CPTP dla wszystkich prawidłowych odwzorowań CPTP $A$ i $B$, co implikuje analogiczne warunki do tych podanych we wcześniejszych rozdziałach
+gdzie $W \in A_1 \otimes A_2 \otimes A'_1 \otimes A'_2 \otimes B_1 \otimes B_2 \otimes B'_1 \otimes B'_2 \otimes F \otimes P$. W powyższym równaniu macierze jednostkowe na \textit{ancillach}, globalnej przyszłości i przeszłości pozostały niejawne.
+Korzystając z definicji macierzy wiadomo, że powyższe równanie opisuję najogólniejsza metodę transformacji liniowych map A i B. Dodatkowo wyjściowe odwzorowanie musi działać trywialnie na systemy pomocnicze. Co więcej puryfikacyjna macierz procesu musi dodatkowo spełniać następujące warunki:
 \begin{gather}
 W \geq 0 \\
 \Trs W = d_{A_2}d_{B_2}d_P \\
@@ -1023,6 +1054,27 @@ L_V(W') = {}_{A_2}W' + {}_{B_2}W' - {}_{A_2B_2}W' - {}_{B_1B_2}W' + {}_{A_2B_1B_
 \end{equation}
 Powyższy projektor ma takie same wyrazy, jak ten zdefiniowany w \eqref{eq:projec2}.
 Każdy dwustronny proces zdefiniowany w poprzednim sensie rozszerzony o odpowiednio znormalizowaną jednostkową przyszłość i przeszłość spełnia warunki narzucone powyżej, co pokazuje, że każdy proces dwustronny, definiowany jak poprzednio, jest zgodny z tą definicją.
+Rówanie \eqref{eq:longnp} może być skrócone z wykorzystaniem iloczynu łączącego(\textit{link product}).
+W celu zapisania postaci CJ złożenia pewnych dwóch funkcji można obliczyć jawną postać CJ $\MCJ(\mathcal{M} \circ \mathcal{N})$. Wygodniejszym
+jednak często okazuje się być wcześniej wspomniany iloczyn łączący definiowany jako następująca abstrakcyjna operacja na macierzach:
+\begin{equation}
+N * M = \Trs_{I\cap J}\left[ (\I^{J\setminus I} \otimes M^{T_{I\cap J}})(N \otimes \I^{I\setminus J})\right],
+\end{equation}
+gdzie $M \in \bigotimes_{i \in I} A^i,~N \in \bigotimes_{j \in J} A^j$. W skrajnych przypadkach gdy $I \cap J = \emptyset$, $N*M$ to po prostu $N \otimes M$, a
+gdy $I \cap J = I = J$ to $N * M = \Trs M^T N$. Ułatwić zrozumienie iloczynu łączącego w przypadkach bardziej skomplikowanych pozwala następujący przykład:
+\begin{equation}
+\begin{split}
+\I\X\Y^{ABC} * \Y\Y\Z^{BCD} &= \Trs_{BC} \left[ \left(\I^{A} \otimes {\Y\Y\Z^{BCD}}^{T_{BC}}\right)\left(\I\X\Y^{ABC} \otimes \I^D\right)\right] \\
+&= \Trs_{BC} \left[ \I^A \otimes (-YX)^{B} \otimes {-YY}^{C} \otimes \Z^{D}\right] \\
+&= \I^{A} \otimes \Z^{D} \Trs_{B} \left[ -YX \right]\Trs_{C}\left[-YY\right] \\
+&= \I^{A} \otimes \Z^{D} 0 \cdot -1 \\
+&= 0
+\end{split}
+\end{equation}
+Znając iloczyn łączący w sposób bardzo elegancki można zdefiniować dwustronny proces jako
+\begin{equation}
+G_{A,B} = W * (A \otimes B).
+\end{equation}
 \subsection{Czysty proces}
 Proces czysty definiuje się jako macierz, którą można zapisać w następującej postaci
 \begin{equation}
@@ -1059,6 +1111,7 @@ co kończy dowód.
 \subsection{Proces puryfikowalny}
 Proces puryfikowalny $W$ definiuje się jako proces dla, którego można znaleźć proces czysty $S$ spełniający następującą równość:
 \begin{equation}
+\label{eq:purif}
 W^{A_1A_2A'_1A'_2B_1B_2B'_1B'_2} = S^{A_1A_2A'_1A'_2B_1B_2B'_1B'_2PF} * \left( \Ket{0}\Bra{0}^P \otimes \I^F \right),
 \end{equation}
 Definicja ta jest zgodna tylko z tymi macierzami procesu, które można odzyskać z procesu czystego, gdy w globalnej przeszłości umieści się ustalony stan i wykona się ślad częściowy po globalnej przeszłości. Odpowiada to sytuacji, w której nie obserwuje się globalnej przeszłości i przyszłości.
@@ -1225,7 +1278,7 @@ Bardzo ważnym przykładem, który został zaimplementowany fizycznie, który po
 \begin{equation}
 U = \I^{P_1P_2A_1A_2B_1B_2F_1}\otimes\Ket{0}\Bra{0}^{F_2} + \I^{P_1P_2} \otimes \mathbf{SWAP}^{A_1B_1} \otimes \mathbf{SWAP}^{A_2B_2} \otimes \Ket{1}\Bra{1}^{F_2},
 \end{equation}
-otrzymuje się wektor CJ macierzy jednostkowej. Wynika więc z tego, że sam proces jest wektorem CJ macierzy unitarnej.
+otrzymuje się wektor CJ macierzy jednostkowej. Wynika z tego fakt, że sam proces jest wektorem CJ macierzy unitarnej.
 Kubit kontrolny z $P_1$ pozostaje niezmieniony zaś badając zmianę stanu z $P_2$ można dowiedzieć się, jaką "drogę" przebyły. Taki zasób nie jest w stanie złamać żadnych nierówności przyczynowych.
 Nie jest żaden znany puryfikowalny przykład w literaturze, który byłby w stanie złamać przyczynowe nierówności, jednakże znany jest proces trzystronny, wprowadzony w \cite{logic}, który jest w stanie złamać przyczynowe nierówności. 
 \begin{equation}
@@ -1400,5 +1453,6 @@ Niemożliwość tego może uświadomić następująca obserwacja: łatwo sprawdz
 Przytaczając argument z dodatku A wiadome jest, że macierz ta ma $O(d^2)$ niezerowych elementów. Konieczna więc jest reprezentacja tej macierzy w rzadkim formacie np. skompresowanym formacie kolumnowym.
 \end{appendices}
 \\
+$\mathcal{W}_{sep}~~\mathcal{W}_{nsep}$
 %$x~y~\rho~\mathcal{M}_x(\rho)~\mathcal{C}(\mathcal{M}_x(\rho))~\mathcal{M}_y(\mathcal{C}(\mathcal{M}_x(\rho)))$
 \end{document}
