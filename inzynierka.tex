@@ -54,6 +54,7 @@
 \lhead{}\chead{}\rhead{}
 \lfoot{}\cfoot{\thepage}\rfoot{}
 \newtheorem{definicja}{Definicja}
+\newtheorem{tw}{Twierdzenie}
 \newtheorem{wlasnosc}{Własność}
 %%% SECTION TITLE APPEARANCE
 \usepackage{sectsty}
@@ -378,12 +379,16 @@ Wyróżnia się trzy rodzaje wyrażeń należących do rodziny macierzy przedsta
 \includegraphics{obrazki/states_new}
 \caption{Schematyczne przedstawienie stanów. Laboratoria wykonują pewne wybrane pomiary na systemach po czym wysyłają je ze swoich laboratoriów. Każde z laboratoriów otrzymuje różne, potencjalnie splątane, systemy.}
 \end{figure}
-Prawidłowe macierze procesu zawierające wyłącznie wyrazy typu $A_1 B_1, A_1, B_1$ produkują takie same statystyki jak macierze gęstości wraz z reguła Borna. Można więc intuicyjnie związać wyrazy typu $A_1 B_1, A_1, B_1$ z sposobem na opis stanów. Zaobserwować to można w następujący sposób.
-Okazuje się, że macierz CJ, która opisuje zaobserwowanie pewnego stanu $\KP\BP$ i przygotowanie innego stanu $\Ket{\phi}\Bra{\phi}$ wygląda następująco:
+Prawidłowe macierze procesu zawierające wyłącznie wyrazy typu $A_1 B_1, A_1, B_1$ produkują takie same statystyki jak macierze gęstości wraz z reguła Borna. 
+Można więc intuicyjnie związać wyrazy typu $A_1 B_1, A_1, B_1$ z sposobem na opis stanów.
+Do potwierdzenia powyższego twierdzenia w przypadku pomiarów rzutujących wykorzystuje się poniższe twierdzenie:
+\begin{tw}
+Macierz CJ, która opisuje zaobserwowanie pewnego stanu $\KP\BP$ i przygotowanie innego stanu $\Ket{\phi}\Bra{\phi}$ wygląda następująco:
 \begin{equation}
 \MCJ(\mathcal{M}) = \KP\BP \otimes \Ket{\phi}\Bra{\phi}^T.
 \end{equation}
-W celu wyprowadzenia powyższego równania zacząć można od przeanalizowania w jaki sposób wygląda postać mapy, która opisuje pomiar danego stanu $\Ket{\psi}$. Dobierając wektory $\{ \Ket{\psi_i} \}$ tak, by tworzyły bazę ortonormalną i $\Ket{\psi_0} = \Ket{\psi}$ z wcześniej podanej definicji działania mapy można zapisać:
+\end{tw}
+W celu dowiedzenia powyższego twierdzenia zacząć można od przeanalizowania w jaki sposób wygląda postać mapy, która opisuje pomiar danego stanu $\Ket{\psi}$. Dobierając wektory $\{ \Ket{\psi_i} \}$ tak, by tworzyły bazę ortonormalną i $\Ket{\psi_0} = \Ket{\psi}$ z wcześniej podanej definicji działania mapy można zapisać:
 \begin{equation}
 \begin{split}
 \mathcal{M}(\rho) &= \mathcal{M}\left(\sum_{ij} \alpha_{ij} \Ket{\psi_i}\Bra{\psi_j}\right) = \sum_{ijm} \left[ \alpha_{ij} E^\dag_m \Ket{\psi_i}\Bra{\psi_j}E_m\right]\\
@@ -463,7 +468,8 @@ W = \KKet{\I}\BBra{\I}^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2}.
 \includegraphics{obrazki/channel_new}
 \caption{Schematyczna reprezentacja kanału CPTP. Alicja wykonuje wybrane operacje na systemie po czym wysyła go do Boba. W trakcie przesyłania systemu zostaje zaaplikowana unitarna transformacja $U$.}
 \end{figure}
-Wyrazy typu $A_1A_2B_1$, $B_1B_2A_1$ można przyjąć za sposób opisywania kanałów. O ile łatwo zauważyć słuszność, że formuła
+Wyrazy typu $A_2B_1$, $B_2A_1$ identyfikuje się jako sposób opisywania kanałów, ze względu na występowanie tych wyrazów w macierzach CJ kanałów.
+Łatwo zaobserwować, że formuła
 \begin{equation}
 \Trs \left[ \mathcal{M}_y^B \circ \mathcal{C} \circ \mathcal{M}_x^A(\rho)\right]
 \end{equation} opisuje statystyki pomiarowe eksperymentu, w którym Alicja wykonuje pewne pomiary przesyła system kanałem CPTP $\mathcal{C}$ po czym Bob wykonuje swoje pomiary na otrzymanym systemie to nie oczywista jest jej równoważność z 
@@ -743,14 +749,19 @@ x_? = \begin{cases}
 \begin{definicja}
 Proces z przyczynowym model to taka macierz nieseparowalna, że statystyki pomiarowe generowane przez nią są identyczne z tymi generowane przez macierze separowalne przyczynowo.
 \end{definicja}
-Istnienie takiej klasy procesów pokazano w \cite{causal_model}. Przykładem takiego procesu jest 
+Istnienie takiej klasy procesów pokazano w \cite{causal_model}. 
+\begin{tw}
+Proces opisywany poniższymi macierzami
 % pozniej opisac przyczynowe polytop %
 \begin{gather}
 W^{A \prec B} := \IO + \frac{1}{12}(\I\Z\Z\I + \I\X\X\I + \I\Y\Y\I) \\
 W^{B \prec A} := \IO + \frac{1}{4}(\Z\I\X\Z)\\
 \label{eq:nsep_causal}
 W := qW^{A \prec B} + (1-q+\epsilon)W^{B \prec A} -\epsilon\IO,
-\end{gather} gdzie $\IO = \frac{1}{d_{A_1}d_{B_1}} \I\I\I\I$.
+\end{gather}
+ma przyczynowy model.
+\end{tw}
+W powyższym twierdzeniu przyjęto oznaczenie $\IO = \frac{1}{d_{A_1}d_{B_1}} \I\I\I\I$.
 Zauważa się, że $W \geq 0$ dla $\epsilon \leq q- 1 + \sqrt{\frac{(1-q)(q+3)}{3}}$ i przyczynowo nieseparowalne dla $\epsilon \geq 0$. 
 Dowód faktu, że ten proces nie może złamać żadnej przyczynowej nierówności nie zależnie od strategii przebiega następująco.
 Pokazuje się najpierw, że proces ten produkuje te same korelacje co $W^{T_B}$, gdzie $T_B$ oznacza częsciową transpozycje systemów $\Hx{B_1} \otimes \Hx{B_2}$ względem CB. Natomiast $W^{T_B}$ jest przyczynowo separowalna i nie może złamać przyczynowych nierówności. Co razem dowodzi tezę. Pierwsza część dowodu przebiega następująco 
@@ -800,10 +811,10 @@ o których można przeczytać więcej w \cite{causal_model}.
 Poprzedni rozdział sugeruje, że istnieje klasa procesów, która nie może złamać żadnej przyczynowej nierówności, zaś jest niesparowalna przyczynowo. Istnieje więc motywacja do poszukiwania metody, która sklasyfikuje, czy dany stan jest separowalny czy nie. Wprowadzony w \cite{causal_witness}
 świadek przyczynowości (\textit{causal witness}) jest analogiem do świadka splątania (\textit{entanglement witness}), który pozwala klasyfikować splątanie danego układu niezależnie od jego zdolności do łamania nierówności Bella. 
 \begin{definicja}
-Świadkiem przyczynowości nazywa się taki operator S, dla którego dla każdej macierzy separowalnej $W^{sep}$ spełniona jest nierówność:
+Świadkiem przyczynowości nazywa się taki operator S, dla którego każda macierz separowalna $W^{sep}$ spełnia nierówność
 \begin{equation}
 \label{eq:witness_gez}
-\Trs\left[S W^{sep} \right]\geq 0
+\Trs\left[S W^{sep} \right]\geq 0.
 \end{equation}
 \end{definicja}
 \begin{figure}[t]
@@ -956,7 +967,7 @@ Zauważa się dodatkowo dowolność dodania dowolnego elementu $S^\bot$ z przest
 \end{equation}
 Okazuje się, że powyższe warunki charakteryzują wszystkich świadków przyczynowości.
 Co zbierając razem daje:
-\begin{definicja}
+\begin{tw}
 Macierz herimitowska S jest świadkiem przyczynowości wtedy i tylko wtedy, gdy podlega poniższej dekompozycji
 \begin{gather}
 S = S_P + S^\bot,
@@ -965,7 +976,7 @@ gdzie $S_P$ i $S^\bot$ są takimi macierzami hermitowskimi, że
 \begin{gather}
 {}_{A_2} S_P \geq 0, {}_{B_2} S_P \geq 0, L_V(S^\bot) = 0.
 \end{gather}
-\end{definicja}
+\end{tw}
 Pokazuje się, że zbiór tak zdefiniowanych świadków przyczynowości jest domkniętym stożkiem wypukłym. Można jednak ograniczyć się z $S$ do przestrzeni 
 $\mathcal{L_V}$. Wybierając $S^\bot = L_V(S_P) - S_P$, który może być dowolny. Mamy $L_V(S) = S$. Okazuje się, że taki ograniczony zbiór świadków przyczynowości: $\mathcal{S_V} = \mathcal{S} \cap \mathcal{L_V}$, również jest domkniętym wypukłym stożkiem. Jako, że wybrane elementy ortogonalne do
 $\mathcal{L_V}$ nie zmieniają wartości $\Trs WS$, nie zmieniają one też dlatego zdolności S do wykrywania separowalności. 
@@ -1176,7 +1187,8 @@ W^{A_1A_2A'_1A'_2B_1B_2B'_1B'_2} = S^{A_1A_2A'_1A'_2B_1B_2B'_1B'_2PF} * \left( \
 Definicja ta jest zgodna tylko z tymi macierzami procesu, które można odzyskać z procesu czystego, gdy w globalnej przeszłości umieści się ustalony stan i wykona się ślad częściowy po globalnej przeszłości. Odpowiada to sytuacji, w której nie obserwuje się globalnej przeszłości i przyszłości.
 Postuluje się, że wyłącznie procesy czyste można skonstruować fizycznie, gdyby było inaczej zachwiana byłaby zasada odwracalności, która jest uznawana za kluczową.
 \subsection{Warunki konieczne i wystarczające}
-Warunkami koniecznymi i wystarczającymi, by proces był czysty są:
+\begin{tw}
+Proces jest czysty wtedy i tylko wtedy, gdy spełnia poniższe warunki
 \begin{equation}
 \begin{gathered}
 \forall i,j ~L^\perp_V\left(\Ket{w_i}\Bra{w_j}\right) = 0 \\
@@ -1185,6 +1197,7 @@ L^\perp_V = \I - L_V  \\
 \Ket{w_\psi} := \Bra{\psi^*}^P \KKet{U_S}.
 \end{gathered}
 \end{equation} 
+\end{tw}
 W celu wyprowadzenia powyższych zależności na początku zauważa się, że:
 \begin{equation}
 \KKet{U_S} \BBra{U_S} * (\Ket{\psi}\Bra{\psi}^P \otimes \I^F) = \Ket{w_\psi} \Bra{w_\psi} * 1^F = \Trs_F \Ket{w_\psi} \Bra{w_\psi}
@@ -1297,7 +1310,7 @@ Biorąc proces następujący
 \begin{equation}
 a\Ket{w_{channel}}\Bra{w_{channel}}^{A \prec B} + b\Ket{w_{channel}}\Bra{w_{channel}}^{B \prec A},
 \end{equation} warunek normujący daje, że $a+b=1$, więc ewidentnie proces jest separowalny. Co za tym idzie on również nie może złamać nierówności przyczynowych. Taki zasób można interpretować jako probabilistyczny kanał, który z pewnym prawdopodobieństwem decyduje, kto jest przed kim.
-Eksplorując dalej procesy związane w prosty sposób z kanałami można zadać sobie pytanie, co w takim razie dzieje się z spójnym zmieszanym kanałem, niech wektor procesu będzie dany
+Eksplorując dalej procesy związane w prosty sposób z kanałami można zadać sobie pytanie, co w takim razie dzieje się z spójnym zmieszanym kanałem, niech wektor procesu będzie dany jako
 \begin{equation}
 \Ket{w_{procesu}} = a\Ket{w_{channel}}^{A \prec B} + b\Ket{w_{channel}}^{B \prec A}
 \end{equation}
@@ -1363,7 +1376,7 @@ Wektor trzystronnego przełącznika można zapisać jako:
 \Ket{w} = \frac{1}{\sqrt{6}} \sum_i \Ket{C(X_i, Y_i, Z_i, i)} =& \frac{1}{\sqrt{6}} \Ket{C(A,B,C,0)} + \Ket{C(A,C,B,1)} + \Ket{C(B,A,C,2)} \\ +& \Ket{C(B,C,A,3)} + \Ket{C(C,A,B,4)} + \Ket{C(C,B,A,5)}.
 \end{split}
 \end{equation}
-Okazuje się, że tak zdefiniowany wektora procesu generują poprawną macierz procesu. Analizę tego procesu można rozpocząć od zbadanie jak wygląda obserwowany proces, gdy podsystem kontrolny zostanie zignorowany. Standardowo jest to równoważne z wykonaniem śladu częściowego po ignorowanym podsystemie:
+Okazuje się, że tak zdefiniowany wektora procesu generują poprawną macierz procesu. Analizę tego procesu można rozpocząć od zbadania jak wygląda obserwowany proces, gdy podsystem kontrolny zostanie zignorowany. Standardowo jest to równoważne z wykonaniem śladu częściowego po ignorowanym podsystemie:
 \begin{equation}
 \begin{split}
 \Trs_{D_1^c} \Ket{w}\Bra{w} &= \frac{1}{6}\Trs_{D_1^c} \left[ \sum_{ij} \Ket{C(X_i, Y_i, Z_i, i)}\Bra{C(X_j, Y_j, Z_j, j)}\right] \\
