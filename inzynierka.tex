@@ -9,9 +9,12 @@
 \usepackage{polski}
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 \usepackage[letterpaper, portrait, margin=2.5cm]{geometry}
-
+\usepackage[final]{pdfpages}
 %\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
 \usepackage{indentfirst}
+%\usepackage[tocflat]{tocstyle}
+%\usetocstyle{standard}
 %\renewcommand{\familydefault}{\sfdefault}
 %%% Examples of Article customizations
 % These packages are optional, depending whether you want the features they provide.
@@ -41,7 +44,7 @@
 \usepackage{bm}
 %\usepackage{svg}
 \usepackage{amsthm}
-%\usepackage{ bbold }
+\usepackage{ bbold }
 \usepackage{eufrak}
 \usepackage[titletoc,title]{appendix}
 
@@ -125,18 +128,30 @@
          % otherwise the current date is printed 
 \setlength{\parindent}{1.25cm}
 \begin{document}
-\maketitle
-
-\newpage
+\pagenumbering{gobble}% Remove page numbers (and reset to 1)
+\clearpage
+\includepdf[pages=-,pagecommand={},width=\textwidth]{t.pdf}
+\includepdf[pages=-,pagecommand={},width=\textwidth]{o.pdf}
+\clearpage
+\pagenumbering{arabic}
 %\begin{multicols*}{2}
 \begin{abstract}
-W pracy w sposób przeglądowy został zaprezentowany formalizm macierzy procesu, który opisuje regułę obliczania prawdopodobieństw otrzymania danych wyników w lokalnych laboratoriach przy wykorzystaniu potencjalnie nieprzyczynowych zasobów. Następnie przedstawiono zadanie komunikacyjne, w którym zasób o nieokreślonej przyczynowości może osiągać lepsze wyniki niż zasób klasyczny. Pokazano klasę procesów, która ilustruje fakt, że niewystarczająca jest nieseparowalność do złamania nierówności przyczynowych. Dalej zaprezentowano tak zwanego świadka przyczynowości (\textit{causal witness}), który służy do stwierdzenia, czy dany zasób można rozłożyć na probabilistyczną kombinację zasobów o ściśle określonej przyczynowości. Za ich pomocą zostało pokazane w literaturze, że występowanie nieokreślonego porządku przyczynowego w naturze ma podstawy empiryczne. Zaprezentowano również miarę nieseparowalności. Następnie przedstawiono postulat, który ma wskazywać jakie procesy mogą być implementowalne fizycznie.
+W pracy w sposób przeglądowy został zaprezentowany formalizm macierzy procesu, który opisuje regułę obliczania prawdopodobieństw otrzymania danych wyników w lokalnych laboratoriach przy wykorzystaniu potencjalnie nieprzyczynowych zasobów. Następnie przedstawiono zadanie komunikacyjne, w którym zasób o nieokreślonej przyczynowości może osiągać lepsze wyniki niż zasób klasyczny. Pokazano klasę procesów, która ilustruje fakt, że niewystarczająca jest nieseparowalność do złamania nierówności przyczynowych. Dalej zaprezentowano tak zwanego świadka przyczynowości (\textit{causal witness}), który służy do stwierdzenia, czy dany zasób można rozłożyć na probabilistyczną kombinację zasobów o ściśle określonej przyczynowości. Za ich pomocą zostało pokazane w literaturze, że występowanie nieokreślonego porządku przyczynowego w naturze ma podstawy empiryczne. Zaprezentowano również miarę nieseparowalności. Następnie przedstawiono postulat, który ma wskazywać jakie procesy mogą być implementowalne fizycznie. Podano kilka oryginalnych przykładów i dokonano ich podstawowej analizy.\\
+\textbf{Słowa kluczowe:} teoria informacji, mechanika kwantowa, macierz procesu, świadek przyczynowości, nierówność przyczynowa\\
+\textbf{Dziedzina nauki zgodnie z wymogami OECD:} matematyka, matematyka stosowana; nauki fizyczne, optyka kwantowa
 \end{abstract}
+
+\newpage
 %\addto{\captionsLANGUAGE}{\renewcommand{\abstractname}{Abstract}}
 \renewcommand{\abstractname}{Abstract}
 \begin{abstract}
-In this work the review of process matrix formalism is presented. It can be considered a way to calculate probabilities of obtaining certain results in local laboratories using possibly not causal resources. Next a communication task is shown. In this task a resource that is not causal can do better than a classic one. Following it a tool that can discriminate processes with indefinite causal order is described. A class of inseparable processes unable to violate any causal inequallity was also illustrated. The so called causal witness was used to experimentally show that indefinite causal order is, in fact, a naturally occuring phenomena. An inseparability measure was also shown. Following it a purification postulate is characterized. It is a tool that is theorized to imply whether a following resource may be implemented physically.
+In this work the review of process matrix formalism is presented. It can be considered a way to calculate probabilities of obtaining certain results in local laboratories using possibly not causal resources. Next a communication task is shown. In this task a resource that is not causal can do better than a classic one. Following it a tool that can discriminate processes with indefinite causal order is described. A class of inseparable processes unable to violate any causal inequallity was also illustrated. The so called causal witness was used to experimentally show that indefinite causal order is, in fact, a naturally occuring phenomena. An inseparability measure was also shown. Following it a purification postulate is characterized. It is a tool that is theorized to imply whether a following resource may be implemented physically. Provided and analyzed a few original processes.\\
+\textbf{Keywords:} information theory, quantum mechanics, process matrix, causal witness, causal inequallity
 \end{abstract}
+\newpage
+\newpage
+\tableofcontents
+\newpage
 \section{Wstęp}
 %%%%
 \subsection{Historia}
@@ -506,22 +521,22 @@ W = \frac{1}{d}\KKet{\I}\BBra{\I}^{A_1B_1} \otimes \I^{A_2} \otimes \I^{B_2}.
 Wyrazy typu $A_2B_1$, $B_2A_1$ identyfikuje się jako sposób opisywania kanałów, ze względu na występowanie tych wyrazów w macierzach CJ kanałów.
 Łatwo zaobserwować, że formuła
 \begin{equation}
-\Trs \left[ \mathcal{M}_y^B \circ \mathds{C} \circ \mathcal{M}_x^A(\rho)\right]
-\end{equation} opisuje statystyki pomiarowe eksperymentu, w którym Alicja wykonuje pewne pomiary, przesyła system kanałem CPTP $\mathds{C}$, po czym Bob wykonuje swoje pomiary na otrzymanym systemie. Jej nieoczywista równoważność z 
+\Trs \left[ \mathcal{M}_y^B \circ \mathcal{C} \circ \mathcal{M}_x^A(\rho)\right]
+\end{equation} opisuje statystyki pomiarowe eksperymentu, w którym Alicja wykonuje pewne pomiary, przesyła system kanałem CPTP $\mathcal{C}$, po czym Bob wykonuje swoje pomiary na otrzymanym systemie. Jej nieoczywista równoważność z 
 \begin{equation}
 \Trs \left[\left( \rho^{A_1}\otimes  {C^{A_2B_1}}^T \otimes \I^{B_2}\right)(M_x^{A_1A_2}\otimes M_y^{B_1B_2})\right].
 \end{equation} może być pokazana następująco: 
 \begin{equation}
 \begin{split}
 \Trs&\left[ \left(\rho^{A_1} \otimes C^{A_2B_1} \otimes \I \right)\left(M_x^{A_1A_2}\otimes M_y^{B_1B_2}\right)\right] \\
-&= \sum_{ijklmn} \Trs \left[ \left(\rho \otimes \Ket{i}\Bra{j} \otimes \mathds{C}(\Ket{i}\Bra{j}) \otimes \I\right)\left(\Ket{k}\Bra{l} \otimes \mathcal{M}_x(\Ket{l}\Bra{k})^T \otimes \Ket{m}\Bra{n} \otimes \mathcal{M}_y(\Ket{n}\Bra{m})^T\right)\right] \\
-&= \sum_{ijklmn} \Trs \left[ \rho \Ket{k}\Bra{l} \otimes \Ket{i}\Bra{j}\mathcal{M}_x(\Ket{l}\Bra{k})^T \otimes \mathds{C}(\Ket{i}\Bra{j})\Ket{m}\Bra{n} \otimes \mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
-&= \Trs\left[\rho\Ket{k}\Bra{l}\right] \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\Ket{l}\Bra{k})\right] \Trs\left[\mathds{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{m}\Bra{n})\right] \\
-&= \sum_{ijmn}  \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\sum_{lk} \rho_{lk} \Ket{l}\Bra{k})^T\right] \Trs\left[\mathds{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
-&= \sum_{ijmn}  \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\rho)^T\right] \Trs\left[\mathds{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
-&= \sum_{mn} \Trs \left[ \mathds{C}(\mathcal{M}_x(\rho))\Ket{m}\Bra{n}\right]\Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
-&=  \Trs\left[ \mathcal{M}_y (\mathds{C}(\mathcal{M}_x(\rho)))^T\right] = \Trs\left[ \mathcal{M}_y (\mathds{C}(\mathcal{M}_x(\rho)))\right] \\
-&=\Trs \left[ \mathcal{M}_y^B \circ \mathds{C} \circ \mathcal{M}_x^A(\rho)\right]
+&= \sum_{ijklmn} \Trs \left[ \left(\rho \otimes \Ket{i}\Bra{j} \otimes \mathcal{C}(\Ket{i}\Bra{j}) \otimes \I\right)\left(\Ket{k}\Bra{l} \otimes \mathcal{M}_x(\Ket{l}\Bra{k})^T \otimes \Ket{m}\Bra{n} \otimes \mathcal{M}_y(\Ket{n}\Bra{m})^T\right)\right] \\
+&= \sum_{ijklmn} \Trs \left[ \rho \Ket{k}\Bra{l} \otimes \Ket{i}\Bra{j}\mathcal{M}_x(\Ket{l}\Bra{k})^T \otimes \mathcal{C}(\Ket{i}\Bra{j})\Ket{m}\Bra{n} \otimes \mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
+&= \Trs\left[\rho\Ket{k}\Bra{l}\right] \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\Ket{l}\Bra{k})\right] \Trs\left[\mathcal{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{m}\Bra{n})\right] \\
+&= \sum_{ijmn}  \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\sum_{lk} \rho_{lk} \Ket{l}\Bra{k})^T\right] \Trs\left[\mathcal{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
+&= \sum_{ijmn}  \Trs\left[\Ket{i}\Bra{j}\mathcal{M}_x(\rho)^T\right] \Trs\left[\mathcal{C}(\Ket{i}\Bra{j}) \Ket{m}\Bra{n}\right] \Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
+&= \sum_{mn} \Trs \left[ \mathcal{C}(\mathcal{M}_x(\rho))\Ket{m}\Bra{n}\right]\Trs\left[\mathcal{M}_y(\Ket{n}\Bra{m})^T\right] \\
+&=  \Trs\left[ \mathcal{M}_y (\mathcal{C}(\mathcal{M}_x(\rho)))^T\right] = \Trs\left[ \mathcal{M}_y (\mathcal{C}(\mathcal{M}_x(\rho)))\right] \\
+&=\Trs \left[ \mathcal{M}_y^B \circ \mathcal{C} \circ \mathcal{M}_x^A(\rho)\right]
 \end{split}
 \end{equation}
 Przykładowo macierz opisująca odwracalny kanał, który wysyła cząstkę z $A_2$ do $B_1$ i wykonuje pewną operację unitarną U, to $\KKet{U}\BBra{U}^{A_2B_1}$. Korzystając z wcześniej opisanej detekcji stanu i przygotowania innego stanu eksperyment, w którym Alicja wysyła system zakodowany w bazie $z$, Bob wykonuje pomiar w bazie $z$, następnie Alicja przesyła dalej swój system, a Bob przygotowuje na wyjście dowolny stan (nie ma znaczenia, jaki stan przygotuje Bob, gdyż wyjście z jego laboratorium nie jest z niczym połączone), np. maksymalnie zmieszany
@@ -780,16 +795,16 @@ Można również sformułować prawdopodobieństwo sukcesu w przypadku, gdy stro
 \end{equation}
 W tym przypadku Alicja i Bob postanawiają zrezygnować ze zgadywania $\frac{11}{16}$ czasu. Powyższe wyniki są ewidentnie lepsze, niż przedstawione wcześniej. Sterując liczbą wysłanych systemów i porzucanych wyników można osiągnąć dowolnie dobry wynik dla $\Pr{}_{sukces?}$, $\Pr{}_{sukces}$. Koniecznym jest podkreślenie faktu, że eksperyment, gdzie laboratoria mogą wybrać swój wynik na podstawie wielu pomiarów, jest ograniczony inną wartością.
 W przypadku klasycznym również możliwie jest osiągniecie dowolnych prawdopodobieństw sukcesu przy odpowiedniej dużej liczbie prób.
- \subsection{Adnotacja}
-Sposób obliczenia:
-\begin{gather}
-\Pr{}_{sukcesu} = \frac{1}{2}\left(\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}\delta_{xb}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}}+\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}\delta_{ya}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}}\right) \\
-\Pr{}_{sukcesu} = \frac{1}{2}\left(\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}\delta_{xb}\delta_{x_?0}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}\delta_{x_?0}}+\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}\delta_{ya}\delta_{x_?0}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}\delta_{x_?0}}\right) \\
-x_? = \begin{cases}
-0&x\neq ?\\
-1&x = ?
-\end{cases}
-\end{gather}
+% \subsection{Adnotacja}
+%Sposób obliczenia:
+%\begin{gather}
+%\Pr{}_{sukcesu} = \frac{1}{2}\left(\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}\delta_{xb}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}}+\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}\delta_{ya}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}}\right) \\
+%\Pr{}_{sukcesu} = \frac{1}{2}\left(\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}\delta_{xb}\delta_{x_?0}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'0}\delta_{x_?0}}+\frac{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}\delta_{ya}\delta_{x_?0}}{\sum_{x_1x_2x_3y_1y_2y_3abb'=0}^1\Pr(x,y|a,b,b')\delta_{b'1}\delta_{x_?0}}\right) \\
+%x_? = \begin{cases}
+%0&x\neq ?\\
+%1&x = ?
+%\end{cases}
+%\end{gather}
 %\subsection{Systemy n-wymiarowe}
 %W powyższym przykładzie wykorzystano wyłącznie kubity, lecz przedstawiony formalizm nie narzuca warunku na wymiar opisywanych systemów. Podczas omawiania kanałów z pamięcią przedstawiono proces, który na wejściu do jednego laboratorium miał dwa kubity. Jako, że 
 %iloczyn tensorowy macierzy Pauliego tworzy bazę dla systemów czteropoziomowych, można przyjąć, że zamiast dwóch kubitów system otrzymuje na wejściu jeden system czteropoziomowy. Można rozważyć rozszerzenie powyższej gry na przypadek, gdy zamiast jednej z dwóch możliwości każde z laboratoriów losuje jedna z n możliwości (przykładowo trzy). Wtedy w systemie dwu poziomowym można zakodować wyłącznie, do której z dwóch zbiorów ($\{0\} \{ 1, 2\}$) należy liczba, którą dane laboratorium chce przekazać. Efektywność takiego kodowania to $\frac{2}{3}$. Zwracając uwagę na fakt, że liczby są losowane z prawdopodobieństwem równomiernym, protokołu łamiącego przedstawioną nierówność przyczynową prawdopodobieństwa sukcesu spada do
@@ -1306,7 +1321,7 @@ Postuluje się, że wyłącznie takie procesy są implementowalne fizyczne. Prow
 (por. \cite{purification}). Proces puryfikowalny $W$ definiuje się jako proces, dla którego można znaleźć proces czysty $S$ spełniający następującą równość:
 \begin{equation}
 \label{eq:purif}
-W^{A_1A_2B_1B_2PF} = S^{A_1A_2A'_1A'_2B_1B_2B'_1B'_2PFP'F'} * \left( \Ket{0}\Bra{0}^P \otimes \I^F \right),
+W^{A_1A_2B_1B_2PF} = S^{A_1A_2A'_1A'_2B_1B_2B'_1B'_2PFP'F'} * \left( \Ket{0}\Bra{0}^{P'} \otimes \I^{F'} \right),
 \end{equation}
 \end{definicja}
 Definicja ta jest zgodna tylko z tymi macierzami procesu, które można odzyskać z procesu czystego, gdy w globalnej przeszłości umieści się ustalony stan i wykona się ślad częściowy po globalnej przeszłości. Odpowiada to sytuacji, w której nie obserwuje się globalnej przeszłości symbolizowanej przez $P$ i przyszłości symbolizowanej przez $F$.
@@ -1325,7 +1340,11 @@ jest puryfikowalny wtedy i tylko wtedy, gdy istnieje taki zbiór $\{\Ket{w_i}\}$
 gdzie w szczególności wektor $\Ket{w_0}$ jest dany jawnie przez:
 \begin{equation}
 \label{w0}
-\Ket{w_0} = \sum_{i=0}^{r-1} \sqrt{\alpha_i} \Ket{\alpha_i}^{A_1A_2B_1B_2}\Ket{i}^{F'}.
+\Ket{w_0} = \sum_{i=0}^{r-1} \sqrt{\alpha_i} \Ket{\alpha_i}^{A_1A_2B_1B_2}\Ket{i}^{F'},
+\end{equation}
+a projektor ortogonalny do $L_V(\cdot)$ dany jest poniżej:
+\begin{equation}
+\LPV(W) = L_V(W) - W.
 \end{equation}
 \end{tw} Powyższe twierdzenie pozostawione jest bez dowodu, który można poznać w \cite{purification}. %Okazuje się jednak, że korzystanie z tego twierdzenia jest problemem trudnym wprowadza się z tego powodu warunek konieczny, który potencjalnie pozwala wykluczyć pewną klasę procesów nieimplementowalnych fizycznie.
 %W celu wyprowadzenia powyższych zależności na początku zauważa się, że:
@@ -1377,12 +1396,13 @@ Okazuje się jednakże, że znalezienie takiego zbioru wektorów $\{ \Ket{w_i} \
 Zostanie teraz opisany warunek konieczny, który jest łatwiejszy do sprawdzenia. Procesy, które nie spełniają tego warunku będą więc niepuryfikowalne, zaś dla reszty będzie on niekonkluzywny. Poniżej zostaną w sposób usystematyzowany wprowadzone pojęcia użyte w pracy \cite{purification} do sformułowania 
 warunku koniecznego.
 \begin{definicja}
-(por. \cite{purification}).
 Macierz rzutowa $\Pi_\LPV$ dana jest następująco:
 \begin{equation}
-\forall i,j ~\Pi_\LPV = \KKet{\LPV(\Ket{i}\Bra{j})}.
+\forall i,j~\Pi_\LPV \KKet{\Ket{i}\Bra{j}} = \KKet{\LPV(\Ket{i}\Bra{j})}, 0 \leq i,j < d_{A_1} d_{A_2} d_{B_1} d_{B_2} d_{F'},
 \end{equation}
+gdzie $d_{F'}=\Rank{W}$ dla pewnego badanego W.
 \end{definicja}
+ Uwaga, macierze $\Pi_\LPV$ są takie same dla macierzy procesu tego samego rzędu.
 \begin{definicja}
 Operator $O_W$ definuje się jako:
 \begin{equation}
@@ -1428,7 +1448,7 @@ Wymiar podprzestrzeni złożonej z wektorów $\Ket{v'}, \Ket{v}$, które spełni
 \begin{equation}
 d_{A} = n_{0} + \min(n_{+}, n_{-}),
 \end{equation}
-gdzie $n_{0}$ jest liczbą zerowych wartości własnych, a $n_{+}$ ($n_{-}$) - liczbą dodatnich (ujemnych) wartości własnych macierzy $A$. Dowód tego lematu można odnaleźć w dodatku A \cite{purification}.
+gdzie $n_{0}$ jest liczbą zerowych wartości własnych, a $n_{+}$ ($n_{-}$) - liczbą dodatnich (ujemnych) wartości własnych macierzy $A$. 
 \end{lm}
 Lemat ten został udowodniony w dodatku D pracy \cite{purification}.
 Okazuje się, że korzystając z powyżej podanych wielkości można wyprowadzić warunek konieczny, które muszą spełniać macierze puryfikowalne. Taki warunek pozwala wykluczyć część macierzy procesu z grona potencjalnie implementowalnych fizycznie.
@@ -1494,10 +1514,9 @@ Powyższe twierdzenia pozostawione są bez dowodów, ich wyprowadzenie można od
 \subsection{Związek z procesami z rozdziału 2}
 Może się wydawać, że definicja macierzy procesu z aktualnego rozdziału różni się fundamentalnie od definicji macierzy procesu z drugiego rozdziału. Wcześniej w tym rozdziale pokazano w równaniu \eqref{nlw} powiązanie projektorów $L_V$. Wynika z tego fakt, że mając daną pewną macierz procesu $W^{A_1A_2B_1B_2PF}$ można otrzymać prawidłową macierz procesu $W^{A_1A_2B_1B_2}$ poprzez wykonanie śladu po podsystemie $P$ i $F$. Co więcej, nie został narzucony warunek na wymiar podsystemów $P$ i $F$. Oznacza to, że można wybrać $d_P, d_F = 1$, wtedy $W^{A_1A_2B_1B_2PF} = W^{A_1A_2B_1B_2}$. Przytaczając po raz kolejny argument z \eqref{nlw}, otrzymuje się drugą metodę otrzymania prawidłowych macierzy procesu (w sensie rozdziału 2).
 \section{Przykłady}
-Naley zwrócićuwagę, że poniżej wykorzystuje się wektory procesu, które często okazują się być wygodne i ułatwiają zrozumienie, co reprezentuje dany proces.
+Należy zwrócić uwagę, że poniżej wykorzystuje się wektory procesu, które często okazują się być wygodne i ułatwiają zrozumienie, co reprezentuje dany proces.
 Mając pewien wektor procesu $\Ket{w}$ odpowiadająca mu macierz procesu dana jest jako $W = \Ket{w}\Bra{w}$. W poniższych rozważaniach przez proces, w kontekście wektorów procesu, rozumie się macierz procesu otrzymaną z przytoczonej formuły. W niektórych miejscach analizuje się wektory procesu, które zawierają $P$ i $F$, a rozważa się prawdopodobieństwa. W celu ujednolicenia postaci macierzy procesu usuwa się $P$ i $F$ poprzez dokonania śladu częściowego po $P$ i $F$, który odpowiada zignorowaniu tych podsystemów.
-W rozdziale trzecim podano przykład procesu, które może łamać przyczynowe nierówności. Okazuje się, że ten proces nie jest puryfikowalny dla skrajnego $q = 1$, dla $q=0$ jest puryfikowalny, bo przyczynowy, zaś ze względu na złożoność obliczeniową i brak dostępnych wyników w literaturze nie jest wiadome, dla jakich $q$ ten proces jest puryfikowalny.
-Kolejnymi interesującymi przykładami są kanały kwantowe. Wektor procesu dla idealnego kanału kwantowego jest następujący:
+Interesującymi przykładami są kanały kwantowe. Wektor procesu dla idealnego kanału kwantowego jest następujący:
 \begin{equation}
 \Ket{w_{channel}}^{A \prec B} = \KKet{\I}^{PA_1}\KKet{\I}^{A_2B_1}\KKet{\I}^{B_2F},~ a,b\geq0.
 \end{equation}
@@ -1555,7 +1574,7 @@ W_{det} = \sum_{a,b,c} \Ket{a,b,c}\Bra{a,b,c} \otimes \Ket{\neg b \land c, \neg 
 \begin{equation}
 \Ket{w} = \sum_{a,b,c,e,f,g} \Ket{a,b,c}\Ket{e,f,g} \otimes \Ket{a,b,c}\Ket{i \oplus \neg b \land c,f \oplus \neg c\land, a , g\oplus \neg a\land b},
 \end{equation} gdzie systemy zostały wypisane w kolejności $A_2B_2C_2PFA_1B_1C_1$. Tutaj zarówno przeszłość jak i przyszłość mają po trzy kubity, co stanowi puryfikację powyższego procesu.
-\subsection{Wielostronne przykłady}
+\subsection{Przykłady wieloukładowe}
 Okazuje się, że generalizacja formalizmu macierzy procesu do większej liczby stron powoduje komplikowanie się części wprowadzonych pojęć. W celu zilustrowania powstających problemów można zacząć od pokazania przykładu trzystronnego kwantowego przełącznika. Tym razem rozszerzono postać przełącznika z artykułu \cite{causal_witness}. W przypadku trzystronnym przełącznik kwantowy składa się z czterech laboratoriów: Alicji, Boba, Charliego i Dawida. Pierwszych troje otrzymuje kubit, wykonuje na nim pewne operacji i pomiary i wysyła system dalej. Laboratorium Dawida ma dostęp do dwóch podsystemów: kubitu $D_1^t$, który jest kubitem poddanym operacjom Alicji, Boba i Charliego w pewnej kolejności, oraz podsystemu kontrolnego $D_1^c$, który określa przyczynowy porządek wykonanych operacji. Zakłada się, że Dawid porzuca swój system po wykonaniu pomiarów na nim. Rozmiary poszczególnych podsystemów to:
 \begin{equation}
 d_{A_1} = d_{A_2} = d_{B_1} = d_{B_2} = d_{C_1} = d_{C_2} = 2,~ d_{D_1} = 12 = 2 \cdot 6,~d_{D_2}=1
@@ -1597,13 +1616,10 @@ Ważne są również badania nad skutecznymi metodami spełniania warunku wystar
 \renewcommand\appendixname{Dodatek}
 \renewcommand\appendixpagename{Dodatek}
 \newpage
-\tableofcontents
+\bibliographystyle{ieeetr}
+\bibliography{bibliografia}
 \newpage
-\listoffigures
-\newpage
-
-\bibliographystyle{hieetr}
-\bibliography{bkp}
+\listoffigures\newpage
 \begin{appendices}
 \section{Szybkie obliczanie $L_V$}
 W wielu przypadkach, gdy ma się do czynienia z dużymi macierzami, konieczne jest skorzystanie z metod numerycznych. Problematyczne ze względu na złożoność obliczeniową okazują się nawet takie pozornie proste operacje jak częściowy ślad, liczony naiwnie z następującej, łatwej do zaimplementowania formuły
@@ -1666,7 +1682,7 @@ W \cite{gell_mann} wyprowadzono następujące rozwinięcie standardowych macierz
 &= \Trs \left[ \Gamma_i^A \Gamma_e^A\right] ~\Trs \left[\Gamma_j^B \Gamma_f^B\right] \\
 &= CD \delta_{ie} \delta_{jf}.
 \end{align}
-Korzystając z tego wyniku jako bazę w $P \otimes A_1 \otimes A_2 \otimes B_1 \otimes B_2 \otimes F$ można wybrać $\{ \Gamma_i \otimes \Gamma_j \otimes \Gamma_k \otimes \Gamma_l \otimes \Gamma_e \otimes \Gamma_f\}$, gdzie poszczególne macierze są UMG o odpowiednim wymiarze. Macierz ta skrótowo będzie nazywana $\Gamma_{ijklef}$.
+Korzystając z tego wyniku jako bazę w $A_1 \otimes A_2 \otimes B_1 \otimes B_2 \otimes F'$ można wybrać $\{ \Gamma_i \otimes \Gamma_j \otimes \Gamma_k \otimes \Gamma_l \otimes \Gamma_e\}$, gdzie poszczególne macierze są UMG o odpowiednim wymiarze. Macierz ta skrótowo będzie nazywana $\Gamma_{ijkle}$.
 Można teraz zapisać:
 \begin{equation}
 \label{WGM}
@@ -1705,13 +1721,14 @@ Korzystając z następującej obserwacji:
 \begin{split}
 {}_{X}({}_{Y}A) &= {}_{X}({}_{Y} \sum_{ijk} \alpha_{ijk} \sigma_i^X \otimes \sigma_j^Y\otimes \sigma_k^Z)\\ &= {}_X \sum_{ik} \alpha_{i0k} \sigma_i^X \otimes \I^Y \otimes \sigma_k^Z = \sum_k \alpha_{i00} \I^X\otimes \I^Y \otimes \sigma_k^Z = {}_{XY} A.
 \end{split}
-\end{equation} Zaaplikowanie projektora $L_V$ sprowadza się do wykonania $O(1)$ operacji na $O(d^2)$ elementach wektory Blocha, czyli złożoność znów jest kwadratowa.
+\end{equation} Zaaplikowanie projektora $L_V$ sprowadza się do wykonania $O(1)$ operacji na $O(d^2)$ elementach wektora Blocha, czyli złożoność znów jest kwadratowa.
 Warto jeszcze podkreślić, że ze względu na rzadkość wektorów Blocha wskazanym jest trzymanie go w postaci par $\{ (\sigma_{ijklef}, \Gamma_{ijklef}) \}$, lub innym rzadkim formacie, w celu osiągnięcia odpowiedniej złożoności przy wykonywanie wielu obliczeń projektorów macierzy standardowych.
 \section{Jawna postać $\Pi_\LPV$}
 Operator $\Pi_\LPV$ definiuje się następująco:
 \begin{equation}
-\forall i,j~\Pi_\LPV \KKet{\Ket{i}\Bra{j}} = \KKet{\LPV(\Ket{i}\Bra{j})}.
+\forall i,j~\Pi_\LPV \KKet{\Ket{i}\Bra{j}} = \KKet{\LPV(\Ket{i}\Bra{j})}, 0 \leq i,j < d_{A_1} d_{A_2} d_{B_1} d_{B_2} d_{F'},
 \end{equation}
+gdzie $d_{F'}=\Rank{W}$ dla pewnego badanego W.
 Dalej przytaczając argument z poprzedniego dodatku o CB zapisać można:
 \begin{equation}
 \KKet{\Ket{i}\Bra{j}} = \Ket{i}\Ket{j} = \Ket{i d_a + j} = \Ket{e}.
@@ -1721,11 +1738,9 @@ Definiuje się wektor $\Ket{\pi_{e}} = \KKet{\LPV(\Ket{i}\Bra{j})}$. Zauważa si
 \Pi_\LPV \Ket{e} = \Ket{\pi_{e}},
 \end{equation} czyli macierz $\Pi_\LPV$ mapuje wektory bazowe CB na pewne inne wektory co z definicji macierzy mówi, że e-ta kolumna macierzy $\Pi_\LPV$ to wektor $\Ket{\pi_{e}}$.
 Trzeba dalej zauważyć jednakże, że niewskazane jest trzymanie macierzy $\Pi_\LPV$ w gęstej reprezentacji, gdzie każde pole macierzy ma swoją jawną reprezentację w pamięci.
-Niemożliwość tego może uświadomić następująca obserwacja: łatwo sprawdzić, że macierz ta ma $O(d^4)$ elementów. W przypadku projektora odpowiadającego macierzy przedstawionej w trzecim rozdziale zajmowałaby ona ok. 410TB pamięci w przypadku podwójnej precyzji.
+Niemożliwość tego może uświadomić następująca obserwacja: łatwo sprawdzić, że macierz ta ma $O(d^4)$ elementów. W przypadku chęci obliczenia w ten sposób puryfikacji dla macierzy W o rzędzie 12 macierz rzutowa zajmowałaby ok. 20GB pamięci (przy wykorzystaniu podwójnej precyzji).
 Przytaczając argument z dodatku A wiadome jest, że macierz ta ma $O(d^2)$ niezerowych elementów. Konieczna więc jest reprezentacja tej macierzy w rzadkim formacie np. skompresowanym formacie kolumnowym.
 \end{appendices}
-\\
-$\mathcal{W}_{sep}~~\mathcal{W}_{nsep}$\\
-$\{ U_i\}$
+
 %$x~y~\rho~\mathcal{M}_x(\rho)~\mathds{C}(\mathcal{M}_x(\rho))~\mathcal{M}_y(\mathds{C}(\mathcal{M}_x(\rho)))$
 \end{document}
