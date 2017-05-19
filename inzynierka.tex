@@ -936,9 +936,9 @@ Twierdzenie o separującej hiperpłaszczyźnie mówi, że dla każdych dwóch wy
 Przed dalszym charakteryzowaniem świadków przyczynowości wygodnie jest wprowadzić niezależne od wyboru bazy sformułowanie macierzy procesu \cite{causal_witness}.
 \begin{definicja}
 (por. \cite{causal_witness}).
-Operator ${}_XW$ zdefiniowany jest następująco:
+Operator ${}_X(\cdot)$ zdefiniowany jest następująco:
 \begin{equation}
-{}_X W = \frac{\I^X}{d_X} \otimes \Trs_X W.
+{}_X (\cdot) = \frac{\I^X}{d_X} \otimes \Trs_X (\cdot).
 \end{equation}
 \end{definicja}
 Operacja ${}_XW$ opisuje operację wzięcia śladu i zastąpienia tego systemu znormalizowaną macierzą jednostkową.
@@ -1344,7 +1344,7 @@ gdzie w szczególności wektor $\Ket{w_0}$ jest dany jawnie przez:
 \end{equation}
 a projektor ortogonalny do $L_V(\cdot)$ dany jest poniżej:
 \begin{equation}
-\LPV(W) = L_V(W) - W.
+\LPV(\cdot) = (\cdot) - L_V(\cdot).
 \end{equation}
 \end{tw} Powyższe twierdzenie pozostawione jest bez dowodu, który można poznać w \cite{purification}. %Okazuje się jednak, że korzystanie z tego twierdzenia jest problemem trudnym wprowadza się z tego powodu warunek konieczny, który potencjalnie pozwala wykluczyć pewną klasę procesów nieimplementowalnych fizycznie.
 %W celu wyprowadzenia powyższych zależności na początku zauważa się, że:
@@ -1615,6 +1615,16 @@ Ważne są również badania nad skutecznymi metodami spełniania warunku wystar
 
 \renewcommand\appendixname{Dodatek}
 \renewcommand\appendixpagename{Dodatek}
+\null
+\vfill
+\begin{minipage}[b]{0.1\textwidth}
+\hfill
+\end{minipage}
+\begin{minipage}[b]{0.9\textwidth}
+Chciałbym uprzejmie podziękować mojemu promotorowi prof. dr. hab. Pawłowi Horodeckiemu za możliwość zapoznania się z fascynującą tematyką oraz za pomoc przy realizacji tej pracy. Dziękuję również Joannie Cichowskiej za pomoc lingwistyczną w trakcie pisania pracy.
+\end{minipage}
+\vspace{2cm}
+\clearpage
 \newpage
 \bibliographystyle{ieeetr}
 \bibliography{bibliografia}
@@ -1672,7 +1682,7 @@ W \cite{gell_mann} wyprowadzono następujące rozwinięcie standardowych macierz
 \begin{cases}
 \frac{1}{2} \left(\Gamma_{ij}^S + i \Gamma_{ij}^A\right), \quad \text{dla } i < j \\
 \frac{1}{2} \left(\Gamma_{ji}^S - i \Gamma_{ji}^A\right), \quad \text{dla } i > j \\
-- \sqrt{\frac{j-1}{2j}} \Gamma_{j-1}  + \sum_{n=0}^{d-j-1} \frac{1}{\sqrt{2(j+n)(j+n+1)}} \Gamma_{j+n} + \frac{1}{d}\I, \quad \text{dla } j=k.
+- \sqrt{\frac{j-1}{2j}} \Gamma_{j-1}  + \sum_{n=0}^{d-j-1} \frac{1}{\sqrt{2(j+n)(j+n+1)}} \Gamma_{j+n} + \frac{1}{d}\I, \quad \text{dla } i=j.
 \end{cases}
 \end{equation}
 Łatwo zauważyć, że posiadając ortogonalną bazę w systemie A $\{\Gamma_i^A\}$ i bazę w B $\{ \Gamma_j^B \}$ macierze $\{\Gamma_i \otimes \Gamma_j\}$ tworzą bazę w $A \otimes B$, ponieważ:
@@ -1731,11 +1741,11 @@ Operator $\Pi_\LPV$ definiuje się następująco:
 gdzie $d_{F'}=\Rank{W}$ dla pewnego badanego W.
 Dalej przytaczając argument z poprzedniego dodatku o CB zapisać można:
 \begin{equation}
-\KKet{\Ket{i}\Bra{j}} = \Ket{i}\Ket{j} = \Ket{i d_a + j} = \Ket{e}.
+\KKet{\Ket{i}\Bra{j}} = \Ket{j}\Ket{i} = \Ket{j d_a + i} = \Ket{e}.
 \end{equation} Widać z tego, że postać CJ macierzy standardowej to wektor CB w innej przestrzeni.
 Definiuje się wektor $\Ket{\pi_{e}} = \KKet{\LPV(\Ket{i}\Bra{j})}$. Zauważa się teraz, że 
 \begin{equation}
-\Pi_\LPV \Ket{e} = \Ket{\pi_{e}},
+\Pi_\LPV \Ket{e} = \left(\sum_k \Ket{\pi_k}\Bra{k}\right)\Ket{e} = \Ket{\pi_{e}},
 \end{equation} czyli macierz $\Pi_\LPV$ mapuje wektory bazowe CB na pewne inne wektory co z definicji macierzy mówi, że e-ta kolumna macierzy $\Pi_\LPV$ to wektor $\Ket{\pi_{e}}$.
 Trzeba dalej zauważyć jednakże, że niewskazane jest trzymanie macierzy $\Pi_\LPV$ w gęstej reprezentacji, gdzie każde pole macierzy ma swoją jawną reprezentację w pamięci.
 Niemożliwość tego może uświadomić następująca obserwacja: łatwo sprawdzić, że macierz ta ma $O(d^4)$ elementów. W przypadku chęci obliczenia w ten sposób puryfikacji dla macierzy W o rzędzie 12 macierz rzutowa zajmowałaby ok. 20GB pamięci (przy wykorzystaniu podwójnej precyzji).
