@@ -221,12 +221,32 @@ $p$ & $1-p$ \\
 \includegraphics[width=0.8\textwidth]{obrazki/pC}
 \end{frame}
 
+\subsection{Formalnie}
+\begin{frame}{Brak komunikacji między Bobem, a Alicją}
+\centering
+$A \prec B$
+\begin{gather}
+\forall x, y \sum_{b} \Pr(a, b|x, y) = \Pr(a|x,y) = \Pr(a|x)
+\end{gather}
+\end{frame}
+
 \section{Macierz procesu}
+\subsection{Instrumenty kwantowe}
+\begin{frame}{Instrumenty kwantowe}
+\centering
+\begin{gather}
+ \{\mathcal{M}_i\}, \mathcal{M}_i: \Hx{A_1}\mapsto \Hx{A_2} \\
+\Pr(i) = \Trs\left[\mathcal{M}_i(\rho)\right] \\
+\rho' = \frac{\mathcal{M}_i(\rho)}{\Pr(i)} \\
+\Trs \left[ \sum_x \mathcal{M}_i(\rho) \right] = \Trs\left[\rho\right] \\ 
+\mathcal{M}_i({\rho}) = \sum^m_{j=1} E_{ij} ^\dag \rho E_{ij}
+\end{gather}
+\end{frame}
 \subsection{Macierz procesu}
 \begin{frame}{Izomorfizm CJ}
 \includegraphics[width=0.8\textwidth]{obrazki/cj_new}
 \begin{gather}
-\mathfrak{C}(\mathcal{M_i}) = \left[\sum_{ij} \Ket{i}\Bra{i} \otimes \mathcal{M_i}\left(\Ket{i}\Bra{j}\right)\right]^T\\
+\mathfrak{C}(\mathcal{M}_i) = \left[\sum_{ij} \Ket{i}\Bra{j} \otimes \mathcal{M}_i\left(\Ket{i}\Bra{j}\right)\right]^T\\
 \KKet{A} = \sum_i \left( \Ket{i}\otimes A\Ket{i}\right)
 \end{gather}
 \end{frame}
@@ -238,6 +258,19 @@ W  \in \Mats{\Hx{A_1} \otimes \Hx{A_2} \otimes \Hx{B_1} \otimes \Hx{B_2}}\\
 W \geq 0 \\
 \Trs W=d_{A_2B_2}\\
 \Pr(i,j) = \Trs\left[ W \left( M_i \otimes M_j\right)\right]
+\end{gather}
+\end{frame}
+
+\begin{frame}{Warunki na macierz procesu c. d.}
+\centering
+\begin{gather}
+\begin{gathered}
+\WAll = \frac{1}{d_{A_1}d_{B_1}}(\mathbb{1} +\sigma^{B \preceq A} + \sigma^{A \preceq B} + \sigma^{A \npreceq \nsucceq B}) \\
+\sigma^{A \preceq B} := \sum_{ij>0} a_{ij} \sigma^{A_1}_i \sigma^{B_2}_j + \sum_{ijk>0} b_{ijk} \sigma^{A_1}_i \sigma^{B_1}_j \sigma^{B_2}_k \\
+\sigma^{B \preceq A} := \sum_{ij>0} c_{ij} \sigma^{A_2}_i \sigma^{B_1}_j + \sum_{ijk>0} d_{ijk} \sigma^{A_1}_i \sigma^{A_2}_j \sigma^{B_1}_k \\
+ \sigma^{A \nprec \nsucc B} := \sum_{i>0} e_i  \sigma^{A_1} + \sum_{i>0} f_i  \sigma^{B_1} + \sum_{ij>0} h_{ij} \sigma^{A_1}_i \sigma^{B_1}_j \\
+ \forall_{ij} a_{ij}, b_{ij}, c_{ij}, d_{ij}, e_{ij}, f_{ij}, g_{ij}, h_{ij} \in \mathbb{R},
+\end{gathered}
 \end{gather}
 \end{frame}
 
@@ -262,22 +295,11 @@ W = \rho^{A_1} \otimes C^{A_2B_1} \otimes \I^{B_2}
 \centering
 \includegraphics[width=0.8\textwidth]{obrazki/memory_new}\\
 Wyrazy typu $A_1A_2B_1$, $B_1B_2A_1$.
-\end{frame}
-
-\subsection{Kwantowy przełącznik}
-\begin{frame}{Ważny przykład}
-\centering
-\begin{figure}
-\includegraphics[width=0.3\textwidth]{obrazki/qs}
-\caption{Ilustracja kwantowego przełącznik, źródło: \cite{experiment}}
-\end{figure}
 \begin{equation}
-\begin{split}
-\Ket{w} =& \Ket{\psi}^{A_1}\KKet{\I}^{A_2B_1}\KKet{B_2C_{1t}}\Ket{0}^{C_c}\\
-&+ \Ket{\psi}^{B_1}\KKet{\I}^{B_2A_1}\KKet{\I}^{A_2C_{1t}}\Ket{1}^{C_c}
-\end{split}
+\frac{1}{2}\KKet{\I}\BBra{\I}^{A_1B_{11}} \otimes \KKet{\I}\BBra{\I}^{A_2B_{12}} \otimes \I^{B_{21}B_{22}}
 \end{equation}
 \end{frame}
+
 \subsection{Gry przyczynowe}
 \begin{frame}{Łamanie nierówności przyczynowych}
 \centering
@@ -301,10 +323,53 @@ Wyrazy typu $A_1A_2B_1$, $B_1B_2A_1$.
 \end{gather}
 \end{frame}
 
+\subsection{Kwantowy przełącznik}
+\begin{frame}{Ważny przykład}
+\centering
+\begin{figure}
+\includegraphics[width=0.3\textwidth]{obrazki/qs}
+\caption{Ilustracja kwantowego przełącznik, źródło: \cite{experiment}}
+\end{figure}
+\begin{equation}
+\begin{split}
+\Ket{w} =& \Ket{\psi}^{A_1}\KKet{\I}^{A_2B_1}\KKet{\I}^{B_2C_{1t}}\Ket{0}^{C_c}\\
+&+ \Ket{\psi}^{B_1}\KKet{\I}^{B_2A_1}\KKet{\I}^{A_2C_{1t}}\Ket{1}^{C_c}
+\end{split}
+\end{equation}
+\end{frame}
 \begin{frame}[allowframebreaks]
   
 \bibliographystyle{plain}
 \bibliography{bibliografia}
+\end{frame}
+
+\section{Zapasowo}
+\begin{frame}{Wektor Blocha}
+\centering
+\begin{equation}
+W = \sigma \Gamma.
+\end{equation}
+np.
+\begin{equation}
+\{\Gamma_i\} = \{ \X, \Y, \Z, \I \}
+\end{equation}
+\end{frame}
+\begin{frame}{UMG}
+\centering
+\begin{itemize}
+\item{$\frac{d(d-1)}{2}$ Symetrycznych UMG}
+\begin{equation}
+\Gamma_{ij}^S = \Ket{i}\Bra{j} + \Ket{j}\Bra{i}, \quad 1 \leq i < j \leq d.
+\end{equation}
+\item{$\frac{d(d-1)}{2}$ Antysymetrycznych UMG}
+\begin{equation}
+\Gamma_{ij}^A = -\mathbf{i}\Ket{i}\Bra{j} + \mathbf{i}\Ket{j}\Bra{i}, \quad 1 \leq i < j \leq d.
+\end{equation} 
+\item{$(d-1)$ Diagonalnych UMG}
+\begin{equation}
+\Gamma_{i} = \sqrt{\frac{2}{i(i+1)}} \left( \sum_{j=1}^{i } \Ket{j}\Bra{j} - i\Ket{i+1}\Bra{i+1}\right), \quad 1 \leq l \leq d-1
+\end{equation}
+\end{itemize}
 \end{frame}
 
 \end{document}
